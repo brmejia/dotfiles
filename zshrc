@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/andres/.oh-my-zsh
+export ZSH=/home/andres/.oh-my-zsh
 
 
 # Font Config
@@ -362,5 +362,5 @@ if [ -x /usr/bin/cowsay -a -x /usr/bin/fortune ]; then
     fortune | cowsay
     # fortune | cowsay -f elephant-in-snake
 fi
-# Disable hang terminal on Ctrl+s
+#so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon

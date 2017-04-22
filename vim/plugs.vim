@@ -21,9 +21,10 @@ Plug 'sickill/vim-pasta'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'vim-scripts/argtextobj.vim'
 Plug 'Valloric/YouCompleteMe'
+Plug 'tpope/vim-fugitive'
+Plug 'severin-lemaignan/vim-minimap'
+Plug 'airblade/vim-gitgutter'
 " Plug 'terryma/vim-multiple-cursors'
-" fugitive
-" Relative Numbers
 " Copy Paste Support
 " Tabs Movement
 " easymotions

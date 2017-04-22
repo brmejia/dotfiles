@@ -14,4 +14,5 @@ source /usr/bin/virtualenvwrapper.sh # Source of wrapper commands
 
 # Firefox geckodriver
 PATH=$PATH:/opt/geckodriver
+#so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
