@@ -4,9 +4,10 @@ let mapleader = " "
 map <Space> <leader>
 map <Leader>w :update<CR>
 map <Leader>q :qall<CR>
-"map <Leader>gs :Gstatus<CR>
-"map <Leader>gc :Gcommit<CR>
-"map <Leader>gp :Gpush<CR>
+" Git mappings
+map <Leader>gs :Gstatus<CR>
+map <Leader>gc :Gcommit<CR>
+map <Leader>gp :Gpush<CR>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>

@@ -24,13 +24,15 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'tpope/vim-fugitive'
 Plug 'severin-lemaignan/vim-minimap'
 Plug 'airblade/vim-gitgutter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 " Plug 'terryma/vim-multiple-cursors'
 " Copy Paste Support
 " Tabs Movement
 " easymotions
 
 " On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 
 " Initialize plugin system
 call plug#end()
@@ -55,10 +57,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+let g:syntastic_check_on_open=1
 
 " Molokai Colorscheme
 let g:molokai_original = 1
 let g:rehash256 = 1
-
