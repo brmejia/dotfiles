@@ -8,6 +8,7 @@ map <Leader>q :qall<CR>
 map <Leader>gs :Gstatus<CR>
 map <Leader>gc :Gcommit<CR>
 map <Leader>gp :Gpush<CR>
+map <Leader><Leader>r :source ~/.vim/vimrc<CR>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
@@ -41,12 +42,6 @@ vno <left> <Nop>
 vno <right> <Nop>
 vno <up> <Nop>
 
-" Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-
 " Tabs mapping
 nmap <C-Tab> :tabnext<CR>
 nmap <C-S-Tab> :tabprevious<CR>
@@ -56,7 +51,6 @@ imap <C-S-Tab> <ESC>:tabprevious<CR>
 imap <C-Tab> <ESC>:tabnext<CR>
 noremap <F7> :set expandtab!<CR>
 nmap <Leader>h :tabnew %:h<CR>
-
 
 " gO to create a new line below cursor in normal mode
 nmap g<C-O> o<ESC>k
@@ -89,7 +83,6 @@ inoremap <S-Tab> <c-n>
 map <F10> :NERDTreeToggle<CR>
 " Current file in nerdtree
 map <F9> :NERDTreeFind<CR>
-
 
 " Commenting Remaps
 nmap cm gc

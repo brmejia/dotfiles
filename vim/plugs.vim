@@ -31,6 +31,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'Yggdroot/indentLine'
 " Plug 'terryma/vim-multiple-cursors'
 " Copy Paste Support
 " Tabs Movement

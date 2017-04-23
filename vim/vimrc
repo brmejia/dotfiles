@@ -50,14 +50,12 @@ set shiftwidth=2
 set shiftround
 set expandtab
 
-" Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
 
 " Use one space, not two, after punctuation.
 set nojoinspaces
 
 " Make it obvious where 80 characters is
-set textwidth=80
+set textwidth=120
 set colorcolumn=+1
 
 " Numbers
@@ -101,17 +99,13 @@ endif
 
 syntax on
 " set t_Co=256                " Explicitly tell vim that the terminal supports 256 colors"
-" colorscheme molokai         " Set the colorscheme
 colorscheme dracula         " Set the colorscheme
+" colorscheme molokai         " Set the colorscheme
+" colorscheme onedark         " Set the colorscheme
 
 " make the highlighting of tabs and other non-text less annoying
-highlight SpecialKey ctermbg=none ctermfg=8
-highlight NonText ctermbg=none ctermfg=8
-
-" make comments and HTML attributes italic
-highlight Comment cterm=italic
-highlight htmlArg cterm=italic
-
+highlight SpecialKey ctermbg=none ctermfg=darkgray
+highlight NonText ctermbg=none ctermfg=darkgray
 
 set updatetime=250
 " Files
@@ -131,9 +125,9 @@ set showbreak=…             " show ellipsis at breaking
 set autoindent              " automatically set indent of new line
 set smartindent
 
-" toggle invisible characters
+" Display invisible characters
 set list
-set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set listchars=tab:→\ ,eol:¬,trail:⋅,nbsp:·,space:·,extends:❯,precedes:❮
 set showbreak=↪
 
 " highlight conflicts
