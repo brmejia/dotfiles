@@ -1,0 +1,33 @@
+session_name: hmt_cms
+global_options:
+  automatic-rename: 'off'
+windows:
+- window_name: Deploy CMS
+  layout: main-horizontal
+  focus: 'true'
+  options:
+    main-pane-height: 30
+  shell_command_before:
+    - workon hmt_cms
+  panes:
+  - shell_command:
+    - cd ../deploy_tools
+    - vim .
+    focus: 'true'
+  - 
+  - 
+- window_name: Django CMS
+  layout: main-horizontal
+  shell_command_before:
+    - workon hmt_cms
+  panes:
+  - shell_command:
+    - vim .
+    focus: 'true'
+  - 
+- window_name: HMT DigitalOcean
+  layout: main-horizontal
+  panes:
+  - shell_command: 
+    - ssh root@humeterra.com
+    focus: 'true'
