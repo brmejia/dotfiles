@@ -364,3 +364,7 @@ if [ -x /usr/bin/cowsay -a -x /usr/bin/fortune ]; then
 fi
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
+
+# tmuxp completion
+eval "$(_TMUXP_COMPLETE=source tmuxp)"
+export DISABLE_AUTO_TITLE = 'true'
