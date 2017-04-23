@@ -61,8 +61,10 @@ set textwidth=80
 set colorcolumn=+1
 
 " Numbers
-set number
+set number                  " show line numbers
 set numberwidth=6
+set relativenumber          " show relative line numbers
+
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -110,8 +112,6 @@ highlight NonText ctermbg=none ctermfg=8
 highlight Comment cterm=italic
 highlight htmlArg cterm=italic
 
-set number                  " show line numbers
-set relativenumber          " show relative line numbers
 
 set updatetime=250
 " Files

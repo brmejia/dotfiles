@@ -8,6 +8,7 @@ Plug 'dracula/vim'
 Plug 'tomasr/molokai'
 Plug 'jacoborus/tender'
 Plug 'w0ng/vim-hybrid'
+Plug 'tomasiser/vim-code-dark'
 
 " Utilities
 Plug 'ctrlpvim/ctrlp.vim' " Fuzzy Search
@@ -28,11 +29,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'severin-lemaignan/vim-minimap'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tomasiser/vim-code-dark'
+Plug 'yuttie/comfortable-motion.vim'
+Plug 'easymotion/vim-easymotion'
 " Plug 'terryma/vim-multiple-cursors'
 " Copy Paste Support
 " Tabs Movement
-" easymotions
 
 " On-demand loading
 " Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
