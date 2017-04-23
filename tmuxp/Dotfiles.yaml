@@ -1,0 +1,13 @@
+session_name: Dotfiles
+start_directory: ~/.dotfiles
+windows:
+- focus: 'true'
+  layout: efa1,169x44,0,0[169x22,0,0,7,169x21,0,23,8]
+  options:
+    automatic-rename: 'on'
+  panes:
+    - vim ~/.dotfiles
+    - focus: 'true'
+      shell_command: zsh
+  start_directory: /home/andres/.dotfiles
+  window_name: VIM:dotfiles
