@@ -6,4 +6,4 @@ vim/sessions
 
 nvim/plugs
 nvim/.netrwhist
-vim/autoload/plug.vim
+nvim/autoload/plug.vim
