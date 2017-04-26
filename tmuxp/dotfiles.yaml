@@ -1,0 +1,13 @@
+session_name: Dotfiles
+start_directory: ~/.dotfiles
+windows:
+- focus: 'true'
+  layout: main-horizontal
+  options:
+    automatic-rename: 'on'
+    main-pane-height: 35
+  panes:
+    - shell_command: nvim ~/.dotfiles
+      focus: 'true'
+    - 
+  window_name: VIM:dotfiles

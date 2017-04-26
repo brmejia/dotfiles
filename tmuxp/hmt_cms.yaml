@@ -12,7 +12,7 @@ windows:
   panes:
   - shell_command:
     - cd ../deploy_tools
-    - vim .
+    - nvim .
     focus: 'true'
   - 
   - 
@@ -22,7 +22,7 @@ windows:
     - workon hmt_cms
   panes:
   - shell_command:
-    - vim .
+    - nvim .
     focus: 'true'
   - 
 - window_name: HMT DigitalOcean

@@ -3,3 +3,7 @@ vim/autoload/plug.vim
 vim/bundle
 vim/plugged
 vim/sessions
+
+nvim/plugs
+nvim/.netrwhist
+vim/autoload/plug.vim
