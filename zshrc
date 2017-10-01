@@ -105,7 +105,7 @@ alias vagrant-start='vagrant up && vagrant ssh'
 alias vagrant-reload='vagrant reload && vagrant ssh'
 
 #MATLAB
-alias matlab='LD_PRELOAD="/usr/lib64/libstdc++.so.6" /opt/MATLAB/R2016b/bin/matlab'
+alias matlab='LD_PRELOAD="/usr/lib64/libstdc++.so.6" ~/Matlab/bin/matlab'
 
 
 #PYTHON
@@ -366,5 +366,7 @@ fi
 stty -ixon
 
 # tmuxp completion
-eval "$(_TMUXP_COMPLETE=source tmuxp)"
-export DISABLE_AUTO_TITLE = 'true'
+autoload bashcompinit
+bashcompinit
+eval "$(_TMUXP_COMPLETE=. tmuxp)"
+export DISABLE_AUTO_TITLE='true'

@@ -18,5 +18,5 @@ PATH=$PATH:/opt/geckodriver
 stty -ixon
 
 # tmuxp completion
-eval "$(_TMUXP_COMPLETE=source tmuxp)"
-export DISABLE_AUTO_TITLE = 'true'
+eval "$(_TMUXP_COMPLETE=. tmuxp)"
+export DISABLE_AUTO_TITLE='true'

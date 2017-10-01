@@ -7,9 +7,8 @@
 " Need to set the leader before defining any leader mappings
 "
 let mapleader = "\<Space>"
-" TODO: Incluir mappings
-
 let $RC_ROOT='~/.config/nvim'
+
 function! s:SourceConfigFilesIn(directory)
     let directory_splat = $RC_ROOT.'/' . a:directory . '/*'
     for config_file in split(glob(directory_splat), '\n')
@@ -20,7 +19,10 @@ function! s:SourceConfigFilesIn(directory)
 endfunction
 
 call plug#begin($RC_ROOT.'/plugs')
-call s:SourceConfigFilesIn('rcplugs')
+source $RC_ROOT/rcplugs/themes.vim
+source $RC_ROOT/rcplugs/airline.vim
+source $RC_ROOT/rcplugs/plugs.vim
+source $RC_ROOT/rcplugs/nerdtree.vim
 call plug#end()
 
 call s:SourceConfigFilesIn('rcfiles')
