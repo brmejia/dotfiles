@@ -46,7 +46,8 @@ endif
 
 syntax on
 " set t_Co=256                " Explicitly tell vim that the terminal supports 256 colors"
-colorscheme dracula         " Set the colorscheme
+" colorscheme dracula         " Set the colorscheme
+colorscheme tender         " Set the colorscheme
 " colorscheme molokai         " Set the colorscheme
 " colorscheme onedark         " Set the colorscheme
 
@@ -100,14 +101,14 @@ set foldlevel=1
 
 set clipboard=unnamed
 
-set ttyfast                 " faster redrawing
+" set ttyfast                 " faster redrawing
 set diffopt+=vertical
 set laststatus=2            " show the satus line all the time
 set so=7                    " set 7 lines to the cursors - when moving vertical
 set wildmenu                " enhanced command line completion
 set hidden                  " current buffer can be put into background
 set showcmd                 " show incomplete commands
-set noshowmode              " don't show which mode disabled for PowerLine
+" set noshowmode              " don't show which mode disabled for PowerLine
 set wildmode=list:longest   " complete files like a shell
 set scrolloff=3             " lines of text around cursor
 set shell=$SHELL
@@ -130,12 +131,12 @@ set mat=2                   " how many tenths of a second to blink
 " set noerrorbells
 set visualbell
 " set t_vb=
-set tm=500
+" set tm=500
 
-if has('mouse')
-  set mouse=a
-  " set ttymouse=xterm2
-endif
+" if has('mouse')
+"   set mouse=a
+"   " set ttymouse=xterm2
+" endif
 
 " }}}
 

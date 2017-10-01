@@ -1,11 +1,11 @@
 " Leader Mappings
 map <Leader>w :update<CR>
 map <Leader>q :qall<CR>
+map <Leader><Leader>r :source ~/.config/nvim/init.vim<CR>
 " Git mappings
 map <Leader>gs :Gstatus<CR>
 map <Leader>gc :Gcommit<CR>
 map <Leader>gp :Gpush<CR>
-map <Leader><Leader>r :source ~/.config/nvim/init.vim<CR>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
@@ -17,10 +17,9 @@ nnoremap <leader><leader> <c-^>
 "nnoremap <silent> <Leader>a :TestSuite<CR>
 "nnoremap <silent> <leader>gt :TestVisit<CR>
 
-" Run commands that require an interactive shell
-nnoremap <Leader>r :RunInInteractiveShell<space>
-" Run commands that require an interactive shell
-nnoremap <Leader>r :RunInInteractiveShell<space>
+" nnoremap <Leader>r :RunInInteractiveShell<space>
+" " Run commands that require an interactive shell
+" nnoremap <Leader>r :RunInInteractiveShell<space>
 
 "============== Custom Mappings ===============
 " Disable Ex Mode
@@ -75,11 +74,6 @@ function! InsertTabWrapper()
 endfunction
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <S-Tab> <c-n>
-
-" Toggle nerdtree with F10
-map <F10> :NERDTreeToggle<CR>
-" Current file in nerdtree
-map <F9> :NERDTreeFind<CR>
 
 " Commenting Remaps
 nmap cm gc
