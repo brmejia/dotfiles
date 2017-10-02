@@ -40,5 +40,5 @@ Plug 'easymotion/vim-easymotion'
 " Plug 'terryma/vim-multiple-cursors'
 " Copy Paste Support
 " Tabs Movement
-
+Plug 'pearofducks/ansible-vim'
 " On-demand loading
