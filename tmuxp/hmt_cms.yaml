@@ -2,16 +2,16 @@ session_name: hmt_cms
 global_options:
   automatic-rename: 'off'
 windows:
-- window_name: Deploy CMS
+- window_name: Deploy Tools
   layout: main-horizontal
   focus: 'true'
   options:
     main-pane-height: 30
   shell_command_before:
-    - workon hmt_cms
+    - workon hmt_cms_dev
+    - cd ../deploy_tools
   panes:
   - shell_command:
-    - cd ../deploy_tools
     - nvim .
     focus: 'true'
   - 
@@ -19,7 +19,7 @@ windows:
 - window_name: Django CMS
   layout: main-horizontal
   shell_command_before:
-    - workon hmt_cms
+    - workon hmt_cms_dev
   panes:
   - shell_command:
     - nvim .
