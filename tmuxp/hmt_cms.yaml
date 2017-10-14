@@ -6,7 +6,7 @@ windows:
   layout: main-horizontal
   focus: 'true'
   options:
-    main-pane-height: 30
+      main-pane-height: 35
   shell_command_before:
     - workon hmt_cms_dev
     - cd ../deploy_tools
@@ -18,6 +18,8 @@ windows:
   - 
 - window_name: Django CMS
   layout: main-horizontal
+  options:
+      main-pane-height: 35
   shell_command_before:
     - workon hmt_cms_dev
   panes:
@@ -27,6 +29,8 @@ windows:
   - 
 - window_name: HMT DigitalOcean
   layout: main-horizontal
+  options:
+      main-pane-height: 35
   panes:
   - shell_command: 
     - ssh root@humeterra.com
