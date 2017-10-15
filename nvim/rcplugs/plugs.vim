@@ -16,11 +16,13 @@ if !filereadable(plugpath)
 endif
 
 " Configuración de plugins de utilidades
-Plug 'ctrlpvim/ctrlp.vim' " Fuzzy Search
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim' "FZF Vim Integration
 Plug 'vim-syntastic/syntastic' " Syntax Highlight
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'

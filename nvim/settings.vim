@@ -75,7 +75,7 @@ set smartindent
 
 " Display invisible characters
 set list
-set listchars=tab:→\ ,eol:¬,trail:⋅,nbsp:·,space:·,extends:❯,precedes:❮
+set listchars=tab:»·,eol:¬,trail:·,nbsp:·,space:·,extends:❯,precedes:❮
 set showbreak=↪
 
 " highlight conflicts
@@ -92,6 +92,22 @@ set softtabstop=4           " edit as if the tabs are 4 characters wide
 set shiftwidth=4            " number of spaces to use for indent and unindent
 set shiftround              " round indent to a multiple of 'shiftwidth'
 set completeopt+=longest
+
+" Python TAB
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+" Full Stack Development
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
 
 " code folding settings
 set foldmethod=syntax       " fold based on indent
