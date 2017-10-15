@@ -96,7 +96,7 @@ set completeopt+=longest
 " Python TAB
 au BufNewFile,BufRead *.py
     \ set tabstop=4
-    \ set softtabstop=4
+    " \ set softtabstop=4
     \ set shiftwidth=4
     \ set textwidth=79
     \ set expandtab
@@ -105,7 +105,7 @@ au BufNewFile,BufRead *.py
 " Full Stack Development
 au BufNewFile,BufRead *.js, *.html, *.css
     \ set tabstop=2
-    \ set softtabstop=2
+    " \ set softtabstop=2
     \ set shiftwidth=2
 
 " code folding settings
