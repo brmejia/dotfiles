@@ -24,6 +24,7 @@ source $RC_ROOT/rcplugs/airline.vim
 source $RC_ROOT/rcplugs/plugs.vim
 source $RC_ROOT/rcplugs/nerdtree.vim
 source $RC_ROOT/rcplugs/ansible-vim.vim
+source $RC_ROOT/rcplugs/ycm.vim
 call plug#end()
 
 call s:SourceConfigFilesIn('rcfiles')
@@ -32,3 +33,4 @@ call s:SourceConfigFilesIn('rcfiles')
 source $RC_ROOT/functions.vim
 source $RC_ROOT/mappings.vim
 source $RC_ROOT/settings.vim
+
