@@ -100,7 +100,6 @@ au BufNewFile,BufRead *.py
     \ set shiftwidth=4
     \ set textwidth=79
     \ set expandtab
-    \ set autoindent
     \ set fileformat=unix
 
 " Full Stack Development
