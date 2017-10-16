@@ -27,6 +27,8 @@ source $RC_ROOT/rcplugs/ansible-vim.vim
 source $RC_ROOT/rcplugs/ycm.vim
 source $RC_ROOT/rcplugs/fzf.vim
 source $RC_ROOT/rcplugs/braceless.vim
+source $RC_ROOT/rcplugs/tagbar.vim
+source $RC_ROOT/rcplugs/python-mode.vim
 call plug#end()
 
 call s:SourceConfigFilesIn('rcfiles')

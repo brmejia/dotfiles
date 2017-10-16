@@ -18,20 +18,16 @@ endif
 " Configuración de plugins de utilidades
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim' "FZF Vim Integration
-Plug 'vim-syntastic/syntastic' " Syntax Highlight
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'Raimondi/delimitMate'
-Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
-Plug 'christoomey/vim-system-copy'
 Plug 'christoomey/vim-tmux-navigator'
 " Plug 'sickill/vim-pasta'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'vim-scripts/argtextobj.vim'
-Plug 'Valloric/YouCompleteMe'
 Plug 'tpope/vim-fugitive'
 " Plug 'severin-lemaignan/vim-minimap'
 Plug 'airblade/vim-gitgutter'
@@ -40,8 +36,27 @@ Plug 'yuttie/comfortable-motion.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'Yggdroot/indentLine'
 Plug 'tweekmonster/braceless.vim'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'majutsushi/tagbar'
+
+"
 " Copy Paste Support
-" Tabs Movement
+"
+Plug 'christoomey/vim-system-copy'
+Plug 'terryma/vim-multiple-cursors'
+
+"
+" Syntax - Language Plugins
+"
+Plug 'vim-syntastic/syntastic' " Syntax Highlight
 Plug 'pearofducks/ansible-vim'
-" On-demand loading
+Plug 'python-mode/python-mode'
+
+"
+" Text Completion - Snippets
+"
+Plug 'Valloric/YouCompleteMe'
+Plug 'jiangmiao/auto-pairs'
+" Snippets engine
+Plug 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'

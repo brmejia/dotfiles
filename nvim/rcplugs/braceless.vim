@@ -1,3 +1,3 @@
 " Configuración de Braceless - Indentación de código sin delimitadores
 
-autocmd FileType python BracelessEnable +indent +fold +highlight-cc
+autocmd FileType * BracelessEnable +indent +fold +highlight-cc

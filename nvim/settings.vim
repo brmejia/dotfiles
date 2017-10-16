@@ -1,10 +1,3 @@
-" Softtabs, 2 spaces
-set tabstop=2
-set shiftwidth=2
-set shiftround
-set expandtab
-
-
 " Use one space, not two, after punctuation.
 set nojoinspaces
 
@@ -70,8 +63,8 @@ set wrapmargin=8            " wrap lines when coming within n characters from si
 set linebreak               " set soft wrapping
 set showbreak=…             " show ellipsis at breaking
 
-set autoindent              " automatically set indent of new line
-set smartindent
+" set autoindent              " automatically set indent of new line
+" set smartindent
 
 " Display invisible characters
 set list
@@ -93,20 +86,20 @@ set shiftwidth=4            " number of spaces to use for indent and unindent
 set shiftround              " round indent to a multiple of 'shiftwidth'
 set completeopt+=longest
 
-" Python TAB
-au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    " \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set fileformat=unix
+" " Python TAB
+" au BufNewFile,BufRead *.py
+"     \ set tabstop=4
+"     " \ set softtabstop=4
+"     \ set shiftwidth=4
+"     \ set textwidth=79
+"     \ set expandtab
+"     \ set fileformat=unix
 
-" Full Stack Development
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    " \ set softtabstop=2
-    \ set shiftwidth=2
+" " Full Stack Development
+" au BufNewFile,BufRead *.js, *.html, *.css
+"     \ set tabstop=2
+"     " \ set softtabstop=2
+"     \ set shiftwidth=2
 
 " code folding settings
 set foldmethod=syntax       " fold based on indent
