@@ -26,6 +26,7 @@ source $RC_ROOT/rcplugs/nerdtree.vim
 source $RC_ROOT/rcplugs/ansible-vim.vim
 source $RC_ROOT/rcplugs/ycm.vim
 source $RC_ROOT/rcplugs/fzf.vim
+source $RC_ROOT/rcplugs/braceless.vim
 call plug#end()
 
 call s:SourceConfigFilesIn('rcfiles')
