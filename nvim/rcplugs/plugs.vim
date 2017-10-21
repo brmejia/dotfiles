@@ -49,7 +49,7 @@ Plug 'terryma/vim-multiple-cursors'
 "
 Plug 'vim-syntastic/syntastic' " Syntax Highlight
 Plug 'pearofducks/ansible-vim'
-Plug 'python-mode/python-mode'
+Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 
 "
 " Text Completion - Snippets
