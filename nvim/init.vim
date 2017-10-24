@@ -29,6 +29,8 @@ source $RC_ROOT/rcplugs/fzf.vim
 source $RC_ROOT/rcplugs/braceless.vim
 source $RC_ROOT/rcplugs/tagbar.vim
 source $RC_ROOT/rcplugs/python-mode.vim
+source $RC_ROOT/rcplugs/supertab.vim
+source $RC_ROOT/rcplugs/jedi-vim.vim
 call plug#end()
 
 call s:SourceConfigFilesIn('rcfiles')

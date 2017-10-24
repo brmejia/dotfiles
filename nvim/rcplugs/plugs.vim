@@ -49,13 +49,16 @@ Plug 'terryma/vim-multiple-cursors'
 "
 Plug 'vim-syntastic/syntastic' " Syntax Highlight
 Plug 'pearofducks/ansible-vim'
-Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
+" Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
+Plug 'davidhalter/jedi-vim'
 
 "
 " Text Completion - Snippets
 "
+Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe'
 Plug 'jiangmiao/auto-pairs'
+Plug 'itchyny/vim-cursorword'
 " Snippets engine
 Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:

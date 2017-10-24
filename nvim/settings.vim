@@ -40,9 +40,9 @@ endif
 syntax on
 " set t_Co=256                " Explicitly tell vim that the terminal supports 256 colors"
 " colorscheme dracula         " Set the colorscheme
-colorscheme tender         " Set the colorscheme
+" colorscheme tender         " Set the colorscheme
 " colorscheme molokai         " Set the colorscheme
-" colorscheme onedark         " Set the colorscheme
+colorscheme onedark         " Set the colorscheme
 
 " make the highlighting of tabs and other non-text less annoying
 highlight SpecialKey ctermbg=none ctermfg=darkgray
