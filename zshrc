@@ -368,5 +368,8 @@ stty -ixon
 # tmuxp completion
 autoload bashcompinit
 bashcompinit
-eval "$(_TMUXP_COMPLETE=. tmuxp)"
+eval "$(_TMUXP_COMPLETE=source tmuxp)"
 export DISABLE_AUTO_TITLE='true'
+
+# DRUKER settings
+PATH=$PATH:/home/andres/www/rcn/drucker/

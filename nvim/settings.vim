@@ -49,7 +49,7 @@ highlight SpecialKey ctermbg=none ctermfg=darkgray
 highlight NonText ctermbg=none ctermfg=darkgray
 
 set updatetime=250
-" Files
+" supertab.vimFiles
 set nobackup
 set nowritebackup
 set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
@@ -86,20 +86,21 @@ set shiftwidth=4            " number of spaces to use for indent and unindent
 set shiftround              " round indent to a multiple of 'shiftwidth'
 set completeopt+=longest
 
-" " Python TAB
-" au BufNewFile,BufRead *.py
-"     \ set tabstop=4
-"     " \ set softtabstop=4
-"     \ set shiftwidth=4
-"     \ set textwidth=79
-"     \ set expandtab
-"     \ set fileformat=unix
+" Python TAB
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set fileformat=unix
 
-" " Full Stack Development
-" au BufNewFile,BufRead *.js, *.html, *.css
-"     \ set tabstop=2
-"     " \ set softtabstop=2
-"     \ set shiftwidth=2
+"To make a fully educated decision as to how to set things up, you'll need to read Vim docs on tabstop, shiftwidth, softtabstop and expandtab. The most interesting bit is found under expandtab (:help 'expandtab): Full Stack Development
+au BufNewFile,BufRead *.js, *.html, *.css, *.less
+" autocmd Filetype css, js, html, css, less
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
 
 " code folding settings
 set foldmethod=syntax       " fold based on indent

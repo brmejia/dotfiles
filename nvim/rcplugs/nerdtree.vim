@@ -6,3 +6,4 @@ map <F10> :NERDTreeToggle<CR>
 " Current file in nerdtree
 map <F9> :NERDTreeFind<CR>
 
+let NERDTreeIgnore = ['\.pyc$']
