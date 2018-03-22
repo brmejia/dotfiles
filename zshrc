@@ -365,6 +365,9 @@ fi
 #so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
 stty -ixon
 
+# FZF Configuration
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # tmuxp completion
 autoload bashcompinit
 bashcompinit
