@@ -1,0 +1,16 @@
+session_name: jupyter
+global_options:
+  automatic-rename: 'off'
+windows:
+- window_name: Jupyter Console
+  layout: main-horizontal
+  focus: 'true'
+  options:
+      main-pane-height: 35
+  shell_command_before:
+    - workon jupyter
+  panes:
+  - shell_command:
+    - jupyter notebook
+    focus: 'true'
+  -
