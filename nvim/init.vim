@@ -30,6 +30,7 @@ source $RC_ROOT/rcplugs/braceless.vim
 source $RC_ROOT/rcplugs/tagbar.vim
 source $RC_ROOT/rcplugs/python-mode.vim
 source $RC_ROOT/rcplugs/supertab.vim
+source $RC_ROOT/rcplugs/syntastic.vim
 source $RC_ROOT/rcplugs/jedi-vim.vim
 call plug#end()
 

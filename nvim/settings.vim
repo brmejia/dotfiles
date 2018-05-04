@@ -88,11 +88,11 @@ set completeopt+=longest
 
 " Python TAB
 au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
+    \ set tabstop=4  |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
     \ set fileformat=unix
 
 "To make a fully educated decision as to how to set things up, you'll need to read Vim docs on tabstop, shiftwidth, softtabstop and expandtab. The most interesting bit is found under expandtab (:help 'expandtab): Full Stack Development
