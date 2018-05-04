@@ -9,6 +9,8 @@ endfunction
 
 au BufWritePre ** call TrimSpaces()
 
+au BufWritePre *.py :PymodeLintAuto
+
 augroup vimrcEx
   autocmd!
 

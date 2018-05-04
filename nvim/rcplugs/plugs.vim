@@ -47,9 +47,9 @@ Plug 'terryma/vim-multiple-cursors'
 "
 " Syntax - Language Plugins
 "
-Plug 'vim-syntastic/syntastic' " Syntax Highlight
+"Plug 'vim-syntastic/syntastic' " Syntax Highlight
 Plug 'pearofducks/ansible-vim'
-" Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
+Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 Plug 'davidhalter/jedi-vim'
 
 "
