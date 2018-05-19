@@ -107,6 +107,18 @@ alias vagrant-reload='vagrant reload && vagrant ssh'
 #MATLAB
 alias matlab='LD_PRELOAD="/usr/lib64/libstdc++.so.6" ~/Matlab/bin/matlab'
 
+# Drupal8 - Docker commands
+alias d8-docker-populate='docker run --rm drupal tar -cC /var/www/html/sites . | tar -xC ~/www/d8_docker/sites'
+alias d8-docker-create='docker run --name drupal8 --link pgDB:postgres -d \
+    -v ~/www/d8_docker/modules:/var/www/html/modules \
+    -v ~/www/d8_docker/profiles:/var/www/html/profiles \
+    -v ~/www/d8_docker/sites:/var/www/html/sites \
+    -v ~/www/d8_docker/themes:/var/www/html/themes \
+    -p 8080:80 \
+    drupal'
+alias pgadmin4-create='docker run --name pgadmin4 --link pgDB:postgres -p 5050:5050 --env DEFAULT_USER=admin -d fenglc/pgadmin4'
+alias postgres-create='docker run --name pgDB -v ~/Devel/DB/docker/postgres:/var/lib/postgresql/data -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres'
+alias docker-create-pg-pgadmin-d8='postgres-create && pgadmin4-create && d8-docker-create'
 
 #PYTHON
 #alias python='/usr/bin/python3'
@@ -376,3 +388,7 @@ export DISABLE_AUTO_TITLE='true'
 
 # DRUKER settings
 PATH=$PATH:/home/andres/www/rcn/drucker/
+
+# Pipenv Settings
+eval "$(pipenv --completion)"
+export PIPENV_DEFAULT_PYTHON_VERSION=3
