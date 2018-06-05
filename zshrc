@@ -4,7 +4,7 @@ export ZSH_CUSTOM="$HOME/.dotfiles/oh-my-zsh/custom";
 
 # VirtualenvWrapper Settings
 export WORKON_HOME="~/.virtualenvs" # Work directory
-source /usr/bin/virtualenvwrapper.sh # Source of wrapper commands
+# source /usr/bin/virtualenvwrapper.sh # Source of wrapper commands
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -56,9 +56,19 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh_reload git dnf docker python pipenv django sublime tmux virtualenv virtualenvwrapper)
-# plugins=(src)
-
+plugins=(
+  zsh_reload
+  git
+  dnf
+  docker
+  python
+  pipenv
+  django
+  sublime
+  tmux
+  virtualenv
+  virtualenvwrapper
+)
 
 
 # ******************************************************************************
@@ -179,9 +189,3 @@ autoload bashcompinit
 bashcompinit
 eval "$(_TMUXP_COMPLETE=source tmuxp)"
 
-# DRUKER settings
-PATH=$PATH:/home/andres/www/rcn/drucker/
-
-# Pipenv Settings
-eval "$(pipenv --completion)"
-export PIPENV_DEFAULT_PYTHON_VERSION=3
