@@ -1,13 +1,10 @@
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.dotfiles/oh-my-zsh";
+export ZSH="$HOME/.oh-my-zsh";
+export ZSH_CUSTOM="$HOME/.dotfiles/oh-my-zsh/custom";
 
-
-# Font Config
-# source /home/andres/.fonts/fontawesome-regular.sh
-# source /home/andres/.fonts/devicons-regular.sh
-# source /home/andres/.fonts/octicons-regular.sh
-# source /home/andres/.fonts/pomicons-regular.sh
-
+# VirtualenvWrapper Settings
+export WORKON_HOME="~/.virtualenvs" # Work directory
+source /usr/bin/virtualenvwrapper.sh # Source of wrapper commands
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -16,7 +13,6 @@ export ZSH="$HOME/.dotfiles/oh-my-zsh";
 # ZSH_THEME="robbyrussell"
 # ZSH_THEME="agnoster"
 ZSH_THEME="spaceship"
-# ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -68,7 +64,7 @@ plugins=(zsh_reload git dnf docker python pipenv django sublime tmux virtualenv 
 # ******************************************************************************
 # SPACESHIP THEME
 # ******************************************************************************
-
+SPACESHIP_ROOT="$ZSH_CUSTOM/themes/spaceship-prompt"
 # USER
 # SPACESHIP_USER_PREFIX="" # remove `with` before username
 # SPACESHIP_USER_SUFFIX="" # remove space before host
@@ -80,7 +76,7 @@ SPACESHIP_HOST_PREFIX="@:("
 SPACESHIP_HOST_SUFFIX=") "
 
 # DIR
-SPACESHIP_DIR_PREFIX='' # disable directory prefix, cause it's not the first section
+SPACESHIP_DIR_PREFIX='' # disable directory prefix, cause its not the first section
 SPACESHIP_DIR_TRUNC=4 # show only last directory
 
 # GIT
