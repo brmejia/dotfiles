@@ -189,3 +189,5 @@ autoload bashcompinit
 bashcompinit
 eval "$(_TMUXP_COMPLETE=source tmuxp)"
 
+# DRUKER settings
+PATH=$PATH:/home/andres/www/rcn/drucker/
