@@ -173,8 +173,17 @@ alias d8-docker-create='docker run --name drupal8 --link pgDB:postgres -d \
     -p 8080:80 \
     drupal'
 alias pgadmin4-create='docker run --name pgadmin4 --link pgDB:postgres -p 5050:5050 --env DEFAULT_USER=admin -d fenglc/pgadmin4'
-alias postgres-create='docker run --name pgDB -v ~/Devel/DB/docker/postgresql/data:/var/lib/postgresql/data -p 5432:5432 -e POSTGRES_PASSWORD=postgres -d postgres'
-alias docker-create-pg-pgadmin-d8='postgres-create && pgadmin4-create && d8-docker-create'
+alias docker-run-postgres='docker run --name pgDB \
+    -v ~/Devel/DB/docker/postgresql/data:/var/lib/postgresql/data \
+    -p 5432:5432 \
+    -e POSTGRES_PASSWORD=postgres \
+    -d postgres'
+alias docker-create-pg-pgadmin-d8='docker-run-postgres && pgadmin4-create && d8-docker-create'
+alias docker-run-mosquitto='docker run -ti -p 1883:1883 -p 9001:9001 \
+    -v ~/Devel/DB/docker/mosquitto/config:/mqtt/config:ro \
+    -v ~/Devel/DB/docker/mosquitto/log:/mqtt/log \
+    -v ~/Devel/DB/docker/mosquitto/data/:/mqtt/data/ \
+    --name mqtt toke/mosquitto'
 
 #PYTHON
 #alias python='/usr/bin/python3'
