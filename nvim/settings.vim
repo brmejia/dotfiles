@@ -42,7 +42,7 @@ syntax on
 " colorscheme dracula         " Set the colorscheme
 " colorscheme tender         " Set the colorscheme
 " colorscheme molokai         " Set the colorscheme
-silent! colorscheme onedark         " Set the colorscheme
+colorscheme onedark         " Set the colorscheme
 
 " make the highlighting of tabs and other non-text less annoying
 highlight SpecialKey ctermbg=none ctermfg=darkgray
