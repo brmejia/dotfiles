@@ -63,6 +63,7 @@ nmap { {zz
 " " Tab completion
 " for insert mode
 inoremap <S-Tab> <C-D>
+imap <A-BS> <C-W>
 
 " Commenting Remaps
 nmap cm gc
