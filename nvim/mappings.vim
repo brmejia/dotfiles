@@ -67,3 +67,7 @@ imap <A-BS> <C-W>
 
 " Commenting Remaps
 nmap cm gc
+
+" ACK.vim Mappings
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>

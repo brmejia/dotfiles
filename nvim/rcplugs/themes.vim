@@ -1,11 +1,7 @@
 " Configuración de Colorschemes
 
-Plug 'joshdick/onedark.vim'
-Plug 'dracula/vim'
-Plug 'tomasr/molokai'
-Plug 'jacoborus/tender'
-Plug 'w0ng/vim-hybrid'
-Plug 'tomasiser/vim-code-dark'
+Plug 'chriskempson/base16-vim'
+Plug 'rakr/vim-one'
 
 " Molokai Colorscheme
 let g:molokai_original = 1

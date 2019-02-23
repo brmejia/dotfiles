@@ -22,16 +22,17 @@ call plug#begin($RC_ROOT.'/plugs')
 source $RC_ROOT/rcplugs/themes.vim
 source $RC_ROOT/rcplugs/airline.vim
 source $RC_ROOT/rcplugs/plugs.vim
-source $RC_ROOT/rcplugs/nerdtree.vim
-source $RC_ROOT/rcplugs/ansible-vim.vim
 source $RC_ROOT/rcplugs/ycm.vim
 source $RC_ROOT/rcplugs/fzf.vim
-source $RC_ROOT/rcplugs/braceless.vim
-source $RC_ROOT/rcplugs/tagbar.vim
-source $RC_ROOT/rcplugs/python-mode.vim
-source $RC_ROOT/rcplugs/supertab.vim
-" source $RC_ROOT/rcplugs/syntastic.vim
 source $RC_ROOT/rcplugs/jedi-vim.vim
+source $RC_ROOT/rcplugs/nerdcommenter.vim
+source $RC_ROOT/rcplugs/braceless.vim
+source $RC_ROOT/rcplugs/nerdtree.vim
+source $RC_ROOT/rcplugs/ansible-vim.vim
+source $RC_ROOT/rcplugs/tagbar.vim
+" source $RC_ROOT/rcplugs/python-mode.vim
+" source $RC_ROOT/rcplugs/supertab.vim
+" source $RC_ROOT/rcplugs/syntastic.vim
 call plug#end()
 
 call s:SourceConfigFilesIn('rcfiles')
