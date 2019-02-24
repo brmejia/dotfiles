@@ -192,8 +192,10 @@ alias docker-run-mosquitto='docker run -ti -p 1883:1883 -p 9001:9001 \
 #PYTHON
 #alias python='/usr/bin/python3'
 
+# NEOVIM
+alias vim='nvim'
 # ******************************************************************************
-# Other settings
+# Other settingzs
 # ******************************************************************************
 
 # CONTEXT

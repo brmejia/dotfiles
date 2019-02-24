@@ -7,7 +7,7 @@ set colorcolumn=+1
 
 " Numbers
 set number                  " show line numbers
-set numberwidth=6
+set numberwidth=5
 set relativenumber          " show relative line numbers
 
 
@@ -59,7 +59,7 @@ syntax on
 let g:one_allow_italics = 1 " I love italic for comments
 colorscheme one         " Set the colorscheme
 set background=dark " for the dark version
-let g:airline_theme='one'
+" let g:airline_theme='one'
 
 " make the highlighting of tabs and other non-text less annoying
 highlight SpecialKey ctermbg=none ctermfg=darkgray
@@ -82,6 +82,7 @@ set showbreak=…             " show ellipsis at breaking
 
 " set autoindent              " automatically set indent of new line
 " set smartindent
+
 
 " Display invisible characters
 set list

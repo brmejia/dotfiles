@@ -39,14 +39,14 @@ vno <right> <Nop>
 vno <up> <Nop>
 
 " Tabs mapping
-nmap <C-Tab> :tabnext<CR>
-nmap <C-S-Tab> :tabprevious<CR>
-map <C-S-Tab> :tabprevious<CR>
-map <C-Tab> :tabnext<CR>
-imap <C-S-Tab> <ESC>:tabprevious<CR>
-imap <C-Tab> <ESC>:tabnext<CR>
-noremap <F7> :set expandtab!<CR>
-nmap <Leader>h :tabnew %:h<CR>
+" nmap <C-Tab> :tabnext<CR>
+" nmap <C-S-Tab> :tabprevious<CR>
+" map <C-S-Tab> :tabprevious<CR>
+" map <C-Tab> :tabnext<CR>
+" imap <C-S-Tab> <ESC>:tabprevious<CR>
+" imap <C-Tab> <ESC>:tabnext<CR>
+" noremap <F7> :set expandtab!<CR>
+" nmap <Leader>h :tabnew %:h<CR>
 
 " gO to create a new line below cursor in normal mode
 nmap g<C-O> o<ESC>k
@@ -60,14 +60,15 @@ nmap N Nzz
 nmap } }zz
 nmap { {zz
 
-" " Tab completion
-" for insert mode
+" " Tab completion for insert mode
 inoremap <S-Tab> <C-D>
+"Allows to delete words backwards with Alt+Backspace
 imap <A-BS> <C-W>
-
-" Commenting Remaps
-nmap cm gc
 
 " ACK.vim Mappings
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
+
+" Buffers
+nmap <C-PageDown> :bn<CR>
+nmap <C-PageUp> :bp<CR>

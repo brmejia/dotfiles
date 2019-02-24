@@ -30,9 +30,11 @@ source $RC_ROOT/rcplugs/braceless.vim
 source $RC_ROOT/rcplugs/nerdtree.vim
 source $RC_ROOT/rcplugs/ansible-vim.vim
 source $RC_ROOT/rcplugs/tagbar.vim
-" source $RC_ROOT/rcplugs/python-mode.vim
+source $RC_ROOT/rcplugs/python-mode.vim
+source $RC_ROOT/rcplugs/black.vim
 " source $RC_ROOT/rcplugs/supertab.vim
-" source $RC_ROOT/rcplugs/syntastic.vim
+source $RC_ROOT/rcplugs/syntastic.vim
+source $RC_ROOT/rcplugs/gitgutter.vim
 call plug#end()
 
 call s:SourceConfigFilesIn('rcfiles')

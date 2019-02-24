@@ -52,18 +52,19 @@ Plug 'terryma/vim-multiple-cursors'
 "
 " Syntax - Language Plugins
 "
-" Plug 'vim-syntastic/syntastic' " Syntax Highlight
+Plug 'vim-syntastic/syntastic' " Syntax Highlight
 Plug 'pearofducks/ansible-vim'
 Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
-" Plug 'ambv/black'
-" Plug 'zchee/deoplete-jedi' " asynchronous completion framework for neovim
+Plug 'ambv/black'
+Plug 'zchee/deoplete-jedi' " asynchronous completion framework for neovim
 
 "
 " Text Completion - Snippets
 "
+
 Plug 'Valloric/YouCompleteMe'
 Plug 'davidhalter/jedi-vim' " Completion for Python using jedi
-" Plug 'ervandew/supertab'
+Plug 'ervandew/supertab'
 Plug 'Raimondi/delimitMate' " provides insert mode auto-completion for quotes, parens, brackets, etc
 Plug 'jiangmiao/auto-pairs' " insert or delete brackets, parens, quotes in pair
 
