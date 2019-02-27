@@ -1,3 +1,5 @@
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Toggle nerdtree with F10
 map <F10> :NERDTreeToggle<CR>

@@ -21,25 +21,29 @@ endfunction
 call plug#begin($RC_ROOT.'/plugs')
 source $RC_ROOT/rcplugs/themes.vim
 source $RC_ROOT/rcplugs/airline.vim
-source $RC_ROOT/rcplugs/plugs.vim
-source $RC_ROOT/rcplugs/ycm.vim
 source $RC_ROOT/rcplugs/fzf.vim
-source $RC_ROOT/rcplugs/jedi-vim.vim
+source $RC_ROOT/rcplugs/ycm.vim " Use YCM or Deoplete
+" source $RC_ROOT/rcplugs/deoplete.vim
 source $RC_ROOT/rcplugs/nerdcommenter.vim
 source $RC_ROOT/rcplugs/braceless.vim
 source $RC_ROOT/rcplugs/nerdtree.vim
-source $RC_ROOT/rcplugs/ansible-vim.vim
-source $RC_ROOT/rcplugs/tagbar.vim
-source $RC_ROOT/rcplugs/python-mode.vim
-source $RC_ROOT/rcplugs/black.vim
-" source $RC_ROOT/rcplugs/supertab.vim
+" source $RC_ROOT/rcplugs/ansible-vim.vim
+" source $RC_ROOT/rcplugs/tagbar.vim
+" source $RC_ROOT/rcplugs/black.vim
+" source $RC_ROOT/rcplugs/python-mode.vim
+" source $RC_ROOT/rcplugs/jedi-vim.vim
+source $RC_ROOT/rcplugs/supertab.vim
 source $RC_ROOT/rcplugs/syntastic.vim
 source $RC_ROOT/rcplugs/gitgutter.vim
+source $RC_ROOT/rcplugs/vim-test.vim
+
+" Other Plugins
+source $RC_ROOT/rcplugs/plugs.vim
 call plug#end()
-
+"
 call s:SourceConfigFilesIn('rcfiles')
-
-" Include mappings file
+"
+" " Include mappings file
 source $RC_ROOT/functions.vim
 source $RC_ROOT/mappings.vim
 source $RC_ROOT/settings.vim

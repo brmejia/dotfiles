@@ -1,3 +1,4 @@
+Plug 'vim-syntastic/syntastic' " Syntax Highlight
 
 " Syntastic Settings
 set statusline+=%#warningmsg#

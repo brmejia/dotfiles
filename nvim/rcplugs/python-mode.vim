@@ -1,3 +1,4 @@
+Plug 'python-mode/python-mode', { 'branch': 'develop', 'for': 'python' }
 
 let g:pymode_python = 'python3'
 " Breakpoints

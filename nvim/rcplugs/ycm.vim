@@ -1,3 +1,4 @@
+Plug 'Valloric/YouCompleteMe'
 "
 " YouCompleteMe Settings
 "

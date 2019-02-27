@@ -25,8 +25,8 @@ nnoremap <leader><leader> <c-^>
 " Disable Ex Mode
 no Q <Nop>
 " Arrows movements
-no <Up> ddkP
-no <Down> ddp
+no <Up> <Nop>
+no <Down> <Nop>
 no <Left> :echoe "No! No! No! Utiliza h"<CR>
 no <Right> :echoe "No! No! No! Utiliza l"<CR>
 ino <down> <Nop>
@@ -37,6 +37,13 @@ vno <down> <Nop>
 vno <left> <Nop>
 vno <right> <Nop>
 vno <up> <Nop>
+" Mappings to move lines
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " Tabs mapping
 " nmap <C-Tab> :tabnext<CR>

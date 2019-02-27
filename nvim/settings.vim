@@ -7,9 +7,14 @@ set colorcolumn=+1
 
 " Numbers
 set number                  " show line numbers
-set numberwidth=5
 set relativenumber          " show relative line numbers
 
+" Set this to change between relative or absolute numbers on focus
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -19,69 +24,37 @@ set splitbelow
 set splitright
 
 " Always use vertical diffs
-
 set diffopt+=vertical
 
 " Section User Interface {{{
-
-" switch cursor to line when in insert mode, and block when not
-"Credit joshdick
-"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-if (empty($TMUX))
-    if (has("nvim"))
-        "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-        let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-        let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-    endif
-    "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-    "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-    " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-    if (has("termguicolors"))
-        set termguicolors
-    endif
-endif
-
-if &term =~ '256color'
-    " disable background color erase
-    set t_ut=
-endif
-
-" enable 24 bit color support if supported
-if (has('mac') && empty($TMUX) && has("termguicolors"))
-    set termguicolors
-endif
+" To enable mode shapes, 'Cursor' highlight, and blinking: >
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+    \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+    \,sm:block-blinkwait175-blinkoff150-blinkon175
 
 syntax on
-" set t_Co=256                " Explicitly tell vim that the terminal supports 256 colors"
-" colorscheme base16-default-dark         " Set the colorscheme
 let g:one_allow_italics = 1 " I love italic for comments
-colorscheme one         " Set the colorscheme
 set background=dark " for the dark version
+colorscheme one         " Set the colorscheme
 " let g:airline_theme='one'
 
 " make the highlighting of tabs and other non-text less annoying
-highlight SpecialKey ctermbg=none ctermfg=darkgray
-highlight NonText ctermbg=none ctermfg=darkgray
+" highlight SpecialKey ctermbg=none ctermfg=darkgray
+" highlight NonText ctermbg=none ctermfg=darkgray
 
 set updatetime=200
 " supertab.vimFiles
-set nobackup
+set nobackup      " Make a backup before overwriting a file
 set nowritebackup
 set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
-set history=500
+set history=1000
 set ruler         " show the cursor position all the time
-set showcmd       " display incomplete commands
 set autowrite     " Automatically :write before running commands
 
 set wrap                    " turn on line wrapping
 set wrapmargin=8            " wrap lines when coming within n characters from side
 set linebreak               " set soft wrapping
 set showbreak=…             " show ellipsis at breaking
-
-" set autoindent              " automatically set indent of new line
-" set smartindent
 
 
 " Display invisible characters
@@ -103,6 +76,7 @@ set softtabstop=4           " edit as if the tabs are 4 characters wide
 set shiftwidth=4            " number of spaces to use for indent and unindent
 set shiftround              " round indent to a multiple of 'shiftwidth'
 set completeopt+=longest
+set fileformat=unix
 
 " Python TAB
 au BufNewFile,BufRead *.py
@@ -121,15 +95,13 @@ au BufNewFile,BufRead *.js, *.html, *.css, *.less
     \ set shiftwidth=2
 
 " code folding settings
-set foldmethod=syntax       " fold based on indent
+set foldmethod=indent       " fold based on indent
 set foldnestmax=10          " deepest fold is 10 levels
 set nofoldenable            " don't fold by default
 set foldlevel=1
 
 set clipboard=unnamed
 
-" set ttyfast                 " faster redrawing
-set diffopt+=vertical
 set laststatus=2            " show the satus line all the time
 set so=7                    " set 7 lines to the cursors - when moving vertical
 set wildmenu                " enhanced command line completion
@@ -160,10 +132,10 @@ set visualbell
 " set t_vb=
 " set tm=500
 
-" if has('mouse')
-"   set mouse=a
-"   " set ttymouse=xterm2
-" endif
+if has('mouse')
+  set mouse=a
+  " set ttymouse=xterm2
+endif
 
 " }}}
 

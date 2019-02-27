@@ -1,3 +1,4 @@
+Plug 'ervandew/supertab'
 "
 " Configuración del plugin Supertab
 " https://github.com/ervandew/supertab

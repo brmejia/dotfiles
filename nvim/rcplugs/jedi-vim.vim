@@ -1,8 +1,9 @@
+Plug 'davidhalter/jedi-vim' " Completion for Python using jedi
 "
 " Configuración del plugin jedi-vim
 "
 " Disable jedi completions in order to use deoplete-jedi
-let g:jedi#completions_enabled = 1
+let g:jedi#completions_enabled = 0
 
 
 let g:jedi#popup_select_first = 0

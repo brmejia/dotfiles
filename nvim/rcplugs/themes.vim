@@ -7,7 +7,6 @@ Plug 'rakr/vim-one'
 let g:molokai_original = 1
 let g:rehash256 = 1
 
-" Tender Colorscheme
 " If you have vim >=8.0 or Neovim >= 0.1.5
 if (has("termguicolors"))
  set termguicolors

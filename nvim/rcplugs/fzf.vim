@@ -1,3 +1,5 @@
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim' "FZF Vim Integration
 
 nmap <leader>b :Buffers<CR>
 nmap <leader>f :Files<CR>
