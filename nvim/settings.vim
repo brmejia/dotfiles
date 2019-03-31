@@ -29,7 +29,7 @@ set diffopt+=vertical
 " Section User Interface {{{
 " To enable mode shapes, 'Cursor' highlight, and blinking: >
 set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
-    \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+    \,a:blinkwait700-blinkoff200-blinkon250-Cursor/lCursor
     \,sm:block-blinkwait175-blinkoff150-blinkon175
 
 syntax on
@@ -37,6 +37,12 @@ let g:one_allow_italics = 1 " I love italic for comments
 set background=dark " for the dark version
 colorscheme one         " Set the colorscheme
 " let g:airline_theme='one'
+if &term =~ '256color'
+    " disable Background Color Erase (BCE) so that color schemes
+    " render properly when inside 256-color tmux and GNU screen.
+    " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+    set t_ut=
+endif
 
 " make the highlighting of tabs and other non-text less annoying
 " highlight SpecialKey ctermbg=none ctermfg=darkgray
@@ -124,7 +130,7 @@ set lazyredraw            " don't redraw while executing macros
 set magic                   " Set magic on, for regex
 
 set showmatch               " show matching braces
-set mat=2                   " how many tenths of a second to blink
+set mat=1                   " how many tenths of a second to blink
 
 " error bells
 " set noerrorbells

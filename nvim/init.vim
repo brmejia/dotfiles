@@ -28,12 +28,13 @@ source $RC_ROOT/rcplugs/nerdcommenter.vim
 source $RC_ROOT/rcplugs/braceless.vim
 source $RC_ROOT/rcplugs/nerdtree.vim
 " source $RC_ROOT/rcplugs/ansible-vim.vim
-" source $RC_ROOT/rcplugs/tagbar.vim
-" source $RC_ROOT/rcplugs/black.vim
-" source $RC_ROOT/rcplugs/python-mode.vim
-" source $RC_ROOT/rcplugs/jedi-vim.vim
+source $RC_ROOT/rcplugs/tagbar.vim
+source $RC_ROOT/rcplugs/black.vim
+source $RC_ROOT/rcplugs/python-mode.vim
+source $RC_ROOT/rcplugs/ale.vim
+source $RC_ROOT/rcplugs/jedi-vim.vim
 source $RC_ROOT/rcplugs/supertab.vim
-source $RC_ROOT/rcplugs/syntastic.vim
+" source $RC_ROOT/rcplugs/syntastic.vim  " Use Ale or syntastic
 source $RC_ROOT/rcplugs/gitgutter.vim
 source $RC_ROOT/rcplugs/vim-test.vim
 

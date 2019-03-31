@@ -21,7 +21,6 @@ Plug 'mileszs/ack.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-surround' " Defines surrounding objects and actions ysa csa{(
 Plug 'tpope/vim-repeat' "The . command will work with ds, cs, and yss
-Plug 'scrooloose/nerdcommenter'
 Plug 'Yggdroot/indentLine' " display the indention levels with thin vertical lines
 Plug 'machakann/vim-highlightedyank'
 Plug 'michaeljsmith/vim-indent-object'
@@ -31,10 +30,10 @@ Plug 'mhinz/vim-startify'
 Plug 'easymotion/vim-easymotion'
 Plug 'itchyny/vim-cursorword' " Underline word under cursor
 Plug 'tmhedberg/simpylfold'
-
+Plug 'tweekmonster/django-plus.vim'
 " Plug 'severin-lemaignan/vim-minimap'
 " Plug 'yuttie/comfortable-motion.vim' " Smooth scrolling
-
+Plug 'python-rope/ropevim'
 "
 " Copy Paste Support
 "
