@@ -204,10 +204,14 @@ DEFAULT_USER=$(whoami)
 # FZF Configuration
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# tmuxp completion
-autoload bashcompinit
-bashcompinit
-eval "$(_TMUXP_COMPLETE=source tmuxp)"
+# # tmuxp completion
+# autoload bashcompinit
+# bashcompinit
+# eval "$(_TMUXP_COMPLETE=source tmuxp)"
 
 # DRUKER settings
 PATH=$PATH:/home/andres/www/rcn/drucker/
+
+# Terminal colors
+export TERM=screen-256color
+
