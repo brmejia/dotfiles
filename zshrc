@@ -1,7 +1,3 @@
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh";
-export ZSH_CUSTOM="$HOME/.dotfiles/oh-my-zsh/custom";
-
 # VirtualenvWrapper Settings
 export WORKON_HOME="~/.virtualenvs" # Work directory
 # source /usr/bin/virtualenvwrapper.sh # Source of wrapper commands
@@ -51,6 +47,8 @@ DISABLE_AUTO_TITLE="true"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+export ZSH="$HOME/.oh-my-zsh";
+export ZSH_CUSTOM="$HOME/.dotfiles/oh-my-zsh/custom";
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -209,8 +207,8 @@ DEFAULT_USER=$(whoami)
 # bashcompinit
 # eval "$(_TMUXP_COMPLETE=source tmuxp)"
 
-# DRUKER settings
-PATH=$PATH:/home/andres/www/rcn/drucker/
+# Add user python packages directory to path
+PATH=$PATH:~/.local/bin
 
 # Terminal colors
 export TERM=screen-256color
