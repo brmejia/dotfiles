@@ -22,8 +22,8 @@ call plug#begin($RC_ROOT.'/plugs')
 source $RC_ROOT/rcplugs/themes.vim
 source $RC_ROOT/rcplugs/airline.vim
 source $RC_ROOT/rcplugs/fzf.vim
-source $RC_ROOT/rcplugs/ycm.vim " Use YCM or Deoplete
-" source $RC_ROOT/rcplugs/deoplete.vim
+" source $RC_ROOT/rcplugs/ycm.vim " Use YCM or Deoplete
+source $RC_ROOT/rcplugs/deoplete.vim
 source $RC_ROOT/rcplugs/nerdcommenter.vim
 source $RC_ROOT/rcplugs/braceless.vim
 source $RC_ROOT/rcplugs/nerdtree.vim

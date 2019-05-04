@@ -33,7 +33,6 @@ Plug 'tmhedberg/simpylfold'
 Plug 'tweekmonster/django-plus.vim'
 " Plug 'severin-lemaignan/vim-minimap'
 " Plug 'yuttie/comfortable-motion.vim' " Smooth scrolling
-Plug 'python-rope/ropevim'
 "
 " Copy Paste Support
 "

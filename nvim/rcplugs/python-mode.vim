@@ -23,6 +23,9 @@ let g:pymode_lint_pyflakes_symbol = 'FF'
 let g:pymode_virtualenv = 1
 
 " Autocomplete"
+let g:pymode_rope = 1
+" let g:pymode_rope_move_bind = '<C-c>rv'
+" let g:pymode_rope_autoimport = 1
 let g:pymode_rope_autoimport_modules = ['os', 'shutil', 'datetime', 'django']
 
 " au BufWritePre *.py :PymodeLintAuto " Autofix PEP8 errors
