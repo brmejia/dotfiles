@@ -86,12 +86,18 @@ set fileformat=unix
 
 " Python TAB
 au BufNewFile,BufRead *.py
-    \ set tabstop=4  |
+    \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
-    \ set textwidth=79 |
     \ set expandtab |
     \ set fileformat=unix
+
+" YAML TAB
+au BufNewFile,BufRead *.yaml
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set textwidth=80
 
 "To make a fully educated decision as to how to set things up, you'll need to read Vim docs on tabstop, shiftwidth, softtabstop and expandtab. The most interesting bit is found under expandtab (:help 'expandtab): Full Stack Development
 au BufNewFile,BufRead *.js, *.html, *.css, *.less
