@@ -6,6 +6,7 @@ SETUVAR __fish_init_3_x:\x1d
 SETUVAR __fish_initialized:3100
 SETUVAR _fish_abbr_current__branch:git\x20branch\x20\x2d\x2dshow\x2dcurrent
 SETUVAR _fish_abbr_dnfi:sudo\x20dnf\x20install
+SETUVAR _fish_abbr_dnfr:sudo\x20dnf\x20remove
 SETUVAR _fish_abbr_dnfs:dnf\x20search
 SETUVAR _fish_abbr_dnfu:sudo\x20dnf\x20update
 SETUVAR _fish_abbr_docker:podman
