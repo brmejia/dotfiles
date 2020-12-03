@@ -1,0 +1,13 @@
+
+[git_status]
+conflicted = "[🏳](bold orange)"
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
+untracked = "🤷‍"
+stashed = "📦"
+modified = "📝"
+staged = "[+${count}](bold green)"
+renamed = "👅"
+deleted = "[✘](bold red)"
+
