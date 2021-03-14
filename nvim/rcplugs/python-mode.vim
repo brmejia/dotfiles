@@ -6,7 +6,6 @@ let g:pymode_python = 'python3'
 let g:pymode_breakpoint = 0
 let g:pymode_breakpoint_bind = '<leader>br'
 " Code checking
-let g:pymode_options_max_line_length = 88
 let g:pymode_lint = 0
 let g:pymode_lint_unmodified = 0
 let g:pymode_lint_on_fly = 0

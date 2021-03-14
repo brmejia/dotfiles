@@ -11,7 +11,7 @@ endif
 let g:deoplete#enable_at_startup = 1
 
 " Deoplete-jedi Settings
-Plug 'zchee/deoplete-jedi' " asynchronous completion framework for neovim
+" Plug 'zchee/deoplete-jedi' " asynchronous completion framework for neovim
 
 " g:deoplete#sources#jedi#statement_length: Sets the maximum length of completion description text. If this is exceeded, a simple description is used instead. Default: 50
 

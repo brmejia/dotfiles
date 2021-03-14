@@ -4,22 +4,11 @@ map <Leader>q :qall<CR>
 map <Leader><Leader>r :source ~/.config/nvim/init.vim<CR>
 " Git mappings
 map <Leader>gs :Gstatus<CR>
-map <Leader>gc :Gcommit<CR>
+map <Leader>gc :Git<CR>
 map <Leader>gp :Gpush<CR>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
-
-" vim-test mappings
-"nnoremap <silent> <Leader>t :TestFile<CR>
-"nnoremap <silent> <Leader>s :TestNearest<CR>
-"nnoremap <silent> <Leader>l :TestLast<CR>
-"nnoremap <silent> <Leader>a :TestSuite<CR>
-"nnoremap <silent> <leader>gt :TestVisit<CR>
-
-" nnoremap <Leader>r :RunInInteractiveShell<space>
-" " Run commands that require an interactive shell
-" nnoremap <Leader>r :RunInInteractiveShell<space>
 
 "============== Custom Mappings ===============
 " Disable Ex Mode
@@ -71,10 +60,6 @@ nmap { {zz
 inoremap <S-Tab> <C-D>
 "Allows to delete words backwards with Alt+Backspace
 imap <A-BS> <C-W>
-
-" ACK.vim Mappings
-cnoreabbrev Ack Ack!
-nnoremap <Leader>a :Ack!<Space>
 
 " Buffers
 nmap <C-PageDown> :bn<CR>

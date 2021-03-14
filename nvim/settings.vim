@@ -48,6 +48,9 @@ endif
 " highlight SpecialKey ctermbg=none ctermfg=darkgray
 " highlight NonText ctermbg=none ctermfg=darkgray
 
+" By default timeoutlen is 1000 ms
+set timeoutlen=500
+
 set updatetime=200
 " supertab.vimFiles
 set nobackup      " Make a backup before overwriting a file
@@ -60,13 +63,12 @@ set autowrite     " Automatically :write before running commands
 set wrap                    " turn on line wrapping
 set wrapmargin=8            " wrap lines when coming within n characters from side
 set linebreak               " set soft wrapping
-set showbreak=…             " show ellipsis at breaking
+set showbreak=↪             " show ellipsis at breaking
 
 
 " Display invisible characters
 set list
-set listchars=tab:»·,eol:¬,trail:·,nbsp:·,space:·,extends:❯,precedes:❮
-set showbreak=↪
+set listchars=tab:»·,trail:·,nbsp:·,extends:❯,precedes:❮
 
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -86,25 +88,25 @@ set fileformat=unix
 
 " Python TAB
 au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set expandtab |
-    \ set fileformat=unix
+            \ set tabstop=4 |
+            \ set softtabstop=4 |
+            \ set shiftwidth=4 |
+            \ set expandtab |
+            \ set fileformat=unix
 
 " YAML TAB
 au BufNewFile,BufRead *.yaml
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
-    \ set textwidth=80
+            \ set tabstop=2 |
+            \ set softtabstop=2 |
+            \ set shiftwidth=2 |
+            \ set textwidth=80
 
 "To make a fully educated decision as to how to set things up, you'll need to read Vim docs on tabstop, shiftwidth, softtabstop and expandtab. The most interesting bit is found under expandtab (:help 'expandtab): Full Stack Development
 au BufNewFile,BufRead *.js, *.html, *.css, *.less
 " autocmd Filetype css, js, html, css, less
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
+            \ set tabstop=2
+            \ set softtabstop=2
+            \ set shiftwidth=2
 
 " code folding settings
 set foldmethod=indent       " fold based on indent
@@ -121,7 +123,7 @@ set hidden                  " current buffer can be put into background
 set showcmd                 " show incomplete commands
 " set noshowmode              " don't show which mode disabled for PowerLine
 set wildmode=list:longest   " complete files like a shell
-set scrolloff=3             " lines of text around cursor
+set scrolloff=8             " lines of text around cursor
 set shell=$SHELL
 set cmdheight=1             " command bar height
 set title                   " set terminal title
@@ -129,7 +131,7 @@ set title                   " set terminal title
 " Searching
 set ignorecase              " case insensitive searching
 set smartcase               " case-sensitive if expresson contains a capital letter
-set hlsearch                " highlight search results
+set nohlsearch                " highlight search results
 set incsearch               " set incremental search, like modern browsers
 set lazyredraw            " don't redraw while executing macros
 
@@ -142,12 +144,10 @@ set mat=1                   " how many tenths of a second to blink
 " set noerrorbells
 set visualbell
 " set t_vb=
-" set tm=500
 
 if has('mouse')
-  set mouse=a
-  " set ttymouse=xterm2
+    set mouse=a
+    " set ttymouse=xterm2
 endif
 
 " }}}
-

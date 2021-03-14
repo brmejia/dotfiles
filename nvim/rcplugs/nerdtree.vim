@@ -7,3 +7,4 @@ map <F10> :NERDTreeToggle<CR>
 map <F9> :NERDTreeFind<CR>
 
 let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeQuitOnOpen = 1

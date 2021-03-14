@@ -17,7 +17,6 @@ endif
 
 " Configuración de plugins de utilidades
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'mileszs/ack.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-surround' " Defines surrounding objects and actions ysa csa{(
 Plug 'tpope/vim-repeat' "The . command will work with ds, cs, and yss
@@ -28,6 +27,7 @@ Plug 'vim-scripts/argtextobj.vim' " Add argument object to nvim
 Plug 'tpope/vim-fugitive' " Git module
 Plug 'mhinz/vim-startify'
 Plug 'easymotion/vim-easymotion'
+Plug 'psliwka/vim-smoothie'
 Plug 'itchyny/vim-cursorword' " Underline word under cursor
 Plug 'tmhedberg/simpylfold'
 Plug 'tweekmonster/django-plus.vim'

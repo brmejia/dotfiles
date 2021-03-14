@@ -23,3 +23,10 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
+
+" Create default mappings
+let g:NERDCreateDefaultMappings = 1
+
+" <C-_> is equivalent to <C-/> for Neovim
+nmap <C-_>   <Plug>NERDCommenterToggle
+vmap <C-_>   <Plug>NERDCommenterToggle<CR>gv
