@@ -3,7 +3,7 @@ local options = {
 
     -- Make it obvious where 90 characters is
     textwidth = 90,
-    colorcolumn = "+1",
+    colorcolumn = "+8",
     list = true,
     listchars = {
         tab = "▸·",

@@ -22,35 +22,83 @@ end
 
 local function lsp_keymaps(client, bufnr)
     -- Funtion aliases
-    local buf_set_option = require('lib.utils').buf_set_option
+    -- local buf_set_option = require('lib.utils').buf_set_option
     local buf_set_keymap = require('lib.utils').buf_keymap
 
     -- ?????????? https://github.com/jessarcher/dotfiles/blob/master/nvim/lua/user/plugins/lspconfig.lua
     -- buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- Mappings.
-    buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-    buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
-    buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-    buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-    --buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-    buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-    buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev({border = "rounded"})<CR>')
-    buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
-    buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
-    buf_set_keymap(bufnr, 'n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
-    --buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
-    buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-    buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
-    --buf_set_keymap(bufnr, 'n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
-    --buf_set_keymap(bufnr, 'n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>')
-    --buf_set_keymap(bufnr, 'n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
+    --buf_set_keymap(bufnr, 'n', '<C-k>', ':lua vim.lsp.buf.signature_help()<CR>')
+    --buf_set_keymap(bufnr, 'n', '<leader>wl', ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
+
+
+    -- WhichKey Mappings
+    if require "lib.utils".has_module("which-key") then
+
+        local wk = require "which-key"
+        local mappings = {
+            l = {
+                name = "LSP",
+                i = { ":LspInfo<cr>", "Connected Language Servers" },
+                k = { ":lua vim.lsp.buf.signature_help()<cr>", "Signature Help" },
+                K = { ":lua vim.lsp.buf.hover()<cr>", "Hover Commands" },
+                --buf_set_keymap(bufnr, 'n', '<leader>wa', ':lua vim.lsp.buf.add_workspace_folder()<CR>')
+                w = { ':lua vim.lsp.buf.add_workspace_folder()<cr>', "Add Workspace Folder" },
+                --buf_set_keymap(bufnr, 'n', '<leader>wr', ':lua vim.lsp.buf.remove_workspace_folder()<CR>')
+                W = { ':lua vim.lsp.buf.remove_workspace_folder()<cr>', "Remove Workspace Folder" },
+                l = {
+                    ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>',
+                    "List Workspace Folders"
+                },
+                -- buf_set_keymap(bufnr, 'n', 'gi', ':lua vim.lsp.buf.implementation()<CR>')
+                --buf_set_keymap(bufnr, 'n', '<leader>q', ':lua vim.lsp.diagnostic.set_loclist()<CR>')
+                q = { ':Trouble loclist<cr>', "Loclist" },
+                f = { ':Trouble quickfix<cr>', "Quickfix" },
+                I = { ':FzfLua lsp_implementations<cr>', "Implementations" },
+
+                -- buf_set_keymap(bufnr, 'n', '<leader>D', ':lua vim.lsp.buf.type_definition()<CR>')
+                t = { ':FzfLua lsp_typedefs<cr>', "Type Definition" },
+                -- t = { ':Trouble lsp_type_definitions<cr>', "Type Definition" },
+
+                -- buf_set_keymap(bufnr, 'n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
+                d = { ':Trouble lsp_definitions<cr>', "Go To Definition" },
+                -- D = { ':lua vim.lsp.buf.declaration()<cr>', "Go To Declaration" },
+
+                r = {
+                    a = { ':FzfLua lsp_references<cr>', "References" },
+                    b = { ':Trouble lsp_references<cr>', "References" },
+                    c = { ':Lspsaga lsp_finder<cr>', "References" },
+                },
+                -- buf_set_keymap(bufnr, 'n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
+                R = { ':lua vim.lsp.buf.rename()<cr>', "Rename" },
+                -- buf_set_keymap(bufnr, 'n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
+                a = {
+                    a = { ':FzfLua code_action<cr>', "References" },
+                    c = { ':Lspsaga code_action<cr>', "References" },
+                },
+                -- a = { ':Lspsaga code_action<cr>', "Code Action" },
+                -- buf_set_keymap(bufnr, 'n', '<leader>e', ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
+                e = { ':Lspsaga show_line_diagnostics<cr>', "Show Line Diagnostics" },
+                x = { ':Trouble document_diagnostics<cr>', "Show Document Diagnostics" },
+                X = { ':Trouble workspace_diagnostics<cr>', "Show Workspace Diagnostics" },
+                -- buf_set_keymap(bufnr, 'n', ']d', ':lua vim.lsp.diagnostic.goto_next()<CR>')
+                n = { ':Lspsaga diagnostic_jump_next<cr>', "Go To Next Diagnostic" },
+                -- buf_set_keymap(bufnr, 'n', '[d', ':lua vim.lsp.diagnostic.goto_prev({border = "rounded"})<CR>')
+                N = { ':Lspsaga diagnostic_jump_prev<cr>', "Go To Previous Diagnostic" }
+            },
+        }
+
+        local opts = { prefix = '<leader>', buffer = bufnr }
+        wk.register(mappings, opts)
+
+    end
 
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
-        buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
+        buf_set_keymap(bufnr, "n", "<leader>f", ":lua vim.lsp.buf.formatting()<CR>")
     elseif client.resolved_capabilities.document_range_formatting then
-        buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>")
+        buf_set_keymap(bufnr, "n", "<leader>f", ":lua vim.lsp.buf.range_formatting()<CR>")
     end
 
 end

@@ -1,3 +1,7 @@
+if not require "lib.utils".has_module("cmp") then
+    return
+end
+
  -- Setup nvim-cmp.
 local cmp = require'cmp'
 
