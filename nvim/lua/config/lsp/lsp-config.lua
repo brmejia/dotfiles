@@ -68,18 +68,13 @@ local function lsp_keymaps(client, bufnr)
                 r = {
                     a = { ':FzfLua lsp_references<cr>', "References" },
                     b = { ':Trouble lsp_references<cr>', "References" },
-                    c = { ':Lspsaga lsp_finder<cr>', "References" },
                 },
                 -- buf_set_keymap(bufnr, 'n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
                 R = { ':lua vim.lsp.buf.rename()<cr>', "Rename" },
                 -- buf_set_keymap(bufnr, 'n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
-                a = {
-                    a = { ':FzfLua code_action<cr>', "References" },
-                    c = { ':Lspsaga code_action<cr>', "References" },
-                },
-                -- a = { ':Lspsaga code_action<cr>', "Code Action" },
+                a = { ':FzfLua lsp_code_actions<cr>', "Code actions" },
                 -- buf_set_keymap(bufnr, 'n', '<leader>e', ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
-                e = { ':Lspsaga show_line_diagnostics<cr>', "Show Line Diagnostics" },
+                e = { ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', "Show Line Diagnostics" },
                 x = { ':Trouble document_diagnostics<cr>', "Show Document Diagnostics" },
                 X = { ':Trouble workspace_diagnostics<cr>', "Show Workspace Diagnostics" },
                 -- buf_set_keymap(bufnr, 'n', ']d', ':lua vim.lsp.diagnostic.goto_next()<CR>')
