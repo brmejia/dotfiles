@@ -72,9 +72,16 @@ return require('packer').startup(function(use)
         -- optional for icon support
         requires = { 'kyazdani42/nvim-web-devicons' },
         config = require("config.fzf-lua"),
+    }
+    use {
+        'unblevable/quick-scope',
+        config = require("config.quick-scope")
+    }
+    use {
+        'phaazon/hop.nvim',
+        config = require("config.hop")
 
     }
-
     -- Syntax Highlight
     use {
         'nvim-treesitter/nvim-treesitter',
