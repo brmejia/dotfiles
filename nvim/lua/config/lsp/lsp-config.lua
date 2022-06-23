@@ -62,25 +62,30 @@ local function lsp_keymaps(client, bufnr)
                 -- t = { ':Trouble lsp_type_definitions<cr>', "Type Definition" },
 
                 -- buf_set_keymap(bufnr, 'n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
-                d = { ':Trouble lsp_definitions<cr>', "Go To Definition" },
+                -- d = { ':FzfLua lsp_definitions<cr>', "Go To Definition" },
+                d = { ':lua require("fzf-lua").lsp_definitions({ jump_to_single_result = true })<cr>', "Go To Definition" },
                 -- D = { ':lua vim.lsp.buf.declaration()<cr>', "Go To Declaration" },
 
-                r = {
-                    a = { ':FzfLua lsp_references<cr>', "References" },
-                    b = { ':Trouble lsp_references<cr>', "References" },
-                },
+                -- r = { ':lua require("fzf-lua").lsp_references({ jump_to_single_result = true })<cr>', "Go To Definition" },
+                r = { ':Trouble lsp_references<cr>', "References"},
                 -- buf_set_keymap(bufnr, 'n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
                 R = { ':lua vim.lsp.buf.rename()<cr>', "Rename" },
                 -- buf_set_keymap(bufnr, 'n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
                 a = { ':FzfLua lsp_code_actions<cr>', "Code actions" },
+
                 -- buf_set_keymap(bufnr, 'n', '<leader>e', ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
-                e = { ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', "Show Line Diagnostics" },
+                e = { ':lua vim.diagnostic.open_float()<CR>', "Show Line Diagnostics" },
+
                 x = { ':Trouble document_diagnostics<cr>', "Show Document Diagnostics" },
                 X = { ':Trouble workspace_diagnostics<cr>', "Show Workspace Diagnostics" },
+
                 -- buf_set_keymap(bufnr, 'n', ']d', ':lua vim.lsp.diagnostic.goto_next()<CR>')
-                n = { ':Lspsaga diagnostic_jump_next<cr>', "Go To Next Diagnostic" },
+                -- n = { ':Lspsaga diagnostic_jump_next<cr>', "Go To Next Diagnostic" },
+                n = { ':lua vim.diagnostic.goto_next()<CR>', "Go To Next Diagnostic" },
+
                 -- buf_set_keymap(bufnr, 'n', '[d', ':lua vim.lsp.diagnostic.goto_prev({border = "rounded"})<CR>')
-                N = { ':Lspsaga diagnostic_jump_prev<cr>', "Go To Previous Diagnostic" }
+                -- N = { ':Lspsaga diagnostic_jump_prev<cr>', "Go To Previous Diagnostic" }
+                N = { ':lua vim.diagnostic.goto_prev({border = "rounded"})<CR>', "Go To Previous Diagnostic" }
             },
         }
 
