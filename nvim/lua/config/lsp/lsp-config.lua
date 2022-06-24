@@ -97,6 +97,7 @@ local function lsp_keymaps(client, bufnr)
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
         buf_set_keymap(bufnr, "n", "<leader>f", ":lua vim.lsp.buf.formatting()<CR>")
+        vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
     elseif client.resolved_capabilities.document_range_formatting then
         buf_set_keymap(bufnr, "n", "<leader>f", ":lua vim.lsp.buf.range_formatting()<CR>")
     end

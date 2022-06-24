@@ -46,13 +46,14 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>")
 keymap("n", "<C-Right>", ":vertical resize +2<CR>")
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>")
-keymap("n", "<S-h>", ":bprevious<CR>")
+keymap("n", "L", ":bnext<CR>")
+keymap("n", "H", ":bprevious<CR>")
 keymap("n", "<C-PageDown>", ":bnext<CR>")
 keymap("n", "<C-PageUp>", ":bprevious<CR>")
 
 -- Move text up and down
 keymap("n", "<A-j>", ":move .+1<CR>==")
+keymap("n", "J", "<Nop>")
 keymap("n", "<A-k>", ":move .-2<CR>==")
 
 
@@ -110,9 +111,9 @@ keymap('v', 'Y', 'myY`y')
 -- Visual Block --
 ------------------
 -- Move text up and down
-keymap("x", "J",     ":move '>+1<CR>gv-gv")
+-- keymap("x", "J",     ":move '>+1<CR>gv-gv")
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv")
-keymap("x", "K",     ":move '<-2<CR>gv-gv")
+-- keymap("x", "K",     ":move '<-2<CR>gv-gv")
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv")
 
 
