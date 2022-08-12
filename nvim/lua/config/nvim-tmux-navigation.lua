@@ -1,3 +1,6 @@
+if not require "lib.utils".has_module("nvim-tmux-navigation") then
+    return
+end
 vim.cmd([[
 nnoremap <silent> <C-h> :lua require'nvim-tmux-navigation'.NvimTmuxNavigateLeft()<cr>
 nnoremap <silent> <C-j> :lua require'nvim-tmux-navigation'.NvimTmuxNavigateDown()<cr>
