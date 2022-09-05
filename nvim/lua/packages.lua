@@ -88,6 +88,9 @@ return require('packer').startup(function(use)
         config = require 'config.treesitter',
         run = ':TSUpdate'
     }
+    use {
+        'nvim-treesitter/nvim-treesitter-context',
+    }
 
     -- Coding
     use {
@@ -95,10 +98,11 @@ return require('packer').startup(function(use)
         'williamboman/nvim-lsp-installer',
         config = require "config.lsp",
     }
-    use {
-        "ur4ltz/surround.nvim",
-        config = require "config.surround"
-    }
+    -- use {
+    --     -- No HTML support
+    --     "ur4ltz/surround.nvim",
+    --     config = require "config.surround"
+    -- }
     use "tpope/vim-commentary"
     use "tpope/vim-repeat"
     -- use "windwp/nvim-autopairs"
