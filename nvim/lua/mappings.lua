@@ -32,6 +32,9 @@ keymap("n", "n", "nzz")
 keymap("n", "N", "Nzzlk")
 keymap("n", "}", "}zz")
 keymap("n", "{", "{zz")
+keymap("n", "<C-d>", "<C-d>zz")
+keymap("n", "<C-u>", "<C-u>zz")
+keymap("n", "<C-f>", "<C-f>zz")
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h")
@@ -42,8 +45,8 @@ keymap("n", "<C-l>", "<C-w>l")
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>")
 keymap("n", "<C-Down>", ":resize +2<CR>")
-keymap("n", "<C-Left>", ":vertical resize -2<CR>")
-keymap("n", "<C-Right>", ":vertical resize +2<CR>")
+keymap("n", "<C-Left>", ":vertical resize +2<CR>")
+keymap("n", "<C-Right>", ":vertical resize -2<CR>")
 
 -- Navigate buffers
 keymap("n", "L", ":bnext<CR>")
@@ -65,7 +68,7 @@ keymap("n", "<Right>",  "<cmd>lua vim.notify_once('Utiliza l en lugar de Right',
 
 -- <C-_> is equivalent to <C-/> for Neovim
 -- keymap("n", "<C-_>", "<cmd>Commentary<CR>")
-keymap("v", "<C-_>", "gc")
+keymap("n", "<C-_>", "gc")
 
 -- Disable Ex Mode
 keymap("n", "Q", "<Nop>")
@@ -77,10 +80,10 @@ keymap('n', 'q:', ':q<CR>')
 -- Insert --
 ------------
 -- Arrows movements
-keymap("i", "<Up>",  "<Nop>")
-keymap("i", "<Down>",  "<Nop>")
-keymap("i", "<Left>",  "<Nop>")
-keymap("i", "<Right>",  "<Nop>")
+-- keymap("i", "<Up>",  "<Nop>")
+-- keymap("i", "<Down>",  "<Nop>")
+-- keymap("i", "<Left>",  "<Nop>")
+-- keymap("i", "<Right>",  "<Nop>")
 
 -- Tab completion for insert mode
 keymap("i", "<S-Tab>", "<C-D>")
@@ -96,8 +99,10 @@ keymap("v", "<", "<gv")
 keymap("v", ">", ">gv")
 
 -- Move text up and down
-keymap("v", "<A-j>", ":move .+1<CR>==")
-keymap("v", "<A-k>", ":move .-2<CR>==")
+keymap("v", "<A-j>", ":move '>+1<CR>gv=gv")
+keymap("v", "J", ":move '>+1<CR>gv=gv")
+keymap("v", "<A-k>", ":move '<-2<CR>gv=gv")
+keymap("v", "K", ":move '<-2<CR>gv=gv")
 
 -- keymap("v", "<C-_>", "<cmd>Commentary<CR>")
 keymap("v", "<C-_>", "gc")
@@ -111,10 +116,10 @@ keymap('v', 'Y', 'myY`y')
 -- Visual Block --
 ------------------
 -- Move text up and down
--- keymap("x", "J",     ":move '>+1<CR>gv-gv")
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv")
--- keymap("x", "K",     ":move '<-2<CR>gv-gv")
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv")
+keymap("v", "<A-j>", ":move '>+1<CR>gv=gv")
+keymap("v", "J", ":move '>+1<CR>gv=gv")
+keymap("v", "<A-k>", ":move '<-2<CR>gv=gv")
+keymap("v", "K", ":move '<-2<CR>gv=gv")
 
 
 -- vim.cmd([[
