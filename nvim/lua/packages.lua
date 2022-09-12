@@ -1,7 +1,10 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-    Packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+    Packer_bootstrap = fn.system({
+        'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+        install_path
+    })
 end
 
 return require('packer').startup(function(use)
@@ -112,7 +115,12 @@ return require('packer').startup(function(use)
     }
 
     -- Snippet engine
-    use "hrsh7th/vim-vsnip"
+    -- use "hrsh7th/vim-vsnip"
+    use {
+        "L3MON4D3/LuaSnip",
+        tag = "v<CurrentMajor>.*",
+        config = require 'config.luasnip',
+    }
 
     -- Completion framework
     use {
@@ -121,7 +129,10 @@ return require('packer').startup(function(use)
         -- LSP completion source for nvim-cmp
         "hrsh7th/cmp-nvim-lsp",
         -- Snippet completion source for nvim-cmp
+        -- For vsnip users.
         "hrsh7th/cmp-vsnip",
+        -- For luasnip users.
+        "saadparwaiz1/cmp_luasnip",
         -- Other usefull completion sources
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-buffer",
