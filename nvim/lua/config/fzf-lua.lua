@@ -19,6 +19,7 @@ if require "lib.utils".has_module("which-key") then
             f = { ":FzfLua grep_project<cr>", "RipGrep" },
             p = { ":FzfLua files<cr>", "Files" },
             m = { ":FzfLua keymaps<cr>", "Keymaps" },
+            h = { ":FzfLua help_tags<cr>", "Help Tags" },
         },
     }
 

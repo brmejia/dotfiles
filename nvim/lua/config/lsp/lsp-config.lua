@@ -67,7 +67,7 @@ local function lsp_keymaps(client, bufnr)
                 -- D = { ':lua vim.lsp.buf.declaration()<cr>', "Go To Declaration" },
 
                 -- r = { ':lua require("fzf-lua").lsp_references({ jump_to_single_result = true })<cr>', "Go To Definition" },
-                r = { ':Trouble lsp_references<cr>', "References"},
+                r = { ':Trouble lsp_references<cr>', "References" },
                 -- buf_set_keymap(bufnr, 'n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
                 R = { ':lua vim.lsp.buf.rename()<cr>', "Rename" },
                 -- buf_set_keymap(bufnr, 'n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
@@ -96,10 +96,9 @@ local function lsp_keymaps(client, bufnr)
 
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
-        buf_set_keymap(bufnr, "n", "<leader>f", ":lua vim.lsp.buf.formatting()<CR>")
-        vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+        buf_set_keymap(bufnr, "n", "<leader>f", vim.lsp.buf.formatting)
     elseif client.resolved_capabilities.document_range_formatting then
-        buf_set_keymap(bufnr, "n", "<leader>f", ":lua vim.lsp.buf.range_formatting()<CR>")
+        buf_set_keymap(bufnr, "n", "<leader>f", vim.lsp.buf.range_formatting)
     end
 
 end
@@ -107,6 +106,10 @@ end
 lsp_config.on_attach = function(client, bufnr)
     lsp_keymaps(client, bufnr)
     lsp_highlight_document(client)
+
+    if client.name ~= "pylsp" then
+        vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+    end
 end
 
 
