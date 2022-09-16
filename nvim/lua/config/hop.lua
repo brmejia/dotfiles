@@ -1,4 +1,4 @@
-if not require"lib.utils".has_module("hop") then
+if not require "lib.utils".has_module("hop") then
     return
 end
 
@@ -8,20 +8,20 @@ require 'hop'.setup {
 }
 
 
-if require "lib.utils".has_module("which-key") then
+-- if require "lib.utils".has_module("which-key") then
 
-    local wk = require "which-key"
-    local leader_mappings = {
-        h = {
-            name = "Hop!",
-            h = { ":HopWord <cr>", "Words" },
-            w = { ":HopWord <cr>", "Words" },
-            c = { ":HopChar1 <cr>", "Chars" },
-            p = { ":HopPattern <cr>", "Pattern" },
-        },
-    }
+--     local wk = require "which-key"
+--     local leader_mappings = {
+--         h = {
+--             name = "Hop!",
+--             h = { ":HopWord <cr>", "Words" },
+--             w = { ":HopWord <cr>", "Words" },
+--             c = { ":HopChar1 <cr>", "Chars" },
+--             p = { ":HopPattern <cr>", "Pattern" },
+--         },
+--     }
 
-    local opts = { prefix = '<leader>', }
-    wk.register(leader_mappings, opts)
+--     local opts = { prefix = '<leader>', }
+--     wk.register(leader_mappings, opts)
 
-end
+-- end

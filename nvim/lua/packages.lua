@@ -7,60 +7,61 @@ if fn.empty(fn.glob(install_path)) > 0 then
     })
 end
 
-return require('packer').startup(function(use)
-    use 'wbthomason/packer.nvim'
+return require("packer").startup(function(use)
+    use "wbthomason/packer.nvim"
+    use "nvim-lua/plenary.nvim"
 
     -- UX / UI
     use {
-        'rcarriga/nvim-notify',
-        config = require 'config.notify'
+        "rcarriga/nvim-notify",
+        config = require "config.notify"
     }
     use {
         "alexghergh/nvim-tmux-navigation",
-        config = require 'config.nvim-tmux-navigation',
+        config = require "config.nvim-tmux-navigation",
     }
     -- use 'feline-nvim/feline.nvim'
-    use { 'nvim-lualine/lualine.nvim',
-        config = require 'config.lualine',
+    use { "nvim-lualine/lualine.nvim",
+        config = require "config.lualine",
     }
     use {
-        'goolord/alpha-nvim',
-        requires = { 'kyazdani42/nvim-web-devicons' },
-        config = require 'config.alpha',
+        "goolord/alpha-nvim",
+        requires = { "kyazdani42/nvim-web-devicons" },
+        config = require "config.alpha",
     }
     use {
-        'folke/which-key.nvim',
-        config = require 'config.which-key',
+        "folke/which-key.nvim",
+        config = require "config.which-key",
     }
     use {
         "folke/trouble.nvim",
         requires = "kyazdani42/nvim-web-devicons",
-        config = require 'config.trouble',
+        config = require "config.trouble",
     }
     use {
-        'kyazdani42/nvim-tree.lua',
+        "kyazdani42/nvim-tree.lua",
         requires = {
-            'kyazdani42/nvim-web-devicons', -- optional, for file icon
+            "kyazdani42/nvim-web-devicons", -- optional, for file icon
         },
         config = require "config.nvim-tree",
     }
     use {
-        'kevinhwang91/nvim-hlslens',
+        "kevinhwang91/nvim-hlslens",
         config = require("config.hlslens")
     }
     use {
         "petertriho/nvim-scrollbar",
-        requires = { 'kevinhwang91/nvim-hlslens' },
+        requires = { "kevinhwang91/nvim-hlslens" },
         config = require "config.nvim-scrollbar",
     }
     use {
-        'lewis6991/gitsigns.nvim',
+        "lewis6991/gitsigns.nvim",
         config = require "config.gitsigns",
     }
     use {
-        'akinsho/bufferline.nvim',
+        "akinsho/bufferline.nvim",
         tag = "*",
-        requires = 'kyazdani42/nvim-web-devicons',
+        requires = "kyazdani42/nvim-web-devicons",
         config = require("config.bufferline")
     }
     use {
@@ -71,34 +72,39 @@ return require('packer').startup(function(use)
     -- Search
     -- use { 'junegunn/fzf' }
     -- use { 'junegunn/fzf.vim' }
-    use { 'ibhagwan/fzf-lua',
+    use { "ibhagwan/fzf-lua",
         -- optional for icon support
-        requires = { 'kyazdani42/nvim-web-devicons' },
+        requires = { "kyazdani42/nvim-web-devicons" },
         config = require("config.fzf-lua"),
     }
     use {
-        'unblevable/quick-scope',
+        "unblevable/quick-scope",
         config = require("config.quick-scope")
     }
     use {
-        'phaazon/hop.nvim',
+        "phaazon/hop.nvim",
         config = require("config.hop")
 
     }
+    use {
+        "ThePrimeagen/harpoon",
+        config = require("config.harpoon"),
+    }
+
     -- Syntax Highlight
     use {
-        'nvim-treesitter/nvim-treesitter',
-        config = require 'config.treesitter',
-        run = ':TSUpdate'
+        "nvim-treesitter/nvim-treesitter",
+        config = require "config.treesitter",
+        run = ":TSUpdate"
     }
     use {
-        'nvim-treesitter/nvim-treesitter-context',
+        "nvim-treesitter/nvim-treesitter-context",
     }
 
     -- Coding
     use {
-        'neovim/nvim-lspconfig',
-        'williamboman/nvim-lsp-installer',
+        "neovim/nvim-lspconfig",
+        "williamboman/nvim-lsp-installer",
         config = require "config.lsp",
     }
     -- use {
@@ -110,7 +116,7 @@ return require('packer').startup(function(use)
     use "tpope/vim-repeat"
     -- use "windwp/nvim-autopairs"
     use {
-        'echasnovski/mini.nvim',
+        "echasnovski/mini.nvim",
         config = require "config.mini-nvim",
     }
 
@@ -119,7 +125,7 @@ return require('packer').startup(function(use)
     use {
         "L3MON4D3/LuaSnip",
         tag = "v<CurrentMajor>.*",
-        config = require 'config.luasnip',
+        config = require "config.luasnip",
     }
 
     -- Completion framework
@@ -139,13 +145,14 @@ return require('packer').startup(function(use)
     }
     -- Language Specific
     use {
-        'simrat39/rust-tools.nvim',
+        "simrat39/rust-tools.nvim",
         config = require "config.rust-tools",
     }
 
     -- Themes
-    use { 'navarasu/onedark.nvim' }
+    use { "navarasu/onedark.nvim" }
     use { "rebelot/kanagawa.nvim" }
+    use { "folke/tokyonight.nvim" }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

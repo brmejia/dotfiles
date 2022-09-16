@@ -27,6 +27,8 @@ vim.g.maplocalleader = " "
 -- keymap("n", "<Leader><Leader>r", ":source ~/.config/nvim/init.lua<CR>")
 
 -- Auto-center on buffer movements
+keymap("n", "j", "jzz")
+keymap("n", "k", "kzz")
 keymap("n", "G", "Gzz")
 keymap("n", "n", "nzz")
 keymap("n", "N", "Nzzlk")
@@ -61,10 +63,10 @@ keymap("n", "<A-k>", ":move .-2<CR>==")
 
 
 -- Arrows movements
-keymap("n", "<Up>",  "<cmd>lua vim.notify_once('Utiliza k en lugar de Up', 'error')<CR>")
-keymap("n", "<Down>",  "<cmd>lua vim.notify_once('Utiliza j en lugar de Down', 'error')<CR>")
-keymap("n", "<Left>",  "<cmd>lua vim.notify_once('Utiliza h en lugar de Left', 'error')<CR>")
-keymap("n", "<Right>",  "<cmd>lua vim.notify_once('Utiliza l en lugar de Right', 'error')<CR>")
+keymap({ "n", "i" }, "<Up>", "<cmd>lua vim.notify_once('Utiliza k en lugar de Up', 'error')<CR>")
+keymap({ "n", "i" }, "<Down>", "<cmd>lua vim.notify_once('Utiliza j en lugar de Down', 'error')<CR>")
+keymap({ "n", "i" }, "<Left>", "<cmd>lua vim.notify_once('Utiliza h en lugar de Left', 'error')<CR>")
+keymap({ "n", "i" }, "<Right>", "<cmd>lua vim.notify_once('Utiliza l en lugar de Right', 'error')<CR>")
 
 -- <C-_> is equivalent to <C-/> for Neovim
 -- keymap("n", "<C-_>", "<cmd>Commentary<CR>")
@@ -80,10 +82,7 @@ keymap('n', 'q:', ':q<CR>')
 -- Insert --
 ------------
 -- Arrows movements
--- keymap("i", "<Up>",  "<Nop>")
--- keymap("i", "<Down>",  "<Nop>")
--- keymap("i", "<Left>",  "<Nop>")
--- keymap("i", "<Right>",  "<Nop>")
+-- Defined in normal section
 
 -- Tab completion for insert mode
 keymap("i", "<S-Tab>", "<C-D>")
