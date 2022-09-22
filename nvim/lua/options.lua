@@ -1,4 +1,3 @@
-
 local options = {
 
     -- Make it obvious where 90 characters is
@@ -30,7 +29,7 @@ local options = {
     swapfile = false, -- creates a swapfile
     timeoutlen = 500, -- time to wait for a mapped sequence to complete (in milliseconds)
     undofile = true, -- enable persistent undo
-    redrawtime = 10000, -- Allow more time for loading syntax on large files,
+    redrawtime = 5000, -- Allow more time for loading syntax on large files,
     writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
     expandtab = true, -- convert tabs to spaces
     cursorline = true, -- highlight the current line
@@ -67,29 +66,29 @@ local options = {
     ---------------------------------------------------------
     showmode = false, -- we don't need to see things like -- INSERT -- anymore
     termguicolors = true, -- set term gui colors (most terminals support this)
-    number = true ,-- show line numbers
+    number = true, -- show line numbers
     relativenumber = true, -- set relative numbered lines
     numberwidth = 4, -- set number column width to 2 {default 4}
-    wrap = true ,-- turn on line wrapping
-    wrapmargin = 8 ,-- wrap lines when coming within n characters from side
-    linebreak = true ,-- set soft wrapping
+    wrap = true, -- turn on line wrapping
+    wrapmargin = 8, -- wrap lines when coming within n characters from side
+    linebreak = true, -- set soft wrapping
     showbreak = "↪",
-    autoindent = true ,-- automatically set indent of new line
-    ttyfast = true ,-- faster redrawing
-    laststatus = 3 ,-- show the global statusline all the time
-    scrolloff = 8 ,-- set 8 lines to the cursors - when moving vertical
-    wildmenu = true ,-- enhanced command line completion
-    hidden = true ,-- current buffer can be put into background
-    showcmd = true ,-- show incomplete commands
+    autoindent = true, -- automatically set indent of new line
+    ttyfast = true, -- faster redrawing
+    laststatus = 3, -- show the global statusline all the time
+    scrolloff = 8, -- set 8 lines to the cursors - when moving vertical
+    wildmenu = true, -- enhanced command line completion
+    hidden = true, -- current buffer can be put into background
+    showcmd = true, -- show incomplete commands
     -- wildmode = {"list", "longest:full", "full"} ,-- complete files like a shell
     shell = vim.env.SHELL,
     cmdheight = 1, -- more space in the neovim command bar line for displaying messages
-    title = true ,-- set terminal title
-    showmatch = true ,-- show matching braces
-    mat = 2 ,-- how many tenths of a second to blink
+    title = true, -- set terminal title
+    showmatch = true, -- show matching braces
+    mat = 2, -- how many tenths of a second to blink
     updatetime = 300, -- faster completion (4000ms default)
     signcolumn = "yes:2", -- always show the sign column, otherwise it would shift the text each time
-    shortmess = "atToOFc" ,-- prompt message options
+    shortmess = "atToOFc", -- prompt message options
 
 }
 vim.opt.shortmess:append "c"

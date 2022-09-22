@@ -100,6 +100,11 @@ return require("packer").startup(function(use)
     use {
         "nvim-treesitter/nvim-treesitter-context",
     }
+    use {
+        'kevinhwang91/nvim-ufo',
+        requires = 'kevinhwang91/promise-async',
+        config = require "config.nvim-ufo",
+    }
 
     -- Coding
     use {

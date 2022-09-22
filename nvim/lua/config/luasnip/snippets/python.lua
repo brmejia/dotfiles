@@ -6,4 +6,9 @@ return {
         i(1),
         t(" = }\")"),
     }),
+    s("ipdb", {
+        t("import ipdb"),
+        t { "", "" },
+        t("ipdb.set_trace()"),
+    })
 }
