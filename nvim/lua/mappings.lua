@@ -38,6 +38,18 @@ keymap("n", "<C-d>", "<C-d>zz")
 keymap("n", "<C-u>", "<C-u>zz")
 keymap("n", "<C-f>", "<C-f>zz")
 
+-- Auto-center on folding
+keymap("n", "zr", "zrzz")
+keymap("n", "zR", "zRzz")
+keymap("n", "zm", "zmzz")
+keymap("n", "zM", "zMzz")
+keymap("n", "za", "zazz")
+keymap("n", "zA", "zAzz")
+keymap("n", "zo", "zozz")
+keymap("n", "zO", "zOzz")
+keymap("n", "zx", "zxzz")
+keymap("n", "zi", "zizz")
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h")
 keymap("n", "<C-j>", "<C-w>j")
