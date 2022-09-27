@@ -22,22 +22,28 @@ local conds = require("luasnip.extras.expand_conditions")
 
 
 return {
-
-    -- s("dbg", fmt("print(f\"{{}} = {{}}\")", { i(1, "var"), rep(1), })),
     s(
-        "dbg",
-        {
-            t("print(f\"{"),
-            i(1),
-            t(" = }\")"),
-        }
-    ),
-    s(
-        "ipdb",
-        {
-            t("import ipdb"),
-            t { "", "" },
-            t("ipdb.set_trace()"),
-        }
+        'fn',
+        fmta([[
+                fn <1>(<2>) <3>
+                    <4>
+                }
+            ]],
+            {
+                i(1, "name"),
+                c(2, {
+                    t(""),
+                    sn(nil, fmt("{1}: {2}", {
+                        i(1, "x"),
+                        i(2, "usize"),
+                    })),
+                }),
+                c(3, {
+                    t("{"),
+                    sn(nil, fmt("-> {1} {{", { i(1, "ResultType") })),
+                }),
+                i(0),
+            }
+        )
     ),
 }
