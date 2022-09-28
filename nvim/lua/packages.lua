@@ -108,8 +108,15 @@ return require("packer").startup(function(use)
 
     -- Coding
     use {
+        "williamboman/mason.nvim",
+        config = require "config.mason",
+    }
+    use {
+        "williamboman/mason-lspconfig.nvim",
+        config = require "config.lsp.mason-lspconfig",
+    }
+    use {
         "neovim/nvim-lspconfig",
-        "williamboman/nvim-lsp-installer",
         config = require "config.lsp",
     }
     -- use {
@@ -153,6 +160,7 @@ return require("packer").startup(function(use)
         "simrat39/rust-tools.nvim",
         config = require "config.rust-tools",
     }
+    use { 'averms/black-nvim' }
 
     -- Themes
     use { "navarasu/onedark.nvim" }

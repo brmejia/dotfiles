@@ -106,31 +106,31 @@ keymap("i", "<A-BS>", "<C-W>")
 ------------
 
 -- Stay in indent mode
-keymap("v", "<", "<gv")
-keymap("v", ">", ">gv")
+keymap({ "v", "x" }, "<", "<gv")
+keymap({ "v", "x" }, ">", ">gv")
 
 -- Move text up and down
-keymap("v", "<A-j>", ":move '>+1<CR>gv=gv")
-keymap("v", "J", ":move '>+1<CR>gv=gv")
-keymap("v", "<A-k>", ":move '<-2<CR>gv=gv")
-keymap("v", "K", ":move '<-2<CR>gv=gv")
+keymap({ "v", "x" }, "<A-j>", ":move '>+1<CR>gv=gv")
+keymap({ "v", "x" }, "J", ":move '>+1<CR>gv=gv")
+keymap({ "v", "x" }, "<A-k>", ":move '<-2<CR>gv=gv")
+keymap({ "v", "x" }, "K", ":move '<-2<CR>gv=gv")
 
 -- keymap("v", "<C-_>", "<cmd>Commentary<CR>")
 keymap("v", "<C-_>", "gc")
 
 -- Maintain the cursor position when yanking a visual selection
 -- http://ddrscott.github.io/blog/2016/yank-without-jank/
-keymap('v', 'y', 'myy`hay')
-keymap('v', 'Y', 'myY`y')
+keymap("v", "y", "myy`hay")
+keymap("v", "Y", "myY`y")
 
 ------------------
 -- Visual Block --
 ------------------
 -- Move text up and down
-keymap("v", "<A-j>", ":move '>+1<CR>gv=gv")
-keymap("v", "J", ":move '>+1<CR>gv=gv")
-keymap("v", "<A-k>", ":move '<-2<CR>gv=gv")
-keymap("v", "K", ":move '<-2<CR>gv=gv")
+-- keymap("v", "<A-j>", ":move '>+1<CR>gv=gv")
+-- keymap("v", "J", ":move '>+1<CR>gv=gv")
+-- keymap("v", "<A-k>", ":move '<-2<CR>gv=gv")
+-- keymap("v", "K", ":move '<-2<CR>gv=gv")
 
 
 -- vim.cmd([[

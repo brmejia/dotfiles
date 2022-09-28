@@ -1,4 +1,9 @@
-local lsp_config = {}
+if not require "lib.utils".has_module("lspconfig") then
+    return
+end
+
+local lspconfig = require "lspconfig"
+
 
 local function lsp_highlight_document(client)
     -- Set autocommands conditional on server_capabilities
@@ -103,44 +108,81 @@ local function lsp_keymaps(client, bufnr)
 
 end
 
-lsp_config.on_attach = function(client, bufnr)
+local on_attach = function(client, bufnr)
     lsp_keymaps(client, bufnr)
     lsp_highlight_document(client)
 
-    if client.name ~= "pylsp" then
-        vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
-    end
+    -- if client.name ~= "pylsp" then
+    vim.api.nvim_exec([[
+            autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+        ]],
+        false
+    )
+    -- end
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_ok then
-    return
+if status_ok then
+    capabilities = cmp_nvim_lsp.update_capabilities(
+        vim.lsp.protocol.make_client_capabilities()
+    )
 end
 
-lsp_config.capabilities = cmp_nvim_lsp.update_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-)
 
--- if not status_ok then
--- local status_ok, nvim_lsp  = pcall(require, "lspconfig")
---   return
--- end
--- -- Use a loop to conveniently both setup defined servers
--- -- and map buffer local keybindings when the language server attaches
--- local servers = {
---     -- "pyright",
---     "sumneko_lua",
---     "pylsp",
---     "rust_analyzer",
---     -- "tsserver",
--- }
--- for _, lsp in ipairs(servers) do
---     vim.notify("LSP Setup for ".. lsp)
---     nvim_lsp[lsp].setup {
---         on_attach = on_attach,
---         capabilities = capabilities,
---     }
--- end
+-- Use a loop to conveniently both setup defined servers
+-- and map buffer local keybindings when the language server attaches
+local servers = {
+    "sumneko_lua",
+    "pylsp",
+    "rust_analyzer",
+    -- "tsserver",
+}
+for _, server_name in ipairs(servers) do
+    -- vim.notify("LSP Setup for " .. server_name)
+    local server_config = {
+        on_attach = on_attach,
+        capabilities = capabilities,
+    }
+    -- lspconfig[server_name].setup({
+    --     on_attach = on_attach,
+    --     capabilities = capabilities,
+    -- })
 
-return lsp_config
+    if server_name == "sumneko_lua" then
+        server_config["settings"] = {
+            Lua = {
+                diagnostics = {
+                    globals = { 'vim', 'use' }
+                },
+                --workspace = {
+                -- Make the server aware of Neovim runtime files
+                --library = {[vim.fn.expand('$VIMRUNTIME/lua')] = true, [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true}
+                --}
+            }
+        }
+    elseif server_name == "pylsp" then
+        server_config["settings"] = {
+            pylsp = {
+                configurationSources = { "flake8", "pycodestyle" },
+                plugins = {
+                    pylint = { enabled = true },
+                    black = {
+                        enabled = true,
+                        line_length = 99,
+                    },
+                    ["pylsp-mypy"] = { enabled = true },
+                    rope = { enabled = true },
+                    -- yapf = { enabled = false },
+                    -- autopep8 = { enabled = false },
+                    pycodestyle = { enabled = false },
+                    flake8 = { enabled = true },
+                    -- pyflakes = { enabled = false },
+                }
+            }
+        }
+    end
+
+    lspconfig[server_name].setup(server_config)
+end

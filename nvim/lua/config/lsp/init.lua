@@ -39,5 +39,5 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
     border = "rounded",
 })
 
-require "config.lsp.lsp-installer"
+require "config.lsp.mason-lspconfig"
 require "config.lsp.lsp-config"
