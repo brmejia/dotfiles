@@ -58,7 +58,6 @@ local setup_opts = {
 
 
 if require "lib.utils".has_module("onedark.palette") then
-    vim.notify("asdfas")
 
     local palette = require("onedark.palette").darker
 
