@@ -81,11 +81,11 @@ return require("packer").startup(function(use)
         "unblevable/quick-scope",
         config = require("config.quick-scope")
     }
-    use {
-        "phaazon/hop.nvim",
-        config = require("config.hop")
+    -- use {
+    --     "phaazon/hop.nvim",
+    --     config = require("config.hop")
 
-    }
+    -- }
     use {
         "ThePrimeagen/harpoon",
         config = require("config.harpoon"),
@@ -160,12 +160,12 @@ return require("packer").startup(function(use)
         "simrat39/rust-tools.nvim",
         config = require "config.rust-tools",
     }
-    use { 'averms/black-nvim' }
 
     -- Themes
     use { "navarasu/onedark.nvim" }
     use { "rebelot/kanagawa.nvim" }
     use { "folke/tokyonight.nvim" }
+    use { "catppuccin/nvim", as = "catppuccin" }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

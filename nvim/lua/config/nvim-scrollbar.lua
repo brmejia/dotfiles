@@ -1,4 +1,4 @@
-if not require"lib.utils".has_module("scrollbar") then
+if not require "lib.utils".has_module("scrollbar") then
     return
 end
 

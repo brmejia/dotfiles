@@ -136,6 +136,7 @@ end
 local servers = {
     "sumneko_lua",
     "pylsp",
+    "pyright",
     "rust_analyzer",
     -- "tsserver",
 }
@@ -167,7 +168,7 @@ for _, server_name in ipairs(servers) do
             pylsp = {
                 configurationSources = { "flake8", "pycodestyle" },
                 plugins = {
-                    pylint = { enabled = true },
+                    pylint = { enabled = false },
                     black = {
                         enabled = true,
                         line_length = 99,
