@@ -3,6 +3,7 @@ if not require("lib.utils").has_module("catppuccin") then
 end
 
 local catppuccin = require("catppuccin")
+local cp = require("catppuccin.palettes").get_palette() -- fetch colors from g:catppuccin_flavour palette
 
 
 local setup_opts = {
@@ -53,25 +54,36 @@ local setup_opts = {
         },
     },
     color_overrides = {},
-    highlight_overries = {},
+    highlight_overrides = {},
 }
 
 
 if require "lib.utils".has_module("onedark.palette") then
 
-    local palette = require("onedark.palette").darker
+    local onedark_palette = require("onedark.palette").darker
 
     setup_opts["color_overrides"] = {
         -- all = {
         --     text = onedark_colors.fg,
         -- },
         mocha = {
-            base = palette.bg0,
-            mantle = palette.bg_d,
-            crust = palette.bg1,
+            base = onedark_palette.bg0,
+            mantle = onedark_palette.bg_d,
+            crust = onedark_palette.bg1,
+
+            -- surface0 = "#4e5463",
+            surface0 = onedark_palette.bg2,
+            surface1 = onedark_palette.bg3, -- Folds, relative numbers
+            -- surface2 = palette.bg4,
         }
     }
+
 end
+
+setup_opts["custom_highlights"] = {
+    LineNr = { fg = "#565676" },
+    Folded = { bg = "#282c34" },
+}
 
 vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 

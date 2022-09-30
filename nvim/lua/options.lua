@@ -91,11 +91,11 @@ local options = {
     shortmess = "atToOFc", -- prompt message options
 
 }
-vim.opt.shortmess:append "c"
 
 for k, v in pairs(options) do
     vim.opt[k] = v
 end
+
 
 vim.cmd([[
 " Treat <li> and <p> tags like the block tags they are
