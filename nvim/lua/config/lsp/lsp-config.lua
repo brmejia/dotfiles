@@ -106,19 +106,26 @@ local function lsp_keymaps(client, bufnr)
         buf_set_keymap(bufnr, "n", "<leader>f", vim.lsp.buf.range_formatting)
     end
 
+    if client.name == "rust_analyzer" then
+        local rt = require "rust-tools"
+        -- Hover actions
+        vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
+        -- Code action groups
+        vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+    end
+
 end
 
 local on_attach = function(client, bufnr)
     lsp_keymaps(client, bufnr)
     lsp_highlight_document(client)
 
-    -- if client.name ~= "pylsp" then
     vim.api.nvim_exec([[
             autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
         ]],
         false
     )
-    -- end
+
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -137,7 +144,7 @@ local servers = {
     "sumneko_lua",
     "pylsp",
     "pyright",
-    "rust_analyzer",
+    -- "rust_analyzer",  -- This module is confugured by the rust-tools module.
     -- "tsserver",
 }
 for _, server_name in ipairs(servers) do
@@ -187,3 +194,11 @@ for _, server_name in ipairs(servers) do
 
     lspconfig[server_name].setup(server_config)
 end
+
+
+-- This module is used to configure lsp servers from other files as for rust-tools plugin
+M = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+return M
