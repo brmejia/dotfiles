@@ -15,13 +15,36 @@ endfunction
 command! ZoomToggle call s:ZoomToggle()
 nnoremap <silent> <C-A> :ZoomToggle<CR>
 
-" Remove trailing whitesapaces on save
-autocmd BufWritePre * execute ':lua MiniTrailspace.trim()'
-
-
-augroup highlight_yank
-    autocmd!
-    au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
-augroup END
 
 ]])
+
+
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+
+local mesuca_group = augroup("MesucaGroup", {})
+local yank_group = augroup("HighlightYank", {})
+
+function R(name)
+    require("plenary.reload").reload_module(name)
+end
+
+autocmd("TextYankPost", {
+    group = yank_group,
+    pattern = "*",
+    callback = function()
+        vim.highlight.on_yank({
+            higroup = "IncSearch",
+            timeout = 100,
+        })
+    end
+})
+
+
+autocmd({ "BufWritePre" }, {
+    group = mesuca_group,
+    pattern = "*",
+    callback = function()
+        require("mini.trailspace").trim()
+    end
+})

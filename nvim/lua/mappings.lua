@@ -80,6 +80,12 @@ keymap({ "n", "i" }, "<Down>", "<cmd>lua vim.notify_once('Utiliza j en lugar de 
 keymap({ "n", "i" }, "<Left>", "<cmd>lua vim.notify_once('Utiliza h en lugar de Left', 'error')<CR>")
 keymap({ "n", "i" }, "<Right>", "<cmd>lua vim.notify_once('Utiliza l en lugar de Right', 'error')<CR>")
 
+-- Clipboard
+keymap({ "n", "v" }, "<leader>y", "\"+y") -- Yank TextObject into system Clipboard
+keymap("n", "<leader>Y", "\"+Y", { noremap = false }) -- Yank line into system Clipboard
+keymap({ "n", "v" }, "<leader>d", "\"_d") -- Delete selection/line without yanking
+keymap({ "n", "v" }, "<leader>P", "\"+gP") -- Paste from system clipboard
+
 -- <C-_> is equivalent to <C-/> for Neovim
 -- keymap("n", "<C-_>", "<cmd>Commentary<CR>")
 keymap("n", "<C-_>", "gc")
@@ -122,6 +128,9 @@ keymap("v", "<C-_>", "gc")
 -- http://ddrscott.github.io/blog/2016/yank-without-jank/
 keymap("v", "y", "myy`hay")
 keymap("v", "Y", "myY`y")
+
+-- Clipboard
+keymap("x", "<leader>p", "\"_dP") -- Paste without yanking
 
 ------------------
 -- Visual Block --

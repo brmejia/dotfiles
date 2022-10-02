@@ -1,7 +1,8 @@
 local options = {
 
     -- Make it obvious where 90 characters is
-    textwidth = 90,
+    textwidth = 0,
+    -- formatoptions = "cqj",
     colorcolumn = "+8",
     list = true,
     listchars = {
@@ -16,7 +17,7 @@ local options = {
     fillchars = 'eob: ',
     backup = true, -- creates a backup file
     backupdir = vim.fn.stdpath 'data' .. '/backup//',
-    clipboard = "unnamedplus", -- allows neovim to access the system clipboard
+    clipboard = "", -- allows neovim to access the system clipboard
     completeopt = { "menuone", "noselect" }, -- mostly just for cmp
     conceallevel = 0, -- so that `` is visible in markdown files
     fileencoding = "utf-8", -- the encoding written to a file
@@ -69,9 +70,9 @@ local options = {
     number = true, -- show line numbers
     relativenumber = true, -- set relative numbered lines
     numberwidth = 4, -- set number column width to 2 {default 4}
-    wrap = true, -- turn on line wrapping
-    wrapmargin = 8, -- wrap lines when coming within n characters from side
-    linebreak = true, -- set soft wrapping
+    wrap = false, -- turn on line wrapping
+    wrapmargin = 0, -- wrap lines when coming within n characters from side
+    linebreak = false, -- set soft wrapping
     showbreak = "↪",
     autoindent = true, -- automatically set indent of new line
     ttyfast = true, -- faster redrawing
