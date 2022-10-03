@@ -96,6 +96,7 @@ keymap("n", "Q", "<Nop>")
 -- Disable annoying command line thing
 keymap('n', 'q:', ':q<CR>')
 
+keymap("n", "<C-c>", "<ESC>")
 ------------
 -- Insert --
 ------------

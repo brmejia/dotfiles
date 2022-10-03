@@ -70,8 +70,6 @@ return require("packer").startup(function(use)
     }
 
     -- Search
-    -- use { 'junegunn/fzf' }
-    -- use { 'junegunn/fzf.vim' }
     use { "ibhagwan/fzf-lua",
         -- optional for icon support
         requires = { "kyazdani42/nvim-web-devicons" },
@@ -130,6 +128,11 @@ return require("packer").startup(function(use)
     use {
         "echasnovski/mini.nvim",
         config = require "config.mini-nvim",
+    }
+    use {
+        'TimUntersberger/neogit',
+        requires = 'nvim-lua/plenary.nvim',
+        config = require "config.neogit",
     }
 
     -- Snippet engine
