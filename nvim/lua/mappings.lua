@@ -51,10 +51,11 @@ keymap("n", "zx", "zxzz")
 keymap("n", "zi", "zizz")
 
 -- Better window navigation
-keymap("n", "<C-h>", "<C-w>h")
-keymap("n", "<C-j>", "<C-w>j")
-keymap("n", "<C-k>", "<C-w>k")
-keymap("n", "<C-l>", "<C-w>l")
+-- This keymaps are defined in nvim-tmux-navigator config file
+-- keymap("n", "<C-h>", "<C-w>h")
+-- keymap("n", "<C-j>", "<C-w>j")
+-- keymap("n", "<C-k>", "<C-w>k")
+-- keymap("n", "<C-l>", "<C-w>l")
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>")

@@ -178,7 +178,7 @@ for _, server_name in ipairs(servers) do
                     pylint = { enabled = false },
                     black = {
                         enabled = true,
-                        line_length = 99,
+                        line_length = 89,
                     },
                     ["pylsp-mypy"] = { enabled = true },
                     rope = { enabled = true },

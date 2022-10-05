@@ -13,9 +13,12 @@ if require "lib.utils".has_module("which-key") then
     local leader_mappings = {
         g = {
             name = "Git",
-            s = { function()
+            S = { function()
                 neogit.open()
-            end, "Status" },
+            end, "Current buffer" },
+            s = { function()
+                neogit.open({ cwd = vim.fn.expand("%:p:h") })
+            end, "Working directory" },
         },
     }
 

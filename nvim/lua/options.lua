@@ -38,7 +38,7 @@ local options = {
     -- code folding settings
     foldmethod = "expr",
     foldexpr = "nvim_treesitter#foldexpr()",
-    foldenable = true, -- don't fold by default
+    foldenable = false, -- don't fold by default
     foldlevelstart = 2,
     foldlevel = 2,
     foldnestmax = 10, -- deepest fold is 10 levels
