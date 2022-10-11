@@ -37,6 +37,12 @@ keymap("n", "{", "{zz")
 keymap("n", "<C-d>", "<C-d>zz")
 keymap("n", "<C-u>", "<C-u>zz")
 keymap("n", "<C-f>", "<C-f>zz")
+keymap("n", "<C-o>", "<C-o>zz")
+keymap("n", "<C-i>", "<C-i>zz")
+keymap("n", "<PageDown>", "<PageDown>zz")
+keymap("n", "<PageUp>", "<PageUp>zz")
+keymap("n", "<S-PageDown>", "<S-PageDown>zz")
+keymap("n", "<S-PageUp>", "<S-PageUp>zz")
 
 -- Auto-center on folding
 keymap("n", "zr", "zrzz")
@@ -49,6 +55,11 @@ keymap("n", "zo", "zozz")
 keymap("n", "zO", "zOzz")
 keymap("n", "zx", "zxzz")
 keymap("n", "zi", "zizz")
+-- Navigate buffers
+keymap("n", "L", ":bnext<CR>zz")
+keymap("n", "H", ":bprevious<CR>zz")
+keymap("n", "<C-PageDown>", ":bnext<CR>zz")
+keymap("n", "<C-PageUp>", ":bprevious<CR>zz")
 
 -- Better window navigation
 -- This keymaps are defined in nvim-tmux-navigator config file
@@ -63,11 +74,6 @@ keymap("n", "<C-Down>", ":resize +2<CR>")
 keymap("n", "<C-Left>", ":vertical resize +2<CR>")
 keymap("n", "<C-Right>", ":vertical resize -2<CR>")
 
--- Navigate buffers
-keymap("n", "L", ":bnext<CR>")
-keymap("n", "H", ":bprevious<CR>")
-keymap("n", "<C-PageDown>", ":bnext<CR>")
-keymap("n", "<C-PageUp>", ":bprevious<CR>")
 
 -- Move text up and down
 keymap("n", "<A-j>", ":move .+1<CR>==")
