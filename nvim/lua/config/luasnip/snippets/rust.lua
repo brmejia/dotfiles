@@ -46,4 +46,91 @@ return {
             }
         )
     ),
+    s(
+        "aoc_solution",
+        fmta([[
+                use crate::solutions::{Day, DaySolution, PartResult, Solution};
+
+                #[derive(Debug)]
+                pub struct Day<3> {}
+
+                impl Day<4> {
+                    pub fn new() ->> Self {
+                        Self {}
+                    }
+                }
+
+                impl Day for Day<5> {
+                    fn get_year(&self) ->> usize {
+                        return <1>;
+                    }
+                    fn get_day(&self) ->> usize {
+                        return <2>;
+                    }
+                }
+
+                impl Solution for Day<6> {
+
+                    fn part1(&mut self) ->> PartResult {
+                        let input = self.get_input(None);
+                        let lines = aoc::parse_input_lines::<<String>>(&input).unwrap();
+
+                        // Write here your solution<8>
+
+                        return Ok(vec!["Incomplete".to_string()]);
+                    }
+
+                    fn part2(&mut self) ->> PartResult {
+                        let input = self.get_input(None);
+                        let lines = aoc::parse_input_lines::<<String>>(&input).unwrap();
+
+                        // Write here your solution
+
+                        return Ok(vec!["Incomplete".to_string()]);
+                    }
+                }
+
+                impl DaySolution for Day<7> {}
+            ]],
+            {
+                i(1, "YEAR"),
+                i(2, "D"),
+                rep(2),
+                rep(2),
+                rep(2),
+                rep(2),
+                rep(2),
+                i(0),
+            }
+        )
+    ),
+    s(
+        "aoc_test",
+        fmta([[
+                #[cfg(test)]
+                mod tests {
+                    use super::*;
+
+                    #[test]
+                    fn test_examples() {
+                        let validations = vec![
+                            ("<2>", <3>),
+                        ];
+
+                        for (input, expected_result) in validations.into_iter() {
+                            let result = <1>(input);
+
+                            assert_eq!(result, expected_result);
+                        }
+                    }
+                }
+
+            ]],
+            {
+                i(1, "TEST_FUNCTION"),
+                i(2, "meaning of life"),
+                i(3, "42"),
+            }
+        )
+    )
 }
