@@ -99,6 +99,11 @@ return require("packer").startup(function(use)
         "nvim-treesitter/nvim-treesitter-context",
     }
     use {
+        'm-demare/hlargs.nvim',
+        requires = { 'nvim-treesitter/nvim-treesitter' },
+        config = require "config.hlargs",
+    }
+    use {
         'kevinhwang91/nvim-ufo',
         requires = 'kevinhwang91/promise-async',
         config = require "config.nvim-ufo",
@@ -149,6 +154,7 @@ return require("packer").startup(function(use)
         config = require 'config.nvim-cmp',
         -- LSP completion source for nvim-cmp
         "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
         -- Snippet completion source for nvim-cmp
         -- For vsnip users.
         "hrsh7th/cmp-vsnip",

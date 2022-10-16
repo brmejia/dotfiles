@@ -84,11 +84,12 @@ cmp.setup({
     },
 
     sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
+        { name = 'nvim_lsp', keyword_length = 2 },
+        { name = 'nvim_lsp_signature_help' },
         -- { name = 'vsnip' }, -- For vsnip users.
-        { name = 'luasnip' }, -- For luasnip users.
-        { name = 'path' },
-        { name = 'buffer' },
+        { name = 'luasnip', keyword_length = 2 }, -- For luasnip users.
+        { name = 'path', keyword_length = 2 },
+        { name = 'buffer', keyword_length = 3 },
     })
 })
 
@@ -118,11 +119,3 @@ cmp.setup.cmdline(':', {
         { name = 'cmdline' }
     })
 })
-
--- Esto ya se está haciendo en la config de lsp-config
--- -- Setup lspconfig.
--- local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
--- require('lspconfig')['rust_analyzer'].setup {
---   capabilities = capabilities
--- }
