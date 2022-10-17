@@ -44,10 +44,13 @@ local setup_opts = {
             },
             underlines = {
                 errors = { "undercurl" },
-                hints = { "underdot" },
+                -- hints = { "underdot" },
+                hints = { "underline" },
                 warnings = { "underline" },
-                information = { "underdot" },
+                -- information = { "underdot" },
+                information = { "underline" },
             },
+
         },
         mini = {
             enabled = true
