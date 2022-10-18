@@ -7,7 +7,7 @@ local lspconfig = require "lspconfig"
 
 local function lsp_highlight_document(client)
     -- Set autocommands conditional on server_capabilities
-    if client.resolved_capabilities.document_highlight then
+    if client.server_capabilities.document_highlight then
         vim.api.nvim_exec(
             [[
                 hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
@@ -100,9 +100,9 @@ local function lsp_keymaps(client, bufnr)
     end
 
     -- Set some keybinds conditional on server capabilities
-    if client.resolved_capabilities.document_formatting then
+    if client.server_capabilities.document_formatting then
         buf_set_keymap(bufnr, "n", "<leader>f", vim.lsp.buf.formatting)
-    elseif client.resolved_capabilities.document_range_formatting then
+    elseif client.server_capabilities.document_range_formatting then
         buf_set_keymap(bufnr, "n", "<leader>f", vim.lsp.buf.range_formatting)
     end
 
@@ -143,7 +143,7 @@ end
 local servers = {
     "sumneko_lua",
     "pylsp",
-    "pyright",
+    -- "pyright",
     -- "rust_analyzer",  -- This module is confugured by the rust-tools module.
     -- "tsserver",
 }
@@ -178,7 +178,7 @@ for _, server_name in ipairs(servers) do
                     pylint = { enabled = false },
                     black = {
                         enabled = true,
-                        line_length = 89,
+                        line_length = 88,
                     },
                     ["pylsp-mypy"] = { enabled = true },
                     rope = { enabled = true },
