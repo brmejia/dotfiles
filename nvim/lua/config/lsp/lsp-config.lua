@@ -100,11 +100,14 @@ local function lsp_keymaps(client, bufnr)
     end
 
     -- Set some keybinds conditional on server capabilities
-    if client.server_capabilities.document_formatting then
-        buf_set_keymap(bufnr, "n", "<leader>f", vim.lsp.buf.formatting)
-    elseif client.server_capabilities.document_range_formatting then
-        buf_set_keymap(bufnr, "n", "<leader>f", vim.lsp.buf.range_formatting)
-    end
+    buf_set_keymap(bufnr, { "n", "v" }, "<leader>f", function()
+        vim.lsp.buf.format({ async = true })
+    end)
+
+    -- if client.server_capabilities.document_formatting then
+    -- elseif client.server_capabilities.document_range_formatting then
+    -- end
+
 
     if client.name == "rust_analyzer" then
         local rt = require "rust-tools"
@@ -121,7 +124,7 @@ local on_attach = function(client, bufnr)
     lsp_highlight_document(client)
 
     vim.api.nvim_exec([[
-            autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+            autocmd BufWritePre <buffer> lua vim.lsp.buf.format({async=false})
         ]],
         false
     )
@@ -153,10 +156,6 @@ for _, server_name in ipairs(servers) do
         on_attach = on_attach,
         capabilities = capabilities,
     }
-    -- lspconfig[server_name].setup({
-    --     on_attach = on_attach,
-    --     capabilities = capabilities,
-    -- })
 
     if server_name == "sumneko_lua" then
         server_config["settings"] = {
