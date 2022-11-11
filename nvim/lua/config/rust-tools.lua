@@ -8,6 +8,13 @@ local lsp = require("config.lsp.lsp-config")
 rt.setup({
     server = {
         on_attach = lsp.on_attach,
-        capabilities = lsp.capabilities
+        capabilities = lsp.capabilities,
+        settings = {
+            ["rust-analyzer"] = {
+                checkOnSave = {
+                    command = "clippy"
+                }
+            }
+        }
     }
 })
