@@ -2,6 +2,8 @@ if not require "lib.utils".has_module("scrollbar") then
     return
 end
 
+local scrollbar = require "scrollbar"
+
 local setup_cfg = {}
 
 
@@ -23,4 +25,5 @@ if require "lib.utils".has_module("catppuccin") then
     -- }
 end
 
-require("scrollbar").setup(setup_cfg)
+scrollbar.setup(setup_cfg)
+require("scrollbar.handlers.gitsigns").setup()
