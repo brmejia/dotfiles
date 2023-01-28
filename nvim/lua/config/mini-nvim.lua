@@ -12,7 +12,11 @@ if require "lib.utils".has_module("mini.indentscope") then
             -- and total step numbers, returns wait time (in ms). See
             -- |MiniIndentscope.gen_animation()| for builtin options. To not use
             -- animation, supply `require('mini.indentscope').gen_animation('none')`.
-            animation = require('mini.indentscope').gen_animation('quadraticOut', { duration = 70, unit = 'total' }),
+            animation = require('mini.indentscope').gen_animation.quadratic({
+                easing = "out",
+                duration = 100,
+                unit = 'total'
+            }),
         }
     })
 end
