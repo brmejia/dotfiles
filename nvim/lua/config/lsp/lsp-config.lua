@@ -184,7 +184,7 @@ for _, server_name in ipairs(servers) do
                     -- yapf = { enabled = false },
                     -- autopep8 = { enabled = false },
                     pycodestyle = { enabled = false },
-                    flake8 = { enabled = true },
+                    flake8 = { enabled = false },
                     -- pyflakes = { enabled = false },
                 }
             }
