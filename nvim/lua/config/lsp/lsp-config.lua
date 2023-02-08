@@ -146,12 +146,20 @@ end
 local servers = {
     "sumneko_lua",
     "pylsp",
-    -- "pyright",
+    "taplo",
     -- "rust_analyzer",  -- This module is confugured by the rust-tools module.
     -- "tsserver",
+    "denols",
+    "volar",
+    "eslint",
+    "ruff_lsp",
+    "tailwindcss",
 }
 for _, server_name in ipairs(servers) do
     -- vim.notify("LSP Setup for " .. server_name)
+    --
+    -- https://github.com/neovim/nvim-lspconfig/tree/master/lua/lspconfig/server_configurations
+    --
     local server_config = {
         on_attach = on_attach,
         capabilities = capabilities,
@@ -172,21 +180,42 @@ for _, server_name in ipairs(servers) do
     elseif server_name == "pylsp" then
         server_config["settings"] = {
             pylsp = {
-                configurationSources = { "flake8", "pycodestyle" },
+                configurationSources = { "flake8" },
                 plugins = {
                     pylint = { enabled = false },
                     black = {
                         enabled = true,
                         line_length = 88,
                     },
-                    ["pylsp-mypy"] = { enabled = true },
-                    rope = { enabled = true },
                     -- yapf = { enabled = false },
-                    -- autopep8 = { enabled = false },
-                    pycodestyle = { enabled = false },
+                    -- ["pylsp-mypy"] = {
+                    --     enabled = true,
+                    --     -- strict = true,
+                    --     -- live_mode = true,
+                    --     -- overrides = {
+                    --     --     "--unknown_argument", "--config-file", "mypy_lsp.toml", true
+                    --     -- }
+                    -- },
+                    -- rope = { enabled = true },
+                    -- ["rope-autoimport"] = { enabled = true },
+                    -- ["rope_autoimport"] = { enabled = true },
                     flake8 = { enabled = false },
-                    -- pyflakes = { enabled = false },
+                    pycodestyle = { enabled = false },
+                    mccabe = { enabled = false },
+                    pyflakes = { enabled = false },
+                    autopep8 = { enabled = false },
                 }
+            }
+        }
+    elseif server_name == "tailwindcss" then
+        server_config["init_options"] = {
+            userLanguages = {
+                htmldjango = "django-html",
+            },
+        }
+        server_config["settings"] = {
+            tailwindCSS = {
+                hovers = false,
             }
         }
     end

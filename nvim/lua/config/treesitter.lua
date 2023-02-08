@@ -19,6 +19,7 @@ ts.setup {
         'query',
         'verilog',
         'html',
+        'htmldjango',
         'vue',
         'rust',
         'cpp',

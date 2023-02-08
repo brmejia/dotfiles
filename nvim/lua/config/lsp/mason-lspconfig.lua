@@ -8,7 +8,16 @@ end
 local mason_lsp = require "mason-lspconfig"
 
 mason_lsp.setup({
-    ensure_installed = { "pylsp", "sumneko_lua", "rust_analyzer" }
+    ensure_installed = {
+        "pylsp",
+        "sumneko_lua",
+        "rust_analyzer",
+        "taplo",
+        -- "tsserver",
+        "volar",
+        "denols",
+        "tailwindcss",
+    }
 })
 
 --mason_lsp.on_server_ready(function(server)
