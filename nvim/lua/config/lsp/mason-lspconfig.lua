@@ -10,14 +10,15 @@ local mason_lsp = require "mason-lspconfig"
 mason_lsp.setup({
     ensure_installed = {
         "pylsp",
+        "ruff_lsp",
         "lua_ls",
         "rust_analyzer",
-        "taplo",
-        -- "tsserver",
+        "taplo", -- TOML Files
         "volar",
+        "tsserver",
         "denols",
         "tailwindcss",
-        -- "prettier",
+        "eslint",
     }
 })
 

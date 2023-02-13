@@ -40,7 +40,6 @@ local options = {
     writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
     expandtab = true, -- convert tabs to spaces
     cursorline = true, -- highlight the current line
-
     -- code folding settings
     foldmethod = "expr",
     foldexpr = "nvim_treesitter#foldexpr()",
@@ -48,18 +47,16 @@ local options = {
     foldlevelstart = 2,
     foldlevel = 2,
     foldnestmax = 10, -- deepest fold is 10 levels
-
     -- Tab control
     smarttab = true, -- tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
     tabstop = 4, -- the visible width of tabs
     softtabstop = 4, -- edit as if the tabs are 4 characters wide
     shiftwidth = 4, -- number of spaces to use for indent and unindent
     shiftround = true, -- round indent to a multiple of 'shiftwidth'
-
     -- searching
     ignorecase = true, -- case insensitive searching
     smartcase = true, -- case-sensitive if expresson contains a capital letter
-    hlsearch = true, -- highlight search results
+    hlsearch = false, -- highlight search results
     incsearch = true, -- set incremental search, like modern browsers
     lazyredraw = false, -- don't redraw while executing macros
     magic = true, -- set magic on, for regular expressions
@@ -108,27 +105,3 @@ end
 -- vim.cmd([[
 -- autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 -- ]])
-
-
-vim.cmd([[
-" Treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags = 'li\|p'
-
-" Always use vertical diffs
-set diffopt+=vertical
-
-" Python TAB
-au BufNewFile,BufRead *.py
-            \ set tabstop=4 |
-            \ set softtabstop=4 |
-            \ set shiftwidth=4 |
-            \ set expandtab |
-
-" YAML TAB
-au BufNewFile,BufRead *.yaml
-            \ set tabstop=2 |
-            \ set softtabstop=2 |
-            \ set shiftwidth=2 |
-            \ set textwidth=80 |
-
-]])

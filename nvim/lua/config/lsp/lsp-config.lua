@@ -40,7 +40,6 @@ local function lsp_keymaps(client, bufnr)
 
     -- WhichKey Mappings
     if require "lib.utils".has_module("which-key") then
-
         local wk = require "which-key"
         local mappings = {
             l = {
@@ -96,7 +95,6 @@ local function lsp_keymaps(client, bufnr)
 
         local opts = { prefix = '<leader>', buffer = bufnr }
         wk.register(mappings, opts)
-
     end
 
     -- Set some keybinds conditional on server capabilities
@@ -116,7 +114,6 @@ local function lsp_keymaps(client, bufnr)
         -- Code action groups
         vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
     end
-
 end
 
 local on_attach = function(client, bufnr)
@@ -128,7 +125,7 @@ local on_attach = function(client, bufnr)
         ]],
         false
     )
-
+    vim.notify(client.name)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -148,8 +145,8 @@ local servers = {
     "pylsp",
     "taplo",
     -- "rust_analyzer",  -- This module is confugured by the rust-tools module.
-    -- "tsserver",
-    "denols",
+    "tsserver",
+    -- "denols",
     "volar",
     "eslint",
     "ruff_lsp",
@@ -211,11 +208,12 @@ for _, server_name in ipairs(servers) do
         server_config["init_options"] = {
             userLanguages = {
                 htmldjango = "django-html",
+                rust = "html",
             },
         }
         server_config["settings"] = {
             tailwindCSS = {
-                hovers = false,
+                hovers = true,
             }
         }
     end

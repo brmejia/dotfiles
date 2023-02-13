@@ -3,16 +3,14 @@ if not require "lib.utils".has_module("nvim-tree") then
 end
 
 if require "lib.utils".has_module("which-key") then
-
     local wk = require "which-key"
     local mappings = {
         ["<F1>"] = { ":NvimTreeToggle<cr>", "FileTree - Toggle" },
-        p = { ":NvimTreeFindFileToggle<cr>", "FileTree - Find current file" },
+        t = { ":NvimTreeFindFileToggle<cr>", "FileTree - Find current file" },
     }
 
     local opts = { prefix = '<leader>', }
     wk.register(mappings, opts)
-
 end
 -- setup with all defaults
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
