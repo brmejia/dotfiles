@@ -1,5 +1,4 @@
 local options = {
-
     -- Make it obvious where 90 characters is
     textwidth = 0,
     -- formatoptions = "cqj",
@@ -18,7 +17,6 @@ local options = {
     backup = true, -- creates a backup file
     backupdir = vim.fn.stdpath 'data' .. '/backup//',
     clipboard = "", -- allows neovim to access the system clipboard
-
     --Set completeopt to have a better completion experience
     -- :help completeopt
     -- menuone: popup even when there's only one match
@@ -65,12 +63,10 @@ local options = {
     incsearch = true, -- set incremental search, like modern browsers
     lazyredraw = false, -- don't redraw while executing macros
     magic = true, -- set magic on, for regular expressions
-
     sidescrolloff = 8,
     history = 1000,
     linespace = 10,
     fileformat = "unix",
-
     -- Appearance
     ---------------------------------------------------------
     showmode = false, -- we don't need to see things like -- INSERT -- anymore
@@ -98,7 +94,6 @@ local options = {
     updatetime = 300, -- faster completion (4000ms default)
     signcolumn = "yes:2", -- always show the sign column, otherwise it would shift the text each time
     shortmess = "atToOFc", -- prompt message options
-
 }
 vim.opt.shortmess = vim.opt.shortmess + { c = true }
 
@@ -134,12 +129,6 @@ au BufNewFile,BufRead *.yaml
             \ set tabstop=2 |
             \ set softtabstop=2 |
             \ set shiftwidth=2 |
-            \ set textwidth=80
-
-au BufNewFile,BufRead *.js, *.html, *.css, *.less
-" autocmd Filetype css, js, html, css, less
-            \ set tabstop=2
-            \ set softtabstop=2
-            \ set shiftwidth=2
+            \ set textwidth=80 |
 
 ]])

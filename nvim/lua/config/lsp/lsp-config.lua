@@ -136,15 +136,15 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if status_ok then
     capabilities = cmp_nvim_lsp.default_capabilities(
-        vim.lsp.protocol.make_client_capabilities()
-    )
+            vim.lsp.protocol.make_client_capabilities()
+        )
 end
 
 
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
 local servers = {
-    "sumneko_lua",
+    "lua_ls",
     "pylsp",
     "taplo",
     -- "rust_analyzer",  -- This module is confugured by the rust-tools module.
