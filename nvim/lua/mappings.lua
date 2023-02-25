@@ -91,7 +91,7 @@ keymap({ "n", "i" }, "<Right>", "<cmd>lua vim.notify_once('Utiliza l en lugar de
 keymap({ "n", "v" }, "<leader>y", "\"+y") -- Yank TextObject into system Clipboard
 keymap("n", "<leader>Y", "\"+Y", { noremap = false }) -- Yank line into system Clipboard
 keymap({ "n", "v" }, "<leader>d", "\"_d") -- Delete selection/line without yanking
-keymap({ "n", "v" }, "<leader>P", "\"+gPgv") -- Paste from system clipboard
+keymap({ "n", "v" }, "<leader>P", "\"+gP") -- Paste from system clipboard
 
 -- <C-_> is equivalent to <C-/> for Neovim
 -- keymap("n", "<C-_>", "<cmd>Commentary<CR>")
@@ -138,7 +138,7 @@ keymap("v", "y", "myy`hay")
 keymap("v", "Y", "myY`y")
 
 -- Clipboard
-keymap("x", "<leader>p", "\"_dPgv") -- Paste without yanking
+keymap("x", "<leader>p", "\"_dP") -- Paste without yanking
 
 ------------------
 -- Visual Block --
