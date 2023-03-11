@@ -1,0 +1,6 @@
+[build]
+# incremental = false
+rustc-wrapper = "sccache"
+
+[registries.crates-io]
+protocol = "sparse"
