@@ -108,6 +108,9 @@ return require("packer").startup(function(use)
         requires = 'kevinhwang91/promise-async',
         config = require "config.nvim-ufo",
     }
+    use {
+        "ron-rs/ron.vim"
+    }
 
     -- Coding
     use {
@@ -121,6 +124,14 @@ return require("packer").startup(function(use)
     use {
         "neovim/nvim-lspconfig",
         config = require "config.lsp",
+    }
+    use {
+        "jose-elias-alvarez/null-ls.nvim",
+        requires = {
+            'nvim-lua/plenary.nvim',
+        },
+        config = require "config.null-ls",
+
     }
     -- use {
     --     -- No HTML support
@@ -171,6 +182,16 @@ return require("packer").startup(function(use)
     use {
         "simrat39/rust-tools.nvim",
         config = require "config.rust-tools",
+        requires = {
+            "neovim/nvim-lspconfig",
+        },
+    }
+    use {
+        "saecki/crates.nvim",
+        requires = { 'nvim-lua/plenary.nvim' },
+        config = require "config.crates",
+        -- event = { "BufRead Cargo.toml" },
+        -- ft = { "rust", "toml" },
     }
 
     -- Themes

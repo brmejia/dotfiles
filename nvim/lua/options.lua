@@ -14,7 +14,7 @@ local options = {
     },
     confirm = true,
     fillchars = 'eob: ',
-    backup = true, -- creates a backup file
+    backup = true,  -- creates a backup file
     backupdir = vim.fn.stdpath 'data' .. '/backup//',
     clipboard = "", -- allows neovim to access the system clipboard
     --Set completeopt to have a better completion experience

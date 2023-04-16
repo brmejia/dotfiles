@@ -47,7 +47,7 @@ cmp.setup({
         -- Add tab support
         ['<S-Tab>'] = cmp.mapping.select_prev_item(),
         ['<Tab>'] = cmp.mapping.select_next_item(),
-        ['<C-b>'] = cmp.mapping.scroll_docs( -4),
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
@@ -64,11 +64,11 @@ cmp.setup({
             vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
             -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
             vim_item.menu = ({
-                    nvim_lsp = "[LSP]",
-                    luasnip = "[Snip]",
-                    buffer = "[Buff]",
-                    path = "[Path]",
-                })[entry.source.name]
+                nvim_lsp = "[LSP]",
+                luasnip = "[Snip]",
+                buffer = "[Buff]",
+                path = "[Path]",
+            })[entry.source.name]
             return vim_item
         end,
     },

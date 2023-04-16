@@ -22,15 +22,20 @@ nnoremap <silent> <C-A> :ZoomToggle<CR>
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
-local mesuca_group = augroup("MesucaGroup", {})
-local yank_group = augroup("HighlightYank", {})
+local mesuca_group = augroup("MesucaGroup", { clear = true })
 
 function R(name)
     require("plenary.reload").reload_module(name)
 end
 
+-- Don't auto commenting new lines
+-- autocmd('BufEnter', {
+--     pattern = '',
+--     command = 'set fo-=c fo-=r fo-=o'
+-- })
+
 autocmd("TextYankPost", {
-    group = yank_group,
+    group = mesuca_group,
     pattern = "*",
     callback = function()
         vim.highlight.on_yank({
@@ -46,5 +51,5 @@ autocmd({ "BufWritePre" }, {
     pattern = "*",
     callback = function()
         require("mini.trailspace").trim()
-    end
+    end,
 })
