@@ -1,10 +1,19 @@
 require("config.themes.catppuccin")
 
-vim.g.gui_font_default_size = 13
+vim.g.gui_font_default_size = 14
 vim.g.gui_font_size = vim.g.gui_font_default_size
-vim.g.gui_font_face = "FuraCode Nerd Font, Medium"
+vim.g.gui_font_face = "FiraCode Nerd Font,Medium"
+
+if vim.g.neovide then
+    -- Put anything you want to happen only in Neovide here
+    vim.g.neovide_floating_blur_amount_x = 2.0
+    vim.g.neovide_floating_blur_amount_y = 2.0
+    vim.g.neovide_transparency = 1
+    vim.g.neovide_remember_window_size = true
+end
 
 RefreshGuiFont = function()
+    vim.opt.linespace = 2
     vim.opt.guifont = string.format("%s:h%s", vim.g.gui_font_face, vim.g.gui_font_size)
 end
 
@@ -23,7 +32,6 @@ ResetGuiFont()
 
 -- Keymaps
 if require "lib.utils".has_module("which-key") then
-
     local wk = require "which-key"
 
     local mappings = {
@@ -34,7 +42,6 @@ if require "lib.utils".has_module("which-key") then
     wk.register(mappings, nopts)
     local iopts = { mode = "i", noremap = true, silent = true }
     wk.register(mappings, iopts)
-
 end
 -- local keymap = require "lib.utils".keymap
 -- keymap({ "n", "i" }, "<C-->", function() ResizeGuiFont(-1) end)
