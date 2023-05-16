@@ -9,7 +9,6 @@ local harpoon_term = require "harpoon.term"
 
 
 harpoon.setup({
-
     -- sets the marks upon calling `toggle` on the ui, instead of require `:w`.
     save_on_toggle = false,
 
@@ -26,14 +25,12 @@ harpoon.setup({
     excluded_filetypes = { "harpoon" },
 
     -- set marks specific to each git branch inside git repository
-    mark_branch = false,
+    mark_branch = true,
     menu = {
-        width = math.floor(vim.api.nvim_win_get_width(0) / 2),
+        width = math.floor(4 * vim.api.nvim_win_get_width(0) / 5),
     }
 })
 if require "lib.utils".has_module("which-key") then
-
-
     local wk = require "which-key"
     local leader_mappings = {
         h = {
@@ -51,5 +48,4 @@ if require "lib.utils".has_module("which-key") then
 
     local opts = { prefix = '<leader>', }
     wk.register(leader_mappings, opts)
-
 end
