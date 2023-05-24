@@ -26,7 +26,10 @@ return require("packer").startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } },
         config = require "config.telescope",
     }
-    -- use 'feline-nvim/feline.nvim'
+    use {
+        'nvim-telescope/telescope-ui-select.nvim',
+        requires = { { 'nvim-telescope/telescope.nvim' } }
+    }
     use { "nvim-lualine/lualine.nvim",
         config = require "config.lualine",
     }

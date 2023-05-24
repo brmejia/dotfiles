@@ -59,23 +59,23 @@ local function lsp_keymaps(client, bufnr)
                 --buf_set_keymap(bufnr, 'n', '<leader>q', ':lua vim.lsp.diagnostic.set_loclist()<CR>')
                 q = { ':Trouble loclist<cr>', "Loclist" },
                 f = { ':Trouble quickfix<cr>', "Quickfix" },
-                I = { ':FzfLua lsp_implementations<cr>', "Implementations" },
+                I = { ':lua vim.lsp.buf.implementation()<CR>', "Implementations" },
 
                 -- buf_set_keymap(bufnr, 'n', '<leader>D', ':lua vim.lsp.buf.type_definition()<CR>')
-                t = { ':FzfLua lsp_typedefs<cr>', "Type Definition" },
+                t = { ':lua vim.lsp.buf.type_definition()<CR>', "Type Definition" },
                 -- t = { ':Trouble lsp_type_definitions<cr>', "Type Definition" },
 
                 -- buf_set_keymap(bufnr, 'n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
-                -- d = { ':FzfLua lsp_definitions<cr>', "Go To Definition" },
-                d = { ':lua require("fzf-lua").lsp_definitions({ jump_to_single_result = true })<cr>', "Go To Definition" },
-                -- D = { ':lua vim.lsp.buf.declaration()<cr>', "Go To Declaration" },
-
+                d = { ':lua vim.lsp.buf.definition()<CR>', "Go To Definition" },
+                D = { ':lua vim.lsp.buf.declaration()<cr>', "Go To Declaration" },
                 -- r = { ':lua require("fzf-lua").lsp_references({ jump_to_single_result = true })<cr>', "Go To Definition" },
+
                 r = { ':Trouble lsp_references<cr>', "References" },
                 -- buf_set_keymap(bufnr, 'n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
                 R = { ':lua vim.lsp.buf.rename()<cr>', "Rename" },
                 -- buf_set_keymap(bufnr, 'n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
-                a = { ':FzfLua lsp_code_actions<cr>', "Code actions" },
+                -- a = { ':FzfLua lsp_code_actions<cr>', "Code actions" },
+                a = { ':lua vim.lsp.buf.code_action()<CR>', "Code actions" },
 
                 -- buf_set_keymap(bufnr, 'n', '<leader>e', ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
                 e = { ':lua vim.diagnostic.open_float()<CR>', "Show Line Diagnostics" },
@@ -133,8 +133,8 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if status_ok then
     capabilities = cmp_nvim_lsp.default_capabilities(
-            vim.lsp.protocol.make_client_capabilities()
-        )
+        vim.lsp.protocol.make_client_capabilities()
+    )
 end
 
 
