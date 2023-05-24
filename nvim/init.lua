@@ -1,4 +1,4 @@
-require 'packages'
+require 'mesuca.lazy'
 
 require 'mappings'
 require 'functions'
