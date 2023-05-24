@@ -2,4 +2,11 @@ if not require "lib.utils".has_module("notify") then
     return
 end
 
-vim.notify = require('notify')
+local notify = require('notify')
+
+vim.notify = notify
+
+notify.setup({
+    render = "compact",
+    -- timeout = 7000,
+})

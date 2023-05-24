@@ -125,7 +125,6 @@ local on_attach = function(client, bufnr)
         ]],
         false
     )
-    vim.notify(client.name)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

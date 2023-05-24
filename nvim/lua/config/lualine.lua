@@ -76,16 +76,30 @@ lualine.setup({
     sections = {
         lualine_a = { mode, },
         lualine_b = { branch },
-        lualine_c = { diagnostics, "filename" },
-        lualine_x = { diff, spaces, "encoding", "fileformat", filetype },
+        lualine_c = { diagnostics, filetype, "filename" },
+        lualine_x = {
+            {
+                require("noice").api.status.command.get,
+                cond = require("noice").api.status.command.has,
+                color = { fg = "#ff9e64" },
+            },
+            {
+                require("noice").api.status.mode.get,
+                cond = require("noice").api.status.mode.has,
+                color = { fg = "#ff2222" },
+                opt = {
+                    replace = true,
+                }
+            },
+            diff, spaces, "encoding", "fileformat" },
         lualine_y = { location },
         lualine_z = { progress },
     },
     inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = { "filename" },
-        lualine_x = { filetype },
+        lualine_c = { filetype, "filename" },
+        lualine_x = {},
         lualine_y = {},
         lualine_z = {},
     },
