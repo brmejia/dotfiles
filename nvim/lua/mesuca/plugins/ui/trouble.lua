@@ -1,5 +1,6 @@
 return {
     "folke/trouble.nvim",
+    enabled = true,
     dependencies = "kyazdani42/nvim-web-devicons",
     opts = {
         position = "bottom",            -- position of the list can be: bottom, top, left, right

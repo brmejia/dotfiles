@@ -1,6 +1,7 @@
 return {
     { import = "mesuca.plugins.ui" },
     { import = "mesuca.plugins.themes" },
+
     "nvim-lua/plenary.nvim",
 
     -- UX / UI
@@ -32,9 +33,7 @@ return {
     --     config = lazy_config "config.treesitter",
     --     build = ":TSUpdate"
     -- },
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-    },
+    { "nvim-treesitter/nvim-treesitter-context", },
     -- {
     --     'm-demare/hlargs.nvim',
     --     dependencies = { 'nvim-treesitter/nvim-treesitter' },
@@ -45,23 +44,16 @@ return {
     --     dependencies = 'kevinhwang91/promise-async',
     --     config = lazy_config "config.nvim-ufo",
     -- },
-    {
-        "ron-rs/ron.vim"
-    },
-
+    { "ron-rs/ron.vim" },
     -- -- Coding
-    -- {
-    --     "williamboman/mason.nvim",
-    --     config = lazy_config "config.mason",
-    -- },
-    -- {
-    --     "williamboman/mason-lspconfig.nvim",
-    --     config = lazy_config "config.lsp.mason-lspconfig",
-    -- },
-    -- {
-    --     "neovim/nvim-lspconfig",
-    --     config = lazy_config "config.lsp",
-    -- },
+    {
+        "williamboman/mason.nvim",
+        build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+        opts = {},
+    },
+    {
+        import = "mesuca.plugins.lsp"
+    },
     -- {
     --     "jose-elias-alvarez/null-ls.nvim",
     --     dependencies = {
@@ -79,10 +71,6 @@ return {
     "tpope/vim-repeat",
     -- --  "windwp/nvim-autopairs"
     -- {
-    --     "echasnovski/mini.nvim",
-    --     config = lazy_config "config.mini-nvim",
-    -- },
-    -- {
     --     'TimUntersberger/neogit',
     --     dependencies = {
     --         'nvim-lua/plenary.nvim',
@@ -99,22 +87,24 @@ return {
     --     config = lazy_config "config.luasnip",
     -- },
 
+-- return {
+--     "hrsh7th/nvim-cmp",
+--     config = lazy_config 'config.nvim-cmp',
+--     -- LSP completion source for nvim-cmp
+--     "hrsh7th/cmp-nvim-lsp",
+--     "hrsh7th/cmp-nvim-lsp-signature-help",
+--     -- Snippet completion source for nvim-cmp
+    -- For vsnip rs.
+--     "hrsh7th/cmp-vsnip",
+--     -- For luasnip rs.
+--     "saadparwaiz1/cmp_luasnip",
+--     -- Other full completion sources
+--     "hrsh7th/cmp-path",
+--     "hrsh7th/cmp-buffer",
+
+    -- {import = "mesuca.plugins.lsp"}
+-- },
     -- -- Completion framework
-    -- {
-    --     "hrsh7th/nvim-cmp",
-    --     config = lazy_config 'config.nvim-cmp',
-    --     -- LSP completion source for nvim-cmp
-    --     "hrsh7th/cmp-nvim-lsp",
-    --     "hrsh7th/cmp-nvim-lsp-signature-help",
-    --     -- Snippet completion source for nvim-cmp
-    --     -- For vsnip rs.
-    --     "hrsh7th/cmp-vsnip",
-    --     -- For luasnip rs.
-    --     "saadparwaiz1/cmp_luasnip",
-    --     -- Other full completion sources
-    --     "hrsh7th/cmp-path",
-    --     "hrsh7th/cmp-buffer",
-    -- },
     -- -- Language Specific
     -- {
     --     "simrat39/rust-tools.nvim",
@@ -135,9 +125,6 @@ return {
     { "navarasu/onedark.nvim" },
     { "rebelot/kanagawa.nvim" },
     { "folke/tokyonight.nvim" },
-    {
-        "catppuccin/nvim",
-        name = "catppuccin",
-    },
+    { "catppuccin/nvim" },
 
 }
