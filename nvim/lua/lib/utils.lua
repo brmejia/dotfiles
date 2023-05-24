@@ -35,10 +35,10 @@ end
 
 function utils.has_module(name)
     if pcall(
-        function()
-            require(name)
-        end
-    )
+            function()
+                require(name)
+            end
+        )
     then
         return true
     else
