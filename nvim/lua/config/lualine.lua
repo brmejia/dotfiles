@@ -62,6 +62,29 @@ local spaces = function()
     return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 
+
+local noice_status_command = {}
+local noice_status_mode = {}
+
+if require "lib.utils".has_module("noice") then
+    local noice = require "noice"
+
+    noice_status_command = {
+        noice.api.status.command.get,
+        cond = noice.api.status.command.has,
+        color = { fg = "#ff9e64" },
+    }
+    noice_status_mode = {
+        noice.api.status.mode.get,
+        cond = noice.api.status.mode.has,
+        color = { fg = "#ff2222" },
+        opt = {
+            replace = true,
+        }
+    }
+end
+
+
 lualine.setup({
     options = {
         icons_enabled = true,
@@ -78,19 +101,8 @@ lualine.setup({
         lualine_b = { branch },
         lualine_c = { diagnostics, filetype, "filename" },
         lualine_x = {
-            {
-                require("noice").api.status.command.get,
-                cond = require("noice").api.status.command.has,
-                color = { fg = "#ff9e64" },
-            },
-            {
-                require("noice").api.status.mode.get,
-                cond = require("noice").api.status.mode.has,
-                color = { fg = "#ff2222" },
-                opt = {
-                    replace = true,
-                }
-            },
+            noice_status_command,
+            noice_status_mode,
             diff, spaces, "encoding", "fileformat" },
         lualine_y = { location },
         lualine_z = { progress },
