@@ -20,6 +20,12 @@ return require("packer").startup(function(use)
         "alexghergh/nvim-tmux-navigation",
         config = require "config.nvim-tmux-navigation",
     }
+    use {
+        'nvim-telescope/telescope.nvim',
+        branch = '0.1.x',
+        requires = { { 'nvim-lua/plenary.nvim' } },
+        config = require "config.telescope",
+    }
     -- use 'feline-nvim/feline.nvim'
     use { "nvim-lualine/lualine.nvim",
         config = require "config.lualine",
@@ -70,11 +76,11 @@ return require("packer").startup(function(use)
     }
 
     -- Search
-    use { "ibhagwan/fzf-lua",
-        -- optional for icon support
-        requires = { "kyazdani42/nvim-web-devicons" },
-        config = require("config.fzf-lua"),
-    }
+    -- use { "ibhagwan/fzf-lua",
+    --     -- optional for icon support
+    --     requires = { "kyazdani42/nvim-web-devicons" },
+    --     config = require("config.fzf-lua"),
+    -- }
     use {
         "unblevable/quick-scope",
         config = require("config.quick-scope")
