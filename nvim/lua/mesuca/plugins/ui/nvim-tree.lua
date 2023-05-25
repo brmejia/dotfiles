@@ -1,14 +1,10 @@
 return {
     "kyazdani42/nvim-tree.lua",
     dependencies = {
-        "kyazdani42/nvim-web-devicons",     -- optional, for file icon
+        "kyazdani42/nvim-web-devicons", -- optional, for file icon
     },
     -- config = lazy_config "config.nvim-tree",
     config = function()
-        if not require "lib.utils".has_module("nvim-tree") then
-            return
-        end
-
         -- disable netrw at the very start of your init.lua (strongly advised)
         vim.g.loaded_netrw = 1
         vim.g.loaded_netrwPlugin = 1

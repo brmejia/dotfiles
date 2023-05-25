@@ -15,10 +15,6 @@ return {
     },
     { "kyazdani42/nvim-web-devicons" },
     {
-        "kevinhwang91/nvim-hlslens",
-        -- config = lazy_config("config.hlslens")
-    },
-    {
         "petertriho/nvim-scrollbar",
         dependencies = { "kevinhwang91/nvim-hlslens" },
         -- config = lazy_config "config.nvim-scrollbar",
