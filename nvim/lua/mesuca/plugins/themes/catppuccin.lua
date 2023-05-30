@@ -1,10 +1,6 @@
 local local_config = function()
-    if not require("lib.utils").has_module("catppuccin") then
-        return
-    end
-
     local catppuccin = require("catppuccin")
-    local cp = require("catppuccin.palettes").get_palette() -- fetch colors from g:catppuccin_flavour palette
+    -- local cp = require("catppuccin.palettes").get_palette() -- fetch colors from g:catppuccin_flavour palette
 
 
     local setup_opts = {
@@ -97,6 +93,9 @@ end
 
 return {
     "catppuccin/nvim",
+    dependencies = {
+        { "navarasu/onedark.nvim" },
+    },
     name = "catppuccin",
     config = local_config
 }

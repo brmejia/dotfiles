@@ -19,12 +19,6 @@ return {
         dependencies = { "kevinhwang91/nvim-hlslens" },
         -- config = lazy_config "config.nvim-scrollbar",
     },
-    {
-        "akinsho/bufferline.nvim",
-        version = "*",
-        dependencies = "kyazdani42/nvim-web-devicons",
-        -- config = lazy_config("config.bufferline")
-    },
     -- {
     --     "stevearc/dressing.nvim",
     --     -- config = lazy_config "config.dressing",
