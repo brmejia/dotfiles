@@ -7,3 +7,5 @@ vim/sessions
 nvim/plugs
 nvim/.netrwhist
 nvim/autoload/plug.vim
+nvim/**/lazy-lock.json
+nvim/**/.luarc.json
