@@ -1,8 +1,7 @@
 return {
     "saecki/crates.nvim",
     dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function ()
-
+    config = function()
         local crates = require("crates")
         crates.setup {
             null_ls = {
@@ -27,4 +26,3 @@ return {
     -- event = { "BufRead Cargo.toml" },
     ft = { "rust", "toml" },
 }
-

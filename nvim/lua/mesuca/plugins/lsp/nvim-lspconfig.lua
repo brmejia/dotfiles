@@ -150,7 +150,6 @@ local lsp_keymaps = function(client, bufnr)
             -- Code action groups
             vim.keymap.set("n", "<leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
         end
-
     end
 end
 
@@ -177,8 +176,8 @@ return {
     dependencies = {
         "rcarriga/nvim-notify",
         -- { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-        { "simrat39/rust-tools.nvim" },
-        { "folke/neodev.nvim", opts = {} },
+        "simrat39/rust-tools.nvim",
+        "folke/neodev.nvim",
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "hrsh7th/cmp-nvim-lsp",
@@ -340,10 +339,10 @@ return {
                 server_opts = server_opts == true and {} or server_opts
                 -- run manual setup if mason=false or if this is a server that cannot be installed with mason-lspconfig
                 if server_opts.mason == false or not vim.tbl_contains(all_mslp_servers, server) then
-                    vim.notify("[ LSP ]" .. server)
+                    -- vim.notify("[ LSP ]" .. server)
                     setup_server(server)
                 else
-                    vim.notify("[MASON]" .. server)
+                    -- vim.notify("[MASON]" .. server)
                     ensure_installed[#ensure_installed + 1] = server
                 end
             end

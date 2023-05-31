@@ -4,7 +4,7 @@ return {
     dependencies = {
         'nvim-lua/plenary.nvim',
     },
-    opts = function ()
+    opts = function()
         local null_ls = require("null-ls")
 
         null_ls.setup({
@@ -16,4 +16,3 @@ return {
     end
 
 }
-

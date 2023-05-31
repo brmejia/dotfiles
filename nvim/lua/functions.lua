@@ -24,10 +24,6 @@ local autocmd = vim.api.nvim_create_autocmd
 
 local mesuca_group = augroup("MesucaGroup", { clear = true })
 
-function R(name)
-    require("plenary.reload").reload_module(name)
-end
-
 -- Don't auto commenting new lines
 -- autocmd('BufEnter', {
 --     pattern = '',
@@ -50,6 +46,11 @@ autocmd({ "BufWritePre" }, {
     group = mesuca_group,
     pattern = "*",
     callback = function()
+        if not require "lib.utils".has_module("mini.trailspace") then
+            vim.notify("mini.trailspace is not installed")
+            return
+        end
+
         require("mini.trailspace").trim()
     end,
 })

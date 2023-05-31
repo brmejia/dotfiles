@@ -1,8 +1,7 @@
 require 'mappings'
+require 'options'
+require 'functions'
 
 require 'mesuca.lazy'
-
-require 'functions'
-require 'options'
 
 require 'config.themes'
