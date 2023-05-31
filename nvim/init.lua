@@ -4,4 +4,4 @@ require 'functions'
 
 require 'mesuca.lazy'
 
-require 'config.themes'
+require 'mesuca.plugins.themes'

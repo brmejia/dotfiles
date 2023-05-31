@@ -1,6 +1,5 @@
 return {
     { import = "mesuca.plugins.ui" },
-    { import = "mesuca.plugins.themes" },
 
     "nvim-lua/plenary.nvim",
     -- Syntax Highlight
@@ -56,5 +55,5 @@ return {
 
 
     { import = "mesuca.plugins.lsp" },
-
+    { import = "mesuca.plugins.themes" },
 }
