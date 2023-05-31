@@ -36,6 +36,8 @@ return {
                 'vim',
                 'markdown',
                 'markdown_inline',
+                "kdl",
+                "ron",
             },
 
             highlight = {
