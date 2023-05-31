@@ -45,6 +45,11 @@ end
 -- keymap({ "n", "i" }, "<C-->", function() ResizeGuiFont(-1) end)
 -- keymap({ "n", "i" }, "<C-+>", function() ResizeGuiFont(1) end)
 --
+--
+
 return {
-    -- { import = "mesuca.plugins.themes.catppuccin" },
+    -- Themes
+    "navarasu/onedark.nvim",
+    "rebelot/kanagawa.nvim",
+    "folke/tokyonight.nvim",
 }
