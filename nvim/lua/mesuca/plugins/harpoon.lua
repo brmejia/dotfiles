@@ -1,8 +1,7 @@
 return {
     "ThePrimeagen/harpoon",
-
+    dependencies = { "nvim-telescope/telescope.nvim" },
     -- enabled = false,
-
     config = function()
         local harpoon = require("harpoon")
         local harpoon_ui = require("harpoon.ui")
@@ -23,7 +22,7 @@ return {
             tmux_autoclose_windows = false,
 
             -- filetypes that you want to prevent from adding to the harpoon list menu.
-            excluded_filetypes = { "harpoon", "TelescopePrompt" },
+            excluded_filetypes = { "harpoon", "TelescopePrompt", "NvimTree" },
 
             -- set marks specific to each git branch inside git repository
             mark_branch = true,
@@ -31,6 +30,7 @@ return {
                 width = math.floor(3 * vim.api.nvim_win_get_width(0) / 5),
             },
         })
+
         if require("lib.utils").has_module("which-key") then
             local wk = require("which-key")
             local leader_mappings = {
@@ -38,9 +38,11 @@ return {
                     name = "Harpoon",
                     h = {
                         function()
-                            harpoon_ui.toggle_quick_menu()
+                            local telescope = require("telescope")
+                            telescope.load_extension("harpoon")
+                            telescope.extensions.harpoon.marks()
                         end,
-                        "Quick menu",
+                        "Marks Menu",
                     },
                     a = {
                         function()
