@@ -2,11 +2,11 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         config = function()
-            if not require "lib.utils".has_module("lualine") then
+            if not require("lib.utils").has_module("lualine") then
                 return
             end
 
-            local lualine = require "lualine"
+            local lualine = require("lualine")
 
             local hide_in_width = function()
                 return vim.fn.winwidth(0) > 80
@@ -26,7 +26,7 @@ return {
                 "diff",
                 colored = true,
                 symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-                cond = hide_in_width
+                cond = hide_in_width,
             }
 
             local mode = {
@@ -72,14 +72,14 @@ return {
                     icons_enabled = true,
                     theme = "auto",
                     -- component_separators = '|',
-                    component_separators = { left = '', right = '▎' },
+                    component_separators = { left = "", right = "▎" },
                     -- section_separators = { left = "", right = "" },
-                    section_separators = { left = '', right = '' },
+                    section_separators = { left = "", right = "" },
                     disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
                     always_divide_middle = true,
                 },
                 sections = {
-                    lualine_a = { mode, },
+                    lualine_a = { mode },
                     lualine_b = { branch },
                     lualine_c = { diagnostics, filetype, "filename" },
                     lualine_x = {
@@ -94,9 +94,13 @@ return {
                             color = { fg = "#ff2222" },
                             opt = {
                                 replace = true,
-                            }
+                            },
                         },
-                        diff, spaces, "encoding", "fileformat" },
+                        diff,
+                        spaces,
+                        "encoding",
+                        "fileformat",
+                    },
                     lualine_y = { location },
                     lualine_z = { progress },
                 },
@@ -111,6 +115,6 @@ return {
                 tabline = {},
                 extensions = {},
             })
-        end
+        end,
     },
 }

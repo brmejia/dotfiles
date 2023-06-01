@@ -20,11 +20,11 @@ local fmta = require("luasnip.extras.fmt").fmta
 local types = require("luasnip.util.types")
 local conds = require("luasnip.extras.expand_conditions")
 
-
 return {
     s(
-        'fn',
-        fmta([[
+        "fn",
+        fmta(
+            [[
                 fn <1>(<2>) <3>
                     <4>
                 }
@@ -33,10 +33,13 @@ return {
                 i(1, "name"),
                 c(2, {
                     t(""),
-                    sn(nil, fmt("{1}: {2}", {
-                        i(1, "x"),
-                        i(2, "usize"),
-                    })),
+                    sn(
+                        nil,
+                        fmt("{1}: {2}", {
+                            i(1, "x"),
+                            i(2, "usize"),
+                        })
+                    ),
                 }),
                 c(3, {
                     t("{"),
@@ -48,7 +51,8 @@ return {
     ),
     s(
         "aoc_solution",
-        fmta([[
+        fmta(
+            [[
                 use crate::solutions::{Day, DaySolution, PartResult, Solution};
 
                 #[derive(Debug)]
@@ -106,7 +110,8 @@ return {
     ),
     s(
         "aoc_test",
-        fmta([[
+        fmta(
+            [[
                 #[cfg(test)]
                 mod tests {
                     use super::*;
@@ -132,5 +137,5 @@ return {
                 i(3, "42"),
             }
         )
-    )
+    ),
 }

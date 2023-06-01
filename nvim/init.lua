@@ -1,5 +1,5 @@
-require 'mappings'
-require 'options'
-require 'functions'
+require("mappings")
+require("options")
+require("functions")
 
-require 'mesuca.lazy'
+require("mesuca.lazy")

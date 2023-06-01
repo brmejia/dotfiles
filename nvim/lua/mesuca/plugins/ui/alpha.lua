@@ -3,6 +3,6 @@ return {
     event = "VimEnter",
     dependencies = { "kyazdani42/nvim-web-devicons" },
     opts = function()
-        return require 'alpha.themes.startify'.config
+        return require("alpha.themes.startify").config
     end,
 }

@@ -9,19 +9,19 @@ return {
         vim.g.loaded_netrw = 1
         vim.g.loaded_netrwPlugin = 1
 
-        if require "lib.utils".has_module("which-key") then
-            local wk = require "which-key"
+        if require("lib.utils").has_module("which-key") then
+            local wk = require("which-key")
             local mappings = {
                 ["<F1>"] = { ":NvimTreeToggle<cr>", "FileTree - Toggle" },
                 t = { ":NvimTreeFindFileToggle<cr>", "FileTree - Find current file" },
             }
 
-            local opts = { prefix = '<leader>', }
+            local opts = { prefix = "<leader>" }
             wk.register(mappings, opts)
         end
         -- setup with all defaults
         -- each of these are documented in `:help nvim-tree.OPTION_NAME`
-        require 'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
+        require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
             sort_by = "name",
             view = {
                 width = 50,
@@ -42,6 +42,6 @@ return {
                     error = "",
                 },
             },
-        }
-    end
+        })
+    end,
 }

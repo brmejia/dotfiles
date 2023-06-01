@@ -63,7 +63,7 @@ return {
                 -- default: false
                 auto_focus = false,
             },
-        }
+        },
     },
     -- config = function(_, opts)
     --     local rt = require "rust-tools"

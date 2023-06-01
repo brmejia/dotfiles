@@ -20,7 +20,6 @@ local fmta = require("luasnip.extras.fmt").fmta
 local types = require("luasnip.util.types")
 local conds = require("luasnip.extras.expand_conditions")
 
-
 return {
     s(
         "reqnvim",
@@ -40,7 +39,7 @@ return {
                 i(0),
             }
         )
-    )
+    ),
 
     --     s("vreq", {
     --         t("if not require \"lib.utils\".has_module(\""),

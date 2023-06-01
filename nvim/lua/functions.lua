@@ -18,7 +18,6 @@ nnoremap <silent> <C-A> :ZoomToggle<CR>
 
 ]])
 
-
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
@@ -38,15 +37,14 @@ autocmd("TextYankPost", {
             higroup = "IncSearch",
             timeout = 100,
         })
-    end
+    end,
 })
-
 
 autocmd({ "BufWritePre" }, {
     group = mesuca_group,
     pattern = "*",
     callback = function()
-        if not require "lib.utils".has_module("mini.trailspace") then
+        if not require("lib.utils").has_module("mini.trailspace") then
             vim.notify("mini.trailspace is not installed")
             return
         end

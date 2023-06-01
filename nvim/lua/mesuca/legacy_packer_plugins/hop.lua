@@ -1,12 +1,11 @@
-if not require "lib.utils".has_module("hop") then
+if not require("lib.utils").has_module("hop") then
     return
 end
 
 -- you can configure Hop the way you like here; see :h hop-config
-require 'hop'.setup {
-    keys = 'etovxqpdygfblzhckisuran'
-}
-
+require("hop").setup({
+    keys = "etovxqpdygfblzhckisuran",
+})
 
 -- if require "lib.utils".has_module("which-key") then
 

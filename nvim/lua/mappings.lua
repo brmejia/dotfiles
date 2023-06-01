@@ -1,5 +1,5 @@
 -- Shorten function name
-local keymap = require "lib.utils".keymap
+local keymap = require("lib.utils").keymap
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>")
@@ -13,7 +13,6 @@ vim.g.maplocalleader = " "
 --   visual_block_mode = "x",
 --   term_mode = "t",
 --   command_mode = "c",
-
 
 ------------
 -- Normal --
@@ -74,12 +73,10 @@ keymap("n", "<C-Down>", ":resize +2<CR>")
 keymap("n", "<C-Left>", ":vertical resize +2<CR>")
 keymap("n", "<C-Right>", ":vertical resize -2<CR>")
 
-
 -- Move text up and down
 keymap("n", "<A-j>", ":move .+1<CR>==")
 keymap("n", "J", "mzJ`z")
 keymap("n", "<A-k>", ":move .-2<CR>==")
-
 
 -- Arrows movements
 keymap({ "n", "i" }, "<Up>", "<cmd>lua vim.notify_once('Utiliza k en lugar de Up', 'error')<CR>")
@@ -88,10 +85,10 @@ keymap({ "n", "i" }, "<Left>", "<cmd>lua vim.notify_once('Utiliza h en lugar de 
 keymap({ "n", "i" }, "<Right>", "<cmd>lua vim.notify_once('Utiliza l en lugar de Right', 'error')<CR>")
 
 -- Clipboard
-keymap({ "n", "v" }, "<leader>y", "\"+y")             -- Yank TextObject into system Clipboard
-keymap("n", "<leader>Y", "\"+Y", { noremap = false }) -- Yank line into system Clipboard
-keymap({ "n", "v" }, "<leader>d", "\"_d")             -- Delete selection/line without yanking
-keymap({ "n", "v" }, "<leader>P", "\"+gP")            -- Paste from system clipboard
+keymap({ "n", "v" }, "<leader>y", '"+y') -- Yank TextObject into system Clipboard
+keymap("n", "<leader>Y", '"+Y', { noremap = false }) -- Yank line into system Clipboard
+keymap({ "n", "v" }, "<leader>d", '"_d') -- Delete selection/line without yanking
+keymap({ "n", "v" }, "<leader>P", '"+gP') -- Paste from system clipboard
 
 -- <C-_> is equivalent to <C-/> for Neovim
 -- keymap("n", "<C-_>", "<cmd>Commentary<CR>")
@@ -101,7 +98,7 @@ keymap("n", "<C-_>", "gc")
 keymap("n", "Q", "<Nop>")
 
 -- Disable annoying command line thing
-keymap('n', 'q:', ':q<CR>')
+keymap("n", "q:", ":q<CR>")
 
 keymap("n", "<C-c>", "<ESC>")
 ------------
@@ -138,7 +135,7 @@ keymap("v", "y", "myy`hay")
 keymap("v", "Y", "myY`y")
 
 -- Clipboard
-keymap("x", "<leader>p", "\"_dP") -- Paste without yanking
+keymap("x", "<leader>p", '"_dP') -- Paste without yanking
 
 ------------------
 -- Visual Block --
@@ -148,7 +145,6 @@ keymap("x", "<leader>p", "\"_dP") -- Paste without yanking
 -- keymap("v", "J", ":move '>+1<CR>gv=gv")
 -- keymap("v", "<A-k>", ":move '<-2<CR>gv=gv")
 -- keymap("v", "K", ":move '<-2<CR>gv=gv")
-
 
 -- vim.cmd([[
 -- " Git mappings

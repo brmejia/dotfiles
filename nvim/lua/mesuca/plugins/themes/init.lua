@@ -29,12 +29,22 @@ end
 ResetGuiFont()
 
 -- Keymaps
-if require "lib.utils".has_module("which-key") then
-    local wk = require "which-key"
+if require("lib.utils").has_module("which-key") then
+    local wk = require("which-key")
 
     local mappings = {
-        ["<C-->"] = { function() ResizeGuiFont(-1) end, "Decrease font size" },
-        ["<C-+>"] = { function() ResizeGuiFont(1) end, "Increase font size" },
+        ["<C-->"] = {
+            function()
+                ResizeGuiFont(-1)
+            end,
+            "Decrease font size",
+        },
+        ["<C-+>"] = {
+            function()
+                ResizeGuiFont(1)
+            end,
+            "Increase font size",
+        },
     }
     local nopts = { mode = "n", noremap = true, silent = true }
     wk.register(mappings, nopts)

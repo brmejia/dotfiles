@@ -1,5 +1,5 @@
 return {
-    'codota/tabnine-nvim',
+    "codota/tabnine-nvim",
     enabled = false,
     build = "./dl_binaries.sh",
     -- opts = {

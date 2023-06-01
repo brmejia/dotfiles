@@ -1,15 +1,15 @@
 return {
-    'TimUntersberger/neogit',
+    "TimUntersberger/neogit",
     dependencies = {
-        'nvim-lua/plenary.nvim',
-        'sindrets/diffview.nvim',
+        "nvim-lua/plenary.nvim",
+        "sindrets/diffview.nvim",
     },
     config = function()
-        if not require "lib.utils".has_module("neogit") then
+        if not require("lib.utils").has_module("neogit") then
             return
         end
 
-        local neogit = require "neogit"
+        local neogit = require("neogit")
 
         neogit.setup({
             integrations = {
@@ -25,51 +25,56 @@ return {
                 --   }
                 -- }
                 --
-                diffview = true
+                diffview = true,
             },
             -- Setting any section to `false` will make the section not render at all
             sections = {
                 untracked = {
-                    folded = true
+                    folded = true,
                 },
                 unstaged = {
-                    folded = false
+                    folded = false,
                 },
                 staged = {
-                    folded = false
+                    folded = false,
                 },
                 stashes = {
-                    folded = true
+                    folded = true,
                 },
                 unpulled = {
-                    folded = true
+                    folded = true,
                 },
                 unmerged = {
-                    folded = false
+                    folded = false,
                 },
                 recent = {
-                    folded = true
+                    folded = true,
                 },
             },
         })
 
-
-        if require "lib.utils".has_module("which-key") then
-            local wk = require "which-key"
+        if require("lib.utils").has_module("which-key") then
+            local wk = require("which-key")
             local leader_mappings = {
                 g = {
                     name = "Git",
-                    S = { function()
-                        neogit.open()
-                    end, "Current buffer" },
-                    s = { function()
-                        neogit.open({ cwd = vim.fn.expand("%:p:h") })
-                    end, "Working directory" },
+                    S = {
+                        function()
+                            neogit.open()
+                        end,
+                        "Current buffer",
+                    },
+                    s = {
+                        function()
+                            neogit.open({ cwd = vim.fn.expand("%:p:h") })
+                        end,
+                        "Working directory",
+                    },
                 },
             }
 
-            local opts = { prefix = '<leader>', }
+            local opts = { prefix = "<leader>" }
             wk.register(leader_mappings, opts)
         end
-    end
+    end,
 }

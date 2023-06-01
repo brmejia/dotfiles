@@ -1,43 +1,43 @@
 return {
     "lewis6991/gitsigns.nvim",
     config = function()
-        local gs = require "gitsigns"
+        local gs = require("gitsigns")
 
         gs.setup({
             signs = {
-                add          = { hl = "GitSignsAdd", text = "▎", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-                change       = {
+                add = { hl = "GitSignsAdd", text = "▎", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
+                change = {
                     hl = "GitSignsChange",
                     text = "▎",
                     numhl = "GitSignsChangeNr",
-                    linehl = "GitSignsChangeLn"
+                    linehl = "GitSignsChangeLn",
                 },
-                delete       = {
+                delete = {
                     hl = "GitSignsDelete",
                     text = "󰦺",
                     -- text = "_",
                     numhl = "GitSignsDeleteNr",
-                    linehl = "GitSignsDeleteLn"
+                    linehl = "GitSignsDeleteLn",
                 },
-                topdelete    = {
+                topdelete = {
                     hl = "GitSignsDelete",
                     text = "󰧆",
                     -- text = "‾",
                     numhl = "GitSignsDeleteNr",
-                    linehl = "GitSignsDeleteLn"
+                    linehl = "GitSignsDeleteLn",
                 },
                 changedelete = {
                     hl = "GitSignsChange",
                     text = "▎",
                     numhl = "GitSignsChangeNr",
-                    linehl = "GitSignsChangeLn"
+                    linehl = "GitSignsChangeLn",
                 },
-                untracked    = { hl = 'GitSignsAdd', text = '┆', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
+                untracked = { hl = "GitSignsAdd", text = "┆", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
             },
         })
 
-        if require "lib.utils".has_module("which-key") then
-            local wk = require "which-key"
+        if require("lib.utils").has_module("which-key") then
+            local wk = require("which-key")
             local leader_mappings = {
                 g = {
                     name = "Git",
@@ -47,10 +47,10 @@ return {
                     r = { ":Gitsigns reset_hunk<cr>", "Reset hunk" },
                     p = { ":Gitsigns prev_hunk<cr>zz", "Previous Hunk" },
                     n = { ":Gitsigns next_hunk<cr>zz", "Next Hunk" },
-                }
+                },
             }
 
-            local opts = { prefix = '<leader>', }
+            local opts = { prefix = "<leader>" }
             wk.register(leader_mappings, opts)
         end
     end,

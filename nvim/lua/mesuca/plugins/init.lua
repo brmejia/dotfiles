@@ -30,7 +30,6 @@ return {
     --     config = lazy_config "config.neogit",
     -- },
 
-
     -- Themes
     { "navarasu/onedark.nvim" },
     { "rebelot/kanagawa.nvim" },
@@ -53,7 +52,6 @@ return {
     -- -- config = config("config.hop")
 
     -- -- }
-
 
     { import = "mesuca.plugins.lsp" },
 }

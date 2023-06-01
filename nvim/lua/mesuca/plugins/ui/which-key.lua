@@ -1,9 +1,9 @@
 return {
     "folke/which-key.nvim",
     config = function()
-        local wk = require "which-key"
+        local wk = require("which-key")
 
-        wk.setup {
+        wk.setup({
             plugins = {
                 marks = false,
                 registers = false,
@@ -15,11 +15,10 @@ return {
                     windows = false,
                     nav = true,
                     z = true,
-                    g = true
-                }
-            }
-        }
-
+                    g = true,
+                },
+            },
+        })
 
         local mappings = {
             q = { ":q<cr>", "Quit" },
@@ -42,7 +41,7 @@ return {
             -- }
         }
 
-        local opts = { prefix = '<leader>' }
+        local opts = { prefix = "<leader>" }
         wk.register(mappings, opts)
     end,
 }

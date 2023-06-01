@@ -1,9 +1,9 @@
 local setup_diagnostics = function()
     local signs = {
         { name = "DiagnosticSignError", text = "" },
-        { name = "DiagnosticSignWarn",  text = "" },
-        { name = "DiagnosticSignHint",  text = "" },
-        { name = "DiagnosticSignInfo",  text = "" },
+        { name = "DiagnosticSignWarn", text = "" },
+        { name = "DiagnosticSignHint", text = "" },
+        { name = "DiagnosticSignInfo", text = "" },
     }
 
     for _, sign in ipairs(signs) do
@@ -64,7 +64,7 @@ end
 local lsp_keymaps = function(client, bufnr)
     -- Funtion aliases
     -- local buf_set_option = require('lib.utils').buf_set_option
-    local buf_set_keymap = require('lib.utils').buf_keymap
+    local buf_set_keymap = require("lib.utils").buf_keymap
 
     -- ?????????? https://github.com/jessarcher/dotfiles/blob/master/nvim/lua/user/plugins/lspconfig.lua
     -- buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -73,10 +73,9 @@ local lsp_keymaps = function(client, bufnr)
     --buf_set_keymap(bufnr, 'n', '<C-k>', ':lua vim.lsp.buf.signature_help()<CR>')
     --buf_set_keymap(bufnr, 'n', '<leader>wl', ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
 
-
     -- WhichKey Mappings
-    if require "lib.utils".has_module("which-key") then
-        local wk = require "which-key"
+    if require("lib.utils").has_module("which-key") then
+        local wk = require("which-key")
         local mappings = {
             l = {
                 name = "LSP",
@@ -84,67 +83,67 @@ local lsp_keymaps = function(client, bufnr)
                 k = { ":lua vim.lsp.buf.signature_help()<cr>", "Signature Help" },
                 K = { ":lua vim.lsp.buf.hover()<cr>", "Hover Commands" },
                 --buf_set_keymap(bufnr, 'n', '<leader>wa', ':lua vim.lsp.buf.add_workspace_folder()<CR>')
-                w = { ':lua vim.lsp.buf.add_workspace_folder()<cr>', "Add Workspace Folder" },
+                w = { ":lua vim.lsp.buf.add_workspace_folder()<cr>", "Add Workspace Folder" },
                 --buf_set_keymap(bufnr, 'n', '<leader>wr', ':lua vim.lsp.buf.remove_workspace_folder()<CR>')
-                W = { ':lua vim.lsp.buf.remove_workspace_folder()<cr>', "Remove Workspace Folder" },
+                W = { ":lua vim.lsp.buf.remove_workspace_folder()<cr>", "Remove Workspace Folder" },
                 l = {
-                    ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>',
-                    "List Workspace Folders"
+                    ":lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>",
+                    "List Workspace Folders",
                 },
                 -- buf_set_keymap(bufnr, 'n', 'gi', ':lua vim.lsp.buf.implementation()<CR>')
                 --buf_set_keymap(bufnr, 'n', '<leader>q', ':lua vim.lsp.diagnostic.set_loclist()<CR>')
-                q = { ':Trouble loclist<cr>', "Loclist" },
-                f = { ':Trouble quickfix<cr>', "Quickfix" },
-                I = { ':lua vim.lsp.buf.implementation()<CR>', "Implementations" },
+                q = { ":Trouble loclist<cr>", "Loclist" },
+                f = { ":Trouble quickfix<cr>", "Quickfix" },
+                I = { ":lua vim.lsp.buf.implementation()<CR>", "Implementations" },
 
                 -- buf_set_keymap(bufnr, 'n', '<leader>D', ':lua vim.lsp.buf.type_definition()<CR>')
-                t = { ':lua vim.lsp.buf.type_definition()<CR>', "Type Definition" },
+                t = { ":lua vim.lsp.buf.type_definition()<CR>", "Type Definition" },
                 -- t = { ':Trouble lsp_type_definitions<cr>', "Type Definition" },
 
                 -- buf_set_keymap(bufnr, 'n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
-                d = { ':lua vim.lsp.buf.definition()<CR>', "Go To Definition" },
-                D = { ':lua vim.lsp.buf.declaration()<cr>', "Go To Declaration" },
+                d = { ":lua vim.lsp.buf.definition()<CR>", "Go To Definition" },
+                D = { ":lua vim.lsp.buf.declaration()<cr>", "Go To Declaration" },
                 -- r = { ':lua require("fzf-lua").lsp_references({ jump_to_single_result = true })<cr>', "Go To Definition" },
 
-                r = { ':Trouble lsp_references<cr>', "References" },
+                r = { ":Trouble lsp_references<cr>", "References" },
                 -- buf_set_keymap(bufnr, 'n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
-                R = { ':lua vim.lsp.buf.rename()<cr>', "Rename" },
+                R = { ":lua vim.lsp.buf.rename()<cr>", "Rename" },
                 -- buf_set_keymap(bufnr, 'n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
                 -- a = { ':FzfLua lsp_code_actions<cr>', "Code actions" },
-                a = { ':lua vim.lsp.buf.code_action()<CR>', "Code actions" },
+                a = { ":lua vim.lsp.buf.code_action()<CR>", "Code actions" },
 
                 -- buf_set_keymap(bufnr, 'n', '<leader>e', ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
-                e = { ':lua vim.diagnostic.open_float()<CR>', "Show Line Diagnostics" },
+                e = { ":lua vim.diagnostic.open_float()<CR>", "Show Line Diagnostics" },
 
-                x = { ':Trouble document_diagnostics<cr>', "Show Document Diagnostics" },
-                X = { ':Trouble workspace_diagnostics<cr>', "Show Workspace Diagnostics" },
+                x = { ":Trouble document_diagnostics<cr>", "Show Document Diagnostics" },
+                X = { ":Trouble workspace_diagnostics<cr>", "Show Workspace Diagnostics" },
 
                 -- buf_set_keymap(bufnr, 'n', ']d', ':lua vim.lsp.diagnostic.goto_next()<CR>')
                 -- n = { ':Lspsaga diagnostic_jump_next<cr>', "Go To Next Diagnostic" },
-                n = { ':lua vim.diagnostic.goto_next()<CR>', "Go To Next Diagnostic" },
+                n = { ":lua vim.diagnostic.goto_next()<CR>", "Go To Next Diagnostic" },
 
                 -- buf_set_keymap(bufnr, 'n', '[d', ':lua vim.lsp.diagnostic.goto_prev({border = "rounded"})<CR>')
                 -- N = { ':Lspsaga diagnostic_jump_prev<cr>', "Go To Previous Diagnostic" }
-                N = { ':lua vim.diagnostic.goto_prev({border = "rounded"})<CR>', "Go To Previous Diagnostic" }
+                N = { ':lua vim.diagnostic.goto_prev({border = "rounded"})<CR>', "Go To Previous Diagnostic" },
             },
         }
 
-        local opts = { prefix = '<leader>', buffer = bufnr }
+        local opts = { prefix = "<leader>", buffer = bufnr }
         wk.register(mappings, opts)
     end
 
     -- Set some keybinds conditional on server capabilities
-    buf_set_keymap(bufnr, { "n", "v" }, "<leader>f", function()
-        vim.lsp.buf.format({ async = true })
-    end)
+    -- buf_set_keymap(bufnr, { "n", "v" }, "<leader>ff", function()
+    --     vim.lsp.buf.format({ async = false })
+    -- end)
 
     -- if client.server_capabilities.document_formatting then
     -- elseif client.server_capabilities.document_range_formatting then
     -- end
 
     if client.name == "rust_analyzer" then
-        if require "lib.utils".has_module("rust-tools") then
-            local rt = require "rust-tools"
+        if require("lib.utils").has_module("rust-tools") then
+            local rt = require("rust-tools")
             -- Hover actions
             vim.keymap.set("n", "K", rt.hover_actions.hover_actions, { buffer = bufnr })
             -- Code action groups
@@ -159,16 +158,21 @@ local on_attach = function(client, bufnr)
     lsp_keymaps(client, bufnr)
     lsp_highlight_document(client)
 
-    local on_attach_lsp_group = vim.api.nvim_create_augroup("OnAttachLSPGroup", { clear = true })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-        group = on_attach_lsp_group,
-        pattern = "<buffer>",
-        callback = function()
-            vim.lsp.buf.format()
-        end,
-    })
+    if client.supports_method("textDocument/formatting") then
+        local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
+            buffer = bufnr,
+            callback = function()
+                -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+                -- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
+                -- vim.lsp.buf.formatting_sync()
+                vim.lsp.buf.format({ async = false })
+            end,
+        })
+    end
 end
-
 
 return {
     "neovim/nvim-lspconfig",
@@ -185,11 +189,6 @@ return {
     opts = {
         -- add any global capabilities here
         capabilities = {},
-        -- Automatically format on save
-        autoformat = true,
-        -- options for vim.lsp.buf.format
-        -- `bufnr` and `filter` is handled by the LazyVim formatter,
-        -- but can be also overridden when specified
         format = {
             formatting_options = nil,
             timeout_ms = nil,
@@ -204,7 +203,7 @@ return {
                 settings = {
                     Lua = {
                         diagnostics = {
-                            globals = { 'vim', 'use' }
+                            globals = { "vim", "use" },
                         },
                         workspace = {
                             checkThirdParty = false,
@@ -242,7 +241,7 @@ return {
                         pyflakes = { enabled = false },
                         autopep8 = { enabled = false },
                     },
-                }
+                },
             },
             tailwindcss = {
                 init_options = {
@@ -254,9 +253,8 @@ return {
                 settings = {
                     tailwindCSS = {
                         hovers = true,
-                    }
+                    },
                 },
-
             },
             rust_analyzer = {
                 -- mason = false,
@@ -274,34 +272,27 @@ return {
                         --     prefix = "self",
                         -- },
                         checkOnSave = {
-                            command = "clippy"
+                            command = "clippy",
                             -- command = "check"
                         },
                         procMacro = {
-                            enable = true
+                            enable = true,
                         },
                     },
                 },
-            }
+            },
         },
-        -- you can do any additional lsp server setup here
-        -- return true if you don't want this server to be setup with lspconfig
-        ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
-        setup = {
-            -- example to setup with typescript.nvim
-            -- tsserver = function(_, opts)
-            --   require("typescript").setup({ server = opts })
-            --   return true
-            -- end,
-            -- -- Specify * to use this function as a fallback for any server
-            rust_analyzer = function(server_name, opts)
-                print("custom setup" .. server_name)
-                print(vim.inspect(opts))
-
-                return true
-            end,
-            ["*"] = function(server, opts) end,
-        },
+        ---- you can do any additional lsp server setup here
+        ---- return true if you don't want this server to be setup with lspconfig
+        -----@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
+        --setup = {
+        --    rust_analyzer = function(server_name, opts)
+        --        print("custom setup" .. server_name)
+        --        print(vim.inspect(opts))
+        --        return true
+        --    end,
+        --    ["*"] = function(server, opts) end,
+        --},
     },
     config = function(_, opts)
         setup_diagnostics()
@@ -315,16 +306,12 @@ return {
         )
 
         local setup_server = function(server)
-            local merged_opts = vim.tbl_deep_extend("keep",
-                {
-                    capabilities = vim.deepcopy(capabilities),
-                    on_attach = on_attach
-                },
-                servers[server] or {}
-            )
+            local merged_opts = vim.tbl_deep_extend("keep", {
+                capabilities = vim.deepcopy(capabilities),
+                on_attach = on_attach,
+            }, servers[server] or {})
             require("lspconfig")[server].setup(merged_opts)
         end
-
 
         -- get all the servers that are available thourgh mason-lspconfig
         local have_mason, mlsp = pcall(require, "mason-lspconfig")
@@ -353,36 +340,4 @@ return {
             mlsp.setup({ ensure_installed = ensure_installed })
         end
     end,
-    --config___ = function()
-
-    --    local lspconfig = require "lspconfig"
-
-    --    -- local lsp_config = require "mesuca.plugins.lsp.config"
-    --    -- vim.inspect(lsp_config)
-
-    --    -- local on_attach = lsp_config.on_attach
-    --    -- local capabilities = lsp_config.capabilities
-    --    -- vim.inspect(on_attach)
-    --    -- vim.inspect(capabilities)
-
-    --    -- Use a loop to conveniently both setup defined servers
-    --    -- and map buffer local keybindings when the language server attaches
-    --    for server_name, server_opts in ipairs(opts.servers) do
-    --        vim.notify(server_name)
-    --        -- vim.notify("LSP Setup for " .. server_name)
-    --        --
-    --        -- https://github.com/neovim/nvim-lspconfig/tree/master/lua/lspconfig/server_configurations
-    --        --
-    --        local server_config = {
-    --            -- on_attach = on_attach,
-    --            -- capabilities = capabilities,
-    --        }
-
-
-    --    end
-
-
-    --    -- require "config.lsp.mason-lspconfig"
-    --    -- require "config.lsp.lsp-config"
-    --end
 }

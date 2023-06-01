@@ -1,6 +1,6 @@
 return {
-    'm-demare/hlargs.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    "m-demare/hlargs.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
         -- color = '#ef9062',
         -- highlight = {},
@@ -37,6 +37,6 @@ return {
         --         slow_parse = 5000
         --     }
         -- }
-    }
+    },
 }
 -- (You may omit the settings whose defaults you're ok with)

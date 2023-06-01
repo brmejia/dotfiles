@@ -13,14 +13,13 @@ return {
                     text_align = "left",
                     padding = 1,
                     separator = false,
-                }
-
+                },
             },
             tab_size = 0,
             max_name_length = 25,
-            separator_style = 'slant',
+            separator_style = "slant",
             show_tab_indicators = false,
-            modified_icon = '',
+            modified_icon = "",
             color_icons = true,
             diagnostics_indicator = function(count, level, diagnostics_dict, context)
                 local icon = " "
@@ -38,6 +37,6 @@ return {
                 return icon .. count
             end,
             diagnostics = "nvim_lsp",
-        }
-    }
+        },
+    },
 }

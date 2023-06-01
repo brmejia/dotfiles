@@ -2,7 +2,6 @@ local local_config = function()
     local catppuccin = require("catppuccin")
     -- local cp = require("catppuccin.palettes").get_palette() -- fetch colors from g:catppuccin_flavour palette
 
-
     local setup_opts = {
         transparent_background = false,
         term_colors = false,
@@ -47,18 +46,16 @@ local local_config = function()
                     -- information = { "underdot" },
                     information = { "underline" },
                 },
-
             },
             mini = {
-                enabled = true
+                enabled = true,
             },
         },
         color_overrides = {},
         highlight_overrides = {},
     }
 
-
-    if require "lib.utils".has_module("onedark.palette") then
+    if require("lib.utils").has_module("onedark.palette") then
         local onedark_palette = require("onedark.palette").darker
 
         setup_opts["color_overrides"] = {
@@ -74,7 +71,7 @@ local local_config = function()
                 surface0 = onedark_palette.bg2,
                 surface1 = onedark_palette.bg3, -- Folds, relative numbers
                 -- surface2 = palette.bg4,
-            }
+            },
         }
     end
 
@@ -87,17 +84,16 @@ local local_config = function()
 
     catppuccin.setup(setup_opts)
 
-    vim.cmd [[colorscheme catppuccin]]
+    vim.cmd([[colorscheme catppuccin]])
 end
-
 
 return {
     "catppuccin/nvim",
-    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     dependencies = {
         { "navarasu/onedark.nvim" },
     },
     name = "catppuccin",
-    config = local_config
+    config = local_config,
 }

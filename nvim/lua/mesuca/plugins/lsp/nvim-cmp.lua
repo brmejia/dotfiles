@@ -30,8 +30,6 @@ local kind_icons = {
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
-
-
 return {
     "hrsh7th/nvim-cmp",
     dependencies = {
@@ -58,15 +56,15 @@ return {
                 -- ['<C-k>'] = cmp.mapping.select_prev_item(),
                 -- ['<C-j>'] = cmp.mapping.select_next_item(),
                 -- Add tab support
-                ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-                ['<Tab>'] = cmp.mapping.select_next_item(),
-                ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-                ['<C-f>'] = cmp.mapping.scroll_docs(4),
-                ['<C-Space>'] = cmp.mapping.complete(),
-                ['<C-e>'] = cmp.mapping.abort(),
-                ['<CR>'] = cmp.mapping.confirm({
+                ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+                ["<Tab>"] = cmp.mapping.select_next_item(),
+                ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                ["<C-Space>"] = cmp.mapping.complete(),
+                ["<C-e>"] = cmp.mapping.abort(),
+                ["<CR>"] = cmp.mapping.confirm({
                     behavior = cmp.ConfirmBehavior.Insert,
-                    select = true
+                    select = true,
                 }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
             },
             -- LSP Sugestions formatting
@@ -94,17 +92,17 @@ return {
                 -- end,
 
                 expand = function(args)
-                    require('luasnip').lsp_expand(args.body) -- For luasnip users.
+                    require("luasnip").lsp_expand(args.body) -- For luasnip users.
                 end,
             },
             sources = cmp.config.sources({
-                { name = 'nvim_lsp',               keyword_length = 2 },
-                { name = 'nvim_lsp_signature_help' },
+                { name = "nvim_lsp", keyword_length = 2 },
+                { name = "nvim_lsp_signature_help" },
                 -- { name = 'vsnip' }, -- For vsnip users.
-                { name = 'luasnip',                keyword_length = 2 }, -- For luasnip users.
-                { name = 'path',                   keyword_length = 2 },
-                { name = 'buffer',                 keyword_length = 3 },
-            })
+                { name = "luasnip", keyword_length = 2 }, -- For luasnip users.
+                { name = "path", keyword_length = 2 },
+                { name = "buffer", keyword_length = 3 },
+            }),
         }
     end,
     config = function(_, opts)
@@ -112,32 +110,32 @@ return {
         cmp.setup(opts)
 
         -- Set configuration for specific filetype.
-        cmp.setup.filetype('gitcommit', {
+        cmp.setup.filetype("gitcommit", {
             sources = cmp.config.sources({
-                { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+                { name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
             }, {
-                { name = 'buffer' },
-            })
+                { name = "buffer" },
+            }),
         })
 
         -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-        cmp.setup.cmdline('/', {
+        cmp.setup.cmdline("/", {
             mapping = cmp.mapping.preset.cmdline(),
             sourceh = {
-                { name = 'buffer' }
-            }
+                { name = "buffer" },
+            },
         })
 
         -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-        cmp.setup.cmdline(':', {
+        cmp.setup.cmdline(":", {
             sources = {
                 {
-                    name = 'cmdline',
+                    name = "cmdline",
                     option = {
-                        ignore_cmds = {}
-                    }
-                }
-            }
+                        ignore_cmds = {},
+                    },
+                },
+            },
         })
-    end
+    end,
 }
