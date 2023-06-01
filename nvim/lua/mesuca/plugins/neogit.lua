@@ -27,6 +27,12 @@ return {
                 --
                 diffview = true,
             },
+            signs = {
+                -- { CLOSED, OPENED }
+                section = { "", "" },
+                item = { "", "" },
+                hunk = { "", "" },
+            },
             -- Setting any section to `false` will make the section not render at all
             sections = {
                 untracked = {
