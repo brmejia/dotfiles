@@ -26,12 +26,51 @@ end
 
 function utils.has_module(name)
     if pcall(function()
-        require(name)
-    end) then
+            require(name)
+        end) then
         return true
     else
         return false
     end
 end
+
+-- find more here: https://www.nerdfonts.com/cheat-sheet
+utils.kind_icons = {
+    Array = "",
+    Boolean = "",
+    Class = "",
+    Color = "󰏘",
+    Constant = "",
+    Constructor = "",
+    Component = "",
+    Enum = "",
+    EnumMember = "",
+    Event = "",
+    Field = "󰜢",
+    File = "󰈙",
+    Fragment = "",
+    Folder = "󰉋",
+    Function = "󰊕",
+    Interface = "",
+    Keyword = "󰌋",
+    Method = "󰡱",
+    Module = "",
+    Namespace = "",
+    Null = "󰟢",
+    Number = "󰎠",
+    Object = "",
+    Operator = "󰆕",
+    Package = "",
+    Property = "",
+    Reference = "󰈇",
+    Snippet = "",
+    String = "󰀬",
+    Struct = "󰙅",
+    Text = "󰉿",
+    TypeParameter = "𝙏",
+    Unit = "󰑭",
+    Value = "󰎠",
+    Variable = "󰫧",
+}
 
 return utils
