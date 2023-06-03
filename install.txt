@@ -1,0 +1,8 @@
+./cargo/config.toml -> ~/.cargo/config.toml
+./fish/ -> ~/.config/fish/
+./nvim/ -> ~/.config/nvim/
+./gitui/ -> ~/.config/gitui/
+./zellij/ -> ~/.config/zellij/
+./tmuxp -> ~/.tmuxp/
+./tmux.conf -> ~/.tmux.conf
+./stylua.toml -> ~/.config/stylua.toml
