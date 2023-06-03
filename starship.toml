@@ -1,18 +1,23 @@
+[git_branch]
+symbol = "󰘬 "
 
 [git_status]
-conflicted = "[󰉀](bold orange)"
+style = "white"
+format ="""[$conflicted$stashed$untracked$deleted$renamed$modified( $staged$ahead_behind)]($style)"""
+conflicted = "[󰉀](bold red)"
 # 󰯎󰓢 󱦲󰜷 󱦳󰜮
-ahead = "󰜷${count}"
-behind = "󰜮${count}"
-diverged = "󰯎󱦲${ahead_count}󱦳${behind_count}"
+ahead = "[󰜷${count}](bold yellow)"
+behind = "[󰜮${count}](bold yellow)"
+diverged = "[󰯎󱦲${ahead_count}󱦳${behind_count}](bold red)"
 untracked = "🤷"
-#  󰊡  󰹄
-stashed = " 󰹄 "
+# 📦 󰊡  󰹄
+stashed = "󰹄 "
 modified = " "
-#  
-staged = '[\($count\)](bold green)'
-renamed = "👅"
+# 1 1 1 1
+staged = '[+$count](bold bright-green)'
+# 👅📛󰑕 
+renamed = "📛"
 # 󰩹 󰗨 ✘ 
-deleted = "[](bold red)"
-#  󰸞 ✓
-up_to_date = '󰸞'
+deleted = "[](red)"
+#  󰔓   󰸞  ✓
+up_to_date = "[ ](green)"

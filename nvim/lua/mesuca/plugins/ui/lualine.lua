@@ -67,6 +67,35 @@ return {
                 return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
             end
 
+            local status_command = function()
+                if not require("lib.utils").has_module("noice") then
+                    return
+                end
+
+                local noice = require("noice")
+                return {
+                    noice.api.status.command.get,
+                    cond = noice.api.status.command.has,
+                    color = { fg = "#ff9e64" },
+                }
+            end
+
+            local status_mode = function()
+                if not require("lib.utils").has_module("noice") then
+                    return
+                end
+
+                local noice = require("noice")
+                return {
+                    noice.api.status.mode.get,
+                    cond = noice.api.status.mode.has,
+                    color = { fg = "#ff2222" },
+                    opt = {
+                        replace = true,
+                    },
+                }
+            end
+
             lualine.setup({
                 options = {
                     icons_enabled = true,
@@ -83,19 +112,21 @@ return {
                     lualine_b = { branch },
                     lualine_c = { diagnostics, filetype, "filename" },
                     lualine_x = {
-                        {
-                            require("noice").api.status.command.get,
-                            cond = require("noice").api.status.command.has,
-                            color = { fg = "#ff9e64" },
-                        },
-                        {
-                            require("noice").api.status.mode.get,
-                            cond = require("noice").api.status.mode.has,
-                            color = { fg = "#ff2222" },
-                            opt = {
-                                replace = true,
-                            },
-                        },
+                        status_command(),
+                        status_mode(),
+                        -- {
+                        --     require("noice").api.status.command.get,
+                        --     cond = require("noice").api.status.command.has,
+                        --     color = { fg = "#ff9e64" },
+                        -- },
+                        -- {
+                        --     require("noice").api.status.mode.get,
+                        --     cond = require("noice").api.status.mode.has,
+                        --     color = { fg = "#ff2222" },
+                        --     opt = {
+                        --         replace = true,
+                        --     },
+                        -- },
                         diff,
                         spaces,
                         "encoding",
