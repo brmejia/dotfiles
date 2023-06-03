@@ -36,6 +36,12 @@ return {
             local leader_mappings = {
                 h = {
                     name = "Harpoon",
+                    H = {
+                        function()
+                            harpoon_ui.toggle_quick_menu()
+                        end,
+                        "Marks Menu",
+                    },
                     h = {
                         function()
                             local telescope = require("telescope")

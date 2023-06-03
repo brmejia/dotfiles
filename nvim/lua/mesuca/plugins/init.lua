@@ -21,14 +21,6 @@ return {
     -- -- }
     "tpope/vim-commentary",
     "tpope/vim-repeat",
-    -- {
-    --     'TimUntersberger/neogit',
-    --     dependencies = {
-    --         'nvim-lua/plenary.nvim',
-    --         'sindrets/diffview.nvim',
-    --     },
-    --     config = lazy_config "config.neogit",
-    -- },
 
     -- Themes
     { "navarasu/onedark.nvim" },
