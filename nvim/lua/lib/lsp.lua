@@ -1,7 +1,6 @@
 local lsp = {}
 
 function lsp.setup_diagnostics()
-    vim.notify("lsp.setup_diagnostics")
     local signs = {
         { name = "DiagnosticSignError", text = "" },
         { name = "DiagnosticSignWarn",  text = "" },
@@ -45,7 +44,6 @@ function lsp.setup_diagnostics()
 end
 
 local lsp_highlight_document = function(client)
-    vim.notify("lsp.lsp_highlight_document")
     -- Set autocommands conditional on server_capabilities
     if client.server_capabilities.document_highlight then
         vim.api.nvim_exec(
@@ -66,7 +64,6 @@ local lsp_highlight_document = function(client)
 end
 
 local lsp_keymaps = function(client, bufnr)
-    vim.notify("lsp.lsp_keymaps")
     -- Funtion aliases
     -- local buf_set_option = require('lib.utils').buf_set_option
     local buf_set_keymap = require("lib.utils").buf_keymap
@@ -178,7 +175,6 @@ function lsp.on_attach(client, bufnr)
         })
     end
 end
-
 
 function lsp.get_capabilities(other)
     return vim.tbl_deep_extend(
