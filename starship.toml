@@ -3,7 +3,7 @@ symbol = "󰘬 "
 
 [git_status]
 style = "white"
-format ="""[$conflicted$stashed$untracked$deleted$renamed$modified( $staged$ahead_behind)]($style)"""
+format = """[$conflicted$stashed$untracked$deleted$renamed$modified ($staged$ahead_behind )]($style)"""
 conflicted = "[󰉀](bold red)"
 # 󰯎󰓢 󱦲󰜷 󱦳󰜮
 ahead = "[󰜷${count}](bold yellow)"
@@ -12,7 +12,7 @@ diverged = "[󰯎󱦲${ahead_count}󱦳${behind_count}](bold red)"
 untracked = "🤷"
 # 📦 󰊡  󰹄
 stashed = "󰹄 "
-modified = " "
+modified = "[ ](yellow)"
 # 1 1 1 1
 staged = '[+$count](bold bright-green)'
 # 👅📛󰑕 

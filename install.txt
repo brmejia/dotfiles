@@ -6,3 +6,6 @@
 ./tmuxp -> ~/.tmuxp/
 ./tmux.conf -> ~/.tmux.conf
 ./stylua.toml -> ~/.config/stylua.toml
+./nushell/config.nu -> ~/.config/nushell/config.nu
+./nushell/rtx.nu -> ~/.config/nushell/rtx.nu
+
