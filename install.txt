@@ -1,11 +1,12 @@
-./cargo/config.toml -> ~/.cargo/config.toml
-./fish/ -> ~/.config/fish/
-./nvim/ -> ~/.config/nvim/
-./gitui/ -> ~/.config/gitui/
-./zellij/ -> ~/.config/zellij/
-./tmuxp -> ~/.tmuxp/
-./tmux.conf -> ~/.tmux.conf
-./stylua.toml -> ~/.config/stylua.toml
-./nushell/config.nu -> ~/.config/nushell/config.nu
-./nushell/rtx.nu -> ~/.config/nushell/rtx.nu
+~/.dotfiles/cargo/config.toml ~/.cargo/config.toml
+~/.dotfiles/fish/ ~/.config/fish/
+~/.dotfiles/nvim/ ~/.config/nvim/
+~/.dotfiles/gitui/ ~/.config/gitui/
+~/.dotfiles/zellij/ ~/.config/zellij/
+~/.dotfiles/tmuxp ~/.tmuxp/
+~/.dotfiles/tmux.conf ~/.tmux.conf
+~/.dotfiles/stylua.toml ~/.config/stylua.toml
+~/.dotfiles/nushell/config.nu ~/.config/nushell/config.nu
+~/.dotfiles/nushell/rtx.nu ~/.config/nushell/rtx.nu
+~/.dotfiles/starship.toml ~/.config/starship.toml
 
