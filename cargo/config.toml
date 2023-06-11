@@ -2,5 +2,5 @@
 # incremental = false
 rustc-wrapper = "sccache"
 
-[registries.crates-io]
-protocol = "sparse"
+# [registries.crates-io]
+# protocol = "sparse"

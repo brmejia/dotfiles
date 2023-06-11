@@ -2,11 +2,11 @@ return {
     { import = "mesuca.plugins.themes" },
     { import = "mesuca.plugins.ui" },
 
-    { "nvim-lua/plenary.nvim", },
+    { "nvim-lua/plenary.nvim" },
 
     -- Syntax Highlight
-    { "nvim-treesitter/nvim-treesitter-context", },
-    { "ron-rs/ron.vim", },
+    { "nvim-treesitter/nvim-treesitter-context" },
+    { "ron-rs/ron.vim" },
 
     -- -- Coding
     {
@@ -14,14 +14,14 @@ return {
         build = ":MasonUpdate", -- :MasonUpdate updates registry contents
         opts = {},
     },
-    { "tpope/vim-commentary", },
-    { "tpope/vim-repeat", },
+    { "tpope/vim-commentary" },
+    { "tpope/vim-repeat" },
 
     -- Themes
-    { "navarasu/onedark.nvim", },
-    { "rebelot/kanagawa.nvim", },
-    { "folke/tokyonight.nvim", },
-    { "catppuccin/nvim", },
+    { "navarasu/onedark.nvim" },
+    { "rebelot/kanagawa.nvim" },
+    { "folke/tokyonight.nvim" },
+    { "catppuccin/nvim" },
 
     { import = "mesuca.plugins.lsp" },
 

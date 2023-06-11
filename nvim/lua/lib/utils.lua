@@ -26,8 +26,8 @@ end
 
 function utils.has_module(name)
     if pcall(function()
-            require(name)
-        end) then
+        require(name)
+    end) then
         return true
     else
         return false
@@ -51,7 +51,7 @@ utils.kind_icons = {
     Fragment = "",
     Folder = "󰉋",
     Function = "󰊕",
-    Interface = "",
+    Interface = " ",
     Keyword = "󰌋",
     Method = "󰡱",
     Module = "",
