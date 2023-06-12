@@ -2,6 +2,7 @@ return {
     "m-demare/hlargs.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
+        -- (You may omit the settings whose defaults you're ok with)
         -- color = '#ef9062',
         -- highlight = {},
         -- excluded_filetypes = {},
@@ -38,5 +39,9 @@ return {
         --     }
         -- }
     },
+    config = function(_, opts)
+        local hlargs = require("hlargs")
+
+        hlargs.setup(opts)
+    end,
 }
--- (You may omit the settings whose defaults you're ok with)
