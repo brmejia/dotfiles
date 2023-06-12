@@ -409,7 +409,7 @@ let-env config = {
   edit_mode: emacs # emacs, vi
   shell_integration: true # enables terminal markers and a workaround to arrow keys stop working issue
   # true or false to enable or disable the welcome banner at startup
-  show_banner: true
+  show_banner: false
   render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
 
   hooks: {
@@ -652,5 +652,6 @@ let-env config = {
 }
 
 source ~/.cache/starship/init.nu
-source "/home/andres/.config/nushell/rtx.nu"
+source ~/.config/nushell/rtx.nu
+source ~/.config/nushell/aliases.nu
 
