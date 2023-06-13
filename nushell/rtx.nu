@@ -1,5 +1,6 @@
 export-env {
   let-env RTX_SHELL = "nu"
+  let-env RTX_USE_TOML = 1
 
   let-env config = ($env.config | upsert hooks {
       pre_prompt: [{
