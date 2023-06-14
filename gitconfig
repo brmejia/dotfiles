@@ -1,0 +1,17 @@
+;[user]
+;    name = NAME
+;    email = EMAIL
+
+[core]
+    autocrlf = input
+    editor = nvim
+    pager = delta
+
+[pull]
+    rebase = true
+
+[status]
+    submoduleSummary = true
+
+[init]
+    defaultBranch = main
