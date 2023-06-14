@@ -1,7 +1,4 @@
 return {
-    { import = "mesuca.plugins.themes" },
-    { import = "mesuca.plugins.ui" },
-
     { "nvim-lua/plenary.nvim" },
 
     -- Syntax Highlight
@@ -16,14 +13,7 @@ return {
     },
     { "tpope/vim-commentary" },
     { "tpope/vim-repeat" },
-
-    -- Themes
-    { "navarasu/onedark.nvim" },
-    { "rebelot/kanagawa.nvim" },
-    { "folke/tokyonight.nvim" },
-    { "catppuccin/nvim" },
-
-    { import = "mesuca.plugins.lsp" },
+    { "windwp/nvim-ts-autotag" },
 
     -- --  {
     -- --     -- No HTML support

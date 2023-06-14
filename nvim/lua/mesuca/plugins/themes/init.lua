@@ -58,8 +58,9 @@ end
 --
 
 return {
+    {import = (...) },
     -- Themes
-    "navarasu/onedark.nvim",
-    "rebelot/kanagawa.nvim",
-    "folke/tokyonight.nvim",
+    { "navarasu/onedark.nvim" },
+    { "rebelot/kanagawa.nvim" },
+    { "folke/tokyonight.nvim" },
 }

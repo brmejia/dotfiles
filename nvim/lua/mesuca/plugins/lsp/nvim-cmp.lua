@@ -34,7 +34,7 @@ return {
                 ["<C-Space>"] = cmp.mapping.complete(),
                 ["<C-e>"] = cmp.mapping.abort(),
                 ["<CR>"] = cmp.mapping.confirm({
-                    behavior = cmp.ConfirmBehavior.Insert,
+                    -- behavior = cmp.ConfirmBehavior.Insert,
                     select = true,
                 }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
             },
@@ -72,6 +72,7 @@ return {
                 -- { name = 'vsnip' }, -- For vsnip users.
                 { name = "luasnip", keyword_length = 2 }, -- For luasnip users.
                 { name = "path", keyword_length = 2 },
+            }, {
                 { name = "buffer", keyword_length = 3 },
             }),
         }

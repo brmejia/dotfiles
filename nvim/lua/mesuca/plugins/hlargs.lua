@@ -1,5 +1,6 @@
 return {
     "m-demare/hlargs.nvim",
+    -- enabled = false,
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
         -- (You may omit the settings whose defaults you're ok with)
@@ -39,9 +40,9 @@ return {
         --     }
         -- }
     },
-    config = function(_, opts)
-        local hlargs = require("hlargs")
+    -- config = function(_, opts)
+    --     local hlargs = require("hlargs")
 
-        hlargs.setup(opts)
-    end,
+    --     hlargs.setup(opts)
+    -- end,
 }

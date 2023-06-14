@@ -155,7 +155,7 @@ local lsp_keymaps = function(client, bufnr)
 end
 
 function lsp.on_attach(client, bufnr)
-    vim.notify("Attached to " .. client.name)
+    vim.notify("Attached to " .. client.name, vim.log.levels.DEBUG)
 
     lsp_keymaps(client, bufnr)
     lsp_highlight_document(client)
@@ -178,7 +178,7 @@ end
 
 function lsp.get_capabilities(other)
     return vim.tbl_deep_extend(
-        "force",
+        "keep",
         vim.lsp.protocol.make_client_capabilities(),
         require("cmp_nvim_lsp").default_capabilities(),
         other or {}
