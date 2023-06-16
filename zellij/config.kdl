@@ -1,13 +1,14 @@
 // If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
 keybinds {
+
     normal {
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
 
-        bind "Ctrl h"  { MoveFocusOrTab "Left"; }
-        bind "Ctrl l"  { MoveFocusOrTab "Right"; }
-        bind "Ctrl j"  { MoveFocus "Down"; }
-        bind "Ctrl k"  { MoveFocus "Up"; }
+        // bind "Ctrl h"  { MoveFocusOrTab "Left"; }
+        // bind "Ctrl l"  { MoveFocusOrTab "Right"; }
+        // bind "Ctrl j"  { MoveFocus "Down"; }
+        // bind "Ctrl k"  { MoveFocus "Up"; }
 
     }
     locked {
@@ -43,15 +44,16 @@ keybinds {
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Normal"; }
         bind "c" { SwitchToMode "RenamePane"; PaneNameInput 0;}
     }
-    move {
-        bind "Ctrl h" { SwitchToMode "Normal"; }
-        bind "n" "Tab" { MovePane; }
-        bind "p" { MovePaneBackwards; }
-        bind "h" "Left" { MovePane "Left"; }
-        bind "j" "Down" { MovePane "Down"; }
-        bind "k" "Up" { MovePane "Up"; }
-        bind "l" "Right" { MovePane "Right"; }
-    }
+    unbind "Ctrl h" // unbind move mode
+    // move {
+    //     bind "Ctrl h" { SwitchToMode "Normal"; }
+    //     bind "n" "Tab" { MovePane; }
+    //     bind "p" { MovePaneBackwards; }
+    //     bind "h" "Left" { MovePane "Left"; }
+    //     bind "j" "Down" { MovePane "Down"; }
+    //     bind "k" "Up" { MovePane "Up"; }
+    //     bind "l" "Right" { MovePane "Right"; }
+    // }
     tab {
         unbind "Ctrl t"
         bind "Ctrl w" { SwitchToMode "Normal"; }
@@ -231,7 +233,7 @@ themes {
         bg "#585b70" // Surface2
         fg "#cdd6f4"
         red "#f38ba8"
-        green "#a6e3a1"
+        green "#76f371"
         blue "#89b4fa"
         yellow "#f9e2af"
         magenta "#f5c2e7" // Pink
@@ -314,7 +316,7 @@ theme "catppuccin-mocha"
 // Path to the default editor to use to edit pane scrollbuffer
 // Default: $EDITOR or $VISUAL
 //
-// scrollback_editor "/usr/bin/vim"
+scrollback_editor "/usr/bin/nvim"
 
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)
