@@ -18,6 +18,7 @@ return {
             "eslint-lsp",
             "prettierd",
             "stylua",
+            "ansible-language-server",
         },
     },
     ---@param opts MasonSettings | {ensure_installed: string[]}

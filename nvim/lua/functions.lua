@@ -52,3 +52,7 @@ autocmd({ "BufWritePre" }, {
         require("mini.trailspace").trim()
     end,
 })
+
+return {
+    user_cmdgroup = mesuca_group,
+}
