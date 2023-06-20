@@ -651,6 +651,11 @@ let-env config = {
   ]
 }
 
+export-env {
+  let-env EDITOR = "nvim"
+  let-env VISUAl = "nvim"
+}
+
 source ~/.cache/starship/init.nu
 source ~/.config/nushell/rtx.nu
 source ~/.config/nushell/aliases.nu
