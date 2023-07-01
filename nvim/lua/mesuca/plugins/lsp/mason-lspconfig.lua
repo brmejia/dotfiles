@@ -1,26 +1,37 @@
 return {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim" },
+    build = ":MasonUpdate", -- :MasonUpdate updates registry contents
     opts = {
         ensure_installed = {
-            "python-lsp-server",
-            "ruff-lsp",
-            "lua-language-server",
-            -- "mypy",
-            -- "ruff",
-            -- "black",
             -- "rust_analyzer",
             "taplo", -- TOML Files
-            "vue-language-server",
-            "typescript-language-server",
-            "deno",
-            "tailwindcss-language-server",
-            "eslint-lsp",
-            "prettierd",
-            "stylua",
             "ansible-language-server",
+
+            -- Lua
+            -- ---------------------
+            "stylua",
+            "lua-language-server",
+
+            -- Python
+            -- ---------------------
+            "python-lsp-server",
+            "ruff-lsp",
+            -- "black",
+            -- "mypy", -- Mypy needs to be installed on virtualenvironment
+            -- "ruff",
+
+            -- Typescript/Javascript/HTML/CSS
+            -- ---------------------
+            "tailwindcss-language-server",
+            "vue-language-server",
+            -- "typescript-language-server", -- Conflict with typescript-tools nvim module
+            -- "deno",
+            -- "eslint-lsp",
+            "prettier",
         },
     },
+
     ---@param opts MasonSettings | {ensure_installed: string[]}
     config = function(_, opts)
         require("mason").setup(opts)

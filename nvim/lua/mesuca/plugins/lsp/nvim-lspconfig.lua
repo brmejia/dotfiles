@@ -12,11 +12,11 @@ return {
     },
     opts = {
         -- add any global capabilities here
-        capabilities = {},
-        format = {
-            formatting_options = nil,
-            timeout_ms = nil,
-        },
+        -- capabilities = {},
+        -- format = {
+        --     formatting_options = nil,
+        --     timeout_ms = nil,
+        -- },
         -- LSP Server Settings
         servers = {
             --
@@ -38,32 +38,39 @@ return {
                     },
                 },
             },
+            ruff_lsp = {
+                settings = {
+                    -- Any extra CLI arguments for `ruff` go here.
+                    args = {},
+                },
+            },
             pylsp = {
                 settings = {
-                    configurationSources = { "flake8" },
-                    plugins = {
-                        pylint = { enabled = false },
-                        black = {
-                            enabled = true,
-                            line_length = 88,
+                    pylsp = {
+                        configurationSources = { "flake8" },
+                        plugins = {
+                            pylint = { enabled = false },
+                            black = {
+                                enabled = false,
+                                line_length = 88,
+                            },
+                            yapf = { enabled = false },
+                            -- ["pylsp-mypy"] = {
+                            --     enabled = true,
+                            --     -- strict = true,
+                            --     -- live_mode = true,
+                            --     -- overrides = {
+                            --     --     "--unknown_argument", "--config-file", "mypy_lsp.toml", true
+                            --     -- }
+                            -- },
+                            rope = { enabled = true },
+                            ["rope-autoimport"] = { enabled = true },
+                            flake8 = { enabled = false },
+                            pycodestyle = { enabled = false },
+                            mccabe = { enabled = false },
+                            pyflakes = { enabled = false },
+                            autopep8 = { enabled = false },
                         },
-                        -- yapf = { enabled = false },
-                        -- ["pylsp-mypy"] = {
-                        --     enabled = true,
-                        --     -- strict = true,
-                        --     -- live_mode = true,
-                        --     -- overrides = {
-                        --     --     "--unknown_argument", "--config-file", "mypy_lsp.toml", true
-                        --     -- }
-                        -- },
-                        -- rope = { enabled = true },
-                        -- ["rope-autoimport"] = { enabled = true },
-                        -- ["rope_autoimport"] = { enabled = true },
-                        flake8 = { enabled = false },
-                        pycodestyle = { enabled = false },
-                        mccabe = { enabled = false },
-                        pyflakes = { enabled = false },
-                        autopep8 = { enabled = false },
                     },
                 },
             },

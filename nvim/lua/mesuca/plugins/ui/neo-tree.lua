@@ -1,6 +1,6 @@
 return {
     "nvim-neo-tree/neo-tree.nvim",
-    enabled = true,
+    -- enabled = false,
     dependencies = {
         "nvim-lua/plenary.nvim",
         -- "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
@@ -84,8 +84,8 @@ return {
                 t = { ":Neotree reveal toggle<cr>", "Reveal current file" },
             }
 
-            local opts = { prefix = "<leader>" }
-            wk.register(mappings, opts)
+            local wk_opts = { prefix = "<leader>" }
+            wk.register(mappings, wk_opts)
         end
     end,
 }

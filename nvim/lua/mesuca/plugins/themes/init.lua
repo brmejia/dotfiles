@@ -58,7 +58,7 @@ end
 --
 
 return {
-    {import = (...) },
+    { import = (...) },
     -- Themes
     { "navarasu/onedark.nvim" },
     { "rebelot/kanagawa.nvim" },

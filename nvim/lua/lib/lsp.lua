@@ -43,18 +43,19 @@ function lsp.setup_diagnostics()
     -- })
 end
 
-local lsp_highlight_document = function(client)
+function lsp.set_lsp_highlight_document(client)
     -- Set autocommands conditional on server_capabilities
-    if client.server_capabilities.document_highlight then
+    if client.server_capabilities.documentHighlightProvider then
+        -- Find how to set highlight group fg and bg colors from theme
         vim.api.nvim_exec(
             [[
-                hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-                hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
-                hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
+                hi LspReferenceRead cterm=bold
+                hi LspReferenceText cterm=bold
+                hi LspReferenceWrite cterm=bold
 
                 augroup lsp_document_highlight
                 autocmd! * <buffer>
-                " autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+                autocmd CursorMoved <buffer> lua vim.lsp.buf.document_highlight()
                 autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
                 augroup END
             ]],
@@ -63,7 +64,7 @@ local lsp_highlight_document = function(client)
     end
 end
 
-local lsp_keymaps = function(client, bufnr)
+function lsp.set_lsp_keymaps(client, bufnr)
     -- Funtion aliases
     -- local buf_set_option = require('lib.utils').buf_set_option
     local buf_set_keymap = require("lib.utils").buf_keymap
@@ -134,15 +135,6 @@ local lsp_keymaps = function(client, bufnr)
         wk.register(mappings, opts)
     end
 
-    -- Set some keybinds conditional on server capabilities
-    -- buf_set_keymap(bufnr, { "n", "v" }, "<leader>ff", function()
-    --     vim.lsp.buf.format({ async = false })
-    -- end)
-
-    -- if client.server_capabilities.document_formatting then
-    -- elseif client.server_capabilities.document_range_formatting then
-    -- end
-
     if client.name == "rust_analyzer" then
         if require("lib.utils").has_module("rust-tools") then
             local rt = require("rust-tools")
@@ -154,12 +146,7 @@ local lsp_keymaps = function(client, bufnr)
     end
 end
 
-function lsp.on_attach(client, bufnr)
-    vim.notify("Attached to " .. client.name, vim.log.levels.DEBUG)
-
-    lsp_keymaps(client, bufnr)
-    lsp_highlight_document(client)
-
+function lsp.set_lsp_document_formatting(client, bufnr)
     if client.supports_method("textDocument/formatting") then
         local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
         vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
@@ -173,7 +160,25 @@ function lsp.on_attach(client, bufnr)
                 vim.lsp.buf.format({ async = false })
             end,
         })
+    else
+        vim.notify_once(client.name .. " doesn't support formatting", vim.log.levels.WARN)
     end
+
+    if client.supports_method("textDocument/rangeFormatting") then
+        vim.keymap.set("x", "<Leader>f", function()
+            vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+        end, { buffer = bufnr, desc = "[lsp] format" })
+    else
+        vim.notify_once(client.name .. " doesn't support rangeFormatting", vim.log.levels.WARN)
+    end
+end
+
+function lsp.on_attach(client, bufnr)
+    vim.notify("Attached to " .. client.name, vim.log.levels.INFO)
+
+    lsp.set_lsp_keymaps(client, bufnr)
+    lsp.set_lsp_highlight_document(client)
+    lsp.set_lsp_document_formatting(client, bufnr)
 end
 
 function lsp.get_capabilities(other)

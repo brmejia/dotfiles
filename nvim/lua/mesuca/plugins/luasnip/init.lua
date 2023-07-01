@@ -1,6 +1,10 @@
 return {
     "L3MON4D3/LuaSnip",
-    version = "1.*",
+    -- follow latest release.
+    version = "1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!).
+    build = "make install_jsregexp",
+    dependencies = { "rafamadriz/friendly-snippets" },
     config = function()
         local ls = require("luasnip")
 
@@ -47,8 +51,9 @@ return {
             end
         end)
 
-        require("luasnip.loaders.from_lua").load({
-            paths = "./lua/mesuca/plugins/luasnip/snippets",
+        require("luasnip.loaders.from_lua").lazy_load({
+            paths = { "./lua/mesuca/plugins/luasnip/snippets/lua/" },
         })
+        require("luasnip.loaders.from_vscode").lazy_load()
     end,
 }
