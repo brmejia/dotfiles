@@ -11,9 +11,8 @@ return {
         build = ":MasonUpdate", -- :MasonUpdate updates registry contents
         opts = {},
     },
-    { "tpope/vim-commentary" },
     { "tpope/vim-repeat" },
-    { "windwp/nvim-ts-autotag" },
+    { "windwp/nvim-ts-autotag" , opts={},},
 
     -- --  {
     -- --     -- No HTML support
