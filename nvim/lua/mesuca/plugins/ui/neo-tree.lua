@@ -55,7 +55,7 @@ return {
         -- Add this section only if you've configured source selector.
         source_selector = {
             winbar = false, -- toggle to show selector on winbar
-            statusline = true, -- toggle to show selector on statusline
+            statusline = false, -- toggle to show selector on statusline
             sources = {
                 { source = "filesystem", display_name = " 󰉓 Files " },
                 { source = "git_status", display_name = " 󰊢 Git " },
