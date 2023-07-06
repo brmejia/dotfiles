@@ -83,7 +83,8 @@ return {
             },
             {
                 view = "split",
-                filter = { min_height = 4 },
+
+                filter = { event = "notify", min_height = 2 },
             },
             {
                 view = "mini",
