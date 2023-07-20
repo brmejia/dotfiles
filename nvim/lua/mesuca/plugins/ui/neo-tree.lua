@@ -80,7 +80,7 @@ return {
         if require("lib.utils").has_module("which-key") then
             local wk = require("which-key")
             local mappings = {
-                t = { ":NeoTreeRevealInSplitToggle<cr>", "Reveal current file in split" },
+                t = { ":Neotree reveal position=current toggle<cr>", "Reveal current file in split" },
                 -- t = { ":Neotree reveal toggle<cr>", "Reveal current file" },
             }
 
