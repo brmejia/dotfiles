@@ -79,10 +79,14 @@ keymap("n", "J", "mzJ`z")
 keymap("n", "<A-k>", ":move .-2<CR>==")
 
 -- Arrows movements
-keymap({ "n", "i" }, "<Up>", "<cmd>lua vim.notify_once('Utiliza k en lugar de Up', 'error')<CR>")
-keymap({ "n", "i" }, "<Down>", "<cmd>lua vim.notify_once('Utiliza j en lugar de Down', 'error')<CR>")
-keymap({ "n", "i" }, "<Left>", "<cmd>lua vim.notify_once('Utiliza h en lugar de Left', 'error')<CR>")
-keymap({ "n", "i" }, "<Right>", "<cmd>lua vim.notify_once('Utiliza l en lugar de Right', 'error')<CR>")
+-- keymap({ "n", "i" }, "<Up>", "<cmd>lua vim.notify_once('Utiliza k en lugar de Up', 'error')<CR>")
+-- keymap({ "n", "i" }, "<Down>", "<cmd>lua vim.notify_once('Utiliza j en lugar de Down', 'error')<CR>")
+-- keymap({ "n", "i" }, "<Left>", "<cmd>lua vim.notify_once('Utiliza h en lugar de Left', 'error')<CR>")
+-- keymap({ "n", "i" }, "<Right>", "<cmd>lua vim.notify_once('Utiliza l en lugar de Right', 'error')<CR>")
+keymap({ "n", "i" }, "<Up>", "<Nop>")
+keymap({ "n", "i" }, "<Down>", "<Nop>")
+keymap({ "n", "i" }, "<Left>", "<Nop>")
+keymap({ "n", "i" }, "<Right>", "<Nop>")
 
 -- Clipboard
 keymap({ "n", "v" }, "<leader>y", '"+y') -- Yank TextObject into system Clipboard
