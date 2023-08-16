@@ -1,8 +1,8 @@
 export-env {
-  let-env RTX_SHELL = "nu"
-  let-env RTX_USE_TOML = 1
+  $env.RTX_SHELL = "nu"
+  $env.RTX_USE_TOML = 1
 
-  let-env config = ($env.config | upsert hooks {
+  $env.config = ($env.config | upsert hooks {
       pre_prompt: [{
       condition: {|| "RTX_SHELL" in $env }
       code: {|| rtx_hook }
@@ -26,7 +26,7 @@ def-env rtx [command?: string, --help, ...rest: string] {
   if ($command == null) {
     ^"/home/andres/.cargo/bin/rtx"
   } else if ($command == "activate") {
-    let-env RTX_SHELL = "nu"
+    $env.RTX_SHELL = "nu"
   } else if ($command in $commands) {
     ^"/home/andres/.cargo/bin/rtx" $command $rest
     | parse vars
@@ -39,7 +39,7 @@ def-env rtx [command?: string, --help, ...rest: string] {
 def-env "update-env" [] {
   for $var in $in {
     if $var.op == "set" {
-      let-env $var.name = $"($var.value)"
+      $env.$var.name = $"($var.value)"
     } else if $var.op == "hide" {
       hide-env $var.name
     }
