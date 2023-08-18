@@ -39,7 +39,7 @@ def-env rtx [command?: string, --help, ...rest: string] {
 def-env "update-env" [] {
   for $var in $in {
     if $var.op == "set" {
-      $env.$var.name = $"($var.value)"
+      load-env {($var.name): $var.value}
     } else if $var.op == "hide" {
       hide-env $var.name
     }
