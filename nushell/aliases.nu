@@ -4,6 +4,7 @@ alias du = dust
 alias find = fd
 alias grep = rg
 alias vim = nvim
+alias nvide = neovide --frame none
 
 # Packages Manager
 alias dnfi = sudo dnf install

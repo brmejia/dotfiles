@@ -24,15 +24,15 @@ def-env rtx [command?: string, --help, ...rest: string] {
   let commands = ["shell", "deactivate"]
 
   if ($command == null) {
-    ^"/home/andres/.cargo/bin/rtx"
+    ^"~/.cargo/bin/rtx"
   } else if ($command == "activate") {
     $env.RTX_SHELL = "nu"
   } else if ($command in $commands) {
-    ^"/home/andres/.cargo/bin/rtx" $command $rest
+    ^"~/.cargo/bin/rtx" $command $rest
     | parse vars
     | update-env
   } else {
-    ^"/home/andres/.cargo/bin/rtx" $command $rest
+    ^"~/.cargo/bin/rtx" $command $rest
   }
 }
 
@@ -47,7 +47,7 @@ def-env "update-env" [] {
 }
 
 def-env rtx_hook [] {
-  ^"/home/andres/.cargo/bin/rtx" hook-env -s nu
+  ^"~/.cargo/bin/rtx" hook-env -s nu
     | parse vars
     | update-env
 }

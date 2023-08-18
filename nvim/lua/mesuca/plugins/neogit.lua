@@ -4,6 +4,7 @@ return {
         "nvim-lua/plenary.nvim",
         "sindrets/diffview.nvim",
     },
+    -- enabled = false,
     config = function()
         if not require("lib.utils").has_module("neogit") then
             return
@@ -47,10 +48,12 @@ return {
                 stashes = {
                     folded = true,
                 },
-                unpulled = {
+                unpulled_upstream = {
+                    hidden = false,
                     folded = true,
                 },
-                unmerged = {
+                unmerged_upstream = {
+                    hidden = false,
                     folded = false,
                 },
                 recent = {

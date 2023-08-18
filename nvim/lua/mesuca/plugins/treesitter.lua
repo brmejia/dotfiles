@@ -1,7 +1,7 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     -- event = { 'BufReadPost' },
-    enabled = true,
+    -- enabled = false,
     build = function()
         require("nvim-treesitter.install").update({ with_sync = true })
     end,
