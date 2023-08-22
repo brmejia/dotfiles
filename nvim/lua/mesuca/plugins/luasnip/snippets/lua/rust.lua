@@ -20,13 +20,59 @@ local fmta = require("luasnip.extras.fmt").fmta
 local types = require("luasnip.util.types")
 local conds = require("luasnip.extras.expand_conditions")
 
+local function snippet_function(
+    args,     -- text from i(2) in this example i.e. { { "456" } }
+    parent,   -- parent snippet or parent node
+    user_args -- user_args from opts.user_args
+)
+    return "[1 = " .. args[1][1] .. "] [2 = " .. args[2][1] .. "]"
+end
+
+local example_snippet = s(
+    "ex",
+    fmta(
+        [[
+            <> - i(1)
+            <> - i(2)
+            <> - i(3)
+            <> - i(4)
+        ]],
+        {
+            i(1),
+            f(
+                snippet_function,         -- callback (args, parent, user_args) -> string
+                { 1, 2 },                 -- node indice(s) whose text is passed to fn, i.e. i(2)
+                { user_args = { "ASD" } } -- opts
+            ),
+            c(2, { t(""), t("tokio::test") }),
+            f(
+                test_function_declaration,
+                { 2 },
+                { user_args = { "ASD" } } -- opts
+            ),
+        }
+    )
+)
+
+local function test_function_declaration(
+    args,     -- text from i(2) in this example i.e. { { "456" } }
+    parent,   -- parent snippet or parent node
+    user_args -- user_args from opts.user_args
+)
+    local txt = ""
+    if args[1][1] == "tokio::test" then
+        txt = "async "
+    end
+    return txt
+end
+
 return {
     s(
         "fn",
         fmta(
             [[
-                fn <1>(<2>) <3>
-                    <4>
+                fn <>(<>) <>
+                    <>
                 }
             ]],
             {
@@ -135,6 +181,55 @@ return {
                 i(1, "TEST_FUNCTION"),
                 i(2, "meaning of life"),
                 i(3, "42"),
+            }
+        )
+    ),
+    s(
+        "tmod",
+        fmta(
+            [[
+                #[cfg(test)]
+                mod <1> {
+                    <2>
+                }
+            ]],
+            {
+                i(1, "tests"),
+                i(0),
+            }
+        )
+    ),
+    s(
+        "tfn",
+        fmta(
+            [[
+                #[<>]
+                <>fn <>(<>) <>
+                    <>
+                }
+            ]],
+            {
+                c(1, {
+                    t("test"),
+                    t("tokio::test"),
+                }),
+                f(test_function_declaration, { 1 }, {}),
+                i(2, "name"),
+                c(3, {
+                    t(""),
+                    sn(
+                        nil,
+                        fmt("{1}: {2}", {
+                            i(1, "x"),
+                            i(2, "usize"),
+                        })
+                    ),
+                }),
+                c(4, {
+                    t("{"),
+                    sn(nil, fmt("-> {1} {{", { i(1, "ResultType") })),
+                }),
+                i(0),
             }
         )
     ),

@@ -12,11 +12,19 @@ return {
             update_events = "TextChanged,TextChangedI",
         })
 
+        function lazy_load_snippets()
+            require("luasnip.loaders.from_lua").lazy_load({
+                paths = { "./lua/mesuca/plugins/luasnip/snippets/lua/" },
+            })
+            require("luasnip.loaders.from_vscode").lazy_load()
+        end
+
         if require("lib.utils").has_module("which-key") then
             local wk = require("which-key")
 
             local double_leader_mappings = {
-                s = { ":source ~/.dotfiles/nvim/lua/config/luasnip/init.lua<cr>", "Reload LuaSnip" },
+                -- s = { ":source ~/.dotfiles/nvim/lua/config/luasnip/init.lua<cr>", "Reload LuaSnip" },
+                s = { lazy_load_snippets, "Reload LuaSnip" },
             }
 
             local double_leader_opts = { prefix = "<leader><leader>" }
@@ -51,9 +59,6 @@ return {
             end
         end)
 
-        require("luasnip.loaders.from_lua").lazy_load({
-            paths = { "./lua/mesuca/plugins/luasnip/snippets/lua/" },
-        })
-        require("luasnip.loaders.from_vscode").lazy_load()
+        lazy_load_snippets()
     end,
 }

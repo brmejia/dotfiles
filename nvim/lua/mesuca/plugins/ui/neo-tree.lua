@@ -17,8 +17,9 @@ return {
             -- "git_status",
             -- "document_symbols",
         },
+        close_if_last_window = false,   -- Close Neo-tree if it is the last window left in the tab
         enable_refresh_on_write = true, -- Refresh the tree when a file is written. Only used if `use_libuv_file_watcher` is false.
-        use_popups_for_input = false, -- If false, inputs will use vim.ui.input() instead of custom floats.
+        use_popups_for_input = true,    -- If false, inputs will use vim.ui.input() instead of custom floats.
         default_component_configs = {
             icon = {
                 folder_empty = "󰜌",
@@ -54,7 +55,7 @@ return {
         -- },
         -- Add this section only if you've configured source selector.
         source_selector = {
-            winbar = false, -- toggle to show selector on winbar
+            winbar = false,     -- toggle to show selector on winbar
             statusline = false, -- toggle to show selector on statusline
             sources = {
                 { source = "filesystem", display_name = " 󰉓 Files " },
