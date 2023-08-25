@@ -1,6 +1,6 @@
 return {
     "jose-elias-alvarez/null-ls.nvim",
-    enabled = true,
+    -- enabled = false,
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
@@ -29,7 +29,7 @@ return {
 
                 completion.tags,
                 -- Python
-                diagnostics.mypy,
+                -- diagnostics.mypy,
                 -- diagnostics.ruff,
                 formatting.black,
             },

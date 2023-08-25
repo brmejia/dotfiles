@@ -7,6 +7,7 @@ return {
             -- "rust_analyzer",
             "taplo", -- TOML Files
             "ansible-language-server",
+            "ansible-lint",
 
             -- Lua
             -- ---------------------
@@ -15,7 +16,8 @@ return {
 
             -- Python
             -- ---------------------
-            "python-lsp-server",
+            -- "python-lsp-server",
+            "pyright",
             "ruff-lsp",
             -- "black",
             -- "mypy", -- Mypy needs to be installed on virtualenvironment

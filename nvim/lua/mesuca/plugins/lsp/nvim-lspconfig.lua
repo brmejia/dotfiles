@@ -44,36 +44,62 @@ return {
                     args = {},
                 },
             },
-            pylsp = {
+            pyright = {
+                root_dir = function(fname)
+                    local root_files = {
+                        "pyproject.toml",
+                        "setup.py",
+                        "setup.cfg",
+                        "Pipfile",
+                        "requirements.txt",
+                        "pyrightconfig.json",
+                        -- ".git",
+                    }
+                    local util = require("lspconfig").util
+                    local root_path = util.root_pattern(unpack(root_files))(fname)
+                    vim.notify("Pyright root path: " .. root_path)
+                    return root_path
+                end,
                 settings = {
-                    pylsp = {
-                        configurationSources = { "flake8" },
-                        plugins = {
-                            pylint = { enabled = false },
-                            black = {
-                                enabled = false,
-                                line_length = 88,
-                            },
-                            yapf = { enabled = false },
-                            -- ["pylsp-mypy"] = {
-                            --     enabled = true,
-                            --     -- strict = true,
-                            --     -- live_mode = true,
-                            --     -- overrides = {
-                            --     --     "--unknown_argument", "--config-file", "mypy_lsp.toml", true
-                            --     -- }
-                            -- },
-                            rope = { enabled = true },
-                            ["rope-autoimport"] = { enabled = true },
-                            flake8 = { enabled = false },
-                            pycodestyle = { enabled = false },
-                            mccabe = { enabled = false },
-                            pyflakes = { enabled = false },
-                            autopep8 = { enabled = false },
+                    python = {
+                        analysis = {
+                            autoSearchPaths = true,
+                            diagnosticMode = "workspace",
+                            useLibraryCodeForTypes = true,
                         },
                     },
                 },
             },
+            -- pylsp = {
+            --     settings = {
+            --         pylsp = {
+            --             --             configurationSources = { "flake8" },
+            --             plugins = {
+            --                 pylint = { enabled = false },
+            --                 black = {
+            --                     enabled = false,
+            --                     line_length = 88,
+            --                 },
+            --                 yapf = { enabled = false },
+            --                 -- ["pylsp-mypy"] = {
+            --                 --     enabled = true,
+            --                 --     -- strict = true,
+            --                 --     -- live_mode = true,
+            --                 --     -- overrides = {
+            --                 --     --     "--unknown_argument", "--config-file", "mypy_lsp.toml", true
+            --                 --     -- }
+            --                 -- },
+            --                 rope = { enabled = false },
+            --                 ["rope-autoimport"] = { enabled = false },
+            --                 flake8 = { enabled = false },
+            --                 pycodestyle = { enabled = false },
+            --                 mccabe = { enabled = false },
+            --                 pyflakes = { enabled = false },
+            --                 autopep8 = { enabled = false },
+            --             },
+            --         },
+            --     },
+            -- },
             tailwindcss = {
                 init_options = {
                     userLanguages = {
