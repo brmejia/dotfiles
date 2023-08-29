@@ -156,3 +156,14 @@ keymap("x", "<leader>p", '"_dP') -- Paste without yanking
 -- map <Leader>gc :Git<CR>
 -- map <Leader>gp :Git push<CR>
 -- ]])
+
+------------------
+--      UI      --
+------------------
+local ui = require("lib.ui")
+keymap({ "n", "i" }, "<C-->", function()
+    ui.ResizeGuiFont(-1)
+end, {desc = "Decrease font size"})
+keymap({ "n", "i" }, "<C-+>", function()
+    ui.ResizeGuiFont(1)
+end, {desc = "Increase font size"})
