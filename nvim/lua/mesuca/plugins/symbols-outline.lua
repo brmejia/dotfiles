@@ -3,7 +3,10 @@ local kind_icons = require("lib.utils").kind_icons
 return {
     "simrat39/symbols-outline.nvim",
     opts = {
-        auto_close = false,
+        auto_close = true,
+        show_symbol_details = true,
+        autofold_depth = 1,
+        auto_unfold_hover = true,
         keymaps = {
             -- These keymaps can be a string or a table for multiple keys
             close = { "<Esc>", "q" },

@@ -60,7 +60,7 @@ return {
                     }
                     local util = require("lspconfig").util
                     local root_path = util.root_pattern(unpack(root_files))(fname)
-                    vim.notify("Pyright root path: " .. root_path)
+                    vim.notify("Pyright root path: " .. root_path, vim.log.levels.DEBUG)
                     return root_path
                 end,
                 settings = {
