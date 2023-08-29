@@ -1,7 +1,7 @@
 local default_msg_position = {
     row = -1,
-    -- col = "100%",
-    col = 0,
+    col = "100%", -- right
+    -- col = 0, -- left
 }
 
 return {
@@ -50,13 +50,38 @@ return {
         },
         -- you can enable a preset for easier configuration
         presets = {
-            bottom_search = true,         -- use a classic bottom cmdline for search
-            command_palette = true,       -- position the cmdline and popupmenu together
+            bottom_search = true, -- use a classic bottom cmdline for search
+            command_palette = true, -- position the cmdline and popupmenu together
             long_message_to_split = true, -- long messages will be sent to a split
-            inc_rename = true,            -- enables an input dialog for inc-rename.nvim
-            lsp_doc_border = false,       -- add a border to hover docs and signature help
+            inc_rename = true, -- enables an input dialog for inc-rename.nvim
+            lsp_doc_border = false, -- add a border to hover docs and signature help
         },
         routes = {
+            -- Avoid written messages
+            {
+                filter = {
+                    event = "msg_show",
+                    kind = "",
+                    find = "[w]",
+                },
+                opts = { skip = true },
+            },
+            -- Avoid search messages. Noice by default uses virttext, this snippets also disables that.
+            {
+                filter = {
+                    event = "msg_show",
+                    kind = "search_count",
+                },
+                opts = { skip = true },
+            },
+            {
+                view = "split",
+                filter = {
+                    event = "msg_show",
+                    kind = "",
+                },
+                -- opts = { skip = true },
+            },
             {
                 view = "hover",
                 filter = { event = "msg_showmode" },
@@ -83,7 +108,6 @@ return {
             },
             {
                 view = "split",
-
                 filter = { event = "notify", min_height = 2 },
             },
             {
@@ -92,7 +116,7 @@ return {
                     error = true,
                 },
                 opts = {
-                    timeout = 15000,
+                    timeout = 5000,
                     align = "message-left",
                     position = default_msg_position,
                 },
@@ -103,7 +127,7 @@ return {
                     warning = true,
                 },
                 opts = {
-                    timeout = 10000,
+                    timeout = 5000,
                     align = "message-left",
                     position = default_msg_position,
                 },
@@ -113,7 +137,7 @@ return {
                 filter = {
                     any = {
                         { event = "notify" },
-                        { event = "lsp",   kind = "message" },
+                        { event = "lsp", kind = "message" },
                     },
                 },
                 opts = {
@@ -166,11 +190,11 @@ return {
         messages = {
             -- note: if you enable messages, then the cmdline is enabled automatically.
             -- this is a current neovim limitation.
-            enabled = true,              -- enables the noice messages ui
-            view = "mini",               -- default view for messages
-            view_error = "mini",         -- view for errors
-            view_warn = "mini",          -- view for warnings
-            view_history = "messages",   -- view for :messages
+            enabled = true, -- enables the noice messages ui
+            view = "mini", -- default view for messages
+            view_error = "mini", -- view for errors
+            view_warn = "mini", -- view for warnings
+            view_history = "messages", -- view for :messages
             view_search = "virtualtext", -- view for search count messages. set to `false` to disable
         },
     },
