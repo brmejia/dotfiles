@@ -26,6 +26,9 @@ return {
                 -- mason = false, -- set to false if you don't want this server to be installed with mason
                 settings = {
                     Lua = {
+                        format = {
+                            enable = false, -- Replaced by null_ls stylua plugin
+                        },
                         diagnostics = {
                             globals = { "vim", "use" },
                         },
