@@ -21,8 +21,8 @@ local types = require("luasnip.util.types")
 local conds = require("luasnip.extras.expand_conditions")
 
 local function snippet_function(
-    args,     -- text from i(2) in this example i.e. { { "456" } }
-    parent,   -- parent snippet or parent node
+    args, -- text from i(2) in this example i.e. { { "456" } }
+    parent, -- parent snippet or parent node
     user_args -- user_args from opts.user_args
 )
     return "[1 = " .. args[1][1] .. "] [2 = " .. args[2][1] .. "]"
@@ -40,8 +40,8 @@ local example_snippet = s(
         {
             i(1),
             f(
-                snippet_function,         -- callback (args, parent, user_args) -> string
-                { 1, 2 },                 -- node indice(s) whose text is passed to fn, i.e. i(2)
+                snippet_function, -- callback (args, parent, user_args) -> string
+                { 1, 2 }, -- node indice(s) whose text is passed to fn, i.e. i(2)
                 { user_args = { "ASD" } } -- opts
             ),
             c(2, { t(""), t("tokio::test") }),
@@ -55,8 +55,8 @@ local example_snippet = s(
 )
 
 local function test_function_declaration(
-    args,     -- text from i(2) in this example i.e. { { "456" } }
-    parent,   -- parent snippet or parent node
+    args, -- text from i(2) in this example i.e. { { "456" } }
+    parent, -- parent snippet or parent node
     user_args -- user_args from opts.user_args
 )
     local txt = ""
@@ -67,6 +67,17 @@ local function test_function_declaration(
 end
 
 return {
+    s(
+        "dbg",
+        fmta(
+            [[
+                dbg!(<>);
+            ]],
+            {
+                i(0),
+            }
+        )
+    ),
     s(
         "fn",
         fmta(
@@ -190,6 +201,8 @@ return {
             [[
                 #[cfg(test)]
                 mod <1> {
+                    #![allow(unused)]
+                    use super::*;
                     <2>
                 }
             ]],
@@ -228,6 +241,7 @@ return {
                 c(4, {
                     t("{"),
                     sn(nil, fmt("-> {1} {{", { i(1, "ResultType") })),
+                    sn(nil, fmt("-> anyhow::Result<{1}> {{", { i(1, "()") })),
                 }),
                 i(0),
             }
