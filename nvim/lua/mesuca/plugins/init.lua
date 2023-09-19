@@ -6,13 +6,8 @@ return {
     { "ron-rs/ron.vim" },
 
     -- -- Coding
-    {
-        "williamboman/mason.nvim",
-        build = ":MasonUpdate", -- :MasonUpdate updates registry contents
-        opts = {},
-    },
     { "tpope/vim-repeat" },
-    { "windwp/nvim-ts-autotag" , opts={},},
+    { "windwp/nvim-ts-autotag", opts = {} },
 
     -- --  {
     -- --     -- No HTML support

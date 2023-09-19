@@ -1,6 +1,7 @@
 return {
     "neovim/nvim-lspconfig",
-    -- event = { "BufReadPre", "BufNewFile" },
+    -- enabled = false,
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         "rcarriga/nvim-notify",
         -- { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
@@ -141,59 +142,55 @@ return {
             --        },
             --    },
             --},
+            ansiblels = {},
+            volar = {},
+            taplo = {},
         },
-        ---- you can do any additional lsp server setup here
-        ---- return true if you don't want this server to be setup with lspconfig
-        -----@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
-        --setup = {
-        --    rust_analyzer = function(server_name, opts)
-        --        print("custom setup" .. server_name)
-        --        print(vim.inspect(opts))
-        --        return true
-        --    end,
-        --    ["*"] = function(server, opts) end,
-        --},
     },
     config = function(_, opts)
         local lsp_lib = require("lib.lsp")
+        local lspconfig = require("lspconfig")
 
         lsp_lib.setup_diagnostics()
 
         local servers = opts.servers
 
-        local setup_server = function(server)
-            local merged_opts = vim.tbl_deep_extend("keep", {
-                capabilities = lsp_lib.get_capabilities(opts.capabilities),
+        local default_server_handler = function(server_name)
+            local default_server_options = {
+                capabilities = lsp_lib.get_default_capabilities(opts.capabilities or {}),
                 on_attach = lsp_lib.on_attach,
-            }, servers[server] or {})
-            require("lspconfig")[server].setup(merged_opts)
+            }
+            local merged_opts = vim.tbl_deep_extend("force", default_server_options, servers[server_name] or {})
+
+            lspconfig[server_name].setup(merged_opts)
         end
 
-        -- get all the servers that are available thourgh mason-lspconfig
-        local have_mason, mlsp = pcall(require, "mason-lspconfig")
-        local all_mslp_servers = {}
-        if have_mason then
-            all_mslp_servers = vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
-        end
+        local have_mason_lspconfig, mlsp = pcall(require, "mason-lspconfig")
 
-        local ensure_installed = {} ---@type string[]
-        for server, server_opts in pairs(servers) do
-            if server_opts then
-                server_opts = server_opts == true and {} or server_opts
-                -- run manual setup if mason=false or if this is a server that cannot be installed with mason-lspconfig
-                if server_opts.mason == false or not vim.tbl_contains(all_mslp_servers, server) then
-                    -- vim.notify("[ LSP ]" .. server)
-                    setup_server(server)
+        mlsp.setup_handlers({ default_server_handler })
+        local to_setup_manually = {} ---@type string[]
+        if have_mason_lspconfig then
+            local all_mslp_servers = vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
+            -- vim.notify(vim.inspect(all_mslp_servers))
+
+            local to_setup_with_mason = {} ---@type string[]
+            for server_name, _ in pairs(servers) do
+                if vim.tbl_contains(all_mslp_servers, server_name) then
+                    to_setup_with_mason[#to_setup_with_mason + 1] = server_name
                 else
-                    -- vim.notify("[MASON]" .. server)
-                    ensure_installed[#ensure_installed + 1] = server
+                    to_setup_manually[#to_setup_manually + 1] = server_name
                 end
             end
+            mlsp.setup({ automatic_installation = true, ensure_installed = to_setup_with_mason })
         end
-
-        if have_mason and ensure_installed then
-            mlsp.setup_handlers({ setup_server })
-            mlsp.setup({ ensure_installed = ensure_installed })
+        if to_setup_manually then
+            local mr = require("mason-registry")
+            for _, server_name in pairs(to_setup_manually) do
+                local p = mr.get_package(server_name)
+                if p:is_installed() then
+                    default_server_handler(server_name)
+                end
+            end
         end
     end,
 }

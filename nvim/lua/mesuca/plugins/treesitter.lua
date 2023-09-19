@@ -1,6 +1,6 @@
 return {
     "nvim-treesitter/nvim-treesitter",
-    -- event = { 'BufReadPost' },
+    event = { "BufReadPost" },
     -- enabled = false,
     build = function()
         require("nvim-treesitter.install").update({ with_sync = true })
@@ -20,7 +20,7 @@ return {
                 "toml",
                 "regex",
                 "jsdoc",
-                "comment",
+                -- "comment",
                 "query",
                 "verilog",
                 "html",

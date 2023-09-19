@@ -14,7 +14,7 @@ return {
             -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
             server = {
                 on_attach = lsp_lib.on_attach,
-                capabilities = lsp_lib.get_capabilities(),
+                capabilities = lsp_lib.get_default_capabilities(),
                 -- standalone file support
                 -- setting it to false may improve startup time
                 -- standalone = true,

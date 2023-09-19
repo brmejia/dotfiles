@@ -40,7 +40,7 @@ local branch = {
 
 local filename = {
     "filename",
-    file_status = true,    -- Displays file status (readonly status, modified status)
+    file_status = true, -- Displays file status (readonly status, modified status)
     newfile_status = true, -- Display new file status (new file means no write after created)
     path = 1,
     -- 0: Just the filename
@@ -53,8 +53,8 @@ local filename = {
     symbols = {
         modified = "   ", -- Text to show when the file is modified.
         readonly = "[readonly]", -- Text to show when the file is non-modifiable or readonly.
-        unnamed = "[No Name]",   -- Text to show for unnamed buffers.
-        newfile = "[New]",       -- Text to show for newly created file before first write
+        unnamed = "[No Name]", -- Text to show for unnamed buffers.
+        newfile = "[New]", -- Text to show for newly created file before first write
     },
 }
 
@@ -79,7 +79,7 @@ end
 
 local status_command = function()
     if not require("lib.utils").has_module("noice") then
-        return
+        return ""
     end
 
     local noice = require("noice")
@@ -92,7 +92,7 @@ end
 
 local status_mode = function()
     if not require("lib.utils").has_module("noice") then
-        return
+        return ""
     end
 
     local noice = require("noice")
@@ -108,6 +108,7 @@ end
 
 return {
     "nvim-lualine/lualine.nvim",
+    -- enabled = false,
     opts = function()
         return {
             options = {

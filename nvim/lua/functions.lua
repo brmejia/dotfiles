@@ -40,19 +40,6 @@ autocmd("TextYankPost", {
     end,
 })
 
-autocmd({ "BufWritePre" }, {
-    group = mesuca_group,
-    pattern = "*",
-    callback = function()
-        if not require("lib.utils").has_module("mini.trailspace") then
-            vim.notify("mini.trailspace is not installed")
-            return
-        end
-
-        require("mini.trailspace").trim()
-    end,
-})
-
 return {
     user_cmdgroup = mesuca_group,
 }
