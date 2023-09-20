@@ -22,12 +22,12 @@ return {
             tmux_autoclose_windows = false,
 
             -- filetypes that you want to prevent from adding to the harpoon list menu.
-            excluded_filetypes = { "harpoon", "TelescopePrompt", "NvimTree", "new-tree", "neo-tree-popup" },
+            excluded_filetypes = { "harpoon", "TelescopePrompt", "NvimTree", "neo-tree", "neo-tree-popup" },
 
             -- set marks specific to each git branch inside git repository
             mark_branch = true,
             menu = {
-                width = math.floor(3 * vim.api.nvim_win_get_width(0) / 5),
+                width = math.floor((vim.api.nvim_win_get_width(0) / 5) * 3),
             },
         })
 
@@ -36,13 +36,13 @@ return {
             local leader_mappings = {
                 h = {
                     name = "Harpoon",
-                    H = {
+                    h = {
                         function()
                             harpoon_ui.toggle_quick_menu()
                         end,
                         "Marks Menu",
                     },
-                    h = {
+                    H = {
                         function()
                             local telescope = require("telescope")
                             telescope.load_extension("harpoon")
