@@ -17,7 +17,7 @@ return {
             -- "git_status",
             -- "document_symbols",
         },
-        close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+        close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
         enable_refresh_on_write = true, -- Refresh the tree when a file is written. Only used if `use_libuv_file_watcher` is false.
         use_popups_for_input = false, -- If false, inputs will use vim.ui.input() instead of custom floats.
         default_component_configs = {
@@ -27,32 +27,19 @@ return {
             },
             git_status = {
                 symbols = {
-                    renamed = "󰁕",
+                    -- Change type
+                    added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
+                    modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
+                    renamed = "",
                     unstaged = "󰄱",
                     staged = "󰱒",
+                    untracked = "?",
+                    modified = " ",
+                    --# 󰩹 󰗨 ✘ 
+                    deleted = "",
                 },
             },
         },
-        -- document_symbols = {
-        --     kinds = {
-        --         File = { icon = "󰈙", hl = "Tag" },
-        --         Namespace = { icon = "󰌗", hl = "Include" },
-        --         Package = { icon = "󰏖", hl = "Label" },
-        --         Class = { icon = "󰌗", hl = "Include" },
-        --         Property = { icon = "󰆧", hl = "@property" },
-        --         Enum = { icon = "󰒻", hl = "@number" },
-        --         Function = { icon = "󰊕", hl = "Function" },
-        --         String = { icon = "󰀬", hl = "String" },
-        --         Number = { icon = "󰎠", hl = "Number" },
-        --         Array = { icon = "󰅪", hl = "Type" },
-        --         Object = { icon = "󰅩", hl = "Type" },
-        --         Key = { icon = "󰌋", hl = "" },
-        --         Struct = { icon = "󰌗", hl = "Type" },
-        --         Operator = { icon = "󰆕", hl = "Operator" },
-        --         TypeParameter = { icon = "󰊄", hl = "Type" },
-        --         StaticMethod = { icon = "󰠄 ", hl = "Function" },
-        --     },
-        -- },
         -- Add this section only if you've configured source selector.
         source_selector = {
             winbar = false, -- toggle to show selector on winbar
@@ -63,17 +50,43 @@ return {
             },
         },
         ---- Other options ...
-        --event_handlers = {
-        --    {
-        --        event = "file_opened",
-        --        handler = function(file_path)
-        --            vim.notify("file_opened" .. file_path)
-        --            nt = require("neo-tree")
-        --            --auto close
-        --            nt.close_all()
-        --        end,
-        --    },
-        --},
+        event_handlers = {
+            -- Auto Close on Open File
+            {
+                event = "file_opened",
+                handler = function(file_path)
+                    require("neo-tree.command").execute({ action = "close" })
+                end,
+            },
+        },
+        filesystem = {
+            components = {
+                harpoon_index = function(config, node, state)
+                    local Marked = require("harpoon.mark")
+                    local path = node:get_id()
+                    local succuss, index = pcall(Marked.get_index_of, path)
+                    local numbers = { "𝟬", "𝟭", "𝟮", "𝟯", "𝟰", "𝟱", "𝟲", "𝟳", "𝟴", "𝟵" }
+                    if succuss and index and index > 0 then
+                        local idx = numbers[tonumber(index)] or index
+                        return {
+                            text = string.format("❮%s❯ 🡆 ", idx), -- <-- Add your favorite harpoon like arrow here
+                            highlight = config.highlight or "NeoTreeDirectoryIcon",
+                        }
+                    else
+                        return {}
+                    end
+                end,
+            },
+            renderers = {
+                file = {
+                    { "icon" },
+                    { "harpoon_index", highlight = "NeoTreeGitAdded" }, --> This is what actually adds the component in where you want it
+                    { "name", use_git_status_colors = true },
+                    { "diagnostics" },
+                    { "git_status", highlight = "NeoTreeDimText" },
+                },
+            },
+        },
     },
     config = function(_, opts)
         require("neo-tree").setup(opts)
@@ -81,7 +94,8 @@ return {
         if require("lib.utils").has_module("which-key") then
             local wk = require("which-key")
             local mappings = {
-                t = { ":Neotree reveal position=current toggle<cr>", "Reveal current file in split" },
+                r = { ":Neotree reveal position=current toggle<cr>", "Reveal file in current split" },
+                t = { ":Neotree reveal toggle<cr>", "Reveal file" },
                 -- t = { ":Neotree reveal toggle<cr>", "Reveal current file" },
             }
 

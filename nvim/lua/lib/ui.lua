@@ -16,5 +16,3 @@ function ui.ResetGuiFont()
 end
 
 return ui
-
-

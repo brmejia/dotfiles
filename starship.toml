@@ -14,7 +14,7 @@ untracked = "🤷"
 stashed = "󰹄 "
 modified = "[ ](yellow)"
 # 1 1 1 1
-staged = '[+$count](bold bright-green)'
+staged = '[󰱒 $count](bold bright-green)'
 # 👅📛󰑕 
 renamed = "📛"
 # 󰩹 󰗨 ✘ 
