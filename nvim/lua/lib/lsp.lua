@@ -67,14 +67,15 @@ end
 function lsp.set_lsp_keymaps(client, bufnr)
     -- Funtion aliases
     -- local buf_set_option = require('lib.utils').buf_set_option
-    local buf_set_keymap = require("lib.utils").buf_keymap
+    local keymap = require("lib.utils").keymap
+    local buf_keymap = require("lib.utils").buf_keymap
 
     -- ?????????? https://github.com/jessarcher/dotfiles/blob/master/nvim/lua/user/plugins/lspconfig.lua
     -- buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-    -- Mappings.
-    --buf_set_keymap(bufnr, 'n', '<C-k>', ':lua vim.lsp.buf.signature_help()<CR>')
-    --buf_set_keymap(bufnr, 'n', '<leader>wl', ':lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
+    -- Buffer Mappings.
+    buf_keymap(bufnr, "n", "<C-k>", vim.lsp.buf.signature_help)
+    buf_keymap(bufnr, "n", "K", vim.lsp.buf.hover)
 
     -- WhichKey Mappings
     if require("lib.utils").has_module("which-key") then
@@ -139,9 +140,10 @@ function lsp.set_lsp_keymaps(client, bufnr)
         if require("lib.utils").has_module("rust-tools") then
             local rt = require("rust-tools")
             -- Hover actions
-            vim.keymap.set("n", "K", rt.hover_actions.hover_actions, { buffer = bufnr })
+
+            buf_keymap(bufnr, "n", "K", rt.hover_actions.hover_actions)
             -- Code action groups
-            vim.keymap.set("n", "<leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
+            buf_keymap(bufnr, "n", "<leader>a", rt.code_action_group.code_action_group)
         end
     end
 end
