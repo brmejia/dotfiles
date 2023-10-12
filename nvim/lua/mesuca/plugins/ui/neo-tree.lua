@@ -91,16 +91,14 @@ return {
     config = function(_, opts)
         require("neo-tree").setup(opts)
 
-        if require("lib.utils").has_module("which-key") then
-            local wk = require("which-key")
-            local mappings = {
-                r = { ":Neotree reveal position=current toggle<cr>", "Reveal file in current split" },
-                t = { ":Neotree reveal toggle<cr>", "Reveal file" },
-                -- t = { ":Neotree reveal toggle<cr>", "Reveal current file" },
-            }
+        local keymap = require("lib.utils").keymap
 
-            local wk_opts = { prefix = "<leader>" }
-            wk.register(mappings, wk_opts)
-        end
+        keymap(
+            "n",
+            "<leader>r",
+            ":Neotree reveal position=current toggle<cr>",
+            { desc = "Reveal file in current split" }
+        )
+        keymap("n", "<leader>t", ":Neotree reveal toggle<cr>", { desc = "Reveal file" })
     end,
 }
