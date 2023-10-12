@@ -31,67 +31,29 @@ return {
             },
         })
 
-        if require("lib.utils").has_module("which-key") then
-            local wk = require("which-key")
-            local leader_mappings = {
-                h = {
-                    name = "Harpoon",
-                    h = {
-                        function()
-                            harpoon_ui.toggle_quick_menu()
-                        end,
-                        "Marks Menu",
-                    },
-                    H = {
-                        function()
-                            local telescope = require("telescope")
-                            telescope.load_extension("harpoon")
-                            telescope.extensions.harpoon.marks()
-                        end,
-                        "Marks Menu",
-                    },
-                    a = {
-                        function()
-                            harpoon_mark.add_file()
-                        end,
-                        "Add file",
-                    },
-                    t = {
-                        function()
-                            harpoon_term.gotoTerminal(1)
-                        end,
-                        "Terminal 1",
-                    },
+        local keymap = require("lib.utils").keymap
 
-                    r = {
-                        function()
-                            harpoon_ui.nav_file(1)
-                        end,
-                        "Nav to file 1",
-                    },
-                    e = {
-                        function()
-                            harpoon_ui.nav_file(2)
-                        end,
-                        "Nav to file 2",
-                    },
-                    w = {
-                        function()
-                            harpoon_ui.nav_file(3)
-                        end,
-                        "Nav to file 3",
-                    },
-                    q = {
-                        function()
-                            harpoon_ui.nav_file(4)
-                        end,
-                        "Nav to file 4",
-                    },
-                },
-            }
-
-            local opts = { prefix = "<leader>" }
-            wk.register(leader_mappings, opts)
-        end
+        keymap("n", "<leader>hh", harpoon_ui.toggle_quick_menu, { desc = "Harpoon Marks" })
+        keymap("n", "<leader>hH", function()
+            local telescope = require("telescope")
+            telescope.load_extension("harpoon")
+            telescope.extensions.harpoon.marks()
+        end, { desc = "Telescoped Harpoon Marks" })
+        keymap("n", "<leader>ha", harpoon_mark.add_file, { desc = "Add file to Harpoon" })
+        keymap("n", "<leader>ht", function()
+            harpoon_term.gotoTerminal(1)
+        end, { desc = "Open Harpoon Terminal" })
+        keymap("n", "<leader>hr", function()
+            harpoon_ui.nav_file(1)
+        end, { desc = "Open Harpoon file 1" })
+        keymap("n", "<leader>he", function()
+            harpoon_ui.nav_file(2)
+        end, { desc = "Open Harpoon file 2" })
+        keymap("n", "<leader>hw", function()
+            harpoon_ui.nav_file(3)
+        end, { desc = "Open Harpoon file 3" })
+        keymap("n", "<leader>hq", function()
+            harpoon_ui.nav_file(4)
+        end, { desc = "Open Harpoon file 4" })
     end,
 }
