@@ -32,7 +32,8 @@ local function root_dir(...)
 end
 
 local config = {
-    cmd = { "vue-language-server", "--stdio" },
+    -- cmd = { "vue-language-server", "--stdio" }, -- commented in order to use the binary installed with mason
+
     -- root_dir = root_dir,
     -- on_new_config = on_new_config,
     filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
