@@ -1,5 +1,3 @@
-local volar_config = require("mesuca.plugins.lsp.server_configs.volar")
-
 return {
     "neovim/nvim-lspconfig",
     -- enabled = false,
@@ -14,6 +12,8 @@ return {
         "hrsh7th/cmp-nvim-lsp",
     },
     opts = function()
+        local volar_config = require("mesuca.plugins.lsp.server_configs.volar")
+
         return {
             -- add any global capabilities here
             -- capabilities = {},
@@ -63,19 +63,10 @@ return {
                             -- ".git",
                         }
                         local util = require("lspconfig").util
-                        local root_path = util.root_pattern(unpack(root_files))(fname)
+                        local root_path = util.root_pattern(table.unpack(root_files))(fname)
                         vim.notify("Pyright root path: " .. root_path, vim.log.levels.DEBUG)
                         return root_path
                     end,
-                    settings = {
-                        python = {
-                            analysis = {
-                                autoSearchPaths = true,
-                                diagnosticMode = "workspace",
-                                useLibraryCodeForTypes = true,
-                            },
-                        },
-                    },
                 },
                 -- pylsp = {
                 --     settings = {
