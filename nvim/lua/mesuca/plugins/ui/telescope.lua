@@ -5,6 +5,7 @@ return {
         dependencies = { { "nvim-lua/plenary.nvim" } },
         opts = function()
             local actions = require("telescope.actions")
+            local actions_layout = require("telescope.actions.layout")
 
             local opts = {
                 defaults = {
@@ -18,9 +19,13 @@ return {
                             ["<C-Down>"] = "cycle_history_next",
                             ["<C-Up>"] = "cycle_history_prev",
                             ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+                            ["<C-a>"] = actions.smart_add_to_qflist + actions.open_qflist,
+                            ["<M-p>"] = actions_layout.toggle_preview,
                         },
                         n = {
                             ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+                            ["<C-a>"] = actions.smart_add_to_qflist + actions.open_qflist,
+                            ["<M-p>"] = actions_layout.toggle_preview,
                         },
                     },
                     history = {
@@ -28,7 +33,19 @@ return {
                         limit = 100,
                     },
                 },
-                -- other configuration values here
+
+                pickers = {
+                    buffers = {
+                        mappings = {
+                            i = {
+                                ["<c-d>"] = actions.delete_buffer,
+                            },
+                            n = {
+                                ["d"] = actions.delete_buffer,
+                            },
+                        },
+                    },
+                }, -- other configuration values here
                 extensions = {
                     ["ui-select"] = {
                         require("telescope.themes").get_dropdown({
@@ -39,17 +56,43 @@ return {
             }
 
             if require("lib.utils").has_module("trouble") then
-                local trouble = require("trouble.providers.telescope")
+                local trouble = require("trouble")
+                local trouble_telescope = require("trouble.providers.telescope")
+
+                -- or create your custom action
+                local transform_mod = require("telescope.actions.mt").transform_mod
+                local custom_actions = transform_mod({
+                    trouble_toggle_quickfix = function(prompt_bufnr)
+                        trouble.toggle("quickfix")
+                    end,
+                })
+
+                local trouble_mappings = {
+                    i = {
+                        ["<C-q>"] = trouble_telescope.smart_open_with_trouble,
+                        ["<C-a>"] = actions.smart_add_to_qflist + custom_actions.trouble_toggle_quickfix,
+                    },
+                    n = {
+                        ["<C-q>"] = trouble_telescope.smart_open_with_trouble,
+                        ["<C-a>"] = actions.smart_add_to_qflist + custom_actions.trouble_toggle_quickfix,
+                    },
+                }
+
                 opts = vim.tbl_deep_extend("force", opts, {
-                    defaults = {
-                        mappings = {
-                            i = { ["<C-q>"] = trouble.smart_open_with_trouble },
-                            n = { ["<C-q>"] = trouble.smart_open_with_trouble },
+                    -- defaults = { mappings = trouble_mappings },
+                    pickers = {
+                        find_files = {
+                            mappings = trouble_mappings,
+                        },
+                        live_grep = {
+                            mappings = trouble_mappings,
+                        },
+                        buffers = {
+                            mappings = trouble_mappings,
                         },
                     },
                 })
             end
-
             return opts
         end,
         config = function(_, opts)
@@ -60,7 +103,9 @@ return {
             local tbuiltin = require("telescope.builtin")
 
             keymap("n", "<C-p>", tbuiltin.find_files, { desc = "Find files" })
+            keymap("n", "<C-b>", tbuiltin.buffers, { desc = "Find buffers" })
             keymap("n", "<leader>fp", tbuiltin.find_files, { desc = "Find files" })
+            keymap("n", "<leader>fb", tbuiltin.buffers, { desc = "Find buffers" })
             keymap("n", "<leader>ff", tbuiltin.live_grep, { desc = "RipGrep" })
             keymap("n", "<leader>fh", tbuiltin.help_tags, { desc = "Help Tags" })
             keymap("n", "<leader>fm", tbuiltin.keymaps, { desc = "Keymaps" })
