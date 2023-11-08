@@ -11,8 +11,8 @@ return {
                 defaults = {
                     layout_strategy = "horizontal",
                     layout_config = {
-                        vertical = { width = 0.95, height = 0.95 },
-                        horizontal = { width = 0.95, height = 0.95 },
+                        vertical = { width = 0.99, height = 0.99 },
+                        horizontal = { width = 0.99, height = 0.99 },
                     },
                     mappings = {
                         i = {
@@ -101,6 +101,14 @@ return {
 
             local keymap = require("lib.utils").keymap
             local tbuiltin = require("telescope.builtin")
+
+            -- A history implementation that memorizes prompt input for a specific context.
+            -- This means that each prompt input is associated with a calling picker and cwd.
+            -- More info: https://github.com/nvim-telescope/telescope-smart-history.nvim
+            require("telescope").load_extension("smart_history")
+            -- It sets vim.ui.select to telescope.
+            -- That means for example that neovim core stuff can fill the telescope picker.
+            require("telescope").load_extension("ui-select")
 
             keymap("n", "<C-p>", tbuiltin.find_files, { desc = "Find files" })
             keymap("n", "<C-b>", tbuiltin.buffers, { desc = "Find buffers" })
