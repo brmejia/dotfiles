@@ -1,3 +1,4 @@
+local lsp = require("lib.lsp")
 return {
     "neovim/nvim-lspconfig",
     -- enabled = false,
@@ -52,8 +53,8 @@ return {
                     },
                 },
                 pyright = {
-                    root_dir = function(fname)
-                        local root_files = {
+                    root_dir = lsp.get_server_root_dir_fn("Pyright", {
+                        {
                             "pyproject.toml",
                             "setup.py",
                             "setup.cfg",
@@ -61,12 +62,9 @@ return {
                             "requirements.txt",
                             "pyrightconfig.json",
                             -- ".git",
-                        }
-                        local util = require("lspconfig").util
-                        local root_path = util.root_pattern(table.unpack(root_files))(fname)
-                        vim.notify("Pyright root path: " .. root_path, vim.log.levels.DEBUG)
-                        return root_path
-                    end,
+                        },
+                        { "*.py" },
+                    }),
                 },
                 -- pylsp = {
                 --     settings = {

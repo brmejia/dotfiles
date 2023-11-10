@@ -1,5 +1,35 @@
 local lsp = {}
 
+function lsp.get_root_dir(file_path, root_options)
+    local lspconfig_util = require("lspconfig.util")
+    local rdir = nil
+    for _, value in pairs(root_options) do
+        rdir = lspconfig_util.root_pattern(table.unpack(value))(file_path)
+        if rdir ~= "" and rdir ~= nil then
+            local msg = string.format("Found root dir for %s: \n\t%s \n\tusing %s", file_path, rdir, vim.inspect(value))
+            print(msg)
+            return rdir
+        end
+    end
+    -- local msg = string.format("Not root found for %s", file_path)
+    -- vim.notify(msg, vim.log.levels.WARN)
+    return nil
+end
+
+function lsp.get_server_root_dir_fn(server_name, root_options)
+    local server_root_dir_fn = function(file_path)
+        local root_dir = lsp.get_root_dir(file_path, root_options)
+        if root_dir == nil then
+            local msg = string.format("Not root found for %s", file_path)
+            vim.notify(msg, vim.log.levels.WARN)
+            return nil
+        end
+        local msg = string.format("[%s] Root dir for %s: %s", server_name, file_path, root_dir)
+        vim.notify(msg, vim.log.levels.INFO)
+        return root_dir
+    end
+    return server_root_dir_fn
+end
 function lsp.setup_diagnostics()
     local signs = {
         { name = "DiagnosticSignError", text = "" },
