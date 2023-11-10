@@ -23,8 +23,7 @@ end
 local config = {
     -- cmd = { "vue-language-server", "--stdio" }, -- commented in order to use the binary installed with mason
     root_dir = lsp.get_server_root_dir_fn("volar", {
-        { ".nuxtrc", ".npmrc" },
-        { "package.json", "yarn.lock" },
+        { ".nuxtrc", ".npmrc", "package.json", "yarn.lock" },
     }),
     -- on_new_config = on_new_config,
     filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
