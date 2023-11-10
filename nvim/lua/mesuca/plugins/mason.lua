@@ -18,6 +18,7 @@ return {
             -- ---------------------
             "prettier",
             -- "eslint-lsp",
+            "vacuum",
         },
     },
 
