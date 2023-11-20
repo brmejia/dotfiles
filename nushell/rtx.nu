@@ -3,15 +3,17 @@ export-env {
   $env.RTX_USE_TOML = 1
 
   $env.config = ($env.config | upsert hooks {
-      pre_prompt: [{
+      pre_prompt: ($env.config.hooks.pre_prompt ++
+      [{
       condition: {|| "RTX_SHELL" in $env }
       code: {|| rtx_hook }
-      }]
+      }])
       env_change: {
-          PWD: [{
+          PWD: ($env.config.hooks.env_change.PWD ++
+          [{
           condition: {|| "RTX_SHELL" in $env }
           code: {|| rtx_hook }
-          }]
+          }])
       }
   })
 }
@@ -20,7 +22,7 @@ def "parse vars" [] {
   $in | lines | parse "{op},{name},{value}"
 }
 
-def-env rtx [command?: string, --help, ...rest: string] {
+def --wrapped rtx [command?: string, --help, ...rest: string] {
   let commands = ["shell", "deactivate"]
 
   if ($command == null) {
@@ -36,7 +38,7 @@ def-env rtx [command?: string, --help, ...rest: string] {
   }
 }
 
-def-env "update-env" [] {
+def --env "update-env" [] {
   for $var in $in {
     if $var.op == "set" {
       load-env {($var.name): $var.value}
@@ -46,10 +48,8 @@ def-env "update-env" [] {
   }
 }
 
-def-env rtx_hook [] {
+def --env rtx_hook [] {
   ^"~/.cargo/bin/rtx" hook-env -s nu
     | parse vars
     | update-env
 }
-
-

@@ -5,6 +5,7 @@ alias find = fd
 alias grep = rg
 alias vim = nvim
 alias nvide = neovide --frame none
+alias zj = zellij
 
 # Packages Manager
 alias dnfi = sudo dnf install
@@ -19,5 +20,3 @@ alias gd = git diff
 alias gdc = git diff --cached
 alias glog = git log --graph --all --oneline
 alias gst = git status
-
-

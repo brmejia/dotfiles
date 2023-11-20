@@ -26,6 +26,13 @@ local local_config = function()
     end
     if require("lib.utils").has_module("mini.trailspace") then
         require("mini.trailspace").setup()
+
+        vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+            callback = function()
+                require("mini.trailspace").trim()
+                require("mini.trailspace").trim_last_lines()
+            end,
+        })
     end
     if require("lib.utils").has_module("mini.sessions") then
         require("mini.sessions").setup({
