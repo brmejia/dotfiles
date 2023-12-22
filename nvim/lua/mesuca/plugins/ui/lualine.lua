@@ -106,6 +106,13 @@ local status_mode = function()
     }
 end
 
+local codeium_status = function()
+    -- if not require("lib.utils").has_module("codeium.vim") then
+    --     return ""
+    -- end
+    return "{…} " .. vim.fn["codeium#GetStatusString"]()
+end
+
 return {
     "nvim-lualine/lualine.nvim",
     -- enabled = false,
@@ -143,6 +150,7 @@ return {
                     -- },
                     diff,
                     "tabnine",
+                    codeium_status,
                     spaces,
                     "encoding",
                     "fileformat",

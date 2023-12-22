@@ -290,11 +290,6 @@ let light_theme = {
     shape_variable: purple
 }
 
-# External completer example
-# let carapace_completer = {|spans|
-#     carapace $spans.0 nushell $spans | from json
-# }
-
 
 # The default config record. This is where much of your global configuration is setup.
 $env.config = {
@@ -654,6 +649,7 @@ export-env {
 }
 
 source ~/.cache/starship/init.nu
-source ~/.config/nushell/rtx.nu
-source ~/.config/nushell/aliases.nu
-source ~/.config/nushell/atuin.nu
+source ~/.config/nushell/conf.d/rtx.nu
+source ~/.config/nushell/conf.d/aliases.nu
+source ~/.config/nushell/conf.d/atuin.nu
+source ~/.config/nushell/conf.d/completion.nu
