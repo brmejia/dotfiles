@@ -36,7 +36,6 @@ return {
             "markdown_inline",
             "kdl",
             "ron",
-            "just",
         },
 
         highlight = {
