@@ -649,7 +649,7 @@ export-env {
 }
 
 source ~/.cache/starship/init.nu
-source ~/.config/nushell/conf.d/rtx.nu
+source ~/.config/nushell/conf.d/mise.nu
 source ~/.config/nushell/conf.d/aliases.nu
 source ~/.config/nushell/conf.d/atuin.nu
 source ~/.config/nushell/conf.d/completion.nu

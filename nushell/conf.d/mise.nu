@@ -1,18 +1,18 @@
 export-env {
-  $env.RTX_SHELL = "nu"
-  $env.RTX_USE_TOML = 1
+  $env.MISE_SHELL = "nu"
+  $env.MISE_USE_TOML = 1
 
   $env.config = ($env.config | upsert hooks {
       pre_prompt: ($env.config.hooks.pre_prompt ++
       [{
-      condition: {|| "RTX_SHELL" in $env }
-      code: {|| rtx_hook }
+      condition: {|| "MISE_SHELL" in $env }
+      code: {|| mise_hook }
       }])
       env_change: {
           PWD: ($env.config.hooks.env_change.PWD ++
           [{
-          condition: {|| "RTX_SHELL" in $env }
-          code: {|| rtx_hook }
+          condition: {|| "MISE_SHELL" in $env }
+          code: {|| mise_hook }
           }])
       }
   })
@@ -22,19 +22,19 @@ def "parse vars" [] {
   $in | lines | parse "{op},{name},{value}"
 }
 
-def --wrapped rtx [command?: string, --help, ...rest: string] {
+def --wrapped mise [command?: string, --help, ...rest: string] {
   let commands = ["shell", "deactivate"]
 
   if ($command == null) {
-    ^"~/.cargo/bin/rtx"
+    ^"~/.cargo/bin/mise"
   } else if ($command == "activate") {
-    $env.RTX_SHELL = "nu"
+    $env.MISE_SHELL = "nu"
   } else if ($command in $commands) {
-    ^"~/.cargo/bin/rtx" $command $rest
+    ^"~/.cargo/bin/mise" $command ...$rest
     | parse vars
     | update-env
   } else {
-    ^"~/.cargo/bin/rtx" $command $rest
+    ^"~/.cargo/bin/mise" $command ...$rest
   }
 }
 
@@ -48,8 +48,8 @@ def --env "update-env" [] {
   }
 }
 
-def --env rtx_hook [] {
-  ^"~/.cargo/bin/rtx" hook-env -s nu
+def --env mise_hook [] {
+  ^"~/.cargo/bin/mise" hook-env -s nu
     | parse vars
     | update-env
 }

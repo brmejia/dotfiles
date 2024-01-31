@@ -34,9 +34,11 @@ let external_completer = {|spans|
     match $spans.0 {
         nu => $fish_completer
         rtx => $fish_completer
+        mise => $fish_completer
         podman => $fish_completer
-        _ => $carapace_completer
+        _ => $fish_completer
     } | do $in $spans
+# _ => $carapace_completer
 }
 
 mut current = (($env | default {} config).config | default {} completions)
