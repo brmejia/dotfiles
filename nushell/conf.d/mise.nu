@@ -1,6 +1,5 @@
 export-env {
   $env.MISE_SHELL = "nu"
-  $env.MISE_USE_TOML = 1
 
   $env.config = ($env.config | upsert hooks {
       pre_prompt: ($env.config.hooks.pre_prompt ++
@@ -26,15 +25,15 @@ def --wrapped mise [command?: string, --help, ...rest: string] {
   let commands = ["shell", "deactivate"]
 
   if ($command == null) {
-    ^"~/.cargo/bin/mise"
+    ^"mise"
   } else if ($command == "activate") {
     $env.MISE_SHELL = "nu"
   } else if ($command in $commands) {
-    ^"~/.cargo/bin/mise" $command ...$rest
+    ^"mise" $command ...$rest
     | parse vars
     | update-env
   } else {
-    ^"~/.cargo/bin/mise" $command ...$rest
+    ^"mise" $command ...$rest
   }
 }
 
@@ -49,7 +48,7 @@ def --env "update-env" [] {
 }
 
 def --env mise_hook [] {
-  ^"~/.cargo/bin/mise" hook-env -s nu
+  ^"mise" hook-env -s nu
     | parse vars
     | update-env
 }
