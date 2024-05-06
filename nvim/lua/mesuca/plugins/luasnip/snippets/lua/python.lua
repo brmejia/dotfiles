@@ -26,7 +26,7 @@ return {
     s("dbg", {
         t('print(f"{'),
         i(1),
-        t(' = }")'),
+        t(' = }", flush=True)'),
     }),
     s("ipdb", {
         t("import ipdb"),
