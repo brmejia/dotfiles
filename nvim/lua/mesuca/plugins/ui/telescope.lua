@@ -57,7 +57,7 @@ return {
 
             if require("lib.utils").has_module("trouble") then
                 local trouble = require("trouble")
-                local trouble_telescope = require("trouble.providers.telescope")
+                local open_with_trouble = require("trouble.sources.telescope").open
 
                 -- or create your custom action
                 local transform_mod = require("telescope.actions.mt").transform_mod
@@ -69,11 +69,11 @@ return {
 
                 local trouble_mappings = {
                     i = {
-                        ["<C-q>"] = trouble_telescope.smart_open_with_trouble,
+                        ["<C-q>"] = open_with_trouble,
                         ["<C-a>"] = actions.smart_add_to_qflist + custom_actions.trouble_toggle_quickfix,
                     },
                     n = {
-                        ["<C-q>"] = trouble_telescope.smart_open_with_trouble,
+                        ["<C-q>"] = open_with_trouble,
                         ["<C-a>"] = actions.smart_add_to_qflist + custom_actions.trouble_toggle_quickfix,
                     },
                 }
