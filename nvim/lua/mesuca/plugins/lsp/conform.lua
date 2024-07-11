@@ -4,7 +4,7 @@ return {
         format_on_save = {
             -- These options will be passed to conform.format()
             timeout_ms = 700,
-            lsp_fallback = true,
+            lsp_fallback = false,
         },
         formatters = {
             ["npm-groovy-lint"] = {
@@ -24,6 +24,7 @@ return {
             -- Use a sub-list to run only the first available formatter
             javascript = { { "prettierd", "prettier" } },
             typescript = { { "prettierd", "prettier" } },
+            json = { { "prettierd", "prettier" } },
             yaml = { { "prettierd", "prettier" } },
             groovy = { { "npm-groovy-lint" } },
         },
