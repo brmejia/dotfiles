@@ -11,4 +11,13 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("mesuca.plugins")
+local plugins_module = "mesuca.plugins"
+require("lazy").setup({
+    { import = plugins_module },
+    { import = plugins_module .. ".languages" },
+    { import = plugins_module .. ".languages.rust" },
+    { import = plugins_module .. ".languages.typescript" },
+    { import = plugins_module .. ".lsp" },
+    { import = plugins_module .. ".themes" },
+    { import = plugins_module .. ".ui" },
+})

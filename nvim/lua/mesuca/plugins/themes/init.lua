@@ -15,7 +15,6 @@ local ui = require("lib.ui")
 ui.ResetGuiFont()
 
 return {
-    { import = (...) },
     -- Themes
     { "navarasu/onedark.nvim" },
     { "rebelot/kanagawa.nvim" },

@@ -137,6 +137,10 @@ return {
                 ansiblels = {},
                 volar = volar_config,
                 taplo = {},
+                groovyls = {
+                    filetypes = { "groovy", "Jenkinsfile" },
+                    cmd = { "java", "-jar", "/opt/groovyls/build/libs/groovyls-all.jar" },
+                },
             },
         }
     end,

@@ -6,6 +6,16 @@ return {
             timeout_ms = 700,
             lsp_fallback = true,
         },
+        formatters = {
+            ["npm-groovy-lint"] = {
+                command = "npm-groovy-lint",
+                -- A list of strings, or a function that returns a list of strings
+                -- Return a single string instead of a list to run the command in a shell
+                -- args = { "--format", "-" },
+                stdin = false,
+                args = { "--format", "$FILENAME" },
+            },
+        },
         formatters_by_ft = {
             lua = { "stylua" },
             -- Conform will run multiple formatters sequentially
@@ -15,6 +25,7 @@ return {
             javascript = { { "prettierd", "prettier" } },
             typescript = { { "prettierd", "prettier" } },
             yaml = { { "prettierd", "prettier" } },
+            groovy = { { "npm-groovy-lint" } },
         },
     },
 }
