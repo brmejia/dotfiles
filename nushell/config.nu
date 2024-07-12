@@ -646,6 +646,7 @@ $env.config = {
 export-env {
   $env.EDITOR = "nvim"
   $env.VISUAl = "nvim"
+  $env.PATH += "~/.local/bin"
 }
 
 source ~/.cache/starship/init.nu
@@ -653,3 +654,4 @@ source ~/.config/nushell/conf.d/mise.nu
 source ~/.config/nushell/conf.d/aliases.nu
 source ~/.config/nushell/conf.d/atuin.nu
 source ~/.config/nushell/conf.d/completion.nu
+source ~/.config/nushell/conf.d/scripts.nu
