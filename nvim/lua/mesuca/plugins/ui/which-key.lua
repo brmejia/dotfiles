@@ -21,11 +21,11 @@ return {
         })
 
         local mappings = {
-            q = { ":q<cr>", "Quit" },
-            Q = { ":wq<cr>", "Save & Quit" },
-            w = { ":w<cr>", "Save" },
-            x = { ":bdelete<cr>", "Close buffer" },
-            X = { ":bufdo bdelete<cr>", "Close all buffers" },
+            { "<leader>q", ":q<cr>", desc = "Quit" },
+            { "<leader>Q", ":wq<cr>", desc = "Save & Quit" },
+            { "<leader>w", ":w<cr>", desc = "Save" },
+            { "<leader>x", ":bdelete<cr>", desc = "Close buffer" },
+            { "<leader>X", ":bufdo bdelete<cr>", desc = "Close all buffers" },
             -- E = {":e ~/.config/nvim/init.lua<cr>", "Edit config"},
             -- f = {":Telescope find_files<cr>", "Telescope Find Files"},
             -- r = {":Telescope live_grep<cr>", "Telescope Live Grep"},
@@ -42,6 +42,6 @@ return {
         }
 
         local opts = { prefix = "<leader>" }
-        wk.register(mappings, opts)
+        wk.add(mappings, opts)
     end,
 }

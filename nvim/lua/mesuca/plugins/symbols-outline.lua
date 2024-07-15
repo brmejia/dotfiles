@@ -59,16 +59,16 @@ return {
         if require("lib.utils").has_module("which-key") then
             local wk = require("which-key")
             local leader_mappings = {
-                S = {
+                {
+                    "<leader>S",
                     function()
                         require("symbols-outline").toggle_outline()
                     end,
-                    "Toggle Symbols Outline",
+                    desc = "Toggle Symbols Outline",
                 },
             }
 
-            local opts = { prefix = "<leader>" }
-            wk.register(leader_mappings, opts)
+            wk.add(leader_mappings)
         end
     end,
 }

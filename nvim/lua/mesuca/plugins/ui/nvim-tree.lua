@@ -13,12 +13,11 @@ return {
         if require("lib.utils").has_module("which-key") then
             local wk = require("which-key")
             local mappings = {
-                ["<F1>"] = { ":NvimTreeToggle<cr>", "FileTree - Toggle" },
-                t = { ":NvimTreeFindFileToggle<cr>", "FileTree - Find current file" },
+                { "<F1>", ":NvimTreeToggle<cr>", desc = "FileTree - Toggle" },
+                { "<leader>t", ":NvimTreeFindFileToggle<cr>", desc = "FileTree - Find current file" },
             }
 
-            local opts = { prefix = "<leader>" }
-            wk.register(mappings, opts)
+            wk.add(mappings)
         end
         -- setup with all defaults
         -- each of these are documented in `:help nvim-tree.OPTION_NAME`

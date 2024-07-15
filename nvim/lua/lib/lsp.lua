@@ -111,59 +111,62 @@ function lsp.set_lsp_keymaps(client, bufnr)
     if require("lib.utils").has_module("which-key") then
         local wk = require("which-key")
         local mappings = {
-            l = {
-                name = "LSP",
-                i = { ":LspInfo<cr>", "Connected Language Servers" },
-                k = { ":lua vim.lsp.buf.signature_help()<cr>", "Signature Help" },
-                K = { ":lua vim.lsp.buf.hover()<cr>", "Hover Commands" },
-                --buf_set_keymap(bufnr, 'n', '<leader>wa', ':lua vim.lsp.buf.add_workspace_folder()<CR>')
-                w = { ":lua vim.lsp.buf.add_workspace_folder()<cr>", "Add Workspace Folder" },
-                --buf_set_keymap(bufnr, 'n', '<leader>wr', ':lua vim.lsp.buf.remove_workspace_folder()<CR>')
-                W = { ":lua vim.lsp.buf.remove_workspace_folder()<cr>", "Remove Workspace Folder" },
-                l = {
-                    ":lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>",
-                    "List Workspace Folders",
-                },
-                -- buf_set_keymap(bufnr, 'n', 'gi', ':lua vim.lsp.buf.implementation()<CR>')
-                --buf_set_keymap(bufnr, 'n', '<leader>q', ':lua vim.lsp.diagnostic.set_loclist()<CR>')
-                q = { ":Trouble loclist<cr>", "Loclist" },
-                f = { ":Trouble quickfix<cr>", "Quickfix" },
-                I = { ":lua vim.lsp.buf.implementation()<CR>", "Implementations" },
+            { "<leader>l", group = "LSP" },
+            { "<leader>li", ":LspInfo<cr>", desc = "Connected Language Servers" },
+            { "<leader>lk", ":lua vim.lsp.buf.signature_help()<cr>", desc = "Signature Help" },
+            { "<leader>lK", ":lua vim.lsp.buf.hover()<cr>", desc = "Hover Commands" },
+            --buf_set_keymap(bufnr, 'n', '<leader>wa', ':lua vim.lsp.buf.add_workspace_folder()<CR>')
+            { "<leader>lw", ":lua vim.lsp.buf.add_workspace_folder()<cr>", desc = "Add Workspace Folder" },
+            --buf_set_keymap(bufnr, 'n', '<leader>wr', ':lua vim.lsp.buf.remove_workspace_folder()<CR>')
+            { "<leader>lW", ":lua vim.lsp.buf.remove_workspace_folder()<cr>", desc = "Remove Workspace Folder" },
+            {
+                "<leader>ll",
+                ":lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>",
+                desc = "List Workspace Folders",
+            },
+            -- buf_set_keymap(bufnr, 'n', 'gi', ':lua vim.lsp.buf.implementation()<CR>')
+            --buf_set_keymap(bufnr, 'n', '<leader>q', ':lua vim.lsp.diagnostic.set_loclist()<CR>')
+            { "<leader>lq", ":Trouble loclist<cr>", desc = "Loclist" },
+            { "<leader>lf", ":Trouble quickfix<cr>", desc = "Quickfix" },
+            { "<leader>lI", ":lua vim.lsp.buf.implementation()<CR>", desc = "Implementations" },
 
-                -- buf_set_keymap(bufnr, 'n', '<leader>D', ':lua vim.lsp.buf.type_definition()<CR>')
-                t = { ":lua vim.lsp.buf.type_definition()<CR>", "Type Definition" },
-                -- t = { ':Trouble lsp_type_definitions<cr>', "Type Definition" },
+            -- buf_set_keymap(bufnr, 'n', '<leader>D', ':lua vim.lsp.buf.type_definition()<CR>')
+            { "<leader>lt", ":lua vim.lsp.buf.type_definition()<CR>", desc = "Type Definition" },
+            -- t = { ':Trouble lsp_type_definitions<cr>', "Type Definition" },
 
-                -- buf_set_keymap(bufnr, 'n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
-                d = { ":lua vim.lsp.buf.definition()<CR>", "Go To Definition" },
-                D = { ":lua vim.lsp.buf.declaration()<cr>", "Go To Declaration" },
-                -- r = { ':lua require("fzf-lua").lsp_references({ jump_to_single_result = true })<cr>', "Go To Definition" },
+            -- buf_set_keymap(bufnr, 'n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
+            { "<leader>ld", ":lua vim.lsp.buf.definition()<CR>", desc = "Go To Definition" },
+            { "<leader>lD", ":lua vim.lsp.buf.declaration()<cr>", desc = "Go To Declaration" },
+            -- r = { ':lua require("fzf-lua").lsp_references({ jump_to_single_result = true })<cr>', "Go To Definition" },
 
-                r = { ":Trouble lsp_references<cr>", "References" },
-                -- buf_set_keymap(bufnr, 'n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
-                R = { ":lua vim.lsp.buf.rename()<cr>", "Rename" },
-                -- buf_set_keymap(bufnr, 'n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
-                -- a = { ':FzfLua lsp_code_actions<cr>', "Code actions" },
-                a = { ":lua vim.lsp.buf.code_action()<CR>", "Code actions" },
+            { "<leader>lr", ":Trouble lsp_references<cr>", desc = "References" },
+            -- buf_set_keymap(bufnr, 'n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
+            { "<leader>lR", ":lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
+            -- buf_set_keymap(bufnr, 'n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
+            -- a = { ':FzfLua lsp_code_actions<cr>', "Code actions" },
+            { "<leader>la", ":lua vim.lsp.buf.code_action()<CR>", desc = "Code actions" },
 
-                -- buf_set_keymap(bufnr, 'n', '<leader>e', ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
-                e = { ":lua vim.diagnostic.open_float()<CR>", "Show Line Diagnostics" },
+            -- buf_set_keymap(bufnr, 'n', '<leader>e', ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
+            { "<leader>le", ":lua vim.diagnostic.open_float()<CR>", desc = "Show Line Diagnostics" },
 
-                x = { ":Trouble document_diagnostics<cr>", "Show Document Diagnostics" },
-                X = { ":Trouble workspace_diagnostics<cr>", "Show Workspace Diagnostics" },
+            { "<leader>lx", ":Trouble document_diagnostics<cr>", desc = "Show Document Diagnostics" },
+            { "<leader>lX", ":Trouble workspace_diagnostics<cr>", desc = "Show Workspace Diagnostics" },
 
-                -- buf_set_keymap(bufnr, 'n', ']d', ':lua vim.lsp.diagnostic.goto_next()<CR>')
-                -- n = { ':Lspsaga diagnostic_jump_next<cr>', "Go To Next Diagnostic" },
-                n = { ":lua vim.diagnostic.goto_next()<CR>", "Go To Next Diagnostic" },
+            -- buf_set_keymap(bufnr, 'n', ']d', ':lua vim.lsp.diagnostic.goto_next()<CR>')
+            -- n = { ':Lspsaga diagnostic_jump_next<cr>', "Go To Next Diagnostic" },
+            { "<leader>ln", ":lua vim.diagnostic.goto_next()<CR>", desc = "Go To Next Diagnostic" },
 
-                -- buf_set_keymap(bufnr, 'n', '[d', ':lua vim.lsp.diagnostic.goto_prev({border = "rounded"})<CR>')
-                -- N = { ':Lspsaga diagnostic_jump_prev<cr>', "Go To Previous Diagnostic" }
-                N = { ':lua vim.diagnostic.goto_prev({border = "rounded"})<CR>', "Go To Previous Diagnostic" },
+            -- buf_set_keymap(bufnr, 'n', '[d', ':lua vim.lsp.diagnostic.goto_prev({border = "rounded"})<CR>')
+            -- N = { ':Lspsaga diagnostic_jump_prev<cr>', "Go To Previous Diagnostic" }
+            {
+                "<leader>lN",
+                ':lua vim.diagnostic.goto_prev(border = "rounded")<CR>',
+                desc = "Go To Previous Diagnostic",
             },
         }
 
-        local opts = { prefix = "<leader>", buffer = bufnr }
-        wk.register(mappings, opts)
+        local opts = { buffer = bufnr }
+        wk.add(mappings, opts)
     end
 
     if client.name == "rust_analyzer" then

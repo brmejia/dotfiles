@@ -20,19 +20,18 @@ return {
         if require("lib.utils").has_module("which-key") then
             local wk = require("which-key")
             local leader_mappings = {
-                s = {
-                    name = "Structural Search/Replace",
-                    r = {
-                        function()
-                            require("ssr").open()
-                        end,
-                        "Search/Replace",
-                    },
+                { "<leader>s", group = "Structural Search/Replace" },
+                {
+                    "<leader>sr",
+                    function()
+                        require("ssr").open()
+                    end,
+                    desc = "Search/Replace",
                 },
             }
 
-            local opts = { mode = "x", prefix = "<leader>" }
-            wk.register(leader_mappings, opts)
+            local opts = { mode = "x" }
+            wk.add(leader_mappings, opts)
         end
     end,
 }

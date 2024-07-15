@@ -6,25 +6,25 @@ return {
         if require("lib.utils").has_module("which-key") then
             local wk = require("which-key")
             local leader_mappings = {
-                g = {
-                    name = "Git",
-                    u = {
-                        function()
-                            gitui.gitui()
-                        end,
-                        "Working directory",
-                    },
-                    U = {
-                        function()
-                            gitui.gituiconfig()
-                        end,
-                        "GitUI Config file",
-                    },
+                { "<leader>g", group = "Git" },
+                {
+                    "<leader>u",
+                    function()
+                        gitui.gitui()
+                    end,
+                    desc = "Working directory",
+                },
+                {
+                    "<leader>U",
+                    function()
+                        gitui.gituiconfig()
+                    end,
+                    desc = "GitUI Config file",
                 },
             }
 
             local opts = { prefix = "<leader>" }
-            wk.register(leader_mappings, opts)
+            wk.add(leader_mappings, opts)
         end
     end,
 }

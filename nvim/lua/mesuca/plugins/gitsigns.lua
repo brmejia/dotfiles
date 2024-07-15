@@ -17,19 +17,16 @@ return {
         if require("lib.utils").has_module("which-key") then
             local wk = require("which-key")
             local leader_mappings = {
-                g = {
-                    name = "Git",
-                    B = { ":Gitsigns toggle_current_line_blame<cr>", "Toggle blame" },
-                    H = { ":Gitsigns setqflist<cr>", "Hunk Quickfix" },
-                    h = { ":Gitsigns preview_hunk<cr>", "Hunk preview" },
-                    r = { ":Gitsigns reset_hunk<cr>", "Reset hunk" },
-                    p = { ":Gitsigns prev_hunk<cr>zz", "Previous Hunk" },
-                    n = { ":Gitsigns next_hunk<cr>zz", "Next Hunk" },
-                },
+                { "<leader>g", group = "Git" },
+                { "<leader>gB", ":Gitsigns toggle_current_line_blame<cr>", desc = "Toggle blame" },
+                { "<leader>gH", ":Gitsigns setqflist<cr>", desc = "Hunk Quickfix" },
+                { "<leader>gh", ":Gitsigns preview_hunk<cr>", desc = "Hunk preview" },
+                { "<leader>gr", ":Gitsigns reset_hunk<cr>", desc = "Reset hunk" },
+                { "<leader>gp", ":Gitsigns prev_hunk<cr>zz", desc = "Previous Hunk" },
+                { "<leader>gn", ":Gitsigns next_hunk<cr>zz", desc = "Next Hunk" },
             }
 
-            local opts = { prefix = "<leader>" }
-            wk.register(leader_mappings, opts)
+            wk.add(leader_mappings)
         end
     end,
 }

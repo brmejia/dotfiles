@@ -21,6 +21,6 @@ require("hop").setup({
 --     }
 
 --     local opts = { prefix = '<leader>', }
---     wk.register(leader_mappings, opts)
+--     wk.add(leader_mappings, opts)
 
 -- end

@@ -65,25 +65,24 @@ return {
         if require("lib.utils").has_module("which-key") then
             local wk = require("which-key")
             local leader_mappings = {
-                g = {
-                    name = "Git",
-                    S = {
-                        function()
-                            neogit.open()
-                        end,
-                        "Current buffer",
-                    },
-                    s = {
-                        function()
-                            neogit.open({ cwd = vim.fn.expand("%:p:h") })
-                        end,
-                        "Working directory",
-                    },
+                { "<leader>g", group = "Git" },
+                {
+                    "<leader>gS",
+                    function()
+                        neogit.open()
+                    end,
+                    desc = "Current buffer",
+                },
+                {
+                    "<leader>gs",
+                    function()
+                        neogit.open({ cwd = vim.fn.expand("%:p:h") })
+                    end,
+                    desc = "Working directory",
                 },
             }
 
-            local opts = { prefix = "<leader>" }
-            wk.register(leader_mappings, opts)
+            wk.add(leader_mappings)
         end
     end,
 }

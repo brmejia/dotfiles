@@ -24,11 +24,10 @@ return {
 
             local double_leader_mappings = {
                 -- s = { ":source ~/.dotfiles/nvim/lua/config/luasnip/init.lua<cr>", "Reload LuaSnip" },
-                s = { lazy_load_snippets, "Reload LuaSnip" },
+                { "<leader><leader>s", lazy_load_snippets, desc = "Reload LuaSnip" },
             }
 
-            local double_leader_opts = { prefix = "<leader><leader>" }
-            wk.register(double_leader_mappings, double_leader_opts)
+            wk.add(double_leader_mappings)
         end
 
         -- Shorten function name

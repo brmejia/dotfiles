@@ -11,21 +11,18 @@ require("fzf-lua").setup({
 if require("lib.utils").has_module("which-key") then
     local wk = require("which-key")
     local leader_mappings = {
-        f = {
-            name = "Search",
-            b = { ":FzfLua buffers<cr>", "Buffers" },
-            f = { ":FzfLua grep_project<cr>", "RipGrep" },
-            p = { ":FzfLua files<cr>", "Files" },
-            m = { ":FzfLua keymaps<cr>", "Keymaps" },
-            h = { ":FzfLua help_tags<cr>", "Help Tags" },
-        },
+        { "<leader>f", mode="n", group = "Search" },
+        { "<leader>fb", ":FzfLua buffers<cr>", desc = "Buffers" },
+        { "<leader>ff", ":FzfLua grep_project<cr>", desc = "RipGrep" },
+        { "<leader>fp", ":FzfLua files<cr>", desc = "Files" },
+        { "<leader>fm", ":FzfLua keymaps<cr>", desc = "Keymaps" },
+        { "<leader>fh", ":FzfLua help_tags<cr>", desc = "Help Tags" },
     }
 
-    local opts = { prefix = "<leader>" }
-    wk.register(leader_mappings, opts)
+    wk.add(leader_mappings)
 
     local opts = { mode = "n", noremap = true }
-    wk.register({
-        ["<C-p>"] = { ":FzfLua files<cr>", "Files" },
+    wk.add({
+        {["<C-p>"] ,  ":FzfLua files<cr>", desc="Files" },
     }, opts)
 end
