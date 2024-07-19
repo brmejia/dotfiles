@@ -67,6 +67,7 @@ return {
                 end,
             },
             sources = cmp.config.sources({
+                { name = "codeium", keyword_length = 0, max_item_count = 3 },
                 { name = "nvim_lsp", keyword_length = 2 },
                 { name = "nvim_lsp_signature_help" },
                 -- { name = 'vsnip' }, -- For vsnip users.

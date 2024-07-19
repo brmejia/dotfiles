@@ -71,6 +71,7 @@ utils.kind_icons = {
     Unit = "󰑭",
     Value = "󰎠",
     Variable = "󰫧",
+    Codeium = "",
 }
 
 return utils
