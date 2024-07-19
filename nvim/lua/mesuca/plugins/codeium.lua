@@ -4,8 +4,8 @@ return {
     {
         "Exafunction/codeium.nvim",
         enabled = true,
-        event = "InsertEnter",
-        -- event = "BufEnter",
+        -- event = "InsertEnter",
+        event = "BufEnter",
         dependencies = {
             "nvim-lua/plenary.nvim",
             "hrsh7th/nvim-cmp",
