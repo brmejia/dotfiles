@@ -149,8 +149,8 @@ function lsp.set_lsp_keymaps(client, bufnr)
             -- buf_set_keymap(bufnr, 'n', '<leader>e', ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
             { "<leader>le", ":lua vim.diagnostic.open_float()<CR>", desc = "Show Line Diagnostics" },
 
-            { "<leader>lx", ":Trouble document_diagnostics<cr>", desc = "Show Document Diagnostics" },
-            { "<leader>lX", ":Trouble workspace_diagnostics<cr>", desc = "Show Workspace Diagnostics" },
+            { "<leader>lx", ":Trouble diagnostics toggle filter.buf=0<cr>", desc = "Show Document Diagnostics" },
+            { "<leader>lX", ":Trouble diagnostics toggle<cr>", desc = "Show Workspace Diagnostics" },
 
             -- buf_set_keymap(bufnr, 'n', ']d', ':lua vim.lsp.diagnostic.goto_next()<CR>')
             -- n = { ':Lspsaga diagnostic_jump_next<cr>', "Go To Next Diagnostic" },
