@@ -2,10 +2,20 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
-        dependencies = { { "nvim-lua/plenary.nvim" } },
+        dependencies = {
+            { "nvim-lua/plenary.nvim" },
+            {
+                "nvim-telescope/telescope-live-grep-args.nvim",
+                -- This will not install any breaking changes.
+                -- For major updates, this must be adjusted manually.
+                version = "^1.0.0",
+            },
+        },
         opts = function()
             local actions = require("telescope.actions")
             local actions_layout = require("telescope.actions.layout")
+
+            local lga_actions = require("telescope-live-grep-args.actions")
 
             local opts = {
                 defaults = {
@@ -52,6 +62,23 @@ return {
                             -- even more opts
                         }),
                     },
+                    live_grep_args = {
+                        auto_quoting = true, -- enable/disable auto-quoting
+                        -- define mappings, e.g.
+                        mappings = { -- extend mappings
+                            i = {
+                                ["<C-k>"] = lga_actions.quote_prompt(),
+                                ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+                                ["<C-t>"] = lga_actions.quote_prompt({ postfix = " -t " }),
+                                -- freeze the current list and start a fuzzy search in the frozen list
+                                ["<C-space>"] = actions.to_fuzzy_refine,
+                            },
+                        },
+                        -- ... also accepts theme settings, for example:
+                        -- theme = "dropdown", -- use dropdown theme
+                        -- theme = { }, -- use own theme spec
+                        -- layout_config = { mirror=true }, -- mirror preview pane
+                    },
                 },
             }
 
@@ -97,6 +124,7 @@ return {
         end,
         config = function(_, opts)
             local telescope = require("telescope")
+            local extensions = require("telescope").extensions
             telescope.setup(opts)
 
             local keymap = require("lib.utils").keymap
@@ -105,16 +133,21 @@ return {
             -- A history implementation that memorizes prompt input for a specific context.
             -- This means that each prompt input is associated with a calling picker and cwd.
             -- More info: https://github.com/nvim-telescope/telescope-smart-history.nvim
-            require("telescope").load_extension("smart_history")
+            telescope.load_extension("smart_history")
             -- It sets vim.ui.select to telescope.
             -- That means for example that neovim core stuff can fill the telescope picker.
-            require("telescope").load_extension("ui-select")
+            telescope.load_extension("ui-select")
+            -- It enables passing arguments to the grep command, rg examples:
+            --     foo → press <C-k> → "foo" → "foo" -tmd
+            --         Only works if you set up the <C-k> mapping
+            telescope.load_extension("live_grep_args")
 
             keymap("n", "<C-p>", tbuiltin.find_files, { desc = "Find files" })
             keymap("n", "<C-b>", tbuiltin.buffers, { desc = "Find buffers" })
             keymap("n", "<leader>fp", tbuiltin.find_files, { desc = "Find files" })
             keymap("n", "<leader>fb", tbuiltin.buffers, { desc = "Find buffers" })
-            keymap("n", "<leader>ff", tbuiltin.live_grep, { desc = "RipGrep" })
+            -- keymap("n", "<leader>ff", tbuiltin.live_grep, { desc = "RipGrep" })
+            keymap("n", "<leader>ff", extensions.live_grep_args.live_grep_args, { desc = "RipGrepArgs" })
             keymap("n", "<leader>fh", tbuiltin.help_tags, { desc = "Help Tags" })
             keymap("n", "<leader>fm", tbuiltin.keymaps, { desc = "Keymaps" })
         end,
