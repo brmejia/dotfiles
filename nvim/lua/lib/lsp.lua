@@ -179,6 +179,11 @@ function lsp.set_lsp_keymaps(client, bufnr)
             buf_keymap(bufnr, "n", "<leader>a", rt.code_action_group.code_action_group)
         end
     end
+
+    if client.name == "ruff" then
+        -- Disable hover in favor of Pyright
+        client.server_capabilities.hoverProvider = false
+    end
 end
 
 function lsp.set_lsp_document_formatting(client, bufnr)

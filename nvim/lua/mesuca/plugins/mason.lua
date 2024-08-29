@@ -11,8 +11,8 @@ return {
 
             -- Python
             -- ---------------------
-            "black",
-            -- "mypy", -- Mypy needs to be installed on virtualenvironment
+            -- "black", -- Replaced by ruff
+            -- "mypy",
 
             -- Typescript/Javascript/HTML/CSS
             -- ---------------------

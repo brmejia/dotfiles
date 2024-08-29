@@ -46,10 +46,16 @@ return {
                         },
                     },
                 },
-                ruff_lsp = {
-                    settings = {
-                        -- Any extra CLI arguments for `ruff` go here.
-                        args = {},
+                ruff = {
+                    init_options = {
+                        settings = {
+                            -- Any extra CLI arguments for `ruff` go here.
+                            args = {},
+                            lineLength = 88,
+                            format = {
+                                preview = true,
+                            },
+                        },
                     },
                 },
                 pyright = {
@@ -60,11 +66,27 @@ return {
                             "setup.cfg",
                             "Pipfile",
                             "requirements.txt",
+                            "requirements.lock",
+                            "requirements-dev.lock",
                             "pyrightconfig.json",
                             -- ".git",
                         },
                         { "*.py" },
                     }),
+                    settings = {
+                        pyright = {
+                            -- Using Ruff's import organizer
+                            disableOrganizeImports = true,
+                        },
+                        python = {
+                            analysis = {
+                                -- Ignore all files for analysis to exclusively use Ruff for linting
+                                -- ignore = { "*" },
+                                -- typeCheckingMode ["off", "basic", "standard", "strict"]
+                                typeCheckingMode = "standard",
+                            },
+                        },
+                    },
                 },
                 -- pylsp = {
                 --     settings = {

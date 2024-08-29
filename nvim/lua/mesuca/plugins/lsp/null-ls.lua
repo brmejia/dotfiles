@@ -23,6 +23,8 @@ return {
         null_ls.setup({
             on_attach = lsp_lib.on_attach,
             sources = {
+                -- Python
+                -- diagnostics.mypy,
                 -- Yaml
                 diagnostics.vacuum,
                 -- Typescript/Javascript - Web Dev
