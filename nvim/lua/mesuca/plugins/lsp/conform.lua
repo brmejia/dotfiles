@@ -20,7 +20,7 @@ return {
             lua = { "stylua" },
             -- Conform will run multiple formatters sequentially
             python = {
-                "ruff_fix",
+                -- "ruff_fix",
                 "ruff_organize_imports",
             },
 
