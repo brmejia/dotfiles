@@ -32,7 +32,7 @@ return {
             })
 
             opts = vim.tbl_extend("keep", opts, {
-                src = {
+                completion = {
                     cmp = {
                         enabled = true,
                     },
