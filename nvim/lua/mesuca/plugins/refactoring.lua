@@ -12,7 +12,7 @@ return {
         -- load refactoring Telescope extension
         telescope.load_extension("refactoring")
 
-        keymap({ "n", "x" }, "<leader>rr", telescope.extensions.refactoring.refactors, { desc = "Refactoring" })
+        keymap({ "n", "x" }, "<leader>R", telescope.extensions.refactoring.refactors, { desc = "Refactoring" })
 
         require("refactoring").setup()
     end,
