@@ -1,5 +1,6 @@
 return {
     "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
     -- enabled = false,
     dependencies = {
         "nvim-lua/plenary.nvim",
@@ -7,19 +8,13 @@ return {
         "MunifTanjim/nui.nvim",
     },
     opts = {
-        -- If a user has a sources list it will replace this one.
-        -- Only sources listed here will be loaded.
-        -- You can also add an external source by adding it's name to this list.
-        -- The name used here must be the same name you would use in a require() call.
-        sources = {
-            "filesystem",
-            -- "buffers",
-            -- "git_status",
-            -- "document_symbols",
-        },
         close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
-        enable_refresh_on_write = true, -- Refresh the tree when a file is written. Only used if `use_libuv_file_watcher` is false.
-        use_popups_for_input = false, -- If false, inputs will use vim.ui.input() instead of custom floats.
+        popup_border_style = "rounded",
+        enable_git_status = true,
+        enable_diagnostics = true,
+        open_files_do_not_replace_types = { "terminal", "trouble", "qf", "harpoon" }, -- when opening files, do not use windows containing these filetypes or buftypes
+        use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
+        -- instead of relying on nvim autocmd events.
         default_component_configs = {
             icon = {
                 folder_empty = "󰜌",
@@ -39,14 +34,9 @@ return {
                     deleted = "",
                 },
             },
-        },
-        -- Add this section only if you've configured source selector.
-        source_selector = {
-            winbar = false, -- toggle to show selector on winbar
-            statusline = false, -- toggle to show selector on statusline
-            sources = {
-                { source = "filesystem", display_name = " 󰉓 Files " },
-                { source = "git_status", display_name = " 󰊢 Git " },
+            symlink_target = {
+                enabled = true,
+                required_width = 120, -- min width of window required to show this column
             },
         },
         ---- Other options ...
@@ -79,11 +69,29 @@ return {
             },
             renderers = {
                 file = {
+                    { "indent" },
                     { "icon" },
-                    { "harpoon_index", highlight = "NeoTreeGitAdded" }, --> This is what actually adds the component in where you want it
-                    { "name", use_git_status_colors = true },
-                    { "diagnostics" },
-                    { "git_status", highlight = "NeoTreeDimText" },
+                    {
+                        "container",
+                        content = {
+                            { "harpoon_index", zindex = 10, highlight = "NeoTreeGitAdded" }, --> This is what actually adds the component in where you want it
+                            { "name", zindex = 10, use_git_status_color = true },
+                            {
+                                "symlink_target",
+                                zindex = 10,
+                                highlight = "NeoTreeSymbolicLinkTarget",
+                            },
+                            { "diagnostics", zindex = 10 },
+                            { "clipboard", zindex = 10 },
+                            { "bufnr", zindex = 10 },
+                            { "modified", zindex = 20, align = "right" },
+                            { "git_status", zindex = 10, align = "right" },
+                            { "file_size", zindex = 10, align = "right" },
+                            { "type", zindex = 10, align = "right" },
+                            { "last_modified", zindex = 10, align = "right" },
+                            { "created", zindex = 10, align = "right" },
+                        },
+                    },
                 },
             },
         },
