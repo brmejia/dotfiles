@@ -1,12 +1,7 @@
-local default_msg_position = {
-    row = -1,
-    col = "100%", -- right
-    -- col = 0, -- left
-}
-
 return {
     "folke/noice.nvim",
     -- enabled = false,
+    event = "VeryLazy",
     dependencies = {
         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
         "MunifTanjim/nui.nvim",
@@ -53,7 +48,7 @@ return {
             bottom_search = true, -- use a classic bottom cmdline for search
             command_palette = true, -- position the cmdline and popupmenu together
             long_message_to_split = true, -- long messages will be sent to a split
-            inc_rename = true, -- enables an input dialog for inc-rename.nvim
+            inc_rename = false, -- enables an input dialog for inc-rename.nvim
             lsp_doc_border = false, -- add a border to hover docs and signature help
         },
         routes = {
@@ -83,30 +78,6 @@ return {
                 opts = { skip = true },
             },
             {
-                view = "hover",
-                filter = { event = "msg_showmode" },
-                opts = {
-                    -- timeout = false,
-                    border = {
-                        padding = { 0, 0 },
-                        style = "rounded",
-                    },
-                    -- relative = "cursor",
-                    -- position = {
-                    --     row = 2,
-                    --     col = -10,
-                    -- },
-                    -- relative = {
-                    --     type = "editor",
-                    --     -- zero-indexed
-                    --     position = {
-                    --         row = "50%",
-                    --         col = "50%",
-                    --     },
-                    -- },
-                },
-            },
-            {
                 view = "split",
                 filter = { event = "notify", min_height = 2 },
             },
@@ -115,21 +86,11 @@ return {
                 filter = {
                     error = true,
                 },
-                opts = {
-                    timeout = 5000,
-                    align = "message-left",
-                    position = default_msg_position,
-                },
             },
             {
                 view = "mini",
                 filter = {
                     warning = true,
-                },
-                opts = {
-                    timeout = 5000,
-                    align = "message-left",
-                    position = default_msg_position,
                 },
             },
             {
@@ -140,24 +101,22 @@ return {
                         { event = "lsp", kind = "message" },
                     },
                 },
-                opts = {
-                    timeout = 5000,
-                    align = "message-left",
-                    position = default_msg_position,
-                },
             },
         },
         views = {
             mini = {
-                opts = {
-                    align = "message-left",
-                    position = default_msg_position,
-                    -- position = {
-                    --     row = -1,
-                    --     -- col = "100%",
-                    --     col = 0,
-                    -- },
+                timeout = 6000,
+                align = "message-left",
+                position = {
+                    row = -1,
+                    col = "100%", -- right
+                    -- col = 0, -- left
                 },
+                -- position = {
+                --     row = -1,
+                --     -- col = "100%",
+                --     col = 0,
+                -- },
             },
             -- confirm = {
             --     backend = "popup",
