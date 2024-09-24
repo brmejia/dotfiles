@@ -13,7 +13,6 @@ alias dnfi = sudo dnf install
 alias dnfr = sudo dnf remove
 alias dnfs = dnf search
 alias dnfu = sudo dnf update
-alias docker = podman
 
 # Git
 alias gd = git diff

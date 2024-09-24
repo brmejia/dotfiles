@@ -7,7 +7,7 @@
 
 # External completer example
 let carapace_completer = {|spans: list<string>|
-    carap $spans.0 nushell $spans
+    carapace $spans.0 nushell ...$spans
     | from json
     | if ($in | default [] | where value == $"($spans | last)ERR" | is-empty) { $in } else { null }
 }
@@ -18,27 +18,24 @@ let fish_completer = {|spans|
     | from tsv --flexible --no-infer
 }
 
+let zoxide_completer = {|spans|
+    $spans | skip 1 | zoxide query -l ...$in | lines | where {|x| $x != $env.PWD}
+}
 
 # This completer will use carapace by default
 let external_completer = {|spans|
-    let expanded_alias = scope aliases
-    | where name == $spans.0
-    | get -i 0.expansion
+    # if the current command is an alias, get it's expansion
+    let expanded_alias = (scope aliases | where name == $spans.0 | get -i 0 | get -i expansion)
 
     # overwrite
     let spans = (if $expanded_alias != null  {
         # put the first word of the expanded alias first in the span
-        $spans | skip 1 | prepend ($expanded_alias | split row " ")
+        $spans | skip 1 | prepend ($expanded_alias | split row " " | take 1)
     } else { $spans })
 
     match $spans.0 {
-        nu => $fish_completer
-        rtx => $fish_completer
-        mise => $fish_completer
-        podman => $fish_completer
-        _ => $fish_completer
+        _ => $carapace_completer
     } | do $in $spans
-# _ => $carapace_completer
 }
 
 mut current = (($env | default {} config).config | default {} completions)
