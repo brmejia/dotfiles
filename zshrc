@@ -20,8 +20,8 @@ alias htop='ytop'
 alias du='dust'
 alias cat='bat'
 alias grep='rg'
-alias exa='exa --long --header --git'
-alias ls='exa'
+alias eza='exa --long --header --git'
+alias ls='eza'
 
 alias dnfi='sudo dnf install'
 alias dnfr='sudo dnf remove'
@@ -52,4 +52,3 @@ export PATH
 
 # Terminal colors
 export TERM=screen-256color
-

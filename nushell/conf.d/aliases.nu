@@ -1,5 +1,4 @@
 alias eza = eza --long --header --git
-alias exa = eza
 alias ll = eza
 alias cat = bat
 alias du = dust
