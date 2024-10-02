@@ -5,7 +5,11 @@ return {
     build = function()
         require("nvim-treesitter.install").update({ with_sync = true })
     end,
-    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
+    dependencies = {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        -- NOTE: additional parser
+        "nushell/tree-sitter-nu",
+    },
     opts = {
         -- ensure_installed = 'maintained', -- one of 'all', 'maintained' (parsers with maintainers), or a list of languages
         ensure_installed = {
