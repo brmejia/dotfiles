@@ -1,24 +1,20 @@
 # Nushell Environment Config File
 
-# The prompt indicators are environmental variables that represent
-# the state of the prompt
-$env.PROMPT_INDICATOR = {|| "> " }
-$env.PROMPT_INDICATOR_VI_INSERT = {|| ": " }
-$env.PROMPT_INDICATOR_VI_NORMAL = {|| "> " }
-$env.PROMPT_MULTILINE_INDICATOR = {|| "::: " }
+# See default_env.nu for more information:
+# https://github.com/nushell/nushell/blob/main/crates/nu-utils/src/sample_config/default_env.nu
 
 # If you want previously entered commands to have a different prompt from the usual one,
 # you can uncomment one or more of the following lines.
 # This can be useful if you have a 2-line prompt and it's taking up a lot of space
 # because every command entered takes up 2 lines instead of 1. You can then uncomment
 # the line below so that previously entered commands show with a single `🚀`.
-$env.TRANSIENT_PROMPT_COMMAND = {|| " 🡆  " }
-# $env.TRANSIENT_PROMPT_INDICATOR = {|| "" }
+$env.TRANSIENT_PROMPT_COMMAND = {|| "🚀 " }
+# $env.TRANSIENT_PROMPT_INDICATOR = {|| "🡆  " }
+$env.TRANSIENT_PROMPT_INDICATOR = {|| "❯ " }
 # $env.TRANSIENT_PROMPT_INDICATOR_VI_INSERT = {|| "" }
 # $env.TRANSIENT_PROMPT_INDICATOR_VI_NORMAL = {|| "" }
 # $env.TRANSIENT_PROMPT_MULTILINE_INDICATOR = {|| "" }
 # $env.TRANSIENT_PROMPT_COMMAND_RIGHT = {|| "" }
-
 
 
 # Directories to search for scripts when calling source or use
@@ -46,11 +42,6 @@ $env.PATH = ($env.PATH | uniq)
 $env.EDITOR = "nvim"
 $env.VISUAl = "nvim"
 
-# This code will add carapace nushell completions if needed
-# $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
-# mkdir ~/.cache/carapace
-# carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
-
 use std log
 
 # This code will add mise config if needed
@@ -61,7 +52,7 @@ if not ($mise_config_path | path exists) {
 }
 
 # This code will add atuin config if needed
-let atuin_config_path = "~/.local/share/atuin/init.nu"
+let atuin_config_path = $"($env.HOME)/.local/share/atuin/init.nu"
 if not ($atuin_config_path | path exists) {
     log info $"Creating atuin config at ($atuin_config_path)"
     ^atuin activate nu | save $atuin_config_path --force
@@ -72,4 +63,12 @@ let zoxide_config_path = $nu_custom_config_dir | path join zoxide.nu
 if not ($zoxide_config_path | path exists) {
     log info $"Creating zoxide config at ($zoxide_config_path)"
     ^zoxide init nushell | save -f $zoxide_config_path
+}
+
+# This code will add carapace nushell completions if needed
+let carapace_config_path = $"($env.HOME)/.cache/carapace/init.nu"
+if not ($carapace_config_path | path exists) {
+    mkdir ( $carapace_config_path | path dirname )
+    log info $"Creating carapace config at ($carapace_config_path)"
+    ^carapace init nushell | save -f $carapace_config_path
 }
