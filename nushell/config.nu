@@ -643,8 +643,8 @@ $env.config = {
 }
 
 use ~/.cache/starship/init.nu
-use aliases.nu
-use scripts.nu
+source aliases.nu
+source scripts.nu
 use mise.nu
 source zoxide.nu
 source completion.nu
