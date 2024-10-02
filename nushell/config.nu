@@ -393,7 +393,6 @@ $env.config = {
     vi_normal: underscore # block, underscore, line  (underscore is the default)
   }
   color_config: $dark_theme   # if you want a light theme, replace `$dark_theme` to `$light_theme`
-  use_grid_icons: true
   footer_mode: "25" # always, never, number_of_rows, auto
   float_precision: 2 # the precision for displaying floats in tables
   # buffer_editor: "emacs" # command that will be used to edit the current line buffer with ctrl+o, if unset fallback to $env.EDITOR and $env.VISUAL
@@ -643,21 +642,10 @@ $env.config = {
   ]
 }
 
-export-env {
-  $env.EDITOR = "nvim"
-  $env.VISUAl = "nvim"
-  $env.PATH = (
-    $env.PATH
-    | split row (char esep)
-    | append ($env.CARGO_HOME | path join bin)
-    | append ($env.HOME | path join .local bin)
-  )
-}
-
-source ~/.cache/starship/init.nu
-source ~/.config/nushell/conf.d/mise.nu
-source ~/.config/nushell/conf.d/aliases.nu
-source ~/.config/nushell/conf.d/atuin.nu
-source ~/.config/nushell/conf.d/zoxide.nu
-source ~/.config/nushell/conf.d/scripts.nu
-source ~/.config/nushell/conf.d/completion.nu
+use ~/.cache/starship/init.nu
+use aliases.nu
+use scripts.nu
+use mise.nu
+source zoxide.nu
+source completion.nu
+source ~/.local/share/atuin/init.nu
