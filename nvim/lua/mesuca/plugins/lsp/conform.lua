@@ -25,11 +25,11 @@ return {
             },
 
             -- Use a sub-list to run only the first available formatter
-            javascript = { { "prettierd", "prettier" } },
-            typescript = { { "prettierd", "prettier" } },
-            json = { { "prettierd", "prettier" } },
-            yaml = { { "prettierd", "prettier" } },
-            groovy = { { "npm-groovy-lint" } },
+            javascript = { "prettierd", "prettier", stop_after_first = true },
+            typescript = { "prettierd", "prettier", stop_after_first = true },
+            json = { "prettierd", "prettier", stop_after_first = true },
+            yaml = { "prettierd", "prettier", stop_after_first = true },
+            groovy = { "npm-groovy-lint" },
         },
     },
 }
