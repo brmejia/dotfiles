@@ -40,6 +40,20 @@ autocmd("TextYankPost", {
     end,
 })
 
+-- remember folds
+local folds_group = augroup("RememberFolds", { clear = true })
+autocmd({ "BufWinLeave" }, {
+    group = folds_group,
+    pattern = "*.*",
+    command = "mkview",
+})
+
+autocmd({ "BufWinEnter" }, {
+    group = folds_group,
+    pattern = "*.*",
+    command = "silent! loadview",
+})
+
 return {
     user_cmdgroup = mesuca_group,
 }

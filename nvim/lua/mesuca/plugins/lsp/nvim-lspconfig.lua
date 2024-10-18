@@ -93,36 +93,6 @@ return {
                         },
                     },
                 },
-                -- pylsp = {
-                --     settings = {
-                --         pylsp = {
-                --             --             configurationSources = { "flake8" },
-                --             plugins = {
-                --                 pylint = { enabled = false },
-                --                 black = {
-                --                     enabled = false,
-                --                     line_length = 88,
-                --                 },
-                --                 yapf = { enabled = false },
-                --                 -- ["pylsp-mypy"] = {
-                --                 --     enabled = true,
-                --                 --     -- strict = true,
-                --                 --     -- live_mode = true,
-                --                 --     -- overrides = {
-                --                 --     --     "--unknown_argument", "--config-file", "mypy_lsp.toml", true
-                --                 --     -- }
-                --                 -- },
-                --                 rope = { enabled = false },
-                --                 ["rope-autoimport"] = { enabled = false },
-                --                 flake8 = { enabled = false },
-                --                 pycodestyle = { enabled = false },
-                --                 mccabe = { enabled = false },
-                --                 pyflakes = { enabled = false },
-                --                 autopep8 = { enabled = false },
-                --             },
-                --         },
-                --     },
-                -- },
                 tailwindcss = {
                     init_options = {
                         userLanguages = {
@@ -135,6 +105,16 @@ return {
                             hovers = true,
                         },
                     },
+                },
+                tinymist = {
+                    -- cmd = { "tinymist-linux-x64" },
+                    --- todo: these configuration from lspconfig maybe broken
+                    single_file_support = true,
+                    root_dir = function()
+                        return vim.fn.getcwd()
+                    end,
+                    --- See [Tinymist Server Configuration](https://github.com/Myriad-Dreamin/tinymist/blob/main/Configuration.md) for references.
+                    settings = {},
                 },
                 --rust_analyzer = {
                 --    -- mason = false,

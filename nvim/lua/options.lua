@@ -43,10 +43,11 @@ local options = {
     -- code folding settings
     foldmethod = "expr",
     foldexpr = "nvim_treesitter#foldexpr()",
-    foldenable = false, -- don't fold by default
-    foldlevelstart = 2,
-    foldlevel = 2,
+    foldenable = true,
+    foldlevelstart = 99,
+    foldlevel = 99,
     foldnestmax = 10, -- deepest fold is 10 levels
+    foldcolumn = "0", -- '0' is not bad
     -- Tab control
     smarttab = true, -- tab respects 'tabstop', 'shiftwidth', and 'softtabstop'
     tabstop = 4, -- the visible width of tabs
