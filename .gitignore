@@ -13,3 +13,4 @@ nvim/**/.luarc.json
 nushell/conf.d/mise.nu
 nushell/conf.d/zoxide.nu
 nushell/conf.d/atuin.nu
+nushell/conf.d/local

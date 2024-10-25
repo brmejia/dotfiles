@@ -25,8 +25,9 @@ $env.TRANSIENT_PROMPT_INDICATOR = {|| "❯ " }
 # ]
 let nu_custom_config_dir = $nu.default-config-dir | path join conf.d
 $env.NU_LIB_DIRS = (
-    $env.NU_LIB_DIRS
+    $env.NU_LIB_DIRS | split row (char esep)
     | append $nu_custom_config_dir
+    | append ( $nu_custom_config_dir | path join local )
 )
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
