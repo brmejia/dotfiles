@@ -146,6 +146,7 @@ return {
             keymap("n", "<C-b>", tbuiltin.buffers, { desc = "Find buffers" })
             keymap("n", "<leader>fp", tbuiltin.find_files, { desc = "Find files" })
             keymap("n", "<leader>fb", tbuiltin.buffers, { desc = "Find buffers" })
+            keymap("n", "<leader>fr", tbuiltin.registers, { desc = "Find registers" })
             -- keymap("n", "<leader>ff", tbuiltin.live_grep, { desc = "RipGrep" })
             keymap("n", "<leader>ff", extensions.live_grep_args.live_grep_args, { desc = "RipGrepArgs" })
             keymap("n", "<leader>fh", tbuiltin.help_tags, { desc = "Help Tags" })
