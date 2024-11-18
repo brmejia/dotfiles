@@ -8,7 +8,7 @@ return {
     dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
         -- NOTE: additional parser
-        "nushell/tree-sitter-nu",
+        -- "nushell/tree-sitter-nu", -- replaced by builtin 'nu'
     },
     opts = {
         -- ensure_installed = 'maintained', -- one of 'all', 'maintained' (parsers with maintainers), or a list of languages
@@ -40,6 +40,7 @@ return {
             "markdown_inline",
             "kdl",
             "ron",
+            "nu",
         },
 
         highlight = {
