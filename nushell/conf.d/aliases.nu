@@ -1,4 +1,4 @@
-alias eza = eza --long --header --git
+alias eza = eza --long --header
 alias ll = eza
 alias cat = bat
 alias du = dust
@@ -7,6 +7,7 @@ alias grep = rg
 alias vim = nvim
 alias nvide = neovide --frame none
 alias zj = zellij
+alias zjri = zellij run --in-place --
 
 # Packages Manager
 alias dnfi = sudo dnf install
