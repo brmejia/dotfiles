@@ -649,3 +649,5 @@ use mise.nu
 source zoxide.nu
 source completion.nu
 source ~/.local/share/atuin/init.nu
+source zellij.nu
+source nvim.nu

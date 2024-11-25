@@ -6,8 +6,6 @@ alias find = fd
 alias grep = rg
 alias vim = nvim
 alias nvide = neovide --frame none
-alias zj = zellij
-alias zjri = zellij run --in-place --
 
 # Packages Manager
 alias dnfi = sudo dnf install
