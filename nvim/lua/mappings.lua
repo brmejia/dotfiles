@@ -91,7 +91,7 @@ keymap({ "n", "i" }, "<Right>", "<Nop>")
 -- Clipboard
 keymap({ "n", "v" }, "<leader>y", '"+y') -- Yank TextObject into system Clipboard
 keymap("n", "<leader>Y", '"+Y', { noremap = false }) -- Yank line into system Clipboard
-keymap({ "n", "v" }, "<leader>d", '"_d') -- Delete selection/line without yanking
+-- keymap({ "n", "v" }, "<leader>d", '"_d') -- (Conflicts with DAP keymaps) Delete selection/line without yanking
 keymap({ "n", "v" }, "<leader>P", '"+gP') -- Paste from system clipboard
 
 -- <C-_> is equivalent to <C-/> for Neovim

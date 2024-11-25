@@ -13,6 +13,7 @@ return {
             -- ---------------------
             -- "black", -- Replaced by ruff
             -- "mypy",
+            "debugpy",
 
             -- Typescript/Javascript/HTML/CSS
             -- ---------------------
