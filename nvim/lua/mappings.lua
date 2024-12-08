@@ -55,10 +55,10 @@ keymap("n", "zO", "zOzz")
 keymap("n", "zx", "zxzz")
 keymap("n", "zi", "zizz")
 -- Navigate buffers
-keymap("n", "L", ":bnext<CR>zz")
-keymap("n", "H", ":bprevious<CR>zz")
-keymap("n", "<C-PageDown>", ":bnext<CR>zz")
-keymap("n", "<C-PageUp>", ":bprevious<CR>zz")
+-- keymap("n", "L", ":bnext<CR>zz")
+-- keymap("n", "H", ":bprevious<CR>zz")
+-- keymap("n", "<C-PageDown>", ":bnext<CR>zz")
+-- keymap("n", "<C-PageUp>", ":bprevious<CR>zz")
 
 -- Better window navigation
 -- This keymaps are defined in nvim-tmux-navigator config file

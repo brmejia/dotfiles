@@ -51,110 +51,110 @@ return {
             inc_rename = false, -- enables an input dialog for inc-rename.nvim
             lsp_doc_border = false, -- add a border to hover docs and signature help
         },
-        routes = {
-            -- Avoid written messages
-            {
-                filter = {
-                    event = "msg_show",
-                    kind = "",
-                    find = "[w]",
-                },
-                opts = { skip = true },
-            },
-            -- Avoid search messages. Noice by default uses virttext, this snippets also disables that.
-            {
-                filter = {
-                    event = "msg_show",
-                    kind = "search_count",
-                },
-                opts = { skip = true },
-            },
-            {
-                view = "split",
-                filter = {
-                    event = "msg_show",
-                    kind = "",
-                },
-                opts = { skip = true },
-            },
-            {
-                view = "split",
-                filter = { event = "notify", min_height = 2 },
-            },
-            {
-                view = "mini",
-                filter = {
-                    error = true,
-                },
-            },
-            {
-                view = "mini",
-                filter = {
-                    warning = true,
-                },
-            },
-            {
-                view = "mini",
-                filter = {
-                    any = {
-                        { event = "notify" },
-                        { event = "lsp", kind = "message" },
-                    },
-                },
-            },
-        },
-        views = {
-            mini = {
-                timeout = 6000,
-                align = "message-left",
-                position = {
-                    row = -1,
-                    col = "100%", -- right
-                    -- col = 0, -- left
-                },
-                -- position = {
-                --     row = -1,
-                --     -- col = "100%",
-                --     col = 0,
-                -- },
-            },
-            -- confirm = {
-            --     backend = "popup",
-            --     relative = "editor",
-            --     focusable = false,
-            --     align = "center",
-            --     enter = false,
-            --     zindex = 60,
-            --     format = { "{confirm}" },
-            --     position = {
-            --         row = "50%",
-            --         col = "50%",
-            --     },
-            --     size = "auto",
-            --     border = {
-            --         style = "rounded",
-            --         padding = { 1, 2 },
-            --         text = {
-            --             top = " confirm ",
-            --         },
-            --     },
-            --     win_options = {
-            --         winhighlight = {
-            --             normal = "noiceconfirm",
-            --             floatborder = "noiceconfirmborder",
-            --         },
-            --     },
-            -- },
-        },
-        messages = {
-            -- note: if you enable messages, then the cmdline is enabled automatically.
-            -- this is a current neovim limitation.
-            enabled = true, -- enables the noice messages ui
-            view = "mini", -- default view for messages
-            view_error = "mini", -- view for errors
-            view_warn = "mini", -- view for warnings
-            view_history = "messages", -- view for :messages
-            view_search = "virtualtext", -- view for search count messages. set to `false` to disable
-        },
+        -- routes = {
+        --     -- Avoid written messages
+        --     {
+        --         filter = {
+        --             event = "msg_show",
+        --             kind = "",
+        --             find = "[w]",
+        --         },
+        --         opts = { skip = true },
+        --     },
+        --     -- Avoid search messages. Noice by default uses virttext, this snippets also disables that.
+        --     {
+        --         filter = {
+        --             event = "msg_show",
+        --             kind = "search_count",
+        --         },
+        --         opts = { skip = true },
+        --     },
+        --     {
+        --         view = "split",
+        --         filter = {
+        --             event = "msg_show",
+        --             kind = "",
+        --         },
+        --         opts = { skip = true },
+        --     },
+        --     {
+        --         view = "split",
+        --         filter = { event = "notify", min_height = 2 },
+        --     },
+        --     {
+        --         view = "mini",
+        --         filter = {
+        --             error = true,
+        --         },
+        --     },
+        --     {
+        --         view = "mini",
+        --         filter = {
+        --             warning = true,
+        --         },
+        --     },
+        --     {
+        --         view = "mini",
+        --         filter = {
+        --             any = {
+        --                 { event = "notify" },
+        --                 { event = "lsp", kind = "message" },
+        --             },
+        --         },
+        --     },
+        -- },
+        -- views = {
+        --     mini = {
+        --         timeout = 6000,
+        --         align = "message-left",
+        --         position = {
+        --             row = -1,
+        --             col = "100%", -- right
+        --             -- col = 0, -- left
+        --         },
+        --         -- position = {
+        --         --     row = -1,
+        --         --     -- col = "100%",
+        --         --     col = 0,
+        --         -- },
+        --     },
+        --     -- confirm = {
+        --     --     backend = "popup",
+        --     --     relative = "editor",
+        --     --     focusable = false,
+        --     --     align = "center",
+        --     --     enter = false,
+        --     --     zindex = 60,
+        --     --     format = { "{confirm}" },
+        --     --     position = {
+        --     --         row = "50%",
+        --     --         col = "50%",
+        --     --     },
+        --     --     size = "auto",
+        --     --     border = {
+        --     --         style = "rounded",
+        --     --         padding = { 1, 2 },
+        --     --         text = {
+        --     --             top = " confirm ",
+        --     --         },
+        --     --     },
+        --     --     win_options = {
+        --     --         winhighlight = {
+        --     --             normal = "noiceconfirm",
+        --     --             floatborder = "noiceconfirmborder",
+        --     --         },
+        --     --     },
+        --     -- },
+        -- },
+        -- messages = {
+        --     -- note: if you enable messages, then the cmdline is enabled automatically.
+        --     -- this is a current neovim limitation.
+        --     enabled = true, -- enables the noice messages ui
+        --     view = "mini", -- default view for messages
+        --     view_error = "mini", -- view for errors
+        --     view_warn = "mini", -- view for warnings
+        --     view_history = "messages", -- view for :messages
+        --     view_search = "virtualtext", -- view for search count messages. set to `false` to disable
+        -- },
     },
 }

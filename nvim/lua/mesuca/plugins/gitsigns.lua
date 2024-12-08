@@ -18,7 +18,7 @@ return {
             local wk = require("which-key")
             local leader_mappings = {
                 { "<leader>g", group = "Git" },
-                { "<leader>gB", ":Gitsigns toggle_current_line_blame<cr>", desc = "Toggle blame" },
+                -- { "<leader>gB", ":Gitsigns toggle_current_line_blame<cr>", desc = "Toggle blame" },
                 { "<leader>gH", ":Gitsigns setqflist<cr>", desc = "Hunk Quickfix" },
                 { "<leader>gh", ":Gitsigns preview_hunk<cr>", desc = "Hunk preview" },
                 { "<leader>gr", ":Gitsigns reset_hunk<cr>", desc = "Reset hunk" },
