@@ -122,12 +122,12 @@ return {
             end,
             desc = "Toggle Terminal",
         },
-        {
-            "<c-_>",
-            function()
-                Snacks.terminal()
-            end,
-            desc = "which_key_ignore",
-        },
+        -- {
+        --     "<c-_>",
+        --     function()
+        --         Snacks.terminal()
+        --     end,
+        --     desc = "which_key_ignore",
+        -- },
     },
 }

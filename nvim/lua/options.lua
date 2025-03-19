@@ -92,6 +92,7 @@ local options = {
     updatetime = 300, -- faster completion (4000ms default)
     signcolumn = "yes:2", -- always show the sign column, otherwise it would shift the text each time
     shortmess = "atToOFc", -- prompt message options
+    viewoptions = "folds,options,cursor", -- removed curdir so lcd is not stored on view
 }
 vim.opt.shortmess = vim.opt.shortmess + { c = true }
 
