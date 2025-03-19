@@ -1,6 +1,11 @@
-vim.g.gui_font_default_size = 9
+vim.g.gui_font_default_size = 12
 vim.g.gui_font_size = vim.g.gui_font_default_size
-vim.g.gui_font_face = "FiraCode Nerd Font Med"
+
+-- vim.g.gui_font_face = "FiraCode Nerd Font Med"
+
+vim.g.gui_font_face = "Iosevka Extended"
+-- vim.g.gui_font_face = "Iosevka Light Extended"
+-- vim.g.gui_font_face = "Iosevka Medium Extended"
 
 if vim.g.neovide then
     -- Put anything you want to happen only in Neovide here
