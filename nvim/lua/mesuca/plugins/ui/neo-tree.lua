@@ -1,7 +1,7 @@
 return {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
-    enabled = false,
+    enabled = true,
     dependencies = {
         "nvim-lua/plenary.nvim",
         -- "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
@@ -116,6 +116,6 @@ return {
             ":Neotree reveal position=current toggle<cr>",
             { desc = "Reveal file in current split" }
         )
-        keymap("n", "<leader>t", ":Neotree reveal toggle<cr>", { desc = "Reveal file" })
+        -- keymap("n", "<leader>t", ":Neotree reveal toggle<cr>", { desc = "Reveal file" })
     end,
 }
