@@ -3,7 +3,7 @@ local kind_icons = require("lib.utils").kind_icons
 
 return {
     "hrsh7th/nvim-cmp",
-    -- enabled = false,
+    enabled = false,
     dependencies = {
         -- LSP completion source for nvim-cmp
         "hrsh7th/cmp-nvim-lsp",
