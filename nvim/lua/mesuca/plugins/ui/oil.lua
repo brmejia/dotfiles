@@ -154,7 +154,7 @@ return {
                     ["~"] = false,
                     ["gs"] = { "actions.change_sort", mode = "n" },
                     ["gx"] = "actions.open_external",
-                    ["gh"] = { "actions.toggle_hidden", mode = "n" },
+                    ["<S-h>"] = { "actions.toggle_hidden", mode = "n" },
                     ["g\\"] = { "actions.toggle_trash", mode = "n" },
                     --
                     -- ["-"] = function()

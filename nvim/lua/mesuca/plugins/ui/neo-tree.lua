@@ -1,7 +1,7 @@
 return {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
-    enabled = true,
+    enabled = false,
     dependencies = {
         "nvim-lua/plenary.nvim",
         -- "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
@@ -13,7 +13,7 @@ return {
         enable_git_status = true,
         enable_diagnostics = true,
         open_files_do_not_replace_types = { "terminal", "trouble", "qf", "harpoon" }, -- when opening files, do not use windows containing these filetypes or buftypes
-        use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
+        use_libuv_file_watcher = true, -- This will use the OS level file watchers to detect changes
         -- instead of relying on nvim autocmd events.
         default_component_configs = {
             icon = {
