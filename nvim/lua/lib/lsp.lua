@@ -163,6 +163,13 @@ function lsp.set_lsp_keymaps(client, bufnr)
                 ':lua vim.diagnostic.goto_prev(border = "rounded")<CR>',
                 desc = "Go To Previous Diagnostic",
             },
+            {
+                "<leader>lh",
+                function()
+                    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+                end,
+                desc = "Toggle Inlay Hints",
+            },
         }
 
         local opts = { buffer = bufnr }
