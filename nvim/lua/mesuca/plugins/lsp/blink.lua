@@ -45,7 +45,7 @@ return {
             keymap = { preset = "enter" },
 
             signature = {
-                enabled = true,
+                enabled = false,
             },
             completion = {
                 list = { selection = { preselect = false, auto_insert = false } },
