@@ -11,7 +11,7 @@ if vim.g.neovide then
     -- Put anything you want to happen only in Neovide here
     -- vim.g.neovide_floating_blur_amount_x = 2.0
     -- vim.g.neovide_floating_blur_amount_y = 2.0
-    vim.g.neovide_transparency = 1
+    vim.g.neovide_opacity = 1
     vim.g.neovide_remember_window_size = true
     vim.g.neovide_scroll_animation_length = 0.15
     -- Sets how long the scroll animation takes to complete, measured in seconds.
@@ -30,6 +30,5 @@ ui.ResetGuiFont()
 return {
     -- Themes
     { "navarasu/onedark.nvim" },
-    { "rebelot/kanagawa.nvim" },
     { "folke/tokyonight.nvim" },
 }

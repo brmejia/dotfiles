@@ -7,7 +7,7 @@ return {
 
     -- -- Coding
     { "tpope/vim-repeat" },
-    { "windwp/nvim-ts-autotag", opts = {} },
+    { "windwp/nvim-ts-autotag" },
 
     -- --  {
     -- --     -- No HTML support
