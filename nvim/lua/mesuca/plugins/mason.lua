@@ -4,7 +4,7 @@ return {
     opts = {
         ensure_installed = {
             "ansible-lint",
-
+            "ltex-ls",
             -- Lua
             -- ---------------------
             "stylua",
