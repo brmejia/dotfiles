@@ -10,7 +10,7 @@ return {
         "folke/neodev.nvim",
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        "hrsh7th/cmp-nvim-lsp",
+        -- "hrsh7th/cmp-nvim-lsp",
     },
     opts = function()
         local volar_config = require("mesuca.plugins.lsp.server_configs.volar")

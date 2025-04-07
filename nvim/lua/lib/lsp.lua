@@ -229,12 +229,9 @@ function lsp.on_attach(client, bufnr)
 end
 
 function lsp.get_default_capabilities(other)
-    return vim.tbl_deep_extend(
-        "force",
-        vim.lsp.protocol.make_client_capabilities(),
-        require("cmp_nvim_lsp").default_capabilities(),
-        other or {}
-    )
+    -- local original_capabilities = vim.lsp.protocol.make_client_capabilities()
+    local capabilities = require("blink.cmp").get_lsp_capabilities(original_capabilities)
+    return capabilities
 end
 
 return lsp

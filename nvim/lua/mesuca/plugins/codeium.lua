@@ -3,7 +3,7 @@ local keymap = require("lib.utils").keymap
 return {
     {
         "Exafunction/codeium.nvim",
-        enabled = true,
+        -- enabled = false,
         -- event = "InsertEnter",
         event = "BufEnter",
         dependencies = {
