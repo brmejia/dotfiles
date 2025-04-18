@@ -128,31 +128,6 @@ return {
                     --- See [Tinymist Server Configuration](https://github.com/Myriad-Dreamin/tinymist/blob/main/Configuration.md) for references.
                     settings = {},
                 },
-                --rust_analyzer = {
-                --    -- mason = false,
-
-                --    -- standalone file support
-                --    -- setting it to false may improve startup time
-                --    -- standalone = true,
-                --    --
-                --    settings = {
-                --        ["rust-analyzer"] = {
-                --            -- imports = {
-                --            --     granularity = {
-                --            --         group = "module",
-                --            --     },
-                --            --     prefix = "self",
-                --            -- },
-                --            checkOnSave = {
-                --                command = "clippy",
-                --                -- command = "check"
-                --            },
-                --            procMacro = {
-                --                enable = true,
-                --            },
-                --        },
-                --    },
-                --},
                 ansiblels = {},
                 volar = volar_config,
                 taplo = {},
