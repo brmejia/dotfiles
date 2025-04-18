@@ -128,7 +128,7 @@ function lsp.set_lsp_keymaps(client, bufnr)
             --buf_set_keymap(bufnr, 'n', '<leader>q', ':lua vim.lsp.diagnostic.set_loclist()<CR>')
             { "<leader>lq", ":Trouble loclist<cr>", desc = "Loclist" },
             { "<leader>lf", ":Trouble quickfix<cr>", desc = "Quickfix" },
-            { "<leader>lI", ":lua vim.lsp.buf.implementation()<CR>", desc = "Implementations" },
+            { "<leader>lI", ":Trouble lsp_implementations<CR>", desc = "Implementations" },
 
             -- buf_set_keymap(bufnr, 'n', '<leader>D', ':lua vim.lsp.buf.type_definition()<CR>')
             { "<leader>lt", ":lua vim.lsp.buf.type_definition()<CR>", desc = "Type Definition" },
@@ -149,8 +149,8 @@ function lsp.set_lsp_keymaps(client, bufnr)
             -- buf_set_keymap(bufnr, 'n', '<leader>e', ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
             { "<leader>le", ":lua vim.diagnostic.open_float()<CR>", desc = "Show Line Diagnostics" },
 
-            { "<leader>lx", ":Trouble diagnostics toggle filter.buf=0<cr>", desc = "Show Document Diagnostics" },
-            { "<leader>lX", ":Trouble diagnostics toggle<cr>", desc = "Show Workspace Diagnostics" },
+            { "<leader>lx", ":Trouble diagnostics_cascade toggle filter.buf=0<cr>", desc = "Show Document Diagnostics" },
+            { "<leader>lX", ":Trouble diagnostics_cascade toggle<cr>", desc = "Show Workspace Diagnostics" },
 
             -- buf_set_keymap(bufnr, 'n', ']d', ':lua vim.lsp.diagnostic.goto_next()<CR>')
             -- n = { ':Lspsaga diagnostic_jump_next<cr>', "Go To Next Diagnostic" },
@@ -170,6 +170,7 @@ function lsp.set_lsp_keymaps(client, bufnr)
                 end,
                 desc = "Toggle Inlay Hints",
             },
+            { "<leader>ls", ":Trouble custom_lsp_symbols<cr>", desc = "LSP Symbols" },
         }
 
         local opts = { buffer = bufnr }
