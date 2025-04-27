@@ -29,6 +29,6 @@ ui.ResetGuiFont()
 
 return {
     -- Themes
-    { "navarasu/onedark.nvim" },
-    { "folke/tokyonight.nvim" },
+    -- { "navarasu/onedark.nvim" },
+    -- { "folke/tokyonight.nvim" },
 }
