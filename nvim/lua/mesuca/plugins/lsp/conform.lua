@@ -16,6 +16,11 @@ return {
                 stdin = false,
                 args = { "--format", "$FILENAME" },
             },
+            biome = {
+                --- When inherit = true, add these additional arguments to the end of the command.
+                -- This can also be a function, like args
+                append_args = { "--indent-style", "space" },
+            },
         },
         formatters_by_ft = {
             lua = { "stylua" },
@@ -26,9 +31,11 @@ return {
             },
 
             -- Use a sub-list to run only the first available formatter
-            javascript = { "prettierd", "prettier", stop_after_first = true },
-            typescript = { "prettierd", "prettier", stop_after_first = true },
-            json = { "prettierd", "prettier", stop_after_first = true },
+            javascript = { "biome", "prettierd", "prettier", stop_after_first = true },
+            typescript = { "biome", "prettierd", "prettier", stop_after_first = true },
+            json = { "biome", "prettierd", "prettier", stop_after_first = true },
+            html = { "prettierd", "prettier", stop_after_first = true },
+            css = { "biome", "prettierd", "prettier", stop_after_first = true },
             yaml = { "prettierd", "prettier", stop_after_first = true },
             groovy = { "npm-groovy-lint" },
         },

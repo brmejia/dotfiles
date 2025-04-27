@@ -26,7 +26,7 @@ return {
                 -- Python
                 -- diagnostics.mypy,
                 -- Yaml
-                diagnostics.vacuum,
+                diagnostics.vacuum, -- OpenAPI Linter
                 -- Typescript/Javascript - Web Dev
                 -- completion.tags, -- html tags
             },
