@@ -30,6 +30,7 @@ function lsp.get_server_root_dir_fn(server_name, root_options)
     end
     return server_root_dir_fn
 end
+
 function lsp.setup_diagnostics()
     local signs = {
         { name = "DiagnosticSignError", text = "" },
@@ -149,7 +150,11 @@ function lsp.set_lsp_keymaps(client, bufnr)
             -- buf_set_keymap(bufnr, 'n', '<leader>e', ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
             { "<leader>le", ":lua vim.diagnostic.open_float()<CR>", desc = "Show Line Diagnostics" },
 
-            { "<leader>lx", ":Trouble diagnostics_cascade toggle filter.buf=0<cr>", desc = "Show Document Diagnostics" },
+            {
+                "<leader>lx",
+                ":Trouble diagnostics_cascade toggle filter.buf=0<cr>",
+                desc = "Show Document Diagnostics",
+            },
             { "<leader>lX", ":Trouble diagnostics_cascade toggle<cr>", desc = "Show Workspace Diagnostics" },
 
             -- buf_set_keymap(bufnr, 'n', ']d', ':lua vim.lsp.diagnostic.goto_next()<CR>')

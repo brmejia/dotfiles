@@ -1,5 +1,5 @@
 vim.g.rustaceanvim = function()
-    local lsp_lib = require("lib.lsp")
+    -- local lsp_lib = require("lib.lsp")
     local cfg = require("rustaceanvim.config")
 
     local keymap = require("lib.utils").keymap
@@ -14,6 +14,10 @@ vim.g.rustaceanvim = function()
     keymap("n", "<leader><leader>a", function()
         vim.cmd.RustLsp("codeAction") -- supports rust-analyzer's grouping
     end, { desc = "Rust code actions" })
+
+    keymap("n", "<leader>lg", function()
+        vim.cmd.RustLsp("relatedDiagnostics") -- supports rust-analyzer's grouping
+    end, { desc = "Go to related diagnostic" })
 
     -- vim.cmd.RustLsp('relatedDiagnostics')
 
@@ -34,32 +38,9 @@ vim.g.rustaceanvim = function()
         liblldb_path = liblldb_path .. (this_os == "Linux" and ".so" or ".dylib")
     end
 
-    -- keymap("n", "<leader>hh", function()
-    -- end, { desc = "" })
-
     return {
         tools = {
             test_executor = "background",
-        },
-        server = {
-            on_attach = lsp_lib.on_attach,
-            default_settings = {
-                -- rust-analyzer language server configuration
-                ["rust-analyzer"] = {
-                    -- imports = {
-                    --     granularity = {
-                    --         group = "module",
-                    --     },
-                    --     prefix = "self",
-                    -- },
-                    checkOnSave = {
-                        command = "clippy",
-                    },
-                    procMacro = {
-                        enable = true,
-                    },
-                },
-            },
         },
         dap = {
             adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
@@ -68,8 +49,34 @@ vim.g.rustaceanvim = function()
 end
 
 return {
-    "mrcjkb/rustaceanvim",
-    -- enabled = false,
-    version = "^5", -- Recommended
-    lazy = false, -- This plugin is already lazy
+    {
+        "mrcjkb/rustaceanvim",
+        -- enabled = false,
+        version = "^5", -- Recommended
+        lazy = false, -- This plugin is already lazy
+    },
+    {
+        "chrisgrieser/nvim-lsp-endhints",
+        enabled = false,
+        event = "LspAttach",
+        opts = {
+            icons = {
+                type = "󰜁 ",
+                parameter = "󰏪 ",
+                -- offspec = " ", -- hint kind not defined in official LSP spec
+                offspec = "", -- hint kind not defined in official LSP spec
+                unknown = " ", -- hint kind is nil
+            },
+            label = {
+                truncateAtChars = 50,
+                padding = 1,
+                marginLeft = 8,
+                sameKindSeparator = "| ",
+            },
+            extmark = {
+                priority = 50,
+            },
+            autoEnableHints = true,
+        }, -- required, even if empty
+    },
 }
