@@ -11,9 +11,9 @@ return {
             "requirements.lock",
             "requirements-dev.lock",
             "pyrightconfig.json",
-            -- ".git",
         },
         { "*.py" },
+        { ".git" },
     }),
     settings = {
         pyright = {

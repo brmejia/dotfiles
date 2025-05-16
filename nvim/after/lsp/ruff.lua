@@ -1,4 +1,8 @@
+local lsp = require("lib.lsp")
+
 return {
+    root_dir = lsp.get_server_root_dir_fn("ruff", { { "pyproject.toml", "ruff.toml", ".ruff.toml" }, { ".git" } }),
+    workspace_required = true,
     init_options = {
         settings = {
             -- Any extra CLI arguments for `ruff` go here.

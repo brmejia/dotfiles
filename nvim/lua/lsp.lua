@@ -17,7 +17,7 @@ vim.lsp.enable({
     "volar",
     "ruff",
     "ty",
-    -- "pyright",
+    "pyright",
     "tailwindcss",
     "ltex",
     "tinymist",
