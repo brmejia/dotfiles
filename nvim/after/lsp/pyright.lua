@@ -25,7 +25,7 @@ return {
                 -- Ignore all files for analysis to exclusively use Ruff for linting
                 -- ignore = { "*" },
                 -- typeCheckingMode ["off", "basic", "standard", "strict"]
-                typeCheckingMode = "standard",
+                typeCheckingMode = "off",
             },
         },
     },
