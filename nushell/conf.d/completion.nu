@@ -42,6 +42,6 @@ mut current = (($env | default {} config).config | default {} completions)
 $current.completions = ($current.completions | default {} external)
 $current.completions.external = ($current.completions.external
     | default true enable
-    | default $external_completer completer)
+    | default {$external_completer} completer)
 
 $env.config = $current
