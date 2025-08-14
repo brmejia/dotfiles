@@ -11,3 +11,6 @@
   [general]
   import = ["~/.config/alacritty/themes/themes/kanagawa_wave.toml"]
   # import = ["~/.config/alacritty/themes/themes/kanagawa_dragon.toml"]
+
+ [terminal]
+ shell = "nu"
