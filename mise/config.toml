@@ -3,3 +3,6 @@
 # you can set these with `mise use -g`
 node = 'lts'
 python = ['3.13', '3.12']
+
+[settings]
+idiomatic_version_file_enable_tools = []
