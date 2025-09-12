@@ -42,6 +42,7 @@ path add /opt/cargo/bin
 $env.PATH = ($env.PATH | uniq)
 
 $env.EDITOR = "nvim"
+$env.SUDO_EDITOR = "nvim"
 $env.VISUAl = "nvim"
 
 use std log

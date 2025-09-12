@@ -21,16 +21,17 @@ local types = require("luasnip.util.types")
 local conds = require("luasnip.extras.expand_conditions")
 
 return {
-
-    -- s("dbg", fmt("print(f\"{{}} = {{}}\")", { i(1, "var"), rep(1), })),
-    s("dbg", {
-        t('print(f"{'),
-        i(1),
-        t(' = }", flush=True)'),
-    }),
     s("ipdb", {
         t("import ipdb"),
         t({ "", "" }),
         t("ipdb.set_trace()"),
     }),
+    s("dbg", fmt([[print(f"{{{} = }}", flush=True)]], i(1, "var"))),
+    s(
+        "log",
+        fmt([[ logger.{}(f"{{{} = }}")]], {
+            c(2, { t("debug"), t("info"), t("warning"), t("error") }),
+            i(1), -- Placeholder for variable name input first
+        })
+    ),
 }
