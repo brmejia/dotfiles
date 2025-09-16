@@ -51,21 +51,14 @@ use std log
 let mise_config_path = $nu_custom_config_dir | path join mise.nu
 if not ($mise_config_path | path exists) {
     log info $"Creating mise config at ($mise_config_path)"
-    ^mise activate nu | save $mise_config_path --force
-}
-
-# This code will add atuin config if needed
-let atuin_config_path = $"($env.HOME)/.local/share/atuin/init.nu"
-if not ($atuin_config_path | path exists) {
-    log info $"Creating atuin config at ($atuin_config_path)"
-    ^atuin activate nu | save $atuin_config_path --force
+    ^mise activate nu | save --force $mise_config_path
 }
 
 # This code will add zoxide config if needed
 let zoxide_config_path = $nu_custom_config_dir | path join zoxide.nu
 if not ($zoxide_config_path | path exists) {
     log info $"Creating zoxide config at ($zoxide_config_path)"
-    ^zoxide init nushell | save -f $zoxide_config_path
+    ^zoxide init nushell | save --force $zoxide_config_path
 }
 
 # This code will add carapace nushell completions if needed
@@ -73,5 +66,23 @@ let carapace_config_path = $"($env.HOME)/.cache/carapace/init.nu"
 if not ($carapace_config_path | path exists) {
     mkdir ( $carapace_config_path | path dirname )
     log info $"Creating carapace config at ($carapace_config_path)"
-    ^carapace init nushell | save -f $carapace_config_path
+    ^carapace init nushell | save --force $carapace_config_path
+}
+
+
+let vendor_autoload_path = ($nu.data-dir | path join "vendor/autoload/")
+
+# This code will add atuin config if needed
+let atuin_config_path = ($vendor_autoload_path | path join "atuin.nu")
+if not ($atuin_config_path | path exists) {
+    log info $"Creating atuin config at ($atuin_config_path)"
+    ^atuin init nu | save --force $atuin_config_path
+}
+
+# This code will add starship nushell configuration if needed
+let starship_config_path = ($vendor_autoload_path | path join "starship.nu")
+if not ($starship_config_path | path exists) {
+    mkdir ( $starship_config_path | path dirname )
+    log info $"Creating starship config at ($starship_config_path)"
+    ^starship init nus | save --force $starship_config_path
 }
