@@ -84,5 +84,5 @@ let starship_config_path = ($vendor_autoload_path | path join "starship.nu")
 if not ($starship_config_path | path exists) {
     mkdir ( $starship_config_path | path dirname )
     log info $"Creating starship config at ($starship_config_path)"
-    ^starship init nus | save --force $starship_config_path
+    ^starship init nu | save --force $starship_config_path
 }

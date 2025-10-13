@@ -13,8 +13,7 @@ lsp.setup_diagnostics()
 vim.lsp.enable({
     "lua_ls",
     -- "rust-analyzer", --- Disabled because rustaceanvim activates it
-    -- "vue-language-server",
-    "volar",
+    "vue_ls",
     "ruff",
     "ty",
     "pyright",

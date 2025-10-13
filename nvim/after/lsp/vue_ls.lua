@@ -2,7 +2,7 @@ local lsp = require("lib.lsp")
 
 return {
     -- cmd = { "vue-language-server", "--stdio" }, -- commented in order to use the binary installed with mason
-    root_dir = lsp.get_server_root_dir_fn("volar", {
+    root_dir = lsp.get_server_root_dir_fn("vue_ls", {
         { ".nuxtrc", ".npmrc", "package.json", "yarn.lock" },
     }),
     -- on_new_config = on_new_config,
@@ -12,7 +12,7 @@ return {
             tsdk = "",
         },
         languageFeatures = {
-            implementation = true, -- new in @volar/vue-language-server v0.33
+            implementation = true, -- new in @vue_ls/vue-language-server v0.33
             references = true,
             definition = true,
             typeDefinition = true,

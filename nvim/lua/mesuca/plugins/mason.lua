@@ -5,6 +5,7 @@ return {
         ensure_installed = {
             "ansible-lint",
             "ltex-ls",
+            "vue-language-server",
             -- Lua
             -- ---------------------
             "stylua",
