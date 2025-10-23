@@ -1,11 +1,11 @@
-alias eza = eza --long --header
+alias eza = eza --long --header --icons --group-directories-first
 alias ll = eza
 alias cat = bat
 alias du = dust
 alias find = fd
 alias grep = rg
 alias vim = nvim
-alias nvide = neovide --fork --frame none
+alias nvide = neovide --fork --frame none --no-idle
 
 # Packages Manager
 alias dnfi = sudo dnf install
