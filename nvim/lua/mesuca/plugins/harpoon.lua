@@ -1,11 +1,19 @@
 return {
     "ThePrimeagen/harpoon",
-    -- enabled = false,
+    enabled = false,
     dependencies = { "nvim-telescope/telescope.nvim" },
     branch = "harpoon2",
     config = function()
         local harpoon = require("harpoon")
-        harpoon.setup()
+        harpoon.setup({
+            settings = {
+                save_on_toggle = false,
+                sync_on_ui_close = true,
+                -- key = function()
+                --     return vim.loop.cwd()
+                -- end,
+            },
+        })
 
         local keymap = require("lib.utils").keymap
 
@@ -24,16 +32,16 @@ return {
             harpoon.term.gotoTerminal(1)
         end, { desc = "Open Harpoon Terminal" })
         keymap("n", "<leader>hr", function()
-            harpoon.ui.nav_file(1)
+            harpoon:list():select(1)
         end, { desc = "Open Harpoon file 1" })
         keymap("n", "<leader>he", function()
-            harpoon.ui.nav_file(2)
+            harpoon:list():select(2)
         end, { desc = "Open Harpoon file 2" })
         keymap("n", "<leader>hw", function()
-            harpoon.ui.nav_file(3)
+            harpoon:list():select(3)
         end, { desc = "Open Harpoon file 3" })
         keymap("n", "<leader>hq", function()
-            harpoon.ui.nav_file(4)
+            harpoon:list():select(4)
         end, { desc = "Open Harpoon file 4" })
     end,
 }

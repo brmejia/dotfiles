@@ -17,6 +17,7 @@ return {
                 TelescopePrompt = false,
                 ["neo-tree"] = false,
                 harpoon = false,
+                grapple = false,
             }
 
             -- vim.g.codeium_disable_bindings = true
