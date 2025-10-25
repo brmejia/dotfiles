@@ -4,7 +4,6 @@ return {
 
         "saghen/blink.cmp",
         -- enabled = false,
-        -- optional: provides snippets for the snippet source
         dependencies = {
             {
                 -- add blink.compat
@@ -16,8 +15,10 @@ return {
                 -- make sure to set opts so that lazy.nvim calls blink.compat's setup
                 opts = {},
             },
-            "rafamadriz/friendly-snippets",
+            -- "rafamadriz/friendly-snippets",
             "Exafunction/codeium.nvim",
+            -- optional: provides snippets for the snippet source
+            { "L3MON4D3/LuaSnip", version = "v2.*" },
         },
 
         -- use a release tag to download pre-built binaries
@@ -42,10 +43,15 @@ return {
             -- C-k: Toggle signature help (if signature.enabled = true)
             --
             -- See :h blink-cmp-config-keymap for defining your own keymap
-            keymap = { preset = "enter" },
+
+            keymap = {
+                preset = "enter",
+                -- Custom function that checks LuaSnip first, then falls back to blink.cmp
+                ["<C-k>"] = {},
+            },
 
             signature = {
-                enabled = false,
+                enabled = true,
             },
             completion = {
                 list = { selection = { preselect = true, auto_insert = false } },
@@ -90,7 +96,7 @@ return {
                         },
                     },
                 },
-                documentation = { auto_show = true, window = { border = "rounded" } },
+                documentation = { auto_show = false, window = { border = "rounded" } },
             },
 
             appearance = {
@@ -99,6 +105,9 @@ return {
                 nerd_font_variant = "mono",
             },
 
+            snippets = { preset = "luasnip" },
+
+            -- ensure you have the `snippets` source (enabled by default)
             -- Default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, due to `opts_extend`
             --
@@ -108,7 +117,7 @@ return {
                     "path",
                     "snippets",
                     "codeium",
-                    "buffer",
+                    -- "buffer",
                 },
                 providers = {
                     codeium = {

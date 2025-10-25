@@ -6,6 +6,67 @@ return {
     -- install jsregexp (optional!).
     build = "make install_jsregexp",
     dependencies = { "rafamadriz/friendly-snippets" },
+    event = { "InsertEnter", "CmdlineEnter" },
+    keys = {
+        {
+            "<leader><leader>s",
+            function()
+                require("luasnip.loaders.from_lua").lazy_load({
+                    paths = { "./lua/mesuca/plugins/luasnip/snippets/lua/" },
+                })
+            end,
+            desc = "Reload LuaSnip [keymap]",
+        },
+        {
+            "<C-l>",
+            function()
+                local ls = require("luasnip")
+                if ls.expand_or_jumpable() then
+                    ls.expand_or_jump()
+                end
+            end,
+            mode = { "i", "s" },
+            desc = "Expand or jump",
+            silent = true,
+        },
+        {
+            "<C-h>",
+            function()
+                local ls = require("luasnip")
+                if ls.jumpable(-1) then
+                    ls.jump(-1)
+                end
+            end,
+            mode = { "i", "s" },
+            desc = "Jump",
+            silent = true,
+        },
+        {
+            "<C-j>",
+            function()
+                local ls = require("luasnip")
+                if ls.choice_active() then
+                    ls.change_choice(1)
+                end
+            end,
+            mode = "i",
+            desc = "Next choice",
+            silent = true,
+        },
+        {
+            "<C-k>",
+            function()
+                local ls = require("luasnip")
+                -- vim.notify("[LUASNIP] ls.choice_active() = " .. vim.inspect(ls.choice_active()))
+                if ls.choice_active() then
+                    ls.change_choice(-1)
+                end
+            end,
+            mode = "i",
+            desc = "Previous choice",
+            silent = true,
+        },
+    },
     config = function()
         local ls = require("luasnip")
 
@@ -13,48 +74,9 @@ return {
             updateevents = "TextChanged,TextChangedI",
         })
 
-        function lazy_load_snippets()
-            require("luasnip.loaders.from_lua").lazy_load({
-                -- Paths relative to neovim config directory
-                paths = { "./lua/mesuca/plugins/luasnip/snippets/lua/" },
-            })
-        end
-
-        -- Shorten function name
-        local keymap = require("lib.utils").keymap
-
-        keymap("n", "<leader><leader>s", lazy_load_snippets, { desc = "Reload LuaSnip [keymap]" })
-        keymap({ "i", "s" }, "<C-l>", function()
-            if ls.expand_or_jumpable() then
-                ls.expand_or_jump()
-            end
-        end, {
-            desc = "Expand or jump",
-            silent = true,
+        -- Load snippets on plugin initialization
+        require("luasnip.loaders.from_lua").lazy_load({
+            paths = { "./lua/mesuca/plugins/luasnip/snippets/lua/" },
         })
-        keymap({ "i", "s" }, "<C-h>", function()
-            if ls.jumpable(-1) then
-                ls.jump(-1)
-            end
-        end, {
-            desc = "Jump",
-            silent = true,
-        })
-        keymap({ "i" }, "<C-j>", function()
-            if ls.choice_active() then
-                ls.change_choice(1)
-            end
-        end, {
-            desc = "Next choice",
-        })
-        keymap({ "i" }, "<C-k>", function()
-            if ls.choice_active() then
-                ls.change_choice(-1)
-            end
-        end, {
-            desc = "Previous choice",
-        })
-
-        lazy_load_snippets()
     end,
 }
