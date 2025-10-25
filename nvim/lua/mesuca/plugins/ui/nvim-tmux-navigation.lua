@@ -1,5 +1,6 @@
 return {
     "alexghergh/nvim-tmux-navigation",
+    enabled = false, -- Disabled because I'm currently using zellij
     opts = {
         disable_when_zoomed = true, -- defaults to false
         keybindings = {
