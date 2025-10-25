@@ -5,7 +5,17 @@ return {
         { "nvim-tree/nvim-web-devicons", lazy = true },
     },
     opts = {
-        scope = "git", -- can also try "git_branch"
+        scope = "git_branch",
+        icons = true,
+        status = true,
+        win_opts = {
+            border = "rounded",
+        },
+        statusline = {
+            -- icon = "",
+            active = "❮%s❯",
+            inactive = " %s ",
+        },
     },
     keys = function()
         local grapple = require("grapple")

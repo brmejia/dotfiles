@@ -36,8 +36,9 @@ return {
             custom_lsp_symbols = {
                 desc = "Trouble Symbols",
                 mode = "lsp_document_symbols",
-                focus = false,
-                win = { position = "right", size = { width = 0.3 } },
+                focus = true,
+                pinned = true,
+                win = { relative = "win", position = "right", size = { width = 0.3 } },
                 filter = {
                     -- remove Package since luals uses it for control flow structures
                     ["not"] = {

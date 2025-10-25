@@ -63,6 +63,16 @@ local location = {
     padding = 0,
 }
 
+local grapple = {
+    function()
+        -- return require("grapple").name_or_index()
+        return require("grapple").statusline()
+    end,
+    cond = function()
+        return package.loaded["grapple"] and require("grapple").exists()
+    end,
+}
+
 -- cool function for progress
 local progress = function()
     local current_line = vim.fn.line(".")
@@ -130,7 +140,7 @@ return {
             },
             sections = {
                 lualine_a = { mode },
-                lualine_b = { branch },
+                lualine_b = { branch, grapple },
                 lualine_c = { diagnostics, filetype, filename },
                 lualine_x = {
                     status_command(),
