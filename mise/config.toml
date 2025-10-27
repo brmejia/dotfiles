@@ -1,11 +1,12 @@
 [tools]
 # global tool versions go here
 # you can set these with `mise use -g`
+python = ["3.14", "3.13"]
+deno = "latest"
 node = "lts"
 # ollama = "latest"
 # opencode = "latest"
 prek = "latest"
-python = ["3.14", '3.13']
 
 [settings]
 idiomatic_version_file_enable_tools = []
