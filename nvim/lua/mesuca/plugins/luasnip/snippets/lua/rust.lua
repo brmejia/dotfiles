@@ -201,6 +201,7 @@ return {
             [[
                 #[cfg(test)]
                 mod <1> {
+                    #![allow(clippy::unwrap_used)]
                     #![allow(unused)]
                     use super::*;
                     <2>
