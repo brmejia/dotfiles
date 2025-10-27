@@ -5,7 +5,7 @@ return {
                 enable = false, -- Replaced by null_ls stylua plugin
             },
             diagnostics = {
-                globals = { "vim", "use" },
+                globals = { "use" },
             },
             workspace = {
                 checkThirdParty = false,

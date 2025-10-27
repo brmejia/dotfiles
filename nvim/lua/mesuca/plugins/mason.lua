@@ -9,6 +9,7 @@ return {
             -- Lua
             -- ---------------------
             "stylua",
+            "lua-language-server",
 
             -- Python
             -- ---------------------
