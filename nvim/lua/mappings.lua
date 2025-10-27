@@ -62,10 +62,10 @@ keymap("n", "zi", "zizz")
 
 -- Better window navigation
 -- This keymaps are defined in nvim-tmux-navigator config file
--- keymap("n", "<C-h>", "<C-w>h")
--- keymap("n", "<C-j>", "<C-w>j")
--- keymap("n", "<C-k>", "<C-w>k")
--- keymap("n", "<C-l>", "<C-w>l")
+keymap("n", "<C-h>", "<C-w>h", { desc = "Move cursor to left window" })
+keymap("n", "<C-j>", "<C-w>j", { desc = "Move cursor to bottom window" })
+keymap("n", "<C-k>", "<C-w>k", { desc = "Move cursor to top window" })
+keymap("n", "<C-l>", "<C-w>l", { desc = "Move cursor to right window" })
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>")
