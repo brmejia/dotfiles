@@ -58,14 +58,8 @@ return {
         -- words = { enabled = true },
         git = { enabled = true },
     },
-    config = function(_, opts)
-        local Snacks = require("snacks")
-        local wk = require("which-key")
-        Snacks.setup(opts)
-
-        wk.add({ { "<leader>.", group = "Scratch buffer" } })
-    end,
     keys = {
+        { "<leader>.", desc = "Scratch buffers", group = "Scratch buffers" },
         {
             "<leader>..",
             function()

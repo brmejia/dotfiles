@@ -144,7 +144,7 @@ return {
 
             keymap("n", "<C-p>", tbuiltin.find_files, { desc = "Find files" })
             keymap("n", "<C-b>", tbuiltin.buffers, { desc = "Find buffers" })
-            keymap("n", "<leader>fp", tbuiltin.find_files, { desc = "Find files" })
+            -- keymap("n", "<leader>fp", tbuiltin.find_files, { desc = "Find files" })
             keymap("n", "<leader>fb", tbuiltin.buffers, { desc = "Find buffers" })
             keymap("n", "<leader>fr", tbuiltin.registers, { desc = "Find registers" })
             -- keymap("n", "<leader>ff", tbuiltin.live_grep, { desc = "RipGrep" })
