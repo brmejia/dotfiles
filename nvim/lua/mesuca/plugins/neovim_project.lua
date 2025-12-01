@@ -5,9 +5,9 @@ return {
         priority = 100,
         opts = {
             projects = { -- define project roots
-                "~/dev*/*",
-                "~/dev*/serv*/*",
-                "~/.dotfiles",
+                "~/[D|d]ev*/*",
+                "~/[D|d]ev*/serv*/*",
+                "~/.dotfiles/*",
                 "~/.config/*",
             },
             -- Path to store history and sessions
