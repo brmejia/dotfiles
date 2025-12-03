@@ -8,9 +8,7 @@ return {
                 },
                 prefix = "self",
             },
-            checkOnSave = {
-                command = "clippy",
-            },
+            checkOnSave = true,
             procMacro = {
                 enable = true,
             },

@@ -1,6 +1,7 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
+        -- enabled = false,
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         event = "VeryLazy", -- Load the plugin
         init = function()
@@ -96,12 +97,13 @@ return {
     },
     {
         "nvim-treesitter/nvim-treesitter",
-        event = { "BufReadPre", "BufNewFile" },
-        branch = "master",
         -- enabled = false,
-        build = function()
-            require("nvim-treesitter.install").update({ with_sync = true })
-        end,
+        branch = "master",
+        lazy = false,
+        build = ":TSUpdate",
+        -- build = function()
+        --     require("nvim-treesitter.install").update({ with_sync = true })
+        -- end,
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
             -- NOTE: additional parser
@@ -229,12 +231,11 @@ return {
                 },
             },
         },
-        -- config = function(_, opts)
-        --     local treesitter_config = require("nvim-treesitter.configs")
-        --
-        --     treesitter_config.setup(opts)
-        --
-        -- end,
+        config = function(_, opts)
+            local treesitter_config = require("nvim-treesitter.configs")
+
+            treesitter_config.setup(opts)
+        end,
     },
 }
 
