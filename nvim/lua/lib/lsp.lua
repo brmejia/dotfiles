@@ -133,7 +133,7 @@ function lsp.set_lsp_keymaps(client, bufnr)
     -- buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- Buffer Mappings.
-    buf_keymap(bufnr, "n", "<C-k>", vim.lsp.buf.signature_help)
+    buf_keymap(bufnr, "i", "<C-k>", vim.lsp.buf.signature_help)
     buf_keymap(bufnr, "n", "K", vim.lsp.buf.hover)
 
     -- WhichKey Mappings
