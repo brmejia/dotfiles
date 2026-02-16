@@ -66,17 +66,15 @@ The main agent MUST gather all context first. Subagents do NOT inherit the main 
    - Any architectural patterns or conventions discovered
 
 5. **Write the CONTEXT BLOCK to a temporary file**:
-   First, get the change ID to use in the filename:
-   **If using jj:**
+   Use PID + timestamp to ensure unique context files for concurrent runs:
+
    ```bash
-   jj log -r @- --no-graph -T 'change_id.short()'
-   ```
-   **If using git:**
-   ```bash
-   git rev-parse --short HEAD
+   CONTEXT_FILE="/tmp/brutal-review-context-$$-$(date +%s).md"
    ```
 
-   Use the Write tool to save the context block to `/tmp/brutal-review-context-<ID>.md` (e.g., `/tmp/brutal-review-context-abc123.md`). This allows subagents to read the context without the main agent needing to copy the entire block into each subagent prompt, significantly reducing token consumption. Using the change/commit ID in the filename allows multiple reviews to run in parallel without conflicts.
+   Use the Write tool to save the context block to `$CONTEXT_FILE`. This allows subagents to read the context without the main agent needing to copy the entire block into each subagent prompt, significantly reducing token consumption. Using PID + timestamp ensures multiple reviews can run in parallel without conflicts.
+
+   Note: Old context files accumulate in `/tmp`. Periodically clean up with: `rm /tmp/brutal-review-context-*.md`
 
    The file should be structured with clear section headers so subagents can quickly locate relevant information.
 
@@ -84,7 +82,7 @@ The main agent MUST gather all context first. Subagents do NOT inherit the main 
 
 Examine every aspect of the change with extreme scrutiny, launching subagents using the Task tool to review the changes from the perspective of multiple different specialists. The categories are below. Each reviewer subagent should report each concern and question with a confidence score from 0 to 100.
 
-**CRITICAL**: Subagents do NOT inherit your context. Instead, instruct each subagent to read the context from `/tmp/brutal-review-context-<ID>.md` (using the ID you obtained in Step 2) as their first action. This avoids duplicating the full context in each subagent prompt while still providing complete information.
+**CRITICAL**: Subagents do NOT inherit your context. Instead, instruct each subagent to read the context from `$CONTEXT_FILE` as their first action. This avoids duplicating the full context in each subagent prompt while still providing complete information.
 
 Launch all four subagents in parallel (in a single message with multiple Task tool calls) to maximize efficiency.
 
@@ -99,7 +97,7 @@ Your mission is to perform ruthless, in-depth code reviews. You do not soften fe
 [PERSPECTIVE-SPECIFIC INSTRUCTIONS]
 
 ## Context
-**FIRST ACTION**: Use the Read tool to read `/tmp/brutal-review-context-<ID>.md`. This file contains all the context gathered by the main agent, including:
+**FIRST ACTION**: Use the Read tool to read `$CONTEXT_FILE`. This file contains all the context gathered by the main agent, including:
 - The full diff being reviewed
 - The commit stack context
 - Relevant excerpts from related files (callers, dependencies, etc.)
