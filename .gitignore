@@ -15,3 +15,6 @@ nushell/conf.d/zoxide.nu
 nushell/conf.d/atuin.nu
 nushell/conf.d/local
 nushell/history.txt
+
+opencode/node_modules
+opencode/bun.lock
