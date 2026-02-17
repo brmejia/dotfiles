@@ -69,12 +69,12 @@ The main agent MUST gather all context first. Subagents do NOT inherit the main 
    Use PID + timestamp to ensure unique context files for concurrent runs:
 
    ```bash
-   CONTEXT_FILE="/tmp/brutal-review-context-$$-$(date +%s).md"
+   CONTEXT_FILE="/tmp/opencode/brutal-review-context-$$-$(date +%s).md"
    ```
 
    Use the Write tool to save the context block to `$CONTEXT_FILE`. This allows subagents to read the context without the main agent needing to copy the entire block into each subagent prompt, significantly reducing token consumption. Using PID + timestamp ensures multiple reviews can run in parallel without conflicts.
 
-   Note: Old context files accumulate in `/tmp`. Periodically clean up with: `rm /tmp/brutal-review-context-*.md`
+   Note: Old context files accumulate in `/tmp/opencode`. Periodically clean up with: `rm /tmp/opencode/brutal-review-context-*.md`
 
    The file should be structured with clear section headers so subagents can quickly locate relevant information.
 
