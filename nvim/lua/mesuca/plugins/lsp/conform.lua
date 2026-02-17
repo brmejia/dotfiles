@@ -10,16 +10,12 @@ return {
         formatters = {
             ["npm-groovy-lint"] = {
                 command = "npm-groovy-lint",
-                -- A list of strings, or a function that returns a list of strings
-                -- Return a single string instead of a list to run the command in a shell
-                -- args = { "--format", "-" },
                 stdin = false,
                 args = { "--format", "$FILENAME" },
             },
             biome = {
-                --- When inherit = true, add these additional arguments to the end of the command.
-                -- This can also be a function, like args
-                append_args = { "--indent-style", "space" },
+                -- Append the flag to the default command
+                prepend_args = { "format", "--format-with-errors", "true" },
             },
         },
         formatters_by_ft = {
