@@ -1,0 +1,63 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "permission": {
+        "*": "ask",
+        "read": {
+            "*": "allow",
+            "*.env": "deny",
+            "*.env.*": "deny",
+            "*.env.example": "allow",
+            "*.pem": "deny",
+            "*.key": "deny",
+            "*.id_rsa": "deny",
+            "*.id_ed25519": "deny"
+        },
+        "edit": {
+            "*": "ask",
+            "/tmp/opencode/**": "allow",
+            "~/.config/opencode/**": "allow"
+        },
+        "write": {
+            "*": "ask",
+            "/tmp/opencode/**": "allow",
+            "~/.config/opencode/**": "allow"
+        },
+        "todowrite": "allow",
+        "todowrite": "allow",
+        "glob": "allow",
+        "grep": "allow",
+        "task": "allow",
+        "lsp": "allow",
+        "bash": {
+            "*": "ask",
+            "CONTEXT_FILE=\"/tmp/opencode/*": "allow",
+            "echo *": "allow",
+            "git status *": "allow",
+            "git show *": "allow",
+            "git diff *": "allow",
+            "git log *": "allow",
+            "ls *": "allow",
+            "cat *": "deny",
+            "mise use *": "allow",
+            "jj root *": "allow",
+            "uv *": "allow",
+            "mkdir *": "allow"
+        },
+        "webseach": "ask",
+        "webfetch": "ask",
+        "external_directory": {
+            "~/.config/opencode/**": "allow",
+            "~/.dotfiles/**": "allow",
+            "/tmp/opencode/**": "allow"
+        },
+        "doom_loop": "deny"
+    },
+    "share": "disabled",
+    "mcp": {
+        "minimax-coding-plan": {
+            "type": "local",
+            "enabled": true,
+            "command": ["uvx", "minimax-coding-plan-mcp", "-y"]
+        }
+    }
+}
