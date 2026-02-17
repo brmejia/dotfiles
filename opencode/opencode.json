@@ -23,7 +23,6 @@
             "~/.config/opencode/**": "allow"
         },
         "todowrite": "allow",
-        "todowrite": "allow",
         "glob": "allow",
         "grep": "allow",
         "task": "allow",
@@ -43,7 +42,7 @@
             "uv *": "allow",
             "mkdir *": "allow"
         },
-        "webseach": "ask",
+        "websearch": "ask",
         "webfetch": "ask",
         "external_directory": {
             "~/.config/opencode/**": "allow",
