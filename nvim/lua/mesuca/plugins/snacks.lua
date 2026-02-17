@@ -57,6 +57,7 @@ return {
         quickfile = { enabled = true },
         -- words = { enabled = true },
         git = { enabled = true },
+        terminal = { enabled = true },
     },
     keys = {
         { "<leader>.", desc = "Scratch buffers", group = "Scratch buffers" },

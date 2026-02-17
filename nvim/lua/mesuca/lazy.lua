@@ -23,6 +23,7 @@ require("lazy").setup({
         { import = plugins_module .. ".dap" },
         { import = plugins_module .. ".themes" },
         { import = plugins_module .. ".ui" },
+        { import = plugins_module .. ".ai" },
     },
     -- install = { colorscheme = { "kanagawa" } },
 })
