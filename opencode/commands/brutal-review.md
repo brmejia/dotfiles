@@ -1,16 +1,21 @@
 ---
-description: Perform ruthless multi-perspective code review of git HEAD or jj @-
+description: Perform ruthless multi-perspective code review of staged/unstaged diff or last commit
 agent: build
 subtask: true
 ---
 
 $ARGUMENTS
 
-Perform a ruthless, brutal, in-depth, extremely critical code review of the most recent change (jj `@-` or git `HEAD`).
+Perform a ruthless, brutal, in-depth, extremely critical code review of the current changes.
 
-IMPORTANT: The user's instruction above is secondary context. Always prioritize reviewing the default target (HEAD/@-). However:
+The review target is determined in this priority order:
+1. **Staged changes** (`git diff --staged`)
+2. **Unstaged changes** (`git diff`)
+3. **Last commit** (`git show HEAD`) - only if no staged or unstaged changes exist
+
+IMPORTANT: The user's instruction above is secondary context. Always prioritize reviewing based on the priority above. However:
 - If the user specifies additional focus areas (e.g., "also check memory leaks"), incorporate those as supplementary review points
-- If no git/jj repo exists in the current directory but the user specified a directory path in their instruction, attempt to perform the review on that directory instead
+- If no git repo exists in the current directory but the user specified a directory path in their instruction, attempt to perform the review on that directory instead
 
 Agent assumptions (applies to all agents and subagents):
 - All tools are functional and will work without error. Do not test tools or make exploratory calls.
@@ -20,37 +25,38 @@ Agent assumptions (applies to all agents and subagents):
 
 # Brutal Code Review Process
 
-## Step 1: Inspect the Changes
+## Step 1: Determine Target and Gather Diff
 
-First, determine which VCS we're using by running: `jj root 2>/dev/null && echo "jj" || echo "git"`
+First, check for staged and unstaged changes:
 
-Then get the full commit message and diff. Read every line carefully.
-
-**If using jj:**
 ```bash
-jj show --git --no-pager -r @-
+# Validate git repository exists
+if ! git rev-parse --git-dir >/dev/null 2>&1; then
+    echo "NOT_A_GIT_REPO"
+    exit 1
+fi
+
+# Check for staged changes
+if git diff --staged --quiet 2>/dev/null; then echo "NO_STAGED"; else echo "HAS_STAGED"; fi
+# Check for unstaged changes
+if git diff --quiet 2>/dev/null; then echo "NO_UNSTAGED"; else echo "HAS_UNSTAGED"; fi
 ```
 
-**If using git:**
-```bash
-git show HEAD
-```
+Based on the results, gather the diff in this priority order:
+1. **If HAS_STAGED**: Get staged diff (`git diff --staged`)
+2. **Else if HAS_UNSTAGED**: Get unstaged diff (`git diff`)
+3. **Else**: Get last commit (`git show HEAD`)
 
 ## Step 2: Gather All Context (BEFORE launching any subagents)
 
 The main agent MUST gather all context first. Subagents do NOT inherit the main agent's context—they start fresh. Therefore, you must:
 
-1. **Get the change stack context**:
-   **If using jj:**
-   ```bash
-   jj log -r 'trunk()..@-'
-   jj log -r '@-::'
-   ```
-   **If using git:**
-   ```bash
-   git log --oneline main..HEAD
-   ```
-   Note: Git does not track descendant commits, so "later changes" is not applicable.
+1. **Get the change context**:
+   - If reviewing a commit, get the commit log:
+     ```bash
+     git log --oneline -10
+     ```
+   - If reviewing staged/unstaged, note which files are modified
 
 2. **Read all modified files in full** (not just the diff). For each file touched by the change, read the entire file to understand the surrounding code.
 
@@ -61,18 +67,44 @@ The main agent MUST gather all context first. Subagents do NOT inherit the main 
 
 4. **Build a CONTEXT BLOCK**: After gathering all context, construct a comprehensive context block containing:
    - The full diff (from Step 1)
-   - The commit stack context
+   - The change context (commit log or list of modified files)
    - Relevant excerpts from files that callers/dependencies come from
    - Any architectural patterns or conventions discovered
 
 5. **Write the CONTEXT BLOCK to a temporary file**:
-   Use PID + timestamp to ensure unique context files for concurrent runs:
+   Use bash to generate a unique filename and write the content:
 
-   ```bash
-   CONTEXT_FILE="/tmp/opencode/brutal-review-context-$$-$(date +%s).md"
-   ```
+       ```bash
+       # Gather diff content (prioritized: staged > unstaged > last commit)
+       if git diff --staged --quiet 2>/dev/null; then
+         if git diff --quiet 2>/dev/null; then
+           DIFF_CONTENT=$(git show HEAD)
+         else
+           DIFF_CONTENT=$(git diff 2>/dev/null)
+         fi
+       else
+         DIFF_CONTENT=$(git diff --staged 2>/dev/null)
+       fi
 
-   Use the Write tool to save the context block to `$CONTEXT_FILE`. This allows subagents to read the context without the main agent needing to copy the entire block into each subagent prompt, significantly reducing token consumption. Using PID + timestamp ensures multiple reviews can run in parallel without conflicts.
+       MODIFIED_FILES=$(git status --porcelain 2>/dev/null)
+
+       # Write context file
+       # Note: Do NOT add EXIT to trap - context file is needed until all review phases complete
+       CONTEXT_FILE=$(mktemp /tmp/opencode/brutal-review-context-XXXXXXXXXX.md)
+       echo "CONTEXT_FILE=$CONTEXT_FILE"
+       trap 'rm -f "$CONTEXT_FILE"' INT TERM
+       {
+         echo "# Code Review Context"
+         echo ""
+         echo "## Diff:"
+         echo "$DIFF_CONTENT"
+         echo ""
+         echo "## Modified Files:"
+         echo "$MODIFIED_FILES"
+       } > "$CONTEXT_FILE"
+       ```
+
+   Using `mktemp` ensures a unique filename. The file pattern `brutal-review-context-*.md` ensures old context files can be found and cleaned up.
 
    Note: Old context files accumulate in `/tmp/opencode`. Periodically clean up with: `rm /tmp/opencode/brutal-review-context-*.md`
 
@@ -210,6 +242,15 @@ After collecting findings from all subagents, you must analyze and synthesize th
   - Actionable fixes
   - Concrete questions
   - Updated confidence score and prioritization category
+
+## Step 6: Cleanup
+
+After completing the review, remove the temporary context file:
+
+```bash
+echo "CONTEXT_FILE=$CONTEXT_FILE"
+rm -f "$CONTEXT_FILE"
+```
 
 # Mindset
 

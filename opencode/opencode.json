@@ -29,7 +29,8 @@
         "lsp": "allow",
         "bash": {
             "*": "ask",
-            "CONTEXT_FILE=\"/tmp/opencode/*": "allow",
+            "mktemp /tmp/opencode/brutal-review-context-": "allow",
+            "rm -f /tmp/opencode/brutal-review-context-*": "allow",
             "echo *": "allow",
             "git status *": "allow",
             "git show *": "allow",
@@ -38,8 +39,6 @@
             "ls *": "allow",
             "cat *": "deny",
             "mise use *": "allow",
-            "jj root *": "allow",
-            "uv *": "allow",
             "mkdir *": "allow"
         },
         "websearch": "ask",
