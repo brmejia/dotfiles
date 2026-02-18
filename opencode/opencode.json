@@ -1,5 +1,6 @@
 {
     "$schema": "https://opencode.ai/config.json",
+    "instructions": ["./instructions/context7.md"],
     "permission": {
         "*": "ask",
         "read": {
@@ -29,17 +30,28 @@
         "lsp": "allow",
         "bash": {
             "*": "ask",
-            "mktemp /tmp/opencode/brutal-review-context-": "allow",
-            "rm -f /tmp/opencode/brutal-review-context-*": "allow",
             "echo *": "allow",
+            "mktemp *": "allow",
+            "rm -f /tmp/opencode/brutal-review-context-*": "allow",
+            "trap 'rm -f \"$CONTEXT_FILE\"' INT TERM": "allow",
+            "grep *": "allow",
+            "head *": "allow",
             "git status *": "allow",
             "git show *": "allow",
             "git diff *": "allow",
             "git log *": "allow",
+            "git rev-parse *": "allow",
+            "pwd *": "allow",
             "ls *": "allow",
             "cat *": "deny",
             "mise use *": "allow",
-            "mkdir *": "allow"
+            "mkdir *": "allow",
+            "cargo test *": "allow",
+            "cargo nextest *": "allow",
+            "cargo clippy *": "allow",
+            "cargo all-features test *": "allow",
+            "prek run *": "allow",
+            "pre-commit run *": "allow"
         },
         "websearch": "ask",
         "webfetch": "ask",
@@ -48,10 +60,19 @@
             "~/.dotfiles/**": "allow",
             "/tmp/opencode/**": "allow"
         },
-        "doom_loop": "deny"
+        "doom_loop": "deny",
+        "minimax-coding-plan_web_search": "allow"
     },
     "share": "disabled",
     "mcp": {
+        "context7": {
+            "type": "remote",
+            "url": "https://mcp.context7.com/mcp",
+            "headers": {
+                "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+            },
+            "enabled": true
+        },
         "minimax-coding-plan": {
             "type": "local",
             "enabled": true,
