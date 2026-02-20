@@ -3,6 +3,10 @@
     "instructions": ["./instructions/context7.md"],
     "permission": {
         "*": "ask",
+        "skill": {
+            "*": "deny",
+            "context-file-creation*": "allow"
+        },
         "read": {
             "*": "allow",
             "*.env": "deny",
@@ -15,13 +19,15 @@
         },
         "edit": {
             "*": "ask",
-            "/tmp/opencode/**": "allow",
-            "~/.config/opencode/**": "allow"
+            "~/.config/opencode/*": "allow",
+            "/tmp/*": "allow",
+            ".tmp/**": "allow"
         },
         "write": {
             "*": "ask",
-            "/tmp/opencode/**": "allow",
-            "~/.config/opencode/**": "allow"
+            "~/.config/opencode/*": "allow",
+            "/tmp/*": "allow",
+            ".tmp/**": "allow"
         },
         "todowrite": "allow",
         "glob": "allow",
@@ -31,16 +37,17 @@
         "bash": {
             "*": "ask",
             "echo *": "allow",
-            "mktemp *": "allow",
-            "rm -f /tmp/opencode/brutal-review-context-*": "allow",
-            "trap 'rm -f \"$CONTEXT_FILE\"' INT TERM": "allow",
+            "printf *": "allow",
             "grep *": "allow",
             "head *": "allow",
             "git status *": "allow",
             "git show *": "allow",
             "git diff *": "allow",
             "git log *": "allow",
+            "git branch --current": "allow",
+            "git branch --list": "allow",
             "git rev-parse *": "allow",
+            "git commit *": "ask",
             "pwd *": "allow",
             "ls *": "allow",
             "cat *": "deny",
@@ -51,14 +58,20 @@
             "cargo clippy *": "allow",
             "cargo all-features test *": "allow",
             "prek run *": "allow",
-            "pre-commit run *": "allow"
+            "pre-commit run *": "allow",
+            "mktemp *": "allow",
+            "rm -f /tmp/*": "allow",
+            "trap 'rm -f \"$CONTEXT_FILE\"' INT TERM": "allow",
+            "bash *skills/context-file-creation-v4/create_context.sh *": "allow",
+            "bash *skills/context-file-creation-v4/write_content.sh *": "allow",
+            "bash *skills/context-file-creation-v4/cleanup.sh *": "allow"
         },
         "websearch": "ask",
         "webfetch": "ask",
         "external_directory": {
-            "~/.config/opencode/**": "allow",
-            "~/.dotfiles/**": "allow",
-            "/tmp/opencode/**": "allow"
+            "~/.config/opencode/*": "allow",
+            "~/.dotfiles/*": "allow",
+            "/tmp/*": "allow"
         },
         "doom_loop": "deny",
         "minimax-coding-plan_web_search": "allow"
@@ -77,6 +90,15 @@
             "type": "local",
             "enabled": true,
             "command": ["uvx", "minimax-coding-plan-mcp", "-y"]
+        }
+    },
+    "plugin": ["oh-my-opencode-slim"],
+    "agent": {
+        "explore": {
+            "disable": true
+        },
+        "general": {
+            "disable": true
         }
     }
 }
