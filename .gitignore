@@ -18,3 +18,6 @@ nushell/history.txt
 
 opencode/node_modules
 opencode/bun.lock
+
+# Specs
+.specs/
