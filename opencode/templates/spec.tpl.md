@@ -1,11 +1,13 @@
 # Spec for <feature-name>
 
-feature_slug: <feature-slug>
-branch: ft/<feature-slug>
-priority: high | medium | low
-status: draft | ready-for-dev
-owner: <name-or-team>
-affected_areas: <comma-separated, e.g. auth, dashboard, api>
+## Meta
+
+- feature_slug: <feature-slug>
+- branch: ft/<feature-slug>
+- priority: high | medium | low
+- status: draft | ready-for-dev
+- owner: <name-or-team>
+- affected_areas: <comma-separated, e.g. auth, dashboard, api>
 
 ## Summary
 ...
