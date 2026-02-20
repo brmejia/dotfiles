@@ -48,6 +48,8 @@ Use present tense for the subject line and explain "why" something has changed, 
 - `revert` – Reverts a previous commit
 - `ops` – Affects infrastructure, deployment, monitoring, or CI/CD pipelines
 
+<Optional body explaining *why* not *what*>
+
 ### Breaking changes
 - Use `!` in the header when the change is breaking (e.g., `feat(api)!:`).
 - Optionally add a `BREAKING CHANGE:` footer when the “why/impact” needs detail.
@@ -57,7 +59,7 @@ Use present tense for the subject line and explain "why" something has changed, 
 ```
 <type>: <concise_description>
 
-<optional_body_explaining_why>
+<optional_body_list_explaining_why>
 ```
 
 ## Output
@@ -94,34 +96,9 @@ Topic 2: <topic_name_2> (<N> commits)
 For each topic, propose commits following Conventional Commits format.
 Use **global commit numbers** (1, 2, 3...) for referencing.
 
-```markdown
-### Topic 1: <topic_name_1>
-
-#### 1. <type>: <description>
-
-Optional body explaining *why* the change was made,
-not just what changed.
-
-Files to stage:
-- path/to/file_a
-- path/to/file_b
-
-#### 2. <type>: <description>
-
-Files to stage:
-- path/to/file_c
-
-### Topic 2: <topic_name_2>
-
-#### 3. <type>: <description>
-
-Files to stage:
-- path/to/file_d
-```
-
 ## 4. Confirmation Request (single)
 
-After displaying all proposed commits, ask **once** using **global commit numbers**:
+Show to the user about all proposed commits
 
 ```markdown
 ## Proposed Commits
@@ -140,18 +117,16 @@ Topic 2: <topic_name_2> (<N> commits)
 3. <type>: <description>
    Files:
     - path/to/file_d
+```
 
----
-
-Do you confirm? (yes / yes <N> / no / edit <N> / skip <N>)
+Then ask full or partial confimation using **global commit numbers**:
 - "yes": creates all commits
 - "yes <N>": creates only commit N
 - "no": cancels entirely
 - "edit <N>": lets you revise commit N before proceeding
 - "skip <N>": skips commit N (will be marked as ✗ in summary)
-```
 
-**DO NOT auto-commit** - wait for user approval.
+**DO NOT auto-commit** - wait for user approval showing detailed Proposed comits.
 
 After confirmation, display the summary
 
