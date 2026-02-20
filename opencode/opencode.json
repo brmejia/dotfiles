@@ -45,6 +45,7 @@
             "git diff *": "allow",
             "git log *": "allow",
             "git branch --current": "allow",
+            "git branch --show-current": "allow",
             "git branch --list": "allow",
             "git rev-parse *": "allow",
             "git commit *": "ask",
