@@ -1,0 +1,50 @@
+{
+    "preset": "manual",
+    "presets": {
+        "manual": {
+            "orchestrator": {
+                "model": "minimax-coding-plan/MiniMax-M2.5",
+                "skills": ["*"],
+                "mcps": ["websearch"]
+            },
+            "oracle": {
+                "model": "minimax-coding-plan/MiniMax-M2.5",
+                "skills": [],
+                "mcps": []
+            },
+            "designer": {
+                "model": "minimax-coding-plan/MiniMax-M2.5",
+                "skills": ["agent-browser"],
+                "mcps": []
+            },
+            "explorer": {
+                "model": "minimax-coding-plan/MiniMax-M2.5",
+                "skills": [],
+                "mcps": []
+            },
+            "librarian": {
+                "model": "minimax-coding-plan/MiniMax-M2.5",
+                "skills": [],
+                "mcps": ["websearch", "context7", "grep_app"]
+            },
+            "fixer": {
+                "model": "minimax-coding-plan/MiniMax-M2.5",
+                "skills": [],
+                "mcps": []
+            }
+        }
+    },
+    "balanceProviderUsage": false,
+    "fallback": {
+        "enabled": true,
+        "timeoutMs": 15000,
+        "chains": {
+            "orchestrator": ["minimax-coding-plan/MiniMax-M2.5"],
+            "oracle": ["minimax-coding-plan/MiniMax-M2.5"],
+            "designer": ["minimax-coding-plan/MiniMax-M2.5"],
+            "explorer": ["minimax-coding-plan/MiniMax-M2.5"],
+            "librarian": ["minimax-coding-plan/MiniMax-M2.5"],
+            "fixer": ["minimax-coding-plan/MiniMax-M2.5"]
+        }
+    }
+}
