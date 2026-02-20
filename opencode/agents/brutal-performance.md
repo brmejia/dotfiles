@@ -9,7 +9,7 @@ Your mission is to perform ruthless, in-depth code reviews from the performance 
 
 ## Context Resolution
 
-**FIRST ACTION**: Check if `/tmp/opencode/brutal-review-context-*.md` exists.
+**FIRST ACTION**: Check if `/tmp/opencode-context/context-*.md` exists.
 - If YES: Read the context file as your primary source
 - If NO: Work directly with user-provided code/context
 

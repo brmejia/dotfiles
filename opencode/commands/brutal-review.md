@@ -1,12 +1,15 @@
 ---
 description: Perform ruthless multi-perspective code review of staged/unstaged diff or last commit
-agent: build
+agent: orchestrator
 subtask: true
 ---
 
 $ARGUMENTS
 
 Perform a ruthless, brutal, in-depth, extremely critical code review of the current changes.
+
+**IMPORTANT**: First, load the context-file-creation skill by calling
+--> skill({ name: "context-file-creation-v4" })
 
 The review target is determined in this priority order:
 1. **Staged changes** (`git diff --staged`)
@@ -71,42 +74,30 @@ The main agent MUST gather all context first. Subagents do NOT inherit the main 
    - Relevant excerpts from files that callers/dependencies come from
    - Any architectural patterns or conventions discovered
 
-5. **Write the CONTEXT BLOCK to a temporary file**:
-   Use bash to generate a unique filename and write the content:
+5. **Write the CONTEXT BLOCK to a temporary file using v4 skill**:
 
-       ```bash
-       # Gather diff content (prioritized: staged > unstaged > last commit)
-       if git diff --staged --quiet 2>/dev/null; then
-         if git diff --quiet 2>/dev/null; then
-           DIFF_CONTENT=$(git show HEAD)
-         else
-           DIFF_CONTENT=$(git diff 2>/dev/null)
-         fi
-       else
-         DIFF_CONTENT=$(git diff --staged 2>/dev/null)
-       fi
+   ```bash
+   # Gather diff content (prioritized: staged > unstaged > last commit)
+   if git diff --staged --quiet 2>/dev/null; then
+     if git diff --quiet 2>/dev/null; then
+       DIFF_CONTENT=$(git show HEAD)
+     else
+       DIFF_CONTENT=$(git diff 2>/dev/null)
+     fi
+   else
+     DIFF_CONTENT=$(git diff --staged 2>/dev/null)
+   fi
 
-       MODIFIED_FILES=$(git status --porcelain 2>/dev/null)
+   MODIFIED_FILES=$(git status --porcelain 2>/dev/null)
 
-       # Write context file
-       # Note: Do NOT add EXIT to trap - context file is needed until all review phases complete
-       CONTEXT_FILE=$(mktemp /tmp/opencode/brutal-review-context-XXXXXXXXXX.md)
-       echo "CONTEXT_FILE=$CONTEXT_FILE"
-       trap 'rm -f "$CONTEXT_FILE"' INT TERM
-       {
-         echo "# Code Review Context"
-         echo ""
-         echo "## Diff:"
-         echo "$DIFF_CONTENT"
-         echo ""
-         echo "## Modified Files:"
-         echo "$MODIFIED_FILES"
-       } > "$CONTEXT_FILE"
-       ```
+   # Create context file using v4 skill
+   CONTEXT_FILE=$(bash skills/context-file-creation-v4/create_context.sh)
+   echo "CONTEXT_FILE=$CONTEXT_FILE" >&2
+   trap 'bash skills/context-file-creation-v4/cleanup.sh "$CONTEXT_FILE"' INT TERM
 
-   Using `mktemp` ensures a unique filename. The file pattern `brutal-review-context-*.md` ensures old context files can be found and cleaned up.
-
-   Note: Old context files accumulate in `/tmp/opencode`. Periodically clean up with: `rm /tmp/opencode/brutal-review-context-*.md`
+   # Write content via stdin
+   printf "# Code Review Context\n\n## Diff:\n%s\n\n## Modified Files:\n%s\n" "$DIFF_CONTENT" "$MODIFIED_FILES" | bash skills/context-file-creation-v4/write_content.sh "$CONTEXT_FILE" -
+   ```
 
    The file should be structured with clear section headers so subagents can quickly locate relevant information.
 
@@ -114,7 +105,7 @@ The main agent MUST gather all context first. Subagents do NOT inherit the main 
 
 Examine every aspect of the change with extreme scrutiny, launching subagents using the Task tool to review the changes from the perspective of multiple different specialists. The categories are below. Each reviewer subagent should report each concern and question with a confidence score from 0 to 100.
 
-**CRITICAL**: Subagents do NOT inherit your context. Instead, instruct each subagent to read the context from `$CONTEXT_FILE` as their first action. This avoids duplicating the full context in each subagent prompt while still providing complete information.
+**IMPORTANT**: After creating the context file, replace `{{CONTEXT_FILE}}` in the prompt template below with the actual file path from the output (look for `CONTEXT_FILE=...` line).
 
 Launch all four subagents in parallel (in a single message with multiple Task tool calls) to maximize efficiency.
 
@@ -129,7 +120,7 @@ Your mission is to perform ruthless, in-depth code reviews. You do not soften fe
 [PERSPECTIVE-SPECIFIC INSTRUCTIONS]
 
 ## Context
-**FIRST ACTION**: Use the Read tool to read `$CONTEXT_FILE`. This file contains all the context gathered by the main agent, including:
+**FIRST ACTION**: Use the Read tool to read `{{CONTEXT_FILE}}`. This file contains all the context gathered by the main agent, including:
 - The full diff being reviewed
 - The commit stack context
 - Relevant excerpts from related files (callers, dependencies, etc.)
@@ -245,11 +236,8 @@ After collecting findings from all subagents, you must analyze and synthesize th
 
 ## Step 6: Cleanup
 
-After completing the review, remove the temporary context file:
-
 ```bash
-echo "CONTEXT_FILE=$CONTEXT_FILE"
-rm -f "$CONTEXT_FILE"
+bash skills/context-file-creation-v4/cleanup.sh "$CONTEXT_FILE"
 ```
 
 # Mindset
