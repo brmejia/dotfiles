@@ -14,8 +14,8 @@ User input: $ARGUMENTS
 Your job will be to turn the user input above into:
 
 - A human friendly feature title in kebab-case (e.g. new-heist-form)
-- A safe git branch name not already taken (e.g. claude/feature/new-heist-form)
-- A detailed markdown spec file under the _specs/ directory
+- A safe git branch name not already taken (e.g. ft/new-heist-form)
+- A detailed markdown spec file under the `.specs` directory
 
 Then save the spec file to disk and print a short summary of what you did.
 
@@ -55,7 +55,7 @@ Before making any content, switch to a new Git branch using the `branch_name` de
 
 ## Step 4. Draft the spec content
 
-Create a markdown spec document that Plan mode can use directly and save it in the .specs folder using the `feature_slug`. Use the exact structure as defined in the spec template file here: @templates/spec.tpl.md. Do not add technical implementation details such as code examples.
+Create a markdown spec document that Plan mode can use directly and save it in the .specs folder using the `feature_slug`. Use the exact structure as defined in the spec template file here: @~/.config/opencode/templates/spec.tpl.md. Do not add technical implementation details such as code examples.
 
 Ask the user if dir .specs should be ignored
 
