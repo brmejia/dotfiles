@@ -18,6 +18,11 @@ nushell/history.txt
 
 opencode/node_modules
 opencode/bun.lock
+opencode/agents/gsd-*.md
+opencode/commands/gsd/*
+opencode/rules/gsd-*.md
+opencode/skills/gsd-*
+opencode/get-shit-done
 
 # Specs
 .specs/
