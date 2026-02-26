@@ -21,13 +21,14 @@
             "*": "ask",
             "~/.config/opencode/*": "allow",
             "/tmp/*": "allow",
-            ".tmp/**": "allow"
+            ".tmp/**": "allow",
+            ".planning/*": "allow"
         },
         "write": {
             "*": "ask",
             "~/.config/opencode/*": "allow",
             "/tmp/*": "allow",
-            ".tmp/**": "allow"
+            ".planning/*": "allow"
         },
         "todowrite": "allow",
         "glob": "allow",
@@ -37,6 +38,8 @@
         "bash": {
             "*": "ask",
             "echo *": "allow",
+            "ls *": "allow",
+            "wc *": "allow",
             "printf *": "allow",
             "grep *": "allow",
             "head *": "allow",
@@ -47,6 +50,7 @@
             "git branch --current": "allow",
             "git branch --show-current": "allow",
             "git branch --list": "allow",
+            "git branch -a": "allow",
             "git rev-parse *": "allow",
             "git commit *": "ask",
             "pwd *": "allow",
@@ -65,7 +69,8 @@
             "trap 'rm -f \"$CONTEXT_FILE\"' INT TERM": "allow",
             "bash *skills/context-file-creation-v4/create_context.sh *": "allow",
             "bash *skills/context-file-creation-v4/write_content.sh *": "allow",
-            "bash *skills/context-file-creation-v4/cleanup.sh *": "allow"
+            "bash *skills/context-file-creation-v4/cleanup.sh *": "allow",
+            "node ~/.config/opencode/get-shit-done/bin/gsd-tools.cjs *": "allow"
         },
         "websearch": "ask",
         "webfetch": "ask",
@@ -95,11 +100,19 @@
     },
     "plugin": ["oh-my-opencode-slim"],
     "agent": {
-        "explore": {
-            "disable": true
-        },
-        "general": {
-            "disable": true
-        }
+        "explore": { "disable": true },
+        "general": { "disable": true },
+        "codemap": { "disable": true },
+        "gsd-codebase-mapper": { "hidden": true },
+        "gsd-debugger": { "hidden": true },
+        "gsd-executor": { "hidden": true },
+        "gsd-integration-checker": { "hidden": true },
+        "gsd-phase-researcher": { "hidden": true },
+        "gsd-plan-checker": { "hidden": true },
+        "gsd-planner": { "hidden": true },
+        "gsd-project-researcher": { "hidden": true },
+        "gsd-research-synthesizer": { "hidden": true },
+        "gsd-roadmapper": { "hidden": true },
+        "gsd-verifier": { "hidden": true }
     }
 }
