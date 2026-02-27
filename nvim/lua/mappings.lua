@@ -26,8 +26,14 @@ vim.g.maplocalleader = " "
 -- keymap("n", "<Leader><Leader>r", ":source ~/.config/nvim/init.lua<CR>")
 
 -- Auto-center on buffer movements
-keymap({ "n", "v" }, "j", "jzz")
-keymap({ "n", "v" }, "k", "kzz")
+keymap({ "n", "v" }, "j", function()
+    -- Make vertical movement compatible with wrap
+    return vim.v.count == 0 and "gjzz" or "jzz"
+end, { expr = true })
+keymap({ "n", "v" }, "k", function()
+    -- Make vertical movement compatible with wrap
+    return vim.v.count == 0 and "gkzz" or "kzz"
+end, { expr = true })
 keymap({ "n", "v" }, "G", "Gzz")
 keymap({ "n", "v" }, "n", "nzzzv")
 keymap({ "n", "v" }, "N", "Nzzzv")

@@ -54,6 +54,17 @@ autocmd({ "BufWinEnter" }, {
     command = "silent! loadview",
 })
 
+-- wrap, linebreak and spellcheck on markdown and text files
+autocmd("FileType", {
+    group = mesuca_group,
+    pattern = { "markdown", "text", "gitcommit" },
+    callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.linebreak = true
+        vim.opt_local.spell = true
+    end,
+})
+
 return {
     user_cmdgroup = mesuca_group,
 }
