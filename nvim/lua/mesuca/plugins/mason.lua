@@ -19,9 +19,6 @@ return {
 
             -- Typescript/Javascript/HTML/CSS
             -- ---------------------
-            "biome",
-            "prettierd",
-            "prettier",
             "vacuum",
         },
     },

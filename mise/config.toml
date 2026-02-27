@@ -8,6 +8,10 @@ node = "lts"
 # opencode = "latest"
 prek = "latest"
 opencode = "latest"
+bun = "latest"
+oxfmt = "latest"
+oxlint = "latest"
+biome = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []

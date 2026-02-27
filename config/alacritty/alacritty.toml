@@ -1,16 +1,16 @@
- [font.normal]
-  family = "Iosevka Nerd Font"
-  style = "Medium"
+[font.normal]
+family = "Iosevka Nerd Font"
+style = "Medium"
 
-  [window]
-  decorations = "none"
-  opacity = 1
+[window]
+decorations = "none"
+opacity = 1
 
-  blur = true
+blur = true
 
-  [general]
-  import = ["~/.config/alacritty/themes/themes/kanagawa_wave.toml"]
-  # import = ["~/.config/alacritty/themes/themes/kanagawa_dragon.toml"]
+[general]
+import = ["~/.config/alacritty/themes/themes/kanagawa_wave.toml"]
+# import = ["~/.config/alacritty/themes/themes/kanagawa_dragon.toml"]
 
- [terminal]
- shell = "nu"
+[terminal]
+shell = "/home/amejia/.cargo/bin/nu"

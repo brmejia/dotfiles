@@ -27,9 +27,12 @@ return {
             },
 
             -- Use a sub-list to run only the first available formatter
-            javascript = { "biome", "prettierd", "prettier", stop_after_first = true },
-            typescript = { "biome", "prettierd", "prettier", stop_after_first = true },
-            json = { "biome", "prettierd", "prettier", stop_after_first = true },
+            javascript = { "oxfmt", stop_after_first = true },
+            javascriptreact = { "oxfmt", stop_after_first = true },
+            typescript = { "oxfmt", stop_after_first = true },
+            typescriptreact = { "oxfmt", stop_after_first = true },
+            json = { "oxfmt", stop_after_first = true },
+            vue = { "oxfmt", stop_after_first = true },
             html = { "prettierd", "prettier", stop_after_first = true },
             css = { "biome", "prettierd", "prettier", stop_after_first = true },
             yaml = { "prettierd", "prettier", stop_after_first = true },
