@@ -6,10 +6,6 @@ return {
             "ansible-lint",
             "ltex-ls",
             "vue-language-server",
-            -- Lua
-            -- ---------------------
-            "stylua",
-            "lua-language-server",
 
             -- Python
             -- ---------------------

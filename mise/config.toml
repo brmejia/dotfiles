@@ -12,6 +12,9 @@ bun = "latest"
 oxfmt = "latest"
 oxlint = "latest"
 biome = "latest"
+ruff = "latest"
+stylua = "latest"
+lua-language-server = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
