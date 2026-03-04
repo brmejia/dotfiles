@@ -57,7 +57,7 @@ autocmd({ "BufWinEnter" }, {
 -- wrap, linebreak and spellcheck on markdown and text files
 autocmd("FileType", {
     group = mesuca_group,
-    pattern = { "markdown", "text", "gitcommit" },
+    pattern = { "markdown", "text", "gitcommit", "NeogitCommitView" },
     callback = function()
         vim.opt_local.wrap = true
         vim.opt_local.linebreak = true

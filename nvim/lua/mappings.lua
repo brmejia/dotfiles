@@ -97,6 +97,9 @@ keymap({ "n", "i" }, "<Right>", "<Nop>")
 -- Clipboard
 keymap({ "n", "v" }, "<leader>y", '"+y') -- Yank TextObject into system Clipboard
 keymap("n", "<leader>Y", '"+Y', { noremap = false }) -- Yank line into system Clipboard
+keymap("n", "<leader>cp", function()
+    require("lib.utils").copy_relative_path({ visual = false })
+end, { desc = "Copy buffer path relative to workdir" })
 -- keymap({ "n", "v" }, "<leader>d", '"_d') -- (Conflicts with DAP keymaps) Delete selection/line without yanking
 keymap({ "n", "v" }, "<leader>P", '"+gP') -- Paste from system clipboard
 

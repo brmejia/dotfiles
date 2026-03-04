@@ -74,4 +74,34 @@ utils.kind_icons = {
     Codeium = "",
 }
 
+function utils.copy_relative_path(opts)
+    opts = opts or {}
+    local relative_path
+
+    if opts.visual then
+        local file = vim.fn.expand("<afile>")
+        if file == "" then
+            vim.notify("No file selected", vim.log.levels.WARN)
+            return
+        end
+        relative_path = vim.fn.fnamemodify(file, ":.")
+    else
+        local buf_path = vim.api.nvim_buf_get_name(0)
+        if buf_path == "" then
+            vim.notify("No file in buffer", vim.log.levels.WARN)
+            return
+        end
+        relative_path = vim.fn.fnamemodify(buf_path, ":.")
+    end
+
+    local ok, err = pcall(function()
+        vim.cmd(string.format("let @+ = %q", relative_path))
+    end)
+    if not ok then
+        vim.notify("Failed to copy: " .. err, vim.log.levels.ERROR)
+        return
+    end
+    vim.notify("Copied: " .. relative_path, vim.log.levels.INFO)
+end
+
 return utils
