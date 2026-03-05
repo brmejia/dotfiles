@@ -15,6 +15,13 @@ biome = "latest"
 ruff = "latest"
 stylua = "latest"
 lua-language-server = "latest"
+hurl = "latest"
+postgres = "latest"
+argocd = "latest"
+helm = "3"
+ollama = "latest"
+claude = "latest"
+vacuum = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []

@@ -6,16 +6,10 @@ return {
             "ansible-lint",
             "ltex-ls",
             "vue-language-server",
-
             -- Python
             -- ---------------------
             -- "black", -- Replaced by ruff
-            -- "mypy",
             "debugpy",
-
-            -- Typescript/Javascript/HTML/CSS
-            -- ---------------------
-            "vacuum",
         },
     },
 
