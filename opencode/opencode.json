@@ -1,118 +1,163 @@
 {
-    "$schema": "https://opencode.ai/config.json",
-    "instructions": ["./instructions/context7.md"],
-    "permission": {
-        "*": "ask",
-        "skill": {
-            "*": "deny",
-            "context-file-creation*": "allow"
-        },
-        "read": {
-            "*": "allow",
-            "*.env": "deny",
-            "*.env.*": "deny",
-            "*.env.example": "allow",
-            "*.pem": "deny",
-            "*.key": "deny",
-            "*.id_rsa": "deny",
-            "*.id_ed25519": "deny"
-        },
-        "edit": {
-            "*": "ask",
-            "~/.config/opencode/*": "allow",
-            "/tmp/*": "allow",
-            ".tmp/**": "allow",
-            ".planning/*": "allow"
-        },
-        "write": {
-            "*": "ask",
-            "~/.config/opencode/*": "allow",
-            "/tmp/*": "allow",
-            ".planning/*": "allow"
-        },
-        "todowrite": "allow",
-        "glob": "allow",
-        "grep": "allow",
-        "task": "allow",
-        "lsp": "allow",
-        "bash": {
-            "*": "ask",
-            "echo *": "allow",
-            "ls *": "allow",
-            "wc *": "allow",
-            "printf *": "allow",
-            "grep *": "allow",
-            "head *": "allow",
-            "git status *": "allow",
-            "git show *": "allow",
-            "git diff *": "allow",
-            "git log *": "allow",
-            "git branch --current": "allow",
-            "git branch --show-current": "allow",
-            "git branch --list": "allow",
-            "git branch -a": "allow",
-            "git rev-parse *": "allow",
-            "git commit *": "ask",
-            "pwd *": "allow",
-            "ls *": "allow",
-            "cat *": "deny",
-            "mise use *": "allow",
-            "mkdir *": "allow",
-            "cargo test *": "allow",
-            "cargo nextest *": "allow",
-            "cargo clippy *": "allow",
-            "cargo all-features test *": "allow",
-            "prek run *": "allow",
-            "pre-commit run *": "allow",
-            "mktemp *": "allow",
-            "rm -f /tmp/*": "allow",
-            "trap 'rm -f \"$CONTEXT_FILE\"' INT TERM": "allow",
-            "bash *skills/context-file-creation-v4/create_context.sh *": "allow",
-            "bash *skills/context-file-creation-v4/write_content.sh *": "allow",
-            "bash *skills/context-file-creation-v4/cleanup.sh *": "allow",
-            "node ~/.config/opencode/get-shit-done/bin/gsd-tools.cjs *": "allow"
-        },
-        "websearch": "ask",
-        "webfetch": "ask",
-        "external_directory": {
-            "~/.config/opencode/*": "allow",
-            "~/.dotfiles/*": "allow",
-            "/tmp/*": "allow"
-        },
-        "doom_loop": "deny",
-        "minimax-coding-plan_web_search": "allow"
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "codemap": { "disable": true },
+    "explore": { "hidden": false },
+    "general": { "hidden": false },
+    "gsd-codebase-mapper": { "hidden": true },
+    "gsd-debugger": { "hidden": true },
+    "gsd-executor": { "hidden": true },
+    "gsd-integration-checker": { "hidden": true },
+    "gsd-phase-researcher": { "hidden": true },
+    "gsd-plan-checker": { "hidden": true },
+    "gsd-planner": { "hidden": true },
+    "gsd-project-researcher": { "hidden": true },
+    "gsd-research-synthesizer": { "hidden": true },
+    "gsd-roadmapper": { "hidden": true },
+    "gsd-verifier": { "hidden": true }
+  },
+  "instructions": ["./instructions/context7.md"],
+  "mcp": {
+    "context7": {
+      "enabled": true,
+      "headers": {
+        "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+      },
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp"
     },
-    "share": "disabled",
-    "mcp": {
-        "context7": {
-            "type": "remote",
-            "url": "https://mcp.context7.com/mcp",
-            "headers": {
-                "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
-            },
-            "enabled": true
-        },
-        "minimax-coding-plan": {
-            "type": "local",
-            "enabled": true,
-            "command": ["uvx", "minimax-coding-plan-mcp", "-y"]
-        }
-    },
-    "plugin": ["oh-my-opencode-slim"],
-    "agent": {
-        "explore": { "disable": true },
-        "general": { "disable": true },
-        "codemap": { "disable": true },
-        "gsd-codebase-mapper": { "hidden": true },
-        "gsd-debugger": { "hidden": true },
-        "gsd-executor": { "hidden": true },
-        "gsd-integration-checker": { "hidden": true },
-        "gsd-phase-researcher": { "hidden": true },
-        "gsd-plan-checker": { "hidden": true },
-        "gsd-planner": { "hidden": true },
-        "gsd-project-researcher": { "hidden": true },
-        "gsd-research-synthesizer": { "hidden": true },
-        "gsd-roadmapper": { "hidden": true },
-        "gsd-verifier": { "hidden": true }
+    "minimax-coding-plan": {
+      "command": ["uvx", "minimax-coding-plan-mcp", "-y"],
+      "enabled": true,
+      "type": "local"
     }
+  },
+  "permission": {
+    "*": "ask",
+    "bash": {
+      "*": "ask",
+      "bash *skills/context-file-creation-v4/cleanup.sh *": "allow",
+      "bash *skills/context-file-creation-v4/create_context.sh *": "allow",
+      "bash *skills/context-file-creation-v4/write_content.sh *": "allow",
+      "cargo all-features test *": "allow",
+      "cargo check *": "allow",
+      "cargo clippy *": "allow",
+      "cargo nextest *": "allow",
+      "cargo test *": "allow",
+      "cat *": "deny",
+      "echo *": "allow",
+      "git branch --current": "allow",
+      "git branch --list": "allow",
+      "git branch --show-current": "allow",
+      "git branch -a": "allow",
+      "git commit *": "ask",
+      "git diff *": "allow",
+      "git log *": "allow",
+      "git rev-parse *": "allow",
+      "git show *": "allow",
+      "git status *": "allow",
+      "grep *": "allow",
+      "head *": "allow",
+      "tail *": "allow",
+      "ls *": "allow",
+      "mise use *": "allow",
+      "mkdir *": "allow",
+      "mktemp *": "allow",
+      "node ~/.config/opencode/get-shit-done/bin/gsd-tools.cjs *": "allow",
+      "node ~/.dofiles/opencode/get-shit-done/bin/gsd-tools.cjs *": "allow",
+      "pre-commit run *": "allow",
+      "prek run *": "allow",
+      "printf *": "allow",
+      "pwd *": "allow",
+      "rm -f /tmp/*": "allow",
+      "trap 'rm -f \"$CONTEXT_FILE\"' INT TERM": "allow",
+      "wc *": "allow"
+    },
+    "doom_loop": "deny",
+    "edit": {
+      "*": "ask",
+      ".planning/*": "allow",
+      ".tmp/**": "allow",
+      "/tmp/*": "allow",
+      "~/.config/opencode/*": "allow",
+      "~/.dotfiles/opencode/*": "allow"
+    },
+    "external_directory": {
+      "/tmp/*": "allow",
+      "~/.config/opencode/*": "allow",
+      "~/.dotfiles/*": "allow",
+      "~/.dotfiles/opencode/*": "allow"
+    },
+    "glob": "allow",
+    "grep": "allow",
+    "lsp": "allow",
+    "minimax-coding-plan_web_search": "allow",
+    "read": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.env.example": "allow",
+      "*.id_ed25519": "deny",
+      "*.id_rsa": "deny",
+      "*.key": "deny",
+      "*.pem": "deny"
+    },
+    "skill": {
+      "*": "deny",
+      "context-file-creation*": "allow"
+    },
+    "task": "allow",
+    "todowrite": "allow",
+    "webfetch": "ask",
+    "websearch": "ask",
+    "write": {
+      "*": "ask",
+      ".planning/*": "allow",
+      "/tmp/*": "allow",
+      "~/.config/opencode/*": "allow",
+      "~/.dotfiles/opencode/*": "allow"
+    }
+  },
+  "plugin": [],
+  "provider": {
+    "lmstudio": {
+      "models": {
+        "qwen3.5:0.8b": {
+          "_launch": true,
+          "name": "qwen3.5:0.8b"
+        },
+        "qwen3.5:9b": {
+          "name": "Qwen3.5-9B"
+        }
+      },
+      "name": "LM Studio (Local)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://localhost:1234/v1"
+      }
+    },
+    "ollama": {
+      "models": {
+        "qwen3.5:0.8b": {
+          "name": "Qwen3.5-0.8B"
+        },
+        "qwen3.5:9b-q4_K_M": {
+          "name": "Qwen3.5-9B"
+        },
+        "qwen3.5:4b-q4_K_M": {
+          "name": "Qwen3.5-4B"
+        },
+        "qwen3.5:2b": {
+          "_launch": true,
+          "name": "Qwen3.5-2B"
+        }
+      },
+      "name": "Ollama (local)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      }
+    }
+  },
+  "share": "disabled"
 }
