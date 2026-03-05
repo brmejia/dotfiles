@@ -637,12 +637,3 @@ $env.config = {
     }
   ]
 }
-
-source aliases.nu
-source scripts.nu
-use mise.nu
-source zoxide.nu
-source completion.nu
-source zellij.nu
-source nvim.nu
-use local *

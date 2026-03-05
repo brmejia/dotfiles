@@ -1,4 +1,4 @@
-def nvim-server [port: int, scope: string = "./" ] {
+export def nvim-server [port: int, scope: string = "./" ] {
     let busy_port = (ss -tuln | rg $":($port)" | lines | length) > 0
     if $busy_port {
         error make {

@@ -1,5 +1,5 @@
-alias zj = zellij
-alias zjri = zellij run --in-place --
+export alias zj = zellij
+export alias zjri = zellij run --in-place --
 
 def _zj_session_exists [$session_name: string] {
     let zj_sessions = (zj ls | rg $session_name | complete)

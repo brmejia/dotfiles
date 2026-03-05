@@ -23,7 +23,7 @@ $env.TRANSIENT_PROMPT_INDICATOR = {|| "❯ " }
 #     ($nu.default-config-dir | path join 'scripts') # add <nushell-config-dir>/scripts
 #     ($nu.data-dir | path join 'completions') # default home for nushell completions
 # ]
-let nu_custom_config_dir = $nu.default-config-dir | path join conf.d
+let nu_custom_config_dir = $nu.default-config-dir | path join autoload
 $env.NU_LIB_DIRS = (
     $env.NU_LIB_DIRS | split row (char esep)
     | append $nu_custom_config_dir

@@ -95,6 +95,7 @@
     "read": {
       "*": "allow",
       "*.env": "deny",
+      "env.nu": "deny",
       "*.env.*": "deny",
       "*.env.example": "allow",
       "*.id_ed25519": "deny",
