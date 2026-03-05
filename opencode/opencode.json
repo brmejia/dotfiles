@@ -63,15 +63,15 @@
       "mise use *": "allow",
       "mkdir *": "allow",
       "mktemp *": "allow",
-      "node ~/.config/opencode/get-shit-done/bin/gsd-tools.cjs *": "allow",
-      "node ~/.dofiles/opencode/get-shit-done/bin/gsd-tools.cjs *": "allow",
+      "node */opencode/get-shit-done/bin/gsd-tools.cjs *": "allow",
       "pre-commit run *": "allow",
       "prek run *": "allow",
       "printf *": "allow",
       "pwd *": "allow",
       "rm -f /tmp/*": "allow",
       "trap 'rm -f \"$CONTEXT_FILE\"' INT TERM": "allow",
-      "wc *": "allow"
+      "wc *": "allow",
+      "rtk *": "allow"
     },
     "doom_loop": "deny",
     "edit": {
@@ -119,7 +119,7 @@
       "~/.dotfiles/opencode/*": "allow"
     }
   },
-  "plugin": [],
+  "plugin": ["./plugins/openrtk/index.ts"],
   "provider": {
     "lmstudio": {
       "models": {
