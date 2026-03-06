@@ -1,7 +1,7 @@
 ---
 description: Redact a feature spec file and create a git worktree from a short idea
 argument-hint: Short feature description
-agent: orchestrator
+agent: plan
 subtask: true
 ---
 
@@ -75,6 +75,7 @@ git worktree add -b ft/${feature_slug} "$WORKTREE_PATH" <base_branch>
 ## Step 4. Restore stashed changes
 
 If you stashed changes in Step 2, restore them:
+
 ```
 git stash pop
 ```
@@ -88,6 +89,7 @@ Create a markdown spec document that Plan mode can use directly and save it in t
 ## Step 6. Launch new opencode session in worktree
 
 Open a new terminal with an opencode instance running in the worktree directory:
+
 - Worktree path: `../${REPO_NAME}_ft-<feature_slug>`
 - This new session will handle subsequent feature development
 
@@ -95,7 +97,7 @@ Open a new terminal with an opencode instance running in the worktree directory:
 
 After the file is saved, respond to the user with a short summary in this exact format:
 
-Worktree: ../${REPO_NAME}_ft-<feature_slug>
+Worktree: ../${REPO_NAME}\_ft-<feature_slug>
 Branch: ft/<feature_slug>
 Spec file: .planning/specs/<feature_slug>.md
 Title: <feature_title>
