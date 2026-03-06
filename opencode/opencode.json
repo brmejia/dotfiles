@@ -124,8 +124,11 @@
     "lmstudio": {
       "models": {
         "qwen3.5:0.8b": {
-          "_launch": true,
           "name": "qwen3.5:0.8b"
+        },
+        "qwen3.5:4b": {
+          "_launch": true,
+          "name": "Qwen3.5-4B"
         },
         "qwen3.5:9b": {
           "name": "Qwen3.5-9B"
