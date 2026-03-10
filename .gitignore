@@ -13,8 +13,7 @@ nvim/**/.luarc.json
 nushell/autoload/mise.nu
 nushell/autoload/zoxide.nu
 nushell/autoload/atuin.nu
-nushell/autoload/local
-nushell/autoload/env.nu
+nushell/autoload/secrets.nu
 nushell/history.txt
 
 opencode/node_modules
