@@ -48,40 +48,38 @@ $env.VISUAl = "nvim"
 
 use std log
 
+let vendor_autoload_path = ($nu.data-dir | path join "vendor/autoload/")
+
 # This code will add mise config if needed
-let mise_config_path = $nu_custom_config_dir | path join mise.nu
+let mise_config_path = $vendor_autoload_path | path join mise.nu
 if not ($mise_config_path | path exists) {
     log info $"Creating mise config at ($mise_config_path)"
     ^mise activate nu | save --force $mise_config_path
 }
 
-# This code will add zoxide config if needed
-let zoxide_config_path = $nu_custom_config_dir | path join zoxide.nu
-if not ($zoxide_config_path | path exists) {
-    log info $"Creating zoxide config at ($zoxide_config_path)"
-    ^zoxide init nushell | save --force $zoxide_config_path
-}
-
 # This code will add carapace nushell completions if needed
-let carapace_config_path = $"($env.HOME)/.cache/carapace/init.nu"
+let carapace_config_path = $vendor_autoload_path | path join "carapace.nu"
 if not ($carapace_config_path | path exists) {
     mkdir ( $carapace_config_path | path dirname )
     log info $"Creating carapace config at ($carapace_config_path)"
     ^carapace init nushell | save --force $carapace_config_path
 }
-
-
-let vendor_autoload_path = ($nu.data-dir | path join "vendor/autoload/")
+# This code will add zoxide config if needed
+let zoxide_config_path = $vendor_autoload_path | path join zoxide.nu
+if not ($zoxide_config_path | path exists) {
+    log info $"Creating zoxide config at ($zoxide_config_path)"
+    ^zoxide init nushell | save --force $zoxide_config_path
+}
 
 # This code will add atuin config if needed
-let atuin_config_path = ($vendor_autoload_path | path join "atuin.nu")
+let atuin_config_path = $vendor_autoload_path | path join "atuin.nu"
 if not ($atuin_config_path | path exists) {
     log info $"Creating atuin config at ($atuin_config_path)"
     ^atuin init nu | save --force $atuin_config_path
 }
 
 # This code will add starship nushell configuration if needed
-let starship_config_path = ($vendor_autoload_path | path join "starship.nu")
+let starship_config_path = $vendor_autoload_path | path join "starship.nu"
 if not ($starship_config_path | path exists) {
     mkdir ( $starship_config_path | path dirname )
     log info $"Creating starship config at ($starship_config_path)"
