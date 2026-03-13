@@ -637,3 +637,15 @@ $env.config = {
     }
   ]
 }
+
+module commands {
+    export def nuc [...args: string] {
+        let cmd = ($args | str join " ")
+        nu --config $nu.config-path --env-config $nu.env-path -l -c $cmd
+    }
+}
+use commands *;
+
+# Manually source files in autoload in order to run commands with 'nuc <CMD>' or 'nu -c <CMD>'
+source aliases.nu
+source nvim.nu

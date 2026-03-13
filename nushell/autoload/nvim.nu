@@ -1,5 +1,5 @@
 export def nvim-server [port: int, scope: string = "./" ] {
-    let busy_port = (ss -tuln | rg $":($port)" | lines | length) > 0
+    let busy_port = (ss -tuln | lines | any {|line| $line =~ $":($port)" })
     if $busy_port {
         error make {
             msg: $"Port ($port) is already in use",
