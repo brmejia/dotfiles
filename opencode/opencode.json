@@ -1,7 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "agent": {
-    "codemap": { "disable": true },
     "explore": { "hidden": false },
     "general": { "hidden": false },
     "gsd-codebase-mapper": { "hidden": true },
@@ -64,6 +63,7 @@
       "mkdir *": "allow",
       "mktemp *": "allow",
       "node */opencode/get-shit-done/bin/gsd-tools.cjs *": "allow",
+      "node \"$HOME/.config/opencode/get-shit-done/bin/gsd-tools.cjs\" *": "allow",
       "pre-commit run *": "allow",
       "prek run *": "allow",
       "printf *": "allow",
@@ -71,11 +71,14 @@
       "rm -f /tmp/*": "allow",
       "trap 'rm -f \"$CONTEXT_FILE\"' INT TERM": "allow",
       "wc *": "allow",
-      "rtk *": "allow"
+      "rtk *": "allow",
+      "rtk kubectl*": "ask",
+      "openspec *": "allow"
     },
     "doom_loop": "deny",
     "edit": {
       "*": "ask",
+      "openspec/*": "allow",
       ".planning/*": "allow",
       ".tmp/**": "allow",
       "/tmp/*": "allow",
@@ -105,6 +108,7 @@
     },
     "skill": {
       "*": "deny",
+      "openspec*": "allow",
       "context-file-creation*": "allow"
     },
     "task": "allow",
@@ -113,13 +117,13 @@
     "websearch": "ask",
     "write": {
       "*": "ask",
+      "openspec/*": "allow",
       ".planning/*": "allow",
       "/tmp/*": "allow",
       "~/.config/opencode/*": "allow",
       "~/.dotfiles/opencode/*": "allow"
     }
   },
-  "plugin": ["./plugins/openrtk/index.ts"],
   "provider": {
     "lmstudio": {
       "models": {

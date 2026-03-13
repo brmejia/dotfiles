@@ -23,6 +23,7 @@ opencode/commands/gsd/*
 opencode/rules/gsd-*.md
 opencode/skills/gsd-*
 opencode/get-shit-done
+opencode/plugins/rtk.ts
 
 # Specs
 .specs/
