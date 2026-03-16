@@ -649,3 +649,4 @@ use commands *;
 # Manually source files in autoload in order to run commands with 'nuc <CMD>' or 'nu -c <CMD>'
 source aliases.nu
 source nvim.nu
+source kubectl.nu

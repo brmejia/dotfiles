@@ -1,4 +1,5 @@
 export alias k = kubectl
+alias kg = k get
 
 def kctl [...args: any] {
     print $"k ($args | str join ' ') \n"
