@@ -10,6 +10,7 @@ return {
             -- ---------------------
             -- "black", -- Replaced by ruff
             "debugpy",
+            "basedpyright",
         },
     },
 
