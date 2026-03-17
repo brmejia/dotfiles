@@ -18,8 +18,8 @@ vim.lsp.enable({
     "oxlint",
     "ruff",
     "ty",
-    -- "pyright",
-    "basedpyright",
+    -- "pyright", -- This is replaced by ty lsp
+    -- "basedpyright", -- This is replaced by ty lsp
     "tailwindcss",
     "ltex",
     "tinymist",
