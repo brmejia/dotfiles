@@ -3,6 +3,8 @@ description: Redact a feature spec file and create a git worktree from a short i
 argument-hint: Short feature description
 agent: plan
 subtask: true
+permissions:
+  question: true
 ---
 
 You are helping to spin up a new feature spec for this application, from a short idea provided in the user input below. Always adhere to any rules or requirements set out in any AGENTS.md/CLAUDE.md files when responding.
@@ -13,8 +15,13 @@ User input: $ARGUMENTS
 
 Your job will be to turn the user input above into:
 
-- A safe git worktree with branch (e.g. `../<repo>_ft-feature-slug` with branch `ft-feature-slug`)
+- A safe git worktree with branch (`ft-<feature_slug>`)
 - A detailed markdown spec file under the `.planning/specs` directory inside the worktree
+
+Directory structure detection using `git worktree list`:
+
+- If parent of bare repo is a **bare git repo**: worktree goes as sibling subdirectory (e.g. `../ft-feature-slug`)
+- If standard structure: worktree goes as sibling with repo name prefix (e.g. `../<repo>_ft-feature-slug`)
 
 Then save the spec file to disk and print a short summary of what you did.
 
@@ -36,6 +43,7 @@ From `$ARGUMENTS`, extract:
      - Collapse multiple `-` into one
      - Trim `-` from start and end
      - Maximum length 40 characters
+     - **Strip trailing `-feature` or `-feat` if present** (e.g., "Card Feature" → `card`, not `card-feature`)
    - Example: `card-component` or `card-component-dashboard`.
 
 3. `branch_name`
@@ -54,25 +62,58 @@ Check the current Git branch for any uncommitted, unstaged, or untracked files.
   git stash push -m "WIP: feature spec for <feature_title>"
   ```
 
-## Step 3. Create a Git worktree
+## Step 3. Detect directory structure
 
-Create a new branch and worktree as a sibling of the current project directory.
+Use `git worktree list --porcelain` to understand the current structure. The goal is to determine:
+
+1. **Are we in a worktree?** - Check if `gitdir` points to a file (worktree) vs directory (regular repo)
+2. **Is the parent of gitdir a bare repo?** - Walk up the directory tree checking for bare repo
+3. **Compute `WORKTREE_PATH`** based on structure:
+   - If parent of bare repo is bare → `WORKTREE_PATH=<bare-parent>/ft-<feature_slug>`
+   - Otherwise (standard) → `WORKTREE_PATH=<parent-of-gitroot>/<current-repo>_ft-<feature_slug>`
+
+4. **Base branch**: detect automatically (prefer `main`, fallback to `master`)
+5. **Collision handling**: If worktree path exists, append numeric suffix: `ft-card-component-01`
+6. **Unusual case**: If structure is unclear, ask user where to create worktree
+
+## Step 4. Confirm before proceeding (BLOCKING)
+
+**STOP - Return this checkpoint immediately, do NOT proceed further until response.**
+
+Then use the `question` tool to ask for confirmation. Present the details using the format from [#summary-format](#summary-format) with actual values filled in:
 
 ```
-# Get the parent directory and current repo name
-PARENT_DIR=$(dirname "$PWD")
-REPO_NAME=$(basename "$PWD")
+Ready to create worktree?
 
-# Worktree goes as sibling: ../repo_name_ft-feature_slug/
-WORKTREE_PATH="../${REPO_NAME}_ft-${feature_slug}"
+Worktree: <WORKTREE_PATH>
+Branch: ft/<feature_slug>
+Title: <feature_title>
 
+Reply yes to create, or no to cancel.
+```
+
+- If user confirms (yes): proceed to Step 5
+- If user declines (no): respond "Worktree creation cancelled" and **end task immediately**
+
+## Step 5. Create the Git worktree
+
+Create the worktree:
+
+```
 git worktree add -b ft/${feature_slug} "$WORKTREE_PATH" <base_branch>
 ```
 
-- Base branch: detect automatically (prefer `main`, fallback to `master`)
-- If the worktree path already exists, append a numeric suffix to both branch and worktree name: e.g. `ft-card-component-01`
+## Step 6. Create symlinks for config files
 
-## Step 4. Restore stashed changes
+After creating the worktree, symlink these files if they exist in the current working directory but not in new branch
+
+| Source          | Target                         |
+| --------------- | ------------------------------ |
+| `AGENTS.md`     | `$WORKTREE_PATH/AGENTS.md`     |
+| `CLAUDE.md`     | `$WORKTREE_PATH/CLAUDE.md`     |
+| `opencode.json` | `$WORKTREE_PATH/opencode.json` |
+
+## Step 7. Restore stashed changes
 
 If you stashed changes in Step 2, restore them:
 
@@ -82,24 +123,23 @@ git stash pop
 
 This restores your current working directory. The new worktree remains intact with its own state.
 
-## Step 5. Draft the spec content
+## Step 8. Draft the spec content
 
 Create a markdown spec document that Plan mode can use directly and save it in the `.planning/specs` folder inside the worktree using the `feature_slug`. Use the exact structure as defined in the spec template file here: @~/.config/opencode/templates/spec.tpl.md. Do not add technical implementation details such as code examples.
 
-## Step 6. Launch new opencode session in worktree
+## Step 9. Final output to the user
 
-Open a new terminal with an opencode instance running in the worktree directory:
+After the file is saved, respond with the summary as specified in [@summary-format](#summary-format).
 
-- Worktree path: `../${REPO_NAME}_ft-<feature_slug>`
-- This new session will handle subsequent feature development
+Do not repeat the full spec in the chat output unless the user explicitly asks to see it. The main goal is to save the spec file and report where it lives and what worktree/branch to use.
 
-## Step 7. Final output to the user
+## Summary Format
 
-After the file is saved, respond to the user with a short summary in this exact format:
+Use this exact format for user-facing output:
 
-Worktree: ../${REPO_NAME}\_ft-<feature_slug>
+```
+Worktree: <WORKTREE_PATH>
 Branch: ft/<feature_slug>
 Spec file: .planning/specs/<feature_slug>.md
 Title: <feature_title>
-
-Do not repeat the full spec in the chat output unless the user explicitly asks to see it. The main goal is to save the spec file and report where it lives and what worktree/branch to use.
+```
