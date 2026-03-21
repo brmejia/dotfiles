@@ -107,3 +107,16 @@ end
 -- vim.cmd([[
 -- autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
 -- ]])
+--
+
+local function find_shell(shells)
+    for _, shell in ipairs(shells) do
+        local path = vim.fn.exepath(shell) -- returns full path or ""
+        if path ~= "" then
+            return path
+        end
+    end
+    return "sh" -- last resort, always present on POSIX systems
+end
+
+vim.o.shell = find_shell({ "nu", "fish", "zsh", "bash" })
