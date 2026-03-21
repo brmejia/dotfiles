@@ -7,6 +7,7 @@
     "gsd-debugger": { "hidden": true },
     "gsd-executor": { "hidden": true },
     "gsd-integration-checker": { "hidden": true },
+    "gsd-nyquist-auditor": { "hidden": true },
     "gsd-phase-researcher": { "hidden": true },
     "gsd-plan-checker": { "hidden": true },
     "gsd-planner": { "hidden": true },
@@ -27,7 +28,7 @@
     },
     "minimax-coding-plan": {
       "command": ["uvx", "minimax-coding-plan-mcp", "-y"],
-      "enabled": true,
+      "enabled": false,
       "type": "local"
     }
   },
@@ -94,7 +95,6 @@
     "glob": "allow",
     "grep": "allow",
     "lsp": "allow",
-    "minimax-coding-plan_web_search": "allow",
     "read": {
       "*": "allow",
       "*.env": "deny",
