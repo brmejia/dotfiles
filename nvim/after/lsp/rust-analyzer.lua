@@ -12,6 +12,14 @@ return {
             procMacro = {
                 enable = true,
             },
+            cargo = {
+                features = "all",
+                -- OR use: features = "all"  to enable everything
+                -- features = { "watch" }, -- enable specific feature(s)
+            },
+            check = {
+                command = "clippy", -- use clippy instead of check
+            },
         },
     },
 }

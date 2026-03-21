@@ -12,7 +12,7 @@ lsp.setup_diagnostics()
 
 vim.lsp.enable({
     "lua_ls",
-    -- "rust-analyzer", --- Disabled because rustaceanvim activates it
+    -- "rust_analyzer", --- Disabled because rustaceanvim activates it
     -- "vue_ls",
     "oxfmt",
     "oxlint",

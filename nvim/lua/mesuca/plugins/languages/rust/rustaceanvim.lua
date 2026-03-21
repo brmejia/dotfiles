@@ -52,7 +52,7 @@ return {
     {
         "mrcjkb/rustaceanvim",
         -- enabled = false,
-        version = "^6", -- Recommended
+        version = "^8",
         lazy = false, -- This plugin is already lazy
     },
     {
