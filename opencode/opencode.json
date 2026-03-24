@@ -1,6 +1,8 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "agent": {
+    "build": { "color": "#E07040" },
+    "plan": { "color": "#8EBA89" },
     "explore": { "hidden": false },
     "general": { "hidden": false },
     "gsd-codebase-mapper": { "hidden": true },
