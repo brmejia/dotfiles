@@ -46,7 +46,7 @@ return {
             {
                 "<leader>ha",
                 function()
-                    grapple.toggle()
+                    grapple.tag()
                 end,
                 desc = "Add file to Grapple",
             },
