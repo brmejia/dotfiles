@@ -76,6 +76,16 @@ Use `git worktree list --porcelain` to understand the current structure. The goa
 5. **Collision handling**: If worktree path exists, append numeric suffix: `ft-card-component-01`
 6. **Unusual case**: If structure is unclear, ask user where to create worktree
 
+## Step 4. Prepare symlinks
+
+1. First get main/master worktree `$SRC` using `git worktree list --porcelain`
+2. From `$SRC` symlink the following files ONLY if they not exist in new worktree path `$DST`:
+   - `$SRC/opencode.json` => `$DST/opencode.json`
+   - `$SRC/AGENTS.md` => `$DST/AGENTS.md`
+   - `$SRC/CLAUDE.md` => `$DST/CLAUDE.md`
+   - `$SRC/.planning/` => `$DST/.planning/`
+   - `$SRC/openspec/` => `$DST/openspec/`
+
 ## Step 4. Confirm before proceeding (BLOCKING)
 
 **STOP - Return this checkpoint immediately, do NOT proceed further until response.**
@@ -89,6 +99,10 @@ Worktree: <WORKTREE_PATH>
 Branch: ft/<feature_slug>
 Title: <feature_title>
 
+<PREPARED_SYMLINKS>
+- <src> -> <dst>
+- <src> -> <dst>
+
 Reply yes to create, or no to cancel.
 ```
 
@@ -100,18 +114,12 @@ Reply yes to create, or no to cancel.
 Create the worktree:
 
 ```
-git worktree add -b ft/${feature_slug} "$WORKTREE_PATH" <base_branch>
+git worktree add -b ft/${feature_slug} "$WORKTREE_PATH" <current_branch>
 ```
 
-## Step 6. Create symlinks for config files
+## Step 6. Create symlinks
 
-After creating the worktree, symlink these files if they exist in the current working directory but not in new branch
-
-| Source          | Target                         |
-| --------------- | ------------------------------ |
-| `AGENTS.md`     | `$WORKTREE_PATH/AGENTS.md`     |
-| `CLAUDE.md`     | `$WORKTREE_PATH/CLAUDE.md`     |
-| `opencode.json` | `$WORKTREE_PATH/opencode.json` |
+Create symlinks prepared on [#step-3] **ONE BY ONE**
 
 ## Step 7. Restore stashed changes
 

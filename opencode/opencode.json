@@ -1,5 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "default_agent": "plan",
   "agent": {
     "build": { "color": "#E07040" },
     "plan": { "color": "#8EBA89" },
@@ -111,7 +112,8 @@
     "skill": {
       "*": "deny",
       "openspec*": "allow",
-      "context-file-creation*": "allow"
+      "context-file-creation*": "allow",
+      "llm-guidelines*": "allow"
     },
     "task": "allow",
     "todowrite": "allow",
