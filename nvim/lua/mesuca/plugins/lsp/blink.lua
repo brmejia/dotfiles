@@ -116,7 +116,6 @@ return {
                     "lsp",
                     "path",
                     "snippets",
-                    "codeium",
                     -- "buffer",
                 },
                 providers = {
