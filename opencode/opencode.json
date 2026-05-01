@@ -110,9 +110,9 @@
       "*.pem": "deny"
     },
     "skill": {
-      "*": "deny",
+      "*": "ask",
       "openspec*": "allow",
-      "context-file-creation*": "allow",
+      "update-mpocock-skills": "allow",
       "llm-guidelines*": "allow"
     },
     "task": "allow",
