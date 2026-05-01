@@ -22,6 +22,7 @@ helm = "3"
 claude = "latest"
 vacuum = "latest"
 ty = "latest"
+glab = { version = "latest", exe = "glab" }
 
 [settings]
 idiomatic_version_file_enable_tools = []
