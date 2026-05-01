@@ -112,8 +112,13 @@
     "skill": {
       "*": "ask",
       "openspec*": "allow",
+      "grill-me*": "allow",
+      "grill-with-docs*": "allow",
+      "llm-guidelines*": "allow",
+      "smart-commit": "allow",
+      "tdd*": "allow",
       "update-mpocock-skills": "allow",
-      "llm-guidelines*": "allow"
+      "write-a-skill*": "allow"
     },
     "task": "allow",
     "todowrite": "allow",
