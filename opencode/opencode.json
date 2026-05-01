@@ -87,12 +87,14 @@
       ".tmp/**": "allow",
       "/tmp/*": "allow",
       "~/.config/opencode/*": "allow",
-      "~/.dotfiles/opencode/*": "allow"
+      "~/.dotfiles/opencode/*": "allow",
+      "~/.agents/*": "allow"
     },
     "external_directory": {
       "/tmp/*": "allow",
       "~/.config/opencode/*": "allow",
       "~/.dotfiles/*": "allow",
+      "~/.agents/*": "allow",
       "~/.dotfiles/opencode/*": "allow"
     },
     "glob": "allow",
