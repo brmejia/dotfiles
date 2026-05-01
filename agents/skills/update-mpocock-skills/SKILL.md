@@ -13,11 +13,11 @@ Resolve these paths **in order** before executing:
 
 ### `{SKILLS_DIR}`
 
-Check the following options **in order**. Stop at the first match and do NOT check remaining options:
+Check the following options **sequentially**. For each option, verify the path exists AND contains skill subdirectories before proceeding. Do NOT check the next option until the current one has been fully evaluated:
 
-1. `../` relative to this SKILL.md — check if it exists and contains skill subdirectories. If yes, use it and stop.
-2. `~/.dotfiles/agents/skills/` — check if it exists and contains skill subdirectories. If yes, use it and stop.
-3. `~/.agents/skills/` — check if it exists and contains skill subdirectories. If yes, use it and stop.
+1. `~/.agents/skills/` — check if it exists and contains skill subdirectories. If yes, use it and stop. Do NOT check remaining options.
+2. `../` relative to this SKILL.md — check if it exists and contains skill subdirectories. If yes, use it and stop. Do NOT check remaining options.
+3. `~/.dotfiles/agents/skills/` — check if it exists and contains skill subdirectories. If yes, use it and stop. Do NOT check remaining options.
 4. Fall back: create `~/.agents/skills/` and use it.
 
 ### `{CONFIG_PATH}`
