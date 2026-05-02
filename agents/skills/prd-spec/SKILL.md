@@ -28,24 +28,6 @@ glab CLI is required but not installed. Install it: https://gitlab.com/gitlab-or
 ```
 and exit.
 
-### 2. Verify upstream skills
-
-Check that the following files exist:
-- `agents/skills/to-prd/SKILL.md`
-- `agents/skills/spec-feature/SKILL.md`
-
-If `agents/skills/to-prd/SKILL.md` is missing, report:
-```
-The to-prd skill is required but not found at agents/skills/to-prd/SKILL.md. Run the update-mpocock-skills skill to install it.
-```
-and exit.
-
-If `agents/skills/spec-feature/SKILL.md` is missing, report:
-```
-The spec-feature skill is required but not found at agents/skills/spec-feature/SKILL.md. Run the update-mpocock-skills skill to install it.
-```
-and exit.
-
 ## Slug Extraction
 
 Derive a kebab-case `feature_slug` from `feature_title` using this algorithm:
@@ -106,7 +88,9 @@ Spec file: docs/specs/<slug>.md
 
 | Scenario | Behavior |
 |---|---|
+| `to-prd` skill not available | Report error, halt, suggest running `update-mpocock-skills` |
 | `to-prd` fails | Report error, halt, do not invoke `spec-feature` |
+| `spec-feature` skill not available | Report error, halt |
 | `spec-feature` fails | Report error, PRD issue already created (no rollback) |
 | `glab` not available | Report prerequisite error before any invocation |
 | Slug extraction produces empty string | Fall back to `ft-unnamed` |
@@ -118,3 +102,14 @@ Spec file: docs/specs/<slug>.md
 - `agents/skills/spec-feature/SKILL.md` — Upstream skill for spec generation (immutable)
 - `docs/agents/issue-tracker.md` — `glab` CLI conventions
 - `docs/agents/triage-labels.md` — Label vocabulary
+
+## Permission Hints
+
+Before invoking `spec-feature` in Step 2, the parent agent MUST pre-approve read+write filesystem access for the worktree path.
+
+After computing the branch name and worktree path, grant read+write access to:
+```
+$HOME/<repo-name>_<branch_name>/*
+```
+
+Use `$HOME` (not `~`) in permission patterns.
