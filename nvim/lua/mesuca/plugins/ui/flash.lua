@@ -4,13 +4,20 @@ return {
     event = "VeryLazy",
     ---@type Flash.Config
     opts = {
-        -- modes = {
-        --     char = {
-        --         -- enabled = false,
-        --         -- Remove ; and , from flash's char mode
-        --         keys = { "f", "F", "t", "T" }, -- Don't include ";" and ","
-        --     },
-        -- },
+        modes = {
+            char = {
+                enabled = true,
+                -- Remove ; and , from flash's char mode
+                -- keys = { "f", "F", "t", "T" }, -- Don't include ";" and ","
+            },
+            -- options used when flash is activated through
+            -- a regular search with `/` or `?`
+            search = {
+                -- when `true`, flash will be activated during regular search by default.
+                -- You can always toggle when searching with `require("flash").toggle()`
+                enabled = false,
+            },
+        },
     },
   -- stylua: ignore
   keys = {
