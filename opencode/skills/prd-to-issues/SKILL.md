@@ -1,6 +1,6 @@
 ---
 name: prd-to-issues
-description: Break a PRD + optional spec into child issues with dependency tracking. Use when user wants to convert a PRD into implementation issues.
+description: Break a PRD + optional spec into child issues with dependency tracking. Use when user wants to convert a PRD into implementation issues, decompose a large feature into tracked tasks, create dependency-ordered issue chains, or publish child issues from a planning spec.
 ---
 
 # PRD to Issues

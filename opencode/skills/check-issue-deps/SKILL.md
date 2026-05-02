@@ -1,6 +1,6 @@
 ---
 name: check-issue-deps
-description: Validates that all blocker dependencies for a GitLab issue are resolved before implementation can proceed. Accepts an issue number and checks if all "Blocked by" references are closed.
+description: Validates that all blocker dependencies for a GitLab issue are resolved before implementation can proceed. Accepts an issue number and checks if all "Blocked by" references are closed. Use when user wants to verify an issue is ready to start, check dependency status before creating a worktree, or audit blocker resolution across multiple issues.
 ---
 
 ## Overview
