@@ -2,6 +2,8 @@
 
 **NEVER chain git commands** (e.g., `git add . && git commit`). Always run them as separate bash calls.
 
+**NEVER add all unstaged files** (e.g., `git add .`, `git add -u`, `git add -A`). Only stage files that are semantically relevant to the commit being prepared.
+
 ## Commit Messages
 
 Use present tense for the subject line and explain "why" something has changed, not just "what" has changed.
