@@ -7,7 +7,11 @@
     "explore": { "hidden": false },
     "general": { "hidden": false }
   },
-  "instructions": ["./instructions/context7.md"],
+  "instructions": [
+    "./instructions/context7.md",
+    "./instructions/git-commit-rules.md",
+    "./instructions/shell-preferences.md"
+  ],
   "mcp": {
     "context7": {
       "enabled": true,
@@ -47,6 +51,14 @@
       "git rev-parse *": "allow",
       "git show *": "allow",
       "git status *": "allow",
+      "git remote": "allow",
+      "git remote -v": "allow",
+      "git remote -v 2>*": "allow",
+      "git remote get-url *": "allow",
+      "git remote get-url --push *": "allow",
+      "git remote get-url --all *": "allow",
+      "git remote show *": "allow",
+      "git remote -v show *": "allow",
       "grep *": "allow",
       "head *": "allow",
       "tail *": "allow",
@@ -63,7 +75,20 @@
       "wc *": "allow",
       "rtk *": "allow",
       "rtk kubectl*": "ask",
-      "openspec *": "allow"
+      "rtk git commit *": "ask",
+      "openspec *": "allow",
+      "glab ci list *": "allow",
+      "glab ci view *": "allow",
+      "glab issue list *": "allow",
+      "glab issue view *": "allow",
+      "glab mr list *": "allow",
+      "glab mr view *": "allow",
+      "glab project list *": "allow",
+      "glab project view *": "allow",
+      "glab release list *": "allow",
+      "glab release view *": "allow",
+      "glab user *": "allow",
+      "glab version": "allow"
     },
     "doom_loop": "deny",
     "edit": {
