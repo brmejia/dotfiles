@@ -23,3 +23,12 @@ opencode/plugins/rtk.ts
 
 # Specs
 .specs/
+
+# OpenSpec archives
+openspec/
+
+# Forge temp files
+.forge/
+
+# Node dependencies
+node_modules/
