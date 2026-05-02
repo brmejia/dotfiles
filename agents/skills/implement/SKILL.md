@@ -53,3 +53,14 @@ All errors from `/worktree-for` are propagated to the user without modification.
 - **This is a thin wrapper** — no worktree logic, no spec generation, no git commands.
 - **Do NOT duplicate `/worktree-for` logic** — all behavior changes go in `/worktree-for`, not here.
 - **All errors are propagated** — no additional error handling is needed beyond passing through `/worktree-for` results.
+
+## Permission Hints
+
+Since `/implement` delegates to `/worktree-for`, the parent agent MUST pre-approve read+write filesystem access for the worktree path before spawning child agents.
+
+After `/worktree-for` computes the `worktree_path`, the parent agent should grant read+write access to:
+```
+$HOME/<repo-name>_<branch_name>/*
+```
+
+Use `$HOME` (not `~`) in permission patterns. Grant both read and write access so sub-agents can read spec files and write implementation code without interrupting permission prompts.

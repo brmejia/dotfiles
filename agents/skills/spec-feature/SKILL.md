@@ -76,3 +76,19 @@ Turn a short feature idea into a git worktree with a detailed markdown spec file
 - **NEVER repeat full spec in chat** unless user explicitly asks
 - If directory structure unclear, ask user where to create worktree
 - Strip trailing `-feature` or `-feat` from slug
+
+## Permission Hints
+
+When a parent agent delegates to sub-agents, it MUST pre-approve read+write filesystem access for the worktree path before spawning child agents.
+
+After computing `WORKTREE_PATH` in step 3, the parent agent should grant read+write access to:
+```
+$HOME/<repo-name>_<branch_name>/*
+```
+
+For example, if the repo is `.dotfiles` and the branch is `ft-add-dark-mode`, grant:
+```
+$HOME/.dotfiles_ft-add-dark-mode/*
+```
+
+Use `$HOME` (not `~`) in permission patterns — `~` is not expanded by most harness permission configs. Grant both read and write access so sub-agents can read spec files and write implementation code without interrupting permission prompts.

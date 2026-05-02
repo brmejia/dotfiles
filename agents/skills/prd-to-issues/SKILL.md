@@ -93,3 +93,14 @@ Do NOT modify the `to-issues` skill file. This skill is a thin orchestrator that
 - `docs/agents/issue-tracker.md` — `glab` CLI conventions
 - `docs/agents/triage-labels.md` — Label vocabulary
 - `agents/skills/to-issues/SKILL.md` — Upstream skill (immutable)
+
+## Permission Hints
+
+When delegating to `to-issues` which may spawn sub-agents for implementation, the parent agent MUST pre-approve read+write filesystem access for any worktree paths that will be created.
+
+After worktree paths are computed, grant read+write access to:
+```
+$HOME/<repo-name>_<branch_name>/*
+```
+
+Use `$HOME` (not `~`) in permission patterns.

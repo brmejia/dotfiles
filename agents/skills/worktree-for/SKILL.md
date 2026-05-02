@@ -263,3 +263,19 @@ Context: <context>
 - **NEVER repeat full spec in chat** unless the user explicitly asks for it.
 - **Restore stash on any failure path** — if a stash was created in Step 6, always restore it before exiting on error or cancellation.
 - Run each git command separately and check its result before proceeding.
+
+## Permission Hints
+
+When a parent agent delegates to sub-agents, it MUST pre-approve read+write filesystem access for the worktree path before spawning child agents.
+
+After computing `worktree_path` in Step 5, the parent agent should grant read+write access to:
+```
+$HOME/<repo-name>_<branch_name>/*
+```
+
+For example, if the repo is `.dotfiles` and the branch is `ft-add-dark-mode`, grant:
+```
+$HOME/.dotfiles_ft-add-dark-mode/*
+```
+
+Use `$HOME` (not `~`) in permission patterns — `~` is not expanded by most harness permission configs. Grant both read and write access so sub-agents can read spec files and write implementation code without interrupting permission prompts.
