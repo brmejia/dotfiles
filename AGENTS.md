@@ -127,3 +127,17 @@ Slash command: `/brutal-review` (in `opencode/commands/brutal-review.md`)
 Use conventional commits: `feat:`, `fix:`, `refactor:`, `chore:`
 
 Do NOT commit secrets. Use `.gitignore`.
+
+## Agent skills
+
+### Issue tracker
+
+Issues live in GitLab at `gitlab.com:amejia/dotfiles`. Uses the `glab` CLI. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default vocabulary: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Multi-context layout — `CONTEXT-MAP.md` at root pointing to per-context `CONTEXT.md` files. See `docs/agents/domain.md`.
