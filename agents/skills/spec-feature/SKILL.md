@@ -12,7 +12,11 @@ Turn a short feature idea into a git worktree with a detailed markdown spec file
 1. **Parse arguments** - Extract from user input:
    - `feature_title`: Title Case, human readable
    - `feature_slug`: lowercase, kebab-case, a-z/0-9/-, max 40 chars, strip trailing `-feature`/`-feat`
-   - `branch_name`: `ft-<feature_slug>`
+   - `branch_name_override`: Optional `--branch-name` argument value (empty if not provided)
+   - `spec_path_override`: Optional `--spec-path` argument value (empty if not provided)
+   - Compute defaults:
+     - `branch_name = branch_name_override or "ft-<feature_slug>"`
+     - `spec_path = spec_path_override or "docs/specs/<feature_slug>.md"`
    - If unclear, ask user to clarify.
 
 2. **Check for uncommitted changes**:
@@ -36,7 +40,8 @@ Turn a short feature idea into a git worktree with a detailed markdown spec file
      Ready to create worktree?
 
      Worktree: <WORKTREE_PATH>
-     Branch: ft-<feature_slug>
+     Branch: <branch_name>
+     Spec file: <spec_path>
      Title: <feature_title>
 
      Reply yes to create, or no to cancel.
@@ -45,22 +50,22 @@ Turn a short feature idea into a git worktree with a detailed markdown spec file
    - If no: "Worktree creation cancelled" and end
 
 5. **Create worktree**:
-   - `git worktree add -b ft-<feature_slug> "$WORKTREE_PATH" <base_branch>`
+   - `git worktree add -b <branch_name> "$WORKTREE_PATH" <base_branch>`
    - Run each git command separately, never chain.
 
 6. **Restore stash** if created in step 2:
    - `git stash pop`
 
 7. **Draft spec file**:
-   - Create `docs/specs/<feature_slug>.md` inside the worktree
+   - Create `<spec_path>` inside the worktree
    - Use spec template structure: Meta, Summary, Context & Motivation, Goals, Out of Scope, Users & User Stories, Functional Requirements, Non-Functional Requirements, Data & Privacy, Security & Permissions, Dependencies & Constraints, Rollout & Backward Compatibility, Possible Edge Cases, Acceptance Criteria, Open Questions, Testing Guidelines
    - Fill in based on user's feature idea. No code examples.
 
 8. **Output summary**:
    ```
    Worktree: <WORKTREE_PATH>
-   Branch: ft-<feature_slug>
-   Spec file: docs/specs/<feature_slug>.md
+   Branch: <branch_name>
+   Spec file: <spec_path>
    Title: <feature_title>
    ```
 
