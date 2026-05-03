@@ -64,6 +64,7 @@
       "tail *": "allow",
       "ls *": "allow",
       "eza *": "allow",
+      "test *": "allow",
       "mise use *": "allow",
       "mkdir *": "allow",
       "mktemp *": "allow",
