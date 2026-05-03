@@ -76,7 +76,7 @@ With the combined context ready, invoke the upstream `to-issues` workflow. Instr
 2. Go through the quiz/approval step with the user before publishing
 3. Publish issues in **dependency order** (blockers first) so that `Blocked by` fields can reference real issue identifiers
 4. Apply the `needs-triage` label to each child issue (see `docs/agents/triage-labels.md` for label vocabulary)
-5. Use the GitLab issue template format from `to-issues` for `Blocked by` fields:
+5. Use the issue template format from `to-issues` for `Blocked by` fields:
 
 ```markdown
 ## Blocked by
@@ -86,7 +86,73 @@ With the combined context ready, invoke the upstream `to-issues` workflow. Instr
 Or "None - can start immediately" if no blockers.
 ```
 
+6. After publishing all issues, report each slice with its created issue identifier in this format:
+   ```
+   ISSUE_MAP: <slice-title> -> #<issue-id>
+   ```
+
 Do NOT modify the `to-issues` skill file. This skill is a thin orchestrator that prepares context and delegates.
+
+### 8. Link dependencies in the Issue Tracker
+
+After `to-issues` publishes all issues, create native issue links for each dependency relationship via the Issue Tracker API. Links are bi-directional — both issues show the relationship in the Issue Tracker interface.
+
+#### 8a. Parse issue IDs
+
+Extract the slice-to-ID mapping from `to-issues` output. Look for `ISSUE_MAP:` lines.
+
+If parsing fails (no `ISSUE_MAP:` found), fall back to parsing issue URLs, issue references (`#N`), or querying the Issue Tracker for recently created issues. Cross-reference titles with slice titles.
+
+#### 8b. Determine project/namespace identifier
+
+Use the Issue Tracker CLI to find the current project/namespace ID required for API calls:
+
+```bash
+glab api "projects/:fullpath" | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])"
+```
+
+Set variable: `namespace_id`
+
+#### 8c. Probe for blocking link_type availability
+
+Attempt to create a blocking link with the first dependency pair:
+
+```bash
+glab api --method POST "projects/<namespace_id>/issues/<blocked_id>/links?target_project_id=<namespace_id>&target_issue_iid=<blocker_id>&link_type=blocks"
+```
+
+- **HTTP 201 (Created)**: `link_type = "blocks"` — blocking relationships are available.
+- **HTTP 403 (Forbidden) or 422**: `link_type = "relates_to"` — fallback to non-blocking relationship.
+
+Cache `link_type` for all subsequent links in this session. Do NOT probe again.
+
+#### 8d. Create links
+
+For each dependency where slice A blocks slice B (B depends on A):
+
+```bash
+glab api --method POST "projects/<namespace_id>/issues/<B_id>/links?target_project_id=<namespace_id>&target_issue_iid=<A_id>&link_type=<link_type>"
+```
+
+Key rules:
+- The issue in the URL path is the BLOCKED issue (the one waiting for the dependency).
+- `target_issue_iid` is the BLOCKER (the one that must complete first).
+- Links are bi-directional.
+- If one link fails, continue with the rest. Collect failures.
+
+#### 8e. Report linking summary
+
+```
+Native links created: <count>
+Link type used: <blocks|relates_to>
+```
+
+If any links failed, list them:
+
+```
+Failed links:
+  - #<B_id> -> #<A_id>: <error message>
+```
 
 ## References
 

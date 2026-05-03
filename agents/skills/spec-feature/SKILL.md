@@ -16,7 +16,7 @@ Turn a short feature idea into a git worktree with a detailed markdown spec file
    - `spec_path_override`: Optional `--spec-path` argument value (empty if not provided)
    - Compute defaults:
      - `branch_name = branch_name_override or "ft-<feature_slug>"`
-     - `spec_path = spec_path_override or "docs/specs/<feature_slug>.md"`
+      - `spec_path = spec_path_override or ".scratch/specs/<YYYY-MM-DD>-<feature_slug>.md"`
    - If unclear, ask user to clarify.
 
 2. **Check for uncommitted changes**:

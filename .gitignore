@@ -21,6 +21,9 @@ opencode/bun.lock
 
 opencode/plugins/rtk.ts
 
+# Scratch
+.scratch/
+
 # Specs
 .specs/
 

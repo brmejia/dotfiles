@@ -81,7 +81,7 @@ After both steps complete successfully, output a summary:
 PRD Issue: <gitlab-issue-url>
 Worktree: <worktree-path>
 Branch: ft-<slug>
-Spec file: docs/specs/<slug>.md
+Spec file: .scratch/specs/<YYYY-MM-DD>-<slug>.md
 ```
 
 ## Error Handling

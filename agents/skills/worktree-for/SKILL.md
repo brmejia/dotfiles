@@ -73,7 +73,7 @@ Set variable: `branch_name`
 
 Set variable: `worktree_path`
 
-Set variable: `spec_path` = `<worktree_path>/docs/specs/<slug>.md`
+Set variable: `spec_path` = `<worktree_path>/.scratch/specs/<YYYY-MM-DD>-<slug>.md`
 
 ### Step 6: Handle uncommitted changes
 
@@ -126,7 +126,7 @@ If `stash_created` is true:
 
 ### Step 10: Generate spec file
 
-Create the `docs/specs/` directory inside the worktree if it does not exist.
+Create the `.scratch/specs/` directory inside the worktree if it does not exist.
 
 If the spec file path already exists, append a numeric suffix to the filename (e.g., `<slug>-01.md`, `<slug>-02.md`).
 
