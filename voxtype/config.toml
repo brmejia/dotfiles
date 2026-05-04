@@ -9,12 +9,15 @@
 # ("idle", "recording", "transcribing") to this file whenever it changes.
 # Required for `voxtype record toggle` and `voxtype status` commands.
 state_file = "auto"
+engine = "parakeet"
 
 [hotkey]
 # Key to hold for push-to-talk
 # Common choices: SCROLLLOCK, PAUSE, RIGHTALT, F13-F24
 # Use `evtest` to find key names for your keyboard
 key = "SCROLLLOCK"
+mode = "push_to_talk"
+enabled = true
 
 # Optional modifier keys that must also be held
 # Example: modifiers = ["LEFTCTRL", "LEFTALT"]
@@ -84,10 +87,14 @@ on_demand_loading = true
 # The array form helps with multilingual users where Whisper might misdetect
 # the language, especially for short sentences.
 # See: https://github.com/openai/whisper#available-models-and-languages
-language = ["en", "fr", "es"]
+language = "auto"
 
 # Translate non-English speech to English
 translate = false
+mode = "local"
+flash_attention = false
+gpu_isolation = false
+eager_processing = false
 
 
 # Number of CPU threads for inference (omit for auto-detection)
@@ -174,7 +181,10 @@ fallback_to_clipboard = true
 
 # Delay between typed characters in milliseconds
 # 0 = fastest possible, increase if characters are dropped
-type_delay_ms = 5
+type_delay_ms = 3
+auto_submit = false
+shift_enter_newlines = false
+pre_type_delay_ms = 0
 
 # Automatically submit (send Enter key) after outputting transcribed text
 # Useful for chat applications, command lines, or forms where you want
@@ -226,14 +236,17 @@ on_recording_start = false
 on_recording_stop = false
 
 # Show notification with transcribed text after transcription completes
-on_transcription = true
+on_transcription = false
 
 # Notification urgency level: "low", "normal", or "critical".
 # On GNOME, "low" notifications are delivered to the drawer without a popup banner.
 # Use "normal" (default) to ensure notifications appear as banners.
 urgency = "low"
+show_engine_icon = false
 
 [text]
+spoken_punctuation = false
+smart_auto_submit = false
 # Text processing options (word replacements, spoken punctuation)
 #
 # Enable spoken punctuation conversion (e.g., say "period" to get ".")
@@ -242,6 +255,7 @@ urgency = "low"
 # Custom word replacements (case-insensitive)
 [text.replacements]
 "vox type" = "voxtype"
+"bax" = "BAX"
 #
 # Smart auto-submit: say "submit" at the end of dictation to press Enter.
 # The word "submit" is stripped from the output text and Enter is pressed.
@@ -303,3 +317,15 @@ enabled = true
 [meeting.diarization]
 # Maximum number of speakers to detect.
 max_speakers = 7
+backend = "ml"
+enabled = true
+
+[meeting.audio]
+source = "mic"
+
+[parakeet]
+model = "parakeet-tdt-0.6b-v3"
+on_demand_loading = false
+
+[status]
+icon_theme = "emoji"
