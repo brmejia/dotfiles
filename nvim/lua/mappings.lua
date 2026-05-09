@@ -107,8 +107,10 @@ keymap({ "n", "v" }, "<leader>P", '"+gP') -- Paste from system clipboard
 -- keymap("n", "<C-_>", "<cmd>Commentary<CR>")
 keymap("n", "<C-_>", "gc")
 
--- Disable Ex Mode
-keymap("n", "Q", "<Nop>")
+-- Reasign macro recording
+keymap("n", "q", "<Nop>", { noremap = true, silent = true })
+keymap("n", "Q", "q", { noremap = true, desc = "Record macro" })
+keymap("n", "<leader>m", "@", { noremap = true, desc = "Execute macro" })
 
 -- Disable annoying command line thing
 keymap("n", "q:", ":q<CR>")
