@@ -1,7 +1,8 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
-        branch = "0.1.x",
+        -- enabled = false,
+        version = "*",
         dependencies = {
             { "nvim-lua/plenary.nvim" },
             {
@@ -155,6 +156,7 @@ return {
     },
     {
         "nvim-telescope/telescope-ui-select.nvim",
+        -- enabled = false,
         dependencies = { "nvim-telescope/telescope.nvim" },
         config = function(_, opts)
             -- To get ui-select loaded and working with telescope, you need to call
@@ -164,6 +166,7 @@ return {
     },
     {
         "nvim-telescope/telescope-smart-history.nvim",
+        -- enabled = false,
         dependencies = { "kkharji/sqlite.lua", "nvim-telescope/telescope.nvim" },
         config = function(_, opts)
             require("telescope").load_extension("smart_history")

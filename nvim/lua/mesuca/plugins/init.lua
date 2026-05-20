@@ -2,7 +2,6 @@ return {
     { "nvim-lua/plenary.nvim" },
 
     -- Syntax Highlight
-    { "nvim-treesitter/nvim-treesitter-context" },
     { "ron-rs/ron.vim" },
 
     -- -- Coding

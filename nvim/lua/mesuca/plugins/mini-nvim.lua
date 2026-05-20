@@ -119,6 +119,8 @@ local local_config = function()
 end
 
 return {
-    "echasnovski/mini.nvim",
+    "nvim-mini/mini.nvim",
+    -- enabled = false,
+    version = false,
     config = local_config,
 }
