@@ -26,4 +26,5 @@ vim.lsp.enable({
     "ansiblels",
     "taplo",
     "groovyls",
+    "regal",
 })
