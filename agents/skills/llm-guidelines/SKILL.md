@@ -1,12 +1,15 @@
 ---
 name: llm-guidelines
-description: Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, fixing, modifying, implementing, refactoring, adding features, or changing any code — always apply during coding tasks.
+description: Prevents overengineering, scope creep, and unsafe changes when writing or modifying code. Catches common LLM mistakes: unnecessary abstractions, speculative features, breaking adjacent code, and missing verification. Apply before any coding task.
 license: MIT
 ---
 
-# LLM Guidelines
+# LLM Coding Guidelines
 
-Behavioral guidelines to reduce common LLM coding mistakes. Bias caution over speed. Use judgment for trivial tasks.
+These behavioral guidelines reduce common LLM coding mistakes.
+
+- Bias caution over speed.
+- Use judgment for trivial tasks.
 
 ## Quick start
 
@@ -17,7 +20,7 @@ Before writing code:
 3. Touch only what the request requires
 4. Define how success will be verified
 
-## Workflows
+## Principles
 
 ### Think Before Coding
 
@@ -34,10 +37,11 @@ Before writing code:
 - No features beyond what was asked.
 - No abstractions for single-use code.
 - No "flexibility" that wasn't requested.
-- No error handling for impossible scenarios.
-- If 200 lines could be 50, rewrite.
+- Don't add error handling for scenarios you can articulate as genuinely impossible given system constraints.
+- Do handle: external I/O failures, malformed input, resource exhaustion, concurrent access, and any scenario where failure would cause data loss or corruption.
+- Eliminate duplication, not necessary complexity. If code is long because it handles many distinct cases, that's appropriate.
 
-**Test**: Would a senior engineer call this overcomplicated? If yes, simplify.
+**Check**: Would a senior engineer call this overcomplicated? If yes, simplify.
 
 ### Surgical Changes
 
@@ -52,10 +56,10 @@ When editing existing code:
 
 When your changes create orphans:
 
-- Remove imports/variables/functions YOUR changes made unused.
+- Remove imports/variables/functions **your** changes made unused.
 - Don't remove pre-existing dead code unless asked.
 
-**Test**: Every changed line should trace directly to the user's request.
+**Check**: Every changed line should trace directly to the user's request.
 
 ### Goal-Driven Execution
 
@@ -69,6 +73,12 @@ Transform tasks into verifiable goals:
 | Fix a bug | Write a test that reproduces it, then make it pass |
 | Refactor X | Ensure tests pass before and after |
 
+When tests aren't available or practical:
+
+- Manually verify the change against the stated success criteria
+- Document the verification steps taken
+- For config changes: validate syntax (e.g., `stylua --check`, `shellcheck`, JSON validation)
+
 For multi-step tasks, state a brief plan:
 
 ```
@@ -76,5 +86,13 @@ For multi-step tasks, state a brief plan:
 2. [Step] -> verify: [check]
 3. [Step] -> verify: [check]
 ```
+
+### Failure Awareness
+
+- Consider what happens at each step if it fails.
+- Make operations idempotent where possible.
+- If a multi-step operation fails partway, state what needs cleanup or retry.
+- Don't leave the system in a worse state than before you started.
+- Error messages should include enough context to diagnose the issue without reproducing it.
 
 Strong criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
