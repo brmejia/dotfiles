@@ -93,15 +93,21 @@ return {
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
 ```
 
-## Opencode Agents
+## Opencode Skills
 
-Located in `opencode/agents/`:
-- `brutal-core-logic.md` - Architecture & correctness
-- `brutal-reliability.md` - Testing & error handling
-- `brutal-clean-campground.md` - Code quality
-- `brutal-performance.md` - Performance
-
-Slash command: `/brutal-review` (in `opencode/commands/brutal-review.md`)
+Located in `agents/skills/`:
+- `brutal-review` - Multi-perspective code review with four parallel subagents
+- `llm-guidelines` - Behavioral guidelines to prevent common LLM coding mistakes
+- `smart-commit` - Semantic conventional commits from git diffs
+- `tdd` - Test-driven development with red-green-refactor loop
+- `handoff` - Compact conversation context for agent handoffs
+- `prototype` - Build throwaway prototypes to explore designs
+- `worktree-for` - Isolated git worktrees for planning or implementation
+- `spec-feature` - Feature specs in git worktrees
+- `to-issues` - Break plans into tracked issues
+- `to-prd` - Create PRDs from conversation context
+- `triage` - Issue triage state machine
+- `grill-me` / `grill-with-docs` - Relentless design interrogation
 
 ## Common Tasks
 
