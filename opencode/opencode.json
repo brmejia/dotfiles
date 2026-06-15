@@ -31,9 +31,7 @@
     "*": "ask",
     "bash": {
       "*": "ask",
-      "bash *skills/context-file-creation-v4/cleanup.sh *": "allow",
-      "bash *skills/context-file-creation-v4/create_context.sh *": "allow",
-      "bash *skills/context-file-creation-v4/write_content.sh *": "allow",
+      "*brutal-review/scripts/*": "allow",
       "cargo all-features test *": "allow",
       "cargo check *": "allow",
       "cargo clippy *": "allow",
@@ -73,6 +71,7 @@
       "printf *": "allow",
       "pwd *": "allow",
       "rm -f /tmp/*": "allow",
+      "rm -rf /tmp/brutal-review-*": "allow",
       "trap 'rm -f \"$CONTEXT_FILE\"' INT TERM": "allow",
       "wc *": "allow",
       "rtk *": "allow",
@@ -99,6 +98,7 @@
       ".planning/*": "allow",
       ".tmp/**": "allow",
       "/tmp/*": "allow",
+      "/tmp/brutal-review-*/**": "allow",
       "~/.config/opencode/*": "allow",
       "~/.dotfiles/opencode/*": "allow",
       "~/.agents/*": "allow"
@@ -133,7 +133,8 @@
       "smart-commit": "allow",
       "tdd*": "allow",
       "update-mpocock-skills": "allow",
-      "write-a-skill*": "allow"
+      "write-a-skill*": "allow",
+      "brutal-review": "allow"
     },
     "task": "allow",
     "todowrite": "allow",
@@ -144,6 +145,7 @@
       "openspec/*": "allow",
       ".planning/*": "allow",
       "/tmp/*": "allow",
+      "/tmp/brutal-review-*/**": "allow",
       "~/.config/opencode/*": "allow",
       "~/.dotfiles/opencode/*": "allow"
     }
