@@ -46,7 +46,7 @@ $env.EDITOR = "nvim"
 $env.SUDO_EDITOR = "nvim"
 $env.VISUAl = "nvim"
 
-use std log
+use std/log
 
 let vendor_autoload_path = ($nu.data-dir | path join "vendor/autoload/")
 
