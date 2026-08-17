@@ -5,12 +5,12 @@ description: Break a PRD + optional spec into child issues with dependency track
 
 # PRD to Issues
 
-Orchestrate PRD fetching, spec reading, and delegation to `to-issues` for creating dependency-tracked child issues.
+Orchestrate PRD fetching, spec reading, and delegation to `to-tickets` for creating dependency-tracked child issues.
 
 ## Prerequisites
 
 - Issue tracker CLI available (see `docs/agents/issue-tracker.md`)
-- Upstream `to-issues` skill available at `agents/skills/to-issues/SKILL.md`
+- Upstream `to-tickets` skill available at `agents/skills/to-tickets/SKILL.md`
 - Triage label vocabulary from `docs/agents/triage-labels.md`
 
 ## Workflow
@@ -36,7 +36,7 @@ If the CLI is not installed or not in PATH, report it as a required prerequisite
 
 Use the issue tracker CLI to fetch the full PRD issue body and comments.
 
-If the command fails (issue not found, network error, etc.), propagate the error and halt without invoking `to-issues`.
+If the command fails (issue not found, network error, etc.), propagate the error and halt without invoking `to-tickets`.
 
 ### 4. Read spec file (if provided)
 
@@ -62,18 +62,18 @@ If no spec path was provided, the context consists solely of the PRD content.
 
 ### 6. Verify upstream skill
 
-Verify that the `to-issues` skill exists at `agents/skills/to-issues/SKILL.md`. If not found, report that the upstream skill is missing and setup is required, then halt.
+Verify that the `to-tickets` skill exists at `agents/skills/to-tickets/SKILL.md`. If not found, report that the upstream skill is missing and setup is required, then halt.
 
-### 7. Delegate to to-issues
+### 7. Delegate to to-tickets
 
-With the combined context ready, invoke the upstream `to-issues` workflow. Instruct the agent to:
+With the combined context ready, invoke the upstream `to-tickets` workflow. Instruct the agent to:
 
-1. Follow the `to-issues` skill process with the combined context
+1. Follow the `to-tickets` skill process with the combined context
 2. Go through the quiz/approval step with the user before publishing
 3. Publish issues in **dependency order** (blockers first) so that `Blocked by` fields can reference real issue identifiers
 4. Apply the `needs-triage` label to each child issue (see `docs/agents/triage-labels.md` for label vocabulary)
 5. Keep issue descriptions **clear and concise** — one-paragraph summary of what needs to be done, plus acceptance criteria. Omit background already captured in the parent PRD.
-6. Use the issue template format from `to-issues` for `Blocked by` fields:
+6. Use the issue template format from `to-tickets` for `Blocked by` fields:
 
 ```markdown
 ## Blocked by
@@ -88,15 +88,17 @@ Or "None - can start immediately" if no blockers.
    ISSUE_MAP: <slice-title> -> #<issue-id>
    ```
 
-Do NOT modify the `to-issues` skill file. This skill is a thin orchestrator that prepares context and delegates.
+Do NOT modify the `to-tickets` skill file. This skill is a thin orchestrator that prepares context and delegates.
 
 ### 8. Link dependencies in the Issue Tracker
 
-After `to-issues` publishes all issues, create native issue links for each dependency relationship via the Issue Tracker API. Links are bi-directional — both issues show the relationship in the Issue Tracker interface.
+`to-tickets` publishes each ticket with its blocking edges and, where the tracker exposes a native blocking relationship, may already have created it. Before creating a link, check whether it already exists and skip it rather than double-linking; count skipped links in the summary.
+
+For each dependency relationship still missing, create a native issue link via the Issue Tracker API. Links are bi-directional — both issues show the relationship in the Issue Tracker interface.
 
 #### 8a. Parse issue IDs
 
-Extract the slice-to-ID mapping from `to-issues` output. Look for `ISSUE_MAP:` lines.
+Extract the slice-to-ID mapping from `to-tickets` output. Look for `ISSUE_MAP:` lines.
 
 If parsing fails (no `ISSUE_MAP:` found), fall back to parsing issue URLs, issue references (`#N`), or querying the Issue Tracker for recently created issues. Cross-reference titles with slice titles.
 
@@ -149,7 +151,7 @@ Reuse `namespace_id` from step 8b. Use `link_type = "relates_to"` for parent-chi
 
 #### 9b. Create parent links
 
-For each child issue created by `to-issues`, create a link via the Issue Tracker API.
+For each child issue created by `to-tickets`, create a link via the Issue Tracker API.
 
 Key rules:
 - The issue in the URL path is the CHILD issue.
@@ -175,11 +177,11 @@ Failed parent links:
 
 - `docs/agents/issue-tracker.md` — Issue tracker CLI conventions
 - `docs/agents/triage-labels.md` — Label vocabulary
-- `agents/skills/to-issues/SKILL.md` — Upstream skill (immutable)
+- `agents/skills/to-tickets/SKILL.md` — Upstream skill (immutable)
 
 ## Permission Hints
 
-When delegating to `to-issues` which may spawn sub-agents for implementation, the parent agent MUST pre-approve read+write filesystem access for any worktree paths that will be created.
+When delegating to `to-tickets` which may spawn sub-agents for implementation, the parent agent MUST pre-approve read+write filesystem access for any worktree paths that will be created.
 
 After worktree paths are computed, grant read+write access to:
 ```

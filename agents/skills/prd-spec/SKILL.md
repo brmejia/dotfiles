@@ -1,11 +1,11 @@
 ---
 name: prd-spec
-description: Chain to-prd → spec-feature to create a PRD issue and planning worktree with spec file. Use when user wants to go from feature idea to PRD + spec in one step, start planning a new feature, create a spec-driven worktree, or bootstrap a feature with both tracking issue and isolated workspace.
+description: Chain to-spec → spec-feature to create a PRD issue and planning worktree with spec file. Use when user wants to go from feature idea to PRD + spec in one step, start planning a new feature, create a spec-driven worktree, or bootstrap a feature with both tracking issue and isolated workspace.
 ---
 
 # PRD Spec
 
-Orchestrate `to-prd` and `spec-feature` to create a GitLab PRD issue and a planning worktree with a spec file from a single feature idea.
+Orchestrate `to-spec` and `spec-feature` to create a GitLab PRD issue and a planning worktree with a spec file from a single feature idea.
 
 ## Input
 
@@ -51,15 +51,15 @@ Derive a kebab-case `feature_slug` from `feature_title` using this algorithm:
 
 ## Workflow
 
-### Step 1: Create PRD issue via `to-prd`
+### Step 1: Create PRD issue via `to-spec`
 
-Invoke the `to-prd` skill using the `task` tool. Pass the feature idea as context.
+Invoke the `to-spec` skill using the `task` tool. Pass the feature idea as context.
 
-**Important**: Do NOT modify the `to-prd` skill. It is an immutable upstream skill.
+**Important**: Do NOT modify the `to-spec` skill. It is an immutable upstream skill.
 
-After `to-prd` completes, extract the created issue number and URL from the task output. The `to-prd` skill publishes the PRD to the GitLab issue tracker and reports the issue URL — parse this from the task result.
+After `to-spec` completes, extract the created issue number and URL from the task output. The `to-spec` skill synthesises the spec from context without interviewing the user, publishes it to the GitLab issue tracker with the `ready-for-agent` triage label, and reports the issue URL — parse this from the task result. That issue is the planning parent this chain (and later `prd-to-issues`) treats as the PRD.
 
-**Error handling**: If `to-prd` fails, report the error and halt. Do NOT proceed to Step 2.
+**Error handling**: If `to-spec` fails, report the error and halt. Do NOT proceed to Step 2.
 
 ### Step 2: Create planning worktree via `spec-feature`
 
@@ -88,8 +88,8 @@ Spec file: .scratch/specs/<YYYY-MM-DD>-<slug>.md
 
 | Scenario | Behavior |
 |---|---|
-| `to-prd` skill not available | Report error, halt, suggest running `update-mpocock-skills` |
-| `to-prd` fails | Report error, halt, do not invoke `spec-feature` |
+| `to-spec` skill not available | Report error, halt, suggest running `update-mpocock-skills` |
+| `to-spec` fails | Report error, halt, do not invoke `spec-feature` |
 | `spec-feature` skill not available | Report error, halt |
 | `spec-feature` fails | Report error, PRD issue already created (no rollback) |
 | `glab` not available | Report prerequisite error before any invocation |
@@ -98,7 +98,7 @@ Spec file: .scratch/specs/<YYYY-MM-DD>-<slug>.md
 
 ## References
 
-- `agents/skills/to-prd/SKILL.md` — Upstream skill for PRD creation (immutable)
+- `agents/skills/to-spec/SKILL.md` — Upstream skill for PRD creation (immutable)
 - `agents/skills/spec-feature/SKILL.md` — Upstream skill for spec generation (immutable)
 - `docs/agents/issue-tracker.md` — `glab` CLI conventions
 - `docs/agents/triage-labels.md` — Label vocabulary
